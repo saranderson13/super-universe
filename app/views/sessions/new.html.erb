@@ -1,0 +1,8 @@
+<h2>Login</h2>
+<%= form_with(url: "/login", method: "post") do %>
+  <%= label_tag(:alias, "Alias:") %>
+  <%= text_field_tag(:alias) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Log In") %>
+<% end %>
