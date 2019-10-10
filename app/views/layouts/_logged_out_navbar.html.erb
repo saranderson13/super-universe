@@ -1,3 +1,4 @@
 <nav id="navbar">
-  <%= link_to "Sign Up", '/users/new' %> or <%= link_to "Log In", '/login' %>
+  <%= link_to "Sign Up", '/users/new' %>
+  <%= link_to_unless_current "Log In", '/login' %>
 </nav>

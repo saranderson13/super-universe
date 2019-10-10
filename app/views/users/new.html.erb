@@ -9,7 +9,7 @@
   </ul>
 <% end %>
 
-<%= form_with(model: @user, class: 'form_design') do |f| %>
+<%= form_with(model: @user, class: 'form_design signup', local: true) do |f| %>
   <%= f.label :alias, "Alias" %>
   <%= f.text_field :alias, class: "field_error" %>
   <%= f.label :email, "Email Address" %>
@@ -19,4 +19,7 @@
   <%= f.label :password_confirmation, "Confirm Password:" %>
   <%= f.password_field :password_confirmation %>
   <%= f.submit "Sign Up", data: { disable_with: false } %>
+
+  <p class="form_in_bubble_breaker">- OR -</p>
+  <div class="google_login_link_wrapper"><%= link_to "Log in with your Google account.", '/auth/google_oauth2'%></div>
 <% end %>

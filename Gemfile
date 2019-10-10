@@ -24,6 +24,11 @@ gem 'bcrypt', '~> 3.1.7'
 # Used to validate images by file type
 gem 'image_processing', '~> 1.2'
 
+# OAuth Gems
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

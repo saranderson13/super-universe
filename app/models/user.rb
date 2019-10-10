@@ -19,4 +19,15 @@ class User < ApplicationRecord
   # has_many :users, through: :friends, as: :followers
 
   scope :admin, -> { where(admin_status: true) }
+
+
+  # FOR OAUTH LOGIN
+  def self.from_omniauth(auth)
+    # Creates a new user only if it doesn't exist
+    where(email: auth.info.email).first_or_initialize do |user|
+      # user.alias = auth.info.name ### THIS MAY CAUSE PROBLEMS BECAUSE I WANT ALIAS TO BE UNIQUE
+      user.email = auth.info.email
+    end
+  end
+
 end

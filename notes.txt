@@ -1,24 +1,40 @@
-TO DO - 10/8
+TO DO - 10/8 - 10/9
 x signup form
 - error handling for signup form
 x error handling for login form
 x admin/member permissions
 x navbar link visibility (login/signup/logout only when appropriate)
 
-TO DO - 10/9
-- OAuth signup option
-- OAuth login option
+TO DO - 10/10
+x OAuth signup option
+x OAuth login option
+- OAuth check for Alias
+- General redirect/check for Alias
+- edit user form and controller logic
+- destroy user authorization (self or admin)
+
+TO DO - 10/11
+- 
 
 TO DO - MASTER LIST
 x scope method
 x has_many/belongs_to
 x has_many through
-- many to many with user input
-- OAuth signup
-- OAuth login
+- many to many with user input - BATTLES
+x OAuth signup
+x OAuth login
+x reasonable validations
+x standard authentication (signup/login/logout/secure passwords)
+- nested resources
+--- nested :new route with form
+--- nested :index and :show routes
+- forms display correct validation errors
+- forms use a .fields_with_errors class
+- reasonably DRY
+x no scaffolding
 
 
 
 
 CREDIT FOR PICTURES:
-default profil pic - Photo by Soroush golpoor on Unsplash
+default profile pic - Photo by Soroush golpoor on Unsplash

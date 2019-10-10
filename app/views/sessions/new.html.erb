@@ -7,10 +7,13 @@
   </ul>
 <% end %>
 
-<%= form_with(url: "/login", method: "post", class: 'form_design') do %>
+<%= form_with(url: "/login", method: "post", class: 'form_design login') do %>
   <%= label_tag(:alias, "Alias:") %>
   <%= text_field_tag(:alias) %>
   <%= label_tag(:password, "Password:") %>
   <%= password_field_tag(:password) %>
   <%= submit_tag("Log In") %>
+
+  <p class="form_in_bubble_breaker">- OR -</p>
+  <div class="google_login_link_wrapper"><%= link_to "Log in with your Google account.", '/auth/google_oauth2'%></div>
 <% end %>
