@@ -1,0 +1,22 @@
+<h1 class="page_name">SIGN UP</h1>
+
+<% if @user.errors.any? %>
+  <p class="errors_present"><%= "errors! oh no!" %></p>
+  <ul class='error_messages'>
+    <% @user.errors.full_messages do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @user, class: 'form_design') do |f| %>
+  <%= f.label :alias, "Alias" %>
+  <%= f.text_field :alias, class: "field_error" %>
+  <%= f.label :email, "Email Address" %>
+  <%= f.text_field :email %>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation, "Confirm Password:" %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit "Sign Up", data: { disable_with: false } %>
+<% end %>

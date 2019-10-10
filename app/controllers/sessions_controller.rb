@@ -12,23 +12,22 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else # if the user is not found or the password is incorrect
-      # log a vague error and reload the login form
-      flash[:notice] = "Login credentials incorrect."
-      render :new
+      # log a vague error and redirect_to login form
+      flash[:notice] = "login credentials incorrect."
+      redirect_to :login
     end
   end
 
   def destroy
     reset_session
-    redirect_to users_path
+    redirect_to root_path
   end
 
   private
 
   # Returns user that is attempting to log in.
-  # If not found by :alias & email, returns nil.
+  # If not found by :alias, returns nil.
   def currently_logging_in
-    binding.pry
     User.find_by(alias: params[:alias])
   end
 

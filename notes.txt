@@ -1,0 +1,24 @@
+TO DO - 10/8
+x signup form
+- error handling for signup form
+x error handling for login form
+x admin/member permissions
+x navbar link visibility (login/signup/logout only when appropriate)
+
+TO DO - 10/9
+- OAuth signup option
+- OAuth login option
+
+TO DO - MASTER LIST
+x scope method
+x has_many/belongs_to
+x has_many through
+- many to many with user input
+- OAuth signup
+- OAuth login
+
+
+
+
+CREDIT FOR PICTURES:
+default profil pic - Photo by Soroush golpoor on Unsplash

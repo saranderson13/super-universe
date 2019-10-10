@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Cantarell:400i|Roboto+Condensed:300&display=swap" rel="stylesheet">
+
     <title>SuperUniverse</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,11 +13,7 @@
 
   <body>
     <header>
-      <nav id="navbar">
-        <%= form_with(url: "/logout", method: "delete") do %>
-          <%= submit_tag 'Log Out' %>
-        <% end %>
-      </nav>
+      <%= navbar %>
     </header>
     <%= yield %>
   </body>

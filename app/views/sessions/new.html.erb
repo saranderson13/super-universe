@@ -1,5 +1,13 @@
-<h2>Login</h2>
-<%= form_with(url: "/login", method: "post") do %>
+<h1 class="page_name">LOG IN</h1>
+
+<% if !!flash[:notice] %>
+  <ul class='errors_present error_messages'>
+    <li><%= "errors! oh no!" %></li>
+    <li><%= flash[:notice] %></li>
+  </ul>
+<% end %>
+
+<%= form_with(url: "/login", method: "post", class: 'form_design') do %>
   <%= label_tag(:alias, "Alias:") %>
   <%= text_field_tag(:alias) %>
   <%= label_tag(:password, "Password:") %>

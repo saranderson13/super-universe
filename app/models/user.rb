@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
-  validates :alias, :email, presence: true
-  validates :alias, :email, uniqueness: true
+  validates :alias, presence: true
+  validates :email, presence: true
+  validates :alias, uniqueness: true
+  validates :email, uniqueness: true
   validates :password, confirmation: true, unless: -> { password.blank? }
   validates :admin_status, inclusion: { in: [true, false] }
 
@@ -15,4 +17,6 @@ class User < ApplicationRecord
   # has_many :friends
   # has_many :users, through: :friends, as: :follows
   # has_many :users, through: :friends, as: :followers
+
+  scope :admin, -> { where(admin_status: true) }
 end
