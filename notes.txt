@@ -12,12 +12,13 @@ x OAuth login option
 TO DO - 10/11
 x OAuth check for Alias
 x General redirect/check for Alias
-- edit user form and controller logic
-- destroy user authorization (self or admin)
-- user path authorizations
---- cannot edit a user other than your own (unless admin)
---- cannot destroy a user other than your own (unless admin)
---- cannot navigate to 'new user' or 'login' if logged in
+x edit user form and controller logic
+x destroy user authorization (self or admin)
+x user path authorizations
+xxx cannot edit a user other than your own (unless admin)
+xxx cannot destroy a user other than your own (unless admin)
+xxx cannot navigate to 'new user' or 'login' if logged in
+- two-part authentication for delete account button
 
 TO DO - MASTER LIST
 x scope method

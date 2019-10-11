@@ -1,0 +1,20 @@
+<h1 class="form_page_name">EDIT PROFILE</h1>
+
+<% if @user.errors.any? %>
+  <ul class='errors_present'>
+    <li><%= "errors! oh no!" %></li>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @user, class: 'form_design signup', method: :patch, local: true) do |f| %>
+  <%= f.label :alias, "Alias" %>
+  <%= f.text_field :alias, class: "field_error" %>
+  <%= f.label :email, "Email Address" %>
+  <%= f.text_field :email %>
+  <%= f.label :profile_pic, "Profile Picture" %>
+  <%= f.text_field :profile_pic %>
+  <%= f.submit "Update", data: { disable_with: false } %>
+<% end %>

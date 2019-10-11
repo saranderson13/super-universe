@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   # TRADITIONAL LOGIN
   def new
+    redirect_to user_path(current_user) if logged_in?
   end
 
   def create
@@ -24,19 +25,22 @@ class SessionsController < ApplicationController
     # Get access tokens from the google server
     access_token = request.env["omniauth.auth"]
     @user = User.from_omniauth(access_token)
+
     # Access_token is used to authenticate request made from the rails application to the google server.
     # Use this if planning to use Google APIs (Calendar/sheets/etc)
     @user.google_token = access_token.credentials.token
-
 
     # Refresh_token to request a new access_token
     # Note: Refresh_token is only sent once during the first request
     refresh_token = access_token.credentials.refresh_token
     @user.google_refresh_token = refresh_token if refresh_token.present?
+
+    # Persist and log in user
     @user.save
     log_in(@user)
-    # binding.pry
 
+    # If user is new (meaning they still have the default alias) redirect them to set up their alias.
+    # else direct them as usual.
     if @user.alias.include?("fieoIDOS931lD990a03")
       redirect_to set_alias_path(@user)
     else

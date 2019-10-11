@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    redirect_to root_path if logged_in?
+    redirect_to user_path(current_user) if logged_in?
     @user = User.new
   end
 
@@ -25,29 +25,41 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = set_user
   end
 
   def edit
-    @user = current_user
+    authorized_to_edit?
+    @user = set_user
   end
 
   def update
-
+    authorized_to_edit?
+    @user = set_user
+    @user.assign_attributes(edit_params)
+    if @user.valid?
+      @user.save
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   def destroy
-
+    authorized_to_edit?
+    @user = set_user
+    @user.destroy
+    redirect_to root_path
   end
 
   # ACTIONS FOR OAUTH ALIAS SET
   def set_alias
-    authorized_to_edit?
-    redirect_to user_path(current_user) if !current_user.alias.include?("fieoIDOS931lD990a03")
+    authorized_to_set_alias?
     @user = current_user
   end
 
   def oauth_login_complete
+    authorized_to_set_alias?
     @user = current_user
     @user.alias = alias_params[:alias]
     if @user.valid?
@@ -59,12 +71,31 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    User.find(params[:id])
+  end
+
+  def authorized_to_set_alias?
+    if !logged_in?
+      redirect_to root_path
+    elsif !current_user.alias.include?("fieoIDOS931lD990a03") || current_user.id != params[:id].to_i
+      redirect_to user_path(current_user)
+    else
+      true
+    end
+  end
+
   def signup_params
     params.require(:user).permit(:alias, :email, :password, :password_confirmation)
   end
 
   def alias_params
     params.require(:user).permit(:alias)
+  end
+
+  def edit_params
+    params.require(:user).permit(:alias, :profile_pic, :email)
   end
 
 end

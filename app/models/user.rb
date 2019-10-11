@@ -4,7 +4,6 @@ class User < ApplicationRecord
   validates :alias, uniqueness: true
   validates :email, presence: true
   validates :email, uniqueness: true
-  # validates :password, presence: true, unless: ->  { google_login? }
   validates :password, confirmation: true, unless: -> { password.blank? }
   validates :admin_status, inclusion: { in: [true, false] }
 

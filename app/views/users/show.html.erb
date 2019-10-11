@@ -1,2 +1,5 @@
-<h2>Welcome, <%= @user.alias %></h2>
-<span class="index_profile_pic"><%= image_tag @user.profile_pic %></span>
+<div class="showpg_welcome_block">
+  <span class="index_profile_pic"><%= image_tag @user.profile_pic %></span>
+  <h2 class="user_show_page_greeting"><%= user_show_page_greeting %></h2>
+</div>
+<%= current_user_profile_links %>

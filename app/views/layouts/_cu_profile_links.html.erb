@@ -1,0 +1,6 @@
+<div class="cu_profile_links">
+  <%= link_to "Edit Profile", edit_user_path(current_user) %>
+  <%= form_with(model: @user, method: "delete") do %>
+    <%= submit_tag 'Delete Account'%>
+  <% end %>
+</div>
