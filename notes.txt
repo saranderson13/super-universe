@@ -14,6 +14,10 @@ x OAuth check for Alias
 x General redirect/check for Alias
 - edit user form and controller logic
 - destroy user authorization (self or admin)
+- user path authorizations
+--- cannot edit a user other than your own (unless admin)
+--- cannot destroy a user other than your own (unless admin)
+--- cannot navigate to 'new user' or 'login' if logged in
 
 TO DO - MASTER LIST
 x scope method
