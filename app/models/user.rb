@@ -28,7 +28,7 @@ class User < ApplicationRecord
     where(email: auth.info.email).first_or_initialize do |user|
       user.alias = "fieoIDOS931lD990a03#{auth[:uid]}"
       user.email = auth.info.email
-      user.password = "#{auth[:info][:last_name]}#{auth[:uid]}#{auth[:info][:first_name]}"
+      user.password = Sysrandom.base64(32)
     end
   end
 

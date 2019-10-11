@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
     User.find_by(id: session[:user_id])
   end
 
+  # Method to prevent people from editing other member's content
+  def authorized_to_edit?
+    redirect_to root_path unless logged_in? && (current_user.id == params[:id].to_i || current_user.admin_status)
+  end
+
+
 
   # BEFORE_ACTION HELPERS
   def alias_set?

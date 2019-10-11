@@ -42,6 +42,7 @@ class UsersController < ApplicationController
 
   # ACTIONS FOR OAUTH ALIAS SET
   def set_alias
+    authorized_to_edit?
     redirect_to user_path(current_user) if !current_user.alias.include?("fieoIDOS931lD990a03")
     @user = current_user
   end
