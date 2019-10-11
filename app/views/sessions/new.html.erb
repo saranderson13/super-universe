@@ -1,7 +1,7 @@
 <h1 class="page_name">LOG IN</h1>
 
 <% if !!flash[:notice] %>
-  <ul class='errors_present error_messages'>
+  <ul class='errors_present'>
     <li><%= "errors! oh no!" %></li>
     <li><%= flash[:notice] %></li>
   </ul>
@@ -15,5 +15,5 @@
   <%= submit_tag("Log In") %>
 
   <p class="form_in_bubble_breaker">- OR -</p>
-  <div class="google_login_link_wrapper"><%= link_to "Log in with your Google account.", '/auth/google_oauth2'%></div>
+  <div class="google_login_link_wrapper"><%= link_to "Log in with your Google account.", '/auth/google_oauth2', method: :post %></div>
 <% end %>

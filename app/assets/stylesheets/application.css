@@ -23,21 +23,22 @@
   font-family: "Cantarell";
   font-size: 40px;
   position: absolute;
-  top: 75px; left: 75px;
+  top: 75px; left: 125px;
 }
 
 .errors_present {
+  list-style-type: none;
+  padding-left: 0px;
   font-family: "Cantarell";
   font-size: 12px;
   position: absolute;
-  top: 150px; left: 85px;
+  top: 150px; left: 135px;
   color: #f00;
+  text-transform: lowercase;
 }
 
-.error_messages {
-  list-style-type: none;
-  padding-left: 0px;
-  color: #f00;
+.field_with_errors input {
+  border: 2px solid #f00;
 }
 
 .form_design {
@@ -73,8 +74,20 @@
 }
 
 .form_design input[type="submit"] {
-  width: 76px;
-  margin: auto;
+  box-sizing: border-box;
+  display: block;
+  width: 80px; height: 20px;
+  margin: 0px 160px;
+  line-height: 20px;
+  background-color: #fff;
+  font-family: "Roboto Condensed";
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  cursor: crosshair;
+  -webkit-appearance: none;
 }
 
 .form_in_bubble_breaker {
@@ -95,4 +108,30 @@
   font-family: 'Roboto Condensed';
   text-transform: uppercase;
   font-size: 12px;
+  cursor: crosshair;
+}
+
+#navbar {
+  background-color: #000;
+  position: fixed;
+  top: 0px; left: 0px;
+  width: 100%; height: 30px;
+  padding-left: 10px;
+}
+
+#navbar a, #navbar input[type="submit"] {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 70px; height: 20px;
+  margin-top: 5px;
+  line-height: 20px;
+  background-color: #fff;
+  font-family: "Roboto Condensed";
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  cursor: crosshair;
+  -webkit-appearance: none;
 }

@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   # OAuth Paths
   get 'auth/:provider/callback', to: 'sessions#googleAuth'
   get 'auth/failure', to: redirect('/')
+  get 'users/:id/set_alias', to: 'users#set_alias', as: 'set_alias'
+  patch 'users/:id/set_alias', to: 'users#oauth_login_complete'
 
 end

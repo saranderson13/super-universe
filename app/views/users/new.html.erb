@@ -1,9 +1,9 @@
 <h1 class="page_name">SIGN UP</h1>
 
 <% if @user.errors.any? %>
-  <p class="errors_present"><%= "errors! oh no!" %></p>
-  <ul class='error_messages'>
-    <% @user.errors.full_messages do |msg| %>
+  <ul class='errors_present'>
+    <li><%= "errors! oh no!" %></li>
+    <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
   </ul>
@@ -21,5 +21,5 @@
   <%= f.submit "Sign Up", data: { disable_with: false } %>
 
   <p class="form_in_bubble_breaker">- OR -</p>
-  <div class="google_login_link_wrapper"><%= link_to "Log in with your Google account.", '/auth/google_oauth2'%></div>
+  <div class="google_login_link_wrapper"><%= link_to "Log in with your Google account.", '/auth/google_oauth2', method: :post %></div>
 <% end %>

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     if @user.valid? && @user.authenticate(signup_params[:password])
       @user.save
-      session[:user_id] = @user.id
+      log_in(@user)
       redirect_to user_path(@user)
     else
       render :new
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user = current_user
   end
 
   def update
@@ -40,22 +40,29 @@ class UsersController < ApplicationController
 
   end
 
+  # ACTIONS FOR OAUTH ALIAS SET
+  def set_alias
+    @user = current_user
+  end
+
+  def oauth_login_complete
+    @user = current_user
+    @user.alias = alias_params[:alias]
+    if @user.valid?
+      @user.save
+      redirect_to user_path(@user)
+    else
+      render :set_alias
+    end
+  end
+
   private
-
-  def logged_in?
-    !!session[:user_id]
-  end
-
-  def current_user
-    User.find_by(id: session[:user_id])
-  end
-
   def signup_params
     params.require(:user).permit(:alias, :email, :password, :password_confirmation)
   end
 
-  def admin_only
-    return head(:forbidden) unless !!current_user && current_user.admin_status
+  def alias_params
+    params.require(:user).permit(:alias)
   end
 
 end

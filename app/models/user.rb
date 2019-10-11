@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   has_secure_password
   validates :alias, presence: true
-  validates :email, presence: true
   validates :alias, uniqueness: true
+  validates :email, presence: true
   validates :email, uniqueness: true
+  # validates :password, presence: true, unless: ->  { google_login? }
   validates :password, confirmation: true, unless: -> { password.blank? }
   validates :admin_status, inclusion: { in: [true, false] }
 
@@ -25,9 +26,11 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     # Creates a new user only if it doesn't exist
     where(email: auth.info.email).first_or_initialize do |user|
-      # user.alias = auth.info.name ### THIS MAY CAUSE PROBLEMS BECAUSE I WANT ALIAS TO BE UNIQUE
+      user.alias = "fieoIDOS931lD990a03#{auth[:uid]}"
       user.email = auth.info.email
+      user.password = "#{auth[:info][:last_name]}#{auth[:uid]}#{auth[:info][:first_name]}"
     end
   end
+
 
 end

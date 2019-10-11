@@ -1,6 +1,6 @@
 TO DO - 10/8 - 10/9
 x signup form
-- error handling for signup form
+x error handling for signup form
 x error handling for login form
 x admin/member permissions
 x navbar link visibility (login/signup/logout only when appropriate)
@@ -14,7 +14,7 @@ x OAuth login option
 - destroy user authorization (self or admin)
 
 TO DO - 10/11
-- 
+-
 
 TO DO - MASTER LIST
 x scope method
@@ -28,8 +28,8 @@ x standard authentication (signup/login/logout/secure passwords)
 - nested resources
 --- nested :new route with form
 --- nested :index and :show routes
-- forms display correct validation errors
-- forms use a .fields_with_errors class
+x forms display correct validation errors
+x forms use a .fields_with_errors class
 - reasonably DRY
 x no scaffolding
 
