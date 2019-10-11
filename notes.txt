@@ -1,20 +1,19 @@
 TO DO - 10/8 - 10/9
 x signup form
 x error handling for signup form
-x error handling for login form
 x admin/member permissions
 x navbar link visibility (login/signup/logout only when appropriate)
 
 TO DO - 10/10
+x error handling for login form
 x OAuth signup option
 x OAuth login option
-- OAuth check for Alias
-- General redirect/check for Alias
-- edit user form and controller logic
-- destroy user authorization (self or admin)
 
 TO DO - 10/11
--
+x OAuth check for Alias
+x General redirect/check for Alias
+- edit user form and controller logic
+- destroy user authorization (self or admin)
 
 TO DO - MASTER LIST
 x scope method
