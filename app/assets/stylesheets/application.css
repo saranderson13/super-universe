@@ -14,7 +14,7 @@
  *= require_self
  */
 .showpg_welcome_block {
-  width: 400px; height: 100px;
+  width: 600px; height: 100px;
   position: relative;
   top: 0px; left: 0px;
 }

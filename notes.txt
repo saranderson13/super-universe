@@ -18,7 +18,21 @@ x user path authorizations
 xxx cannot edit a user other than your own (unless admin)
 xxx cannot destroy a user other than your own (unless admin)
 xxx cannot navigate to 'new user' or 'login' if logged in
-- two-part authentication for delete account button
+x two-part authentication for delete account button
+
+TO DO 10/12
+- create Character class
+- create Hero decorator
+- create Villain decorator
+- create Team class
+--- create TeamMember class
+
+TO DO 10/13
+- create Power class
+--- create Plikes class
+--- create CharacterPowers class
+- create Battle class
+
 
 TO DO - MASTER LIST
 x scope method
@@ -30,8 +44,8 @@ x OAuth login
 x reasonable validations
 x standard authentication (signup/login/logout/secure passwords)
 - nested resources
---- nested :new route with form
---- nested :index and :show routes
+--- nested :new route with form - USER'S NEW CHARACTER
+--- nested :index and :show routes - USER'S CHARACTERS
 x forms display correct validation errors
 x forms use a .fields_with_errors class
 - reasonably DRY
