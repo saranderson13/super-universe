@@ -2,7 +2,7 @@
   <%= link_to "Home", root_path %>
   <%= link_to "Profile", user_path(current_user) %>
   <%= form_with(url: "/logout", method: "delete") do %>
-    <%= submit_tag 'Log Out'%>
+    <%= submit_tag 'Log Out' %>
   <% end %>
 
   <% if !!flash[:notice] %>

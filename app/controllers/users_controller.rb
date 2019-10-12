@@ -56,7 +56,9 @@ class UsersController < ApplicationController
   def destroy
     authorized_to_edit?
     @user = set_user
+    reset_session
     @user.destroy
+    flash[:notice] = "CONFIRMATION: ACCOUNT DELETED"
     redirect_to root_path
   end
 
