@@ -26,11 +26,19 @@ class UsersController < ApplicationController
 
   def show
     @user = set_user
+    if @user.nil?
+      flash[:notice] = "warning: that user does not exist."
+      redirect_to root_path
+    end
   end
 
   def edit
     authorized_to_edit?
     @user = set_user
+    if @user.nil?
+      flash[:notice] = "warning: that user does not exist."
+      redirect_to root_path
+    end
   end
 
   def update
@@ -73,13 +81,14 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    User.find(params[:id])
+    User.find_by(id: params[:id])
   end
 
   def authorized_to_set_alias?
     if !logged_in?
       redirect_to root_path
     elsif !current_user.alias.include?("fieoIDOS931lD990a03") || current_user.id != params[:id].to_i
+      flash[:notice] = "Warning: forbidden path"
       redirect_to user_path(current_user)
     else
       true

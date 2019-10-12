@@ -177,6 +177,16 @@
   float: left;
 }
 
+#navbar .home_error_flash {
+  padding-right: 10px;
+  font-family: "Cantarell";
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 30px;
+  color: #f00;
+  float: right;
+}
+
 #main_content_body {
   margin-top: 60px;
 }

@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
     if @user.alias.include?("fieoIDOS931lD990a03")
       redirect_to set_alias_path(@user)
     else
-      redirect_to root_path
+      redirect_to user_path(@user)
     end
   end
 

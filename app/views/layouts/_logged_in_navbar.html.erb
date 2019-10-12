@@ -4,4 +4,8 @@
   <%= form_with(url: "/logout", method: "delete") do %>
     <%= submit_tag 'Log Out'%>
   <% end %>
+
+  <% if !!flash[:notice] %>
+    <span class="home_error_flash"><%= flash[:notice] %></span>
+  <% end %>
 </nav>
