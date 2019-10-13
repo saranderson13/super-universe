@@ -26,15 +26,16 @@ class Character < ApplicationRecord
   private
 
   def validate_stats
-    if self.hp == nil || self.att == nil || self.def == nil
+    if (self.hp == nil || self.hp <= 0) || (self.att == nil || self.att <= 0) || (self.def == nil || self.def <= 0)
       errors.add(:hp, "Please enter a value for your character's hitpoints stat.") if self.hp == nil
-      errors.add(:att, "Please enter a value for your character's attack stat.") if self.att == nil
-      errors.add(:def, "Please enter a value for your character's defense stat.") if self.def == nil
-    else
       errors.add(:hp, "Hitpoints must be greater than 0.") if self.hp <= 0
-      errors.add(:att, "Attack stat must be greater than 0.") if self.att <= 0
-      errors.add(:def, "Defense stat must be greater than 0.") if self.def <= 0
 
+      errors.add(:att, "Please enter a value for your character's attack stat.") if self.att == nil
+      errors.add(:att, "Attack stat must be greater than 0.") if self.att <= 0
+
+      errors.add(:def, "Please enter a value for your character's defense stat.") if self.def == nil
+      errors.add(:def, "Defense stat must be greater than 0.") if self.def <= 0
+    else
       if self.hp + self.att + self.def > 500
         errors.add(:hp, "The sum of hitpoints, attack and defense must not exceed 500.")
         errors.add(:att, "Please adjust the balances for your characters stats accordingly.")
