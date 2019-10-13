@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def current_user_profile_links
-    render 'layouts/cu_profile_links'if logged_in? && (current_user.id == params[:id].to_i || current_user.admin_status)
+    render 'layouts/cu_profile_links' if logged_in? && (current_user.id == params[:id].to_i || current_user.admin_status)
   end
 
 end

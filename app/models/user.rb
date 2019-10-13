@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :password, confirmation: true, unless: -> { password.blank? }
   validates :admin_status, inclusion: { in: [true, false] }
 
-  # has_many :characters
+  has_many :characters
   # has_many :teams, through: :characters
   # has_many :battles, through: :characters
   #

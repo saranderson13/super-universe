@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_165613) do
+ActiveRecord::Schema.define(version: 2019_10_12_225616) do
+
+  create_table "characters", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "team_id", default: 0
+    t.string "supername"
+    t.string "secret_identity"
+    t.string "type"
+    t.integer "hp"
+    t.integer "att"
+    t.integer "def"
+    t.text "bio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "alias"
