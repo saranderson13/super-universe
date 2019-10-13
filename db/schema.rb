@@ -17,7 +17,8 @@ ActiveRecord::Schema.define(version: 2019_10_12_225616) do
     t.integer "team_id", default: 0
     t.string "supername"
     t.string "secret_identity"
-    t.string "type"
+    t.string "char_type"
+    t.string "alignment"
     t.integer "hp"
     t.integer "att"
     t.integer "def"

@@ -21,13 +21,19 @@ xxx cannot navigate to 'new user' or 'login' if logged in
 x two-part authentication for delete account button
 
 TO DO 10/12
-- create Character class
-- create Hero decorator
-- create Villain decorator
-- create Team class
---- create TeamMember class
+x create Character class
+x Character class validations
 
 TO DO 10/13
+x finalize Character class validations
+- create character routes (nested)
+- new character form
+- create Hero decorator
+- create Villain decorator
+
+TO DO 10/14
+- create Team class
+--- create TeamMember class
 - create Power class
 --- create Plikes class
 --- create CharacterPowers class
