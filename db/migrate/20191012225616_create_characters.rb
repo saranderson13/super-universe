@@ -11,6 +11,7 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
       t.integer :att
       t.integer :def
       t.text :bio
+      t.string :dox_code, default: ""
 
       t.timestamps
     end

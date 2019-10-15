@@ -3,3 +3,12 @@
   <h2 class="user_show_page_greeting"><%= user_show_page_greeting %></h2>
 </div>
 <%= current_user_profile_links %>
+
+<div id="showpg_char_section">
+  <h3 class="showpg_section_title">Characters</h3>
+  <ul class="user_chars_list">
+    <% @chars.each do |c| %>
+      <li><%= link_to c.supername, user_character_path(id: c.id, user_id: c.user_id) %></li>
+    <% end %>
+  </ul>
+</div>

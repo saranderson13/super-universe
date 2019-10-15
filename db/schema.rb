@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_10_12_225616) do
     t.integer "att"
     t.integer "def"
     t.text "bio"
+    t.string "dox_code", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

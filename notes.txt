@@ -26,12 +26,20 @@ x Character class validations
 
 TO DO 10/13
 x finalize Character class validations
-- create character routes (nested)
+x dox methods
+x create character routes (nested)
+
+
+TO DO 10/14
+x fix dox method
+x character show page
+
+TO DO 10/15
+x delete character button
+x create some seed data
 - new character form
 - create Hero decorator
 - create Villain decorator
-
-TO DO 10/14
 - create Team class
 --- create TeamMember class
 - create Power class
@@ -62,3 +70,8 @@ x no scaffolding
 
 CREDIT FOR PICTURES:
 default profile pic - Photo by Soroush golpoor on Unsplash
+
+DELETE CHARACTER - OLD CODE
+<%= form_with(model: @char, @user, url: user_character_path(@char), method: "delete") do %>
+  <%= submit_tag 'Delete Character', data: { confirm: 'Are you sure you wish to delete this character?' } %>
+<% end %>

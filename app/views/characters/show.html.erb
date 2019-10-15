@@ -1,0 +1,15 @@
+<h2 class="char_showpg_supername"><%= @char.supername %></h2>
+<h4 class="char_showpg_secretid"> aka <%= secret_id_class %></h4>
+<ul class="char_showpg_char_info_list">
+  <li><%= @char.alignment %> <%= @char.char_type %></li>
+  <li><%= "__HP: #{@char.hp}" %></li>
+  <li><%= "_ATT: #{@char.att}" %></li>
+  <li><%= "_DEF: #{@char.def}" %></li>
+</ul>
+<% if !@char.bio.nil? %>
+  <p class = "char_showpg_bio">
+    <%= @char.bio %>
+  </p>
+<% end %>
+
+<%= char_edit_links %>

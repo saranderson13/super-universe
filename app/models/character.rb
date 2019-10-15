@@ -23,7 +23,23 @@ class Character < ApplicationRecord
   VILL_ALIGNMENT = ["Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"]
   HERO_ALIGNMENT = ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral"]
 
+
+  def dox_code=(code)
+    hashed_code = MurmurHash3::V32.str_hash(code)
+    super(hashed_code)
+  end
+
+  def dox(code)
+    return self.secret_identity if self.dox_code == ""
+    MurmurHash3::V32.str_hash(code).to_s == self.dox_code ? self.secret_identity : "REDACTED"
+  end
+
+
   private
+
+  # def secret_identity
+  #   self[:secret_identity]
+  # end
 
   def validate_stats
     if (self.hp == nil || self.hp <= 0) || (self.att == nil || self.att <= 0) || (self.def == nil || self.def <= 0)

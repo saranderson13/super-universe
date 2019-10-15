@@ -21,6 +21,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless logged_in? && (current_user.id == params[:id].to_i || current_user.admin_status)
   end
 
+  def authorized_to_edit_char?
+    char = Character.find_by(id: params[:id])
+    redirect_to root_path unless logged_in? && (current_user.id == char.user_id || current_user.admin_status)
+  end
+
 
 
   # BEFORE_ACTION HELPERS

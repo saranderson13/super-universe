@@ -31,6 +31,9 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 
+# Used to hash the dox_code
+gem 'murmurhash3'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -28,4 +28,18 @@ module ApplicationHelper
     render 'layouts/cu_profile_links' if logged_in? && (current_user.id == params[:id].to_i || current_user.admin_status)
   end
 
+  def char_edit_links
+    render 'layouts/char_edit_links' if logged_in? && (current_user.id == params[:user_id].to_i || current_user.admin_status)
+  end
+
+  def secret_id_class
+    if @secret_id == "REDACTED"
+      redacted = "<span class='redacted'>#{@secret_id}</span>"
+      redacted.html_safe
+    else
+      revealed = "<span class='revealed'>#{@secret_id}</span>"
+      revealed.html_safe
+    end
+  end
+
 end

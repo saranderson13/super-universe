@@ -29,18 +29,20 @@
 .user_show_page_greeting {
   padding-left: 20px;
   float: left;
+  font-family: "Roboto Condensed";
+  font-size: 30px;
 }
 
 .cu_profile_links {
-  width: 250px;
+  width: 400px; height: 30px;
   position: relative;
-  top: 0px; left: 0px;
+  top: 10px; left: 0px;
 }
 
 .cu_profile_links a, .cu_profile_links input[type="submit"] {
   box-sizing: border-box;
   display: inline-block;
-  width: 100px; height: 20px;
+  width: 110px; height: 20px;
   margin: 5px; padding: 0px;
   line-height: 20px;
   background-color: #000;
@@ -54,6 +56,28 @@
   border: none;
   -webkit-appearance: none;
   float: left;
+}
+
+#showpg_char_section {
+width: 400px; height: 300px;
+/* background-color: #f00; */
+position: relative;
+top: 0px; left: 0px;
+padding-left: 20px;
+}
+
+.showpg_section_title {
+  font-family: "Cantarell";
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 20px 0px 0px;
+}
+
+ul.user_chars_list {
+  list-style: none;
+  padding-left: 5px;
+  margin-top: 10px;
+  font-family: "Roboto Condensed";
 }
 
 
@@ -189,4 +213,36 @@
 
 #main_content_body {
   margin-top: 60px;
+}
+
+
+/* CHARACTER SHOW PAGE */
+.char_showpg_supername {
+  font-family: "Cantarell";
+  font-size: 30px;
+  margin: 5px 0px;
+}
+
+h4.char_showpg_secretid {
+  font-family: "Roboto Condensed";
+  font-size: 16px;
+  margin: 5px 5px;
+}
+
+/* FOR SECRET ID ON CHAR SHOWPG */
+.redacted { color: #f00; }
+.revealed { color: #000; }
+
+ul.char_showpg_char_info_list {
+  list-style-type: none;
+  font-family: "Roboto Condensed";
+  font-size: 14px;
+  padding: 5px;
+}
+
+.char_showpg_bio {
+  width: 400px;
+  font-family: "Roboto Condensed";
+  font-size: 14px;
+  text-align: justify;
 }

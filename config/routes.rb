@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   # User Paths
-  resources :users, except: [:new]
+  resources :users, except: [:new] do
+    resources :characters, except: [:index]
+  end
   get '/signup', to: 'users#new'
 
   # Session Paths
