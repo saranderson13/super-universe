@@ -19,6 +19,10 @@
    margin-top: 60px;
  }
 
+ .field_with_errors input {
+   border: 2px solid #f00;
+ }
+
  #navbar {
    background-color: #000;
    position: fixed;
@@ -57,7 +61,7 @@
 
 
  /* LINKS IN USER SHOW PG IF VIEWING CURRENT USER */
- /* ALSO USED ON CHAR EDIT & DELETE BUTTONS ON CHAR SHOW PG FOR CURRENT USER'S CHARACTERS */
+ /* ALSO USED ON CHAR EDIT & DELETE BUTTONS ON CHAR SHOW PG IF AUTHORIZED TO EDIT */
  .cu_profile_links {
    width: 400px; height: 30px;
    position: relative;
@@ -86,14 +90,14 @@
 
 
 /* USER AND SESSION FORM PAGE STYLING */
-.form_page_name {
+.user_form_pg_name {
   font-family: "Cantarell";
   font-size: 40px;
   position: absolute;
   top: 75px; left: 125px;
 }
 
-.errors_present {
+.user_form_errors {
   list-style-type: none;
   padding-left: 0px;
   font-family: "Cantarell";
@@ -104,11 +108,7 @@
   text-transform: lowercase;
 }
 
-.field_with_errors input {
-  border: 2px solid #f00;
-}
-
-.form_design {
+.user_form_wrapper {
   box-sizing: border-box;
   width: 400px; height: 400px;
   border-radius: 50%;
@@ -118,29 +118,29 @@
   background-color: #000;
 }
 
-.form_design.signup {
+.user_form_wrapper.signup {
   padding-top: 45px;
 }
 
-.form_design.login {
+.user_form_wrapper.login {
   padding-top: 95px;
 }
 
-.form_design label {
+.user_form_wrapper label {
   display: block;
   color: #fff;
   font-family: "Roboto Condensed";
   text-align: center;
 }
 
-.form_design input {
+.user_form_wrapper input {
   display: block;
   width: 200px;
   margin:auto;
   margin-bottom: 10px;
 }
 
-.form_design input[type="submit"] {
+.user_form_wrapper input[type="submit"] {
   box-sizing: border-box;
   display: block;
   width: 80px; height: 20px;
@@ -157,7 +157,7 @@
   -webkit-appearance: none;
 }
 
-.form_in_bubble_breaker {
+.user_form_text_break {
   text-align: center;
   font-family: 'Cantarell';
   color: #fff;

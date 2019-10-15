@@ -1,7 +1,7 @@
-<h1 class="form_page_name">EDIT PROFILE</h1>
+<h1 class="user_form_pg_name">EDIT PROFILE</h1>
 
 <% if @user.errors.any? %>
-  <ul class='errors_present'>
+  <ul class='user_form_errors'>
     <li><%= "errors! oh no!" %></li>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -9,7 +9,7 @@
   </ul>
 <% end %>
 
-<%= form_with(model: @user, class: 'form_design signup', method: :patch, local: true) do |f| %>
+<%= form_with(model: @user, class: 'user_form_wrapper login', method: :patch, local: true) do |f| %>
   <%= f.label :alias, "Alias" %>
   <%= f.text_field :alias, class: "field_error" %>
   <%= f.label :email, "Email Address" %>

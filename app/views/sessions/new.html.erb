@@ -1,19 +1,19 @@
-<h1 class="form_page_name">LOG IN</h1>
+<h1 class="user_form_pg_name">LOG IN</h1>
 
 <% if !!flash[:notice] %>
-  <ul class='errors_present'>
+  <ul class='user_form_errors'>
     <li><%= "errors! oh no!" %></li>
     <li><%= flash[:notice] %></li>
   </ul>
 <% end %>
 
-<%= form_with(url: "/login", method: "post", class: 'form_design login') do %>
+<%= form_with(url: "/login", method: "post", class: 'user_form_wrapper login') do %>
   <%= label_tag(:alias, "Alias:") %>
   <%= text_field_tag(:alias) %>
   <%= label_tag(:password, "Password:") %>
   <%= password_field_tag(:password) %>
   <%= submit_tag("Log In") %>
 
-  <p class="form_in_bubble_breaker">- OR -</p>
+  <p class="user_form_text_break">- OR -</p>
   <div class="google_login_link_wrapper"><%= link_to "Log in with your Google account.", '/auth/google_oauth2', method: :post %></div>
 <% end %>
