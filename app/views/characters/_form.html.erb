@@ -1,0 +1,35 @@
+<table class="char_form_table">
+  <tr class="set_row">
+    <td class="cft_label"><%= char_form.label :supername, "Supername" %></td>
+    <td class="cft_input"><%= char_form.text_field :supername %></td>
+  </tr>
+  <tr class="set_row">
+    <td class="cft_label"><%= char_form.label :secret_identity, "Secret Identity" %></td>
+    <td class="cft_input"><%= char_form.text_field :secret_identity %></td>
+  </tr>
+  <tr class="set_row">
+    <td class="cft_label"><%= char_form.label :dox_code, "Dox Code" %></td>
+    <td class="cft_input"><%= char_form.password_field :dox_code %></td>
+  </tr>
+  <tr class="set_row">
+    <td class="cft_label"><%= char_form.label :char_type, "Character Type" %></td>
+    <td class="cft_input"><%= char_form.collection_select :char_type, ["Hero", "Villain"], :to_s, :to_s, include_blank: true  %></td>
+  </tr>
+  <tr class="set_row wide">
+    <td class="cft_label"><%= char_form.label :alignment, "Alignment" %></td>
+    <td class="radio_buttons"><%= char_form.collection_radio_buttons :alignment, @alignments, :to_s, :to_s %></td>
+  </tr>
+
+  <tr class="set_row">
+    <td class="cft_stat"><%= char_form.label :hp, "HP" %></td>
+    <td class="cft_stat"><%= char_form.text_field :hp %></td>
+    <td class="cft_stat"><%= char_form.label :att, "ATT" %></td>
+    <td class="cft_stat"><%= char_form.text_field :att %></td>
+    <td class="cft_stat"><%= char_form.label :def, "DEF" %></td>
+    <td class="cft_stat"><%= char_form.text_field :def %></td>
+  </tr>
+  <tr class="set_row">
+    <td class="cft_label"><%= char_form.label :bio, "Character Bio\n(optional)" %></td>
+    <td class="cft_input"><%= char_form.text_area :bio %></td>
+  </tr>
+</table>
