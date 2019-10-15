@@ -37,7 +37,13 @@ x character show page
 TO DO 10/15
 x delete character button
 x create some seed data
-- new character form
+- character forms
+xxx new character form functionality
+xxx edit character form functionality
+--- new & edit form check security
+--- new & edit form styling
+--- new & edit form partial
+
 - create Hero decorator
 - create Villain decorator
 - create Team class

@@ -1,1 +1,38 @@
-edit char form
+<h1 class="charform_page_name">EDIT CHARACTER</h1>
+
+<% if @char.errors.any? %>
+  <ul class='errors_present'>
+    <li><%= "errors! oh no!" %></li>
+    <% @char.errors.messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @user, url: user_characters_path(@user), class: 'char_form', local: true) do |f| %>
+  <%= f.fields_for @char do |char| %>
+    <%= char.label :supername, "Supername" %>
+    <%= char.text_field :supername %>
+    <%= char.label :secret_identity, "Secret Identity" %>
+    <%= char.text_field :secret_identity %>
+    <%= char.label :dox_code, "Dox Code" %>
+    <%= char.password_field :dox_code %>
+    <%= char.label :char_type, "Character Type" %>
+    <%= char.collection_select :char_type, ["Hero", "Villain"], :to_s, :to_s, include_blank: true  %>
+    <%= char.label :alignment, "Alignment" %>
+    <%= char.collection_radio_buttons :alignment, @alignments, :to_s, :to_s %>
+
+    <%= char.label :hp, "Hitpoints" %>
+    <%= char.text_field :hp, class: 'new_char_form_num_field' %>
+    <%= char.label :att, "Attack" %>
+    <%= char.text_field :att, class: 'new_char_form_num_field' %>
+    <%= char.label :def, "Defense" %>
+    <%= char.text_field :def, class: 'new_char_form_num_field' %>
+
+    <%= char.label :bio, "Character Bio (optional)" %>
+    <%= char.text_area :bio %>
+  <% end %>
+
+
+  <%= f.submit "Create!", data: { disable_with: false } %>
+<% end %>

@@ -8,12 +8,11 @@ class CharactersController < ApplicationController
 
   def create
     @user = set_user
-    @char = @user.characters.build(newchar_params)
+    @char = @user.characters.build(char_params)
     if @char.valid?
       @char.save
       redirect_to user_character_path(id: @char.id, user_id: @char.user_id)
     else
-      binding.pry
       render :new
     end
   end
@@ -25,7 +24,9 @@ class CharactersController < ApplicationController
   end
 
   def edit
-
+    @user = set_user
+    @char = set_char
+    @alignments = Character.all_alignments
   end
 
   def update
@@ -66,7 +67,7 @@ class CharactersController < ApplicationController
     Character.find_by(id: params[:id])
   end
 
-  def newchar_params
-    params.require(:user).require(:character).permit(:supername, :secret_identity, :char_type, :alignment, :hp, :att, :def)
+  def char_params
+    params.require(:user).require(:character).permit(:supername, :secret_identity, :dox_code, :char_type, :alignment, :hp, :att, :def, :bio)
   end
 end
