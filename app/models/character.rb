@@ -34,6 +34,10 @@ class Character < ApplicationRecord
     MurmurHash3::V32.str_hash(code).to_s == self.dox_code ? self.secret_identity : "REDACTED"
   end
 
+  def self.all_alignments
+    HERO_ALIGNMENT.concat(VILL_ALIGNMENT).uniq
+  end
+
 
   private
 

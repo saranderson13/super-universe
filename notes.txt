@@ -75,3 +75,14 @@ DELETE CHARACTER - OLD CODE
 <%= form_with(model: @char, @user, url: user_character_path(@char), method: "delete") do %>
   <%= submit_tag 'Delete Character', data: { confirm: 'Are you sure you wish to delete this character?' } %>
 <% end %>
+
+
+ERROR HANDLING - USE AS TEMPLATE FOR NEW CHAR ERROR HANDLING
+<% if @user.errors.any? %>
+  <ul class='errors_present'>
+    <li><%= "errors! oh no!" %></li>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
