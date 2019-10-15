@@ -36,6 +36,10 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_only
-    return head(:forbidden) unless !!current_user && current_user.admin_status
+    unless !!current_user && current_user.admin_status
+      flash[:notice] = "warning: forbidden path"
+      redirect_to root_path
+    end
+    # return head(:forbidden) unless !!current_user && current_user.admin_status
   end
 end

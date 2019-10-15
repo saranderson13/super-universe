@@ -26,10 +26,11 @@ class UsersController < ApplicationController
 
   def show
     @user = set_user
-    @chars = @user.characters
     if @user.nil?
       flash[:notice] = "warning: that user does not exist."
       redirect_to root_path
+    else
+      @chars = @user.characters
     end
   end
 
