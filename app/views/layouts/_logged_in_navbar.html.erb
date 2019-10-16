@@ -1,6 +1,7 @@
 <nav id="navbar">
   <%= link_to "Home", root_path %>
   <%= link_to "Profile", user_path(current_user) %>
+  <%= link_to "New Char", new_user_character_path(current_user) %>
   <%= form_with(url: "/logout", method: "delete") do %>
     <%= submit_tag 'Log Out' %>
   <% end %>

@@ -1,12 +1,14 @@
 class CharactersController < ApplicationController
 
   def new
+    authorized_to_edit_char?
     @user = set_user
     @char = Character.new()
     @alignments = Character.all_alignments
   end
 
   def create
+    authorized_to_edit_char?
     @user = set_user
     @char = @user.characters.build(char_params)
     if @char.valid?
@@ -24,12 +26,14 @@ class CharactersController < ApplicationController
   end
 
   def edit
+    authorized_to_edit_char?
     @user = set_user
     @char = set_char
     @alignments = Character.all_alignments
   end
 
   def update
+    authorized_to_edit_char?
     @user = set_user
     @char = set_char
 

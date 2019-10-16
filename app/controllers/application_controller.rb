@@ -18,12 +18,25 @@ class ApplicationController < ActionController::Base
 
   # Method to prevent people from editing other member's content
   def authorized_to_edit?
-    redirect_to root_path unless logged_in? && (current_user.id == params[:id].to_i || current_user.admin_status)
+    unless logged_in? && (current_user.id == params[:id].to_i || current_user.admin_status)
+      flash[:notice] = "warning: forbidden path"
+      redirect_to root_path
+    end
   end
 
   def authorized_to_edit_char?
     char = Character.find_by(id: params[:id])
-    redirect_to root_path unless logged_in? && (current_user.id == char.user_id || current_user.admin_status)
+    if !char.nil? # creating new character
+      unless logged_in? && (current_user.id == char.user_id || current_user.admin_status)
+        flash[:notice] = "warning: forbidden path"
+        redirect_to root_path
+      end
+    else # editing existing character
+      unless logged_in? && (current_user.id == params[:user_id].to_i || current_user.admin_status)
+        flash[:notice] = "warning: forbidden path"
+        redirect_to root_path
+      end
+    end
   end
 
 

@@ -40,11 +40,13 @@ x create some seed data
 - character forms
 xxx new character form functionality
 xxx edit character form functionality
---- new & edit form check security
+xxx new & edit form check security
 --- new & edit form styling
---- new & edit form partial
+--- new & edit form error handling
+xxx new & edit form partial
 x figure out css tree organization
 x clean up css naming conventions
+- new character link
 - create Hero decorator
 - create Villain decorator
 - create Team class
