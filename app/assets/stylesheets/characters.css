@@ -48,9 +48,32 @@ ul.char_showpg_char_info_list {
 
 }
 
-.char_form {
+td.field_with_errors {
+  width: 300px;
+  color: #f00;
+  font-family: "Cantarell";
+  font-size: 12px;
+  text-transform: lowercase;
+}
+
+td.radio_buttons .field_with_errors {
+  display: inline-block;
+}
+
+.field_with_errors select {
+  border: 2px solid #f00;
+}
+
+.char_form_bg {
   width: 500px; height: 100%;
+  position: fixed;
+  top: 33px; left: 0px;
   background-color: #000;
+}
+
+.char_form {
+  width: 800px; height: 100%;
+  padding-top: 20px;
   position: fixed;
   top: 33px; left: 0px;
 }
@@ -71,8 +94,8 @@ ul.char_showpg_char_info_list {
 .char_form input[type="submit"] {
   box-sizing: border-box;
   display: block;
-  width: 300px; height: 20px;
-  margin: 20px auto;
+  width: 295px; height: 20px;
+  margin: 20px 162px;
   line-height: 20px;
   background-color: #fff;
   font-family: "Roboto Condensed";
@@ -86,14 +109,14 @@ ul.char_showpg_char_info_list {
 }
 
 tr.set_row {
-  width: 430px;
-  margin: 15px 0px 0px 35px;
+  width: 730px;
+  margin: 15px 20px 0px 35px;
   display: block;
 }
 
-tr.set_row.wide {
-  width: 450px;
-}
+/* tr.set_row.wide {
+  width: 750px;
+} */
 
 td.cft_label {
   box-sizing: border-box;
@@ -102,8 +125,18 @@ td.cft_label {
   padding-right: 10px;
 }
 
-td.cft_input input[type="text"], td.cft_input input[type="password"], td.cft_input select, td.cft_input textarea  {
+td.cft_input input[type="text"], td.cft_input input[type="password"], td.cft_input textarea  {
   width: 290px;
+  margin-right: 10px;
+}
+
+td.cft_input select {
+  width: 300px;
+  margin-right: 10px;
+}
+
+td.radio_buttons {
+  width: 320px;
 }
 
 td.cft_input textarea {

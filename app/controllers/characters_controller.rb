@@ -15,6 +15,7 @@ class CharactersController < ApplicationController
       @char.save
       redirect_to user_character_path(id: @char.id, user_id: @char.user_id)
     else
+      @alignments = Character.all_alignments
       render :new
     end
   end
@@ -36,6 +37,7 @@ class CharactersController < ApplicationController
     authorized_to_edit_char?
     @user = set_user
     @char = set_char
+    @alignments = Character.all_alignments
 
     # Determine if :dox_code should be updated - if field blank, do not update.
     params[:user][:character][:dox_code] == "" ? @char.update_attributes(char_params_no_dox_set) : @char.update_attributes(char_params)

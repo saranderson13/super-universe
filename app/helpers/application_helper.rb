@@ -42,4 +42,21 @@ module ApplicationHelper
     end
   end
 
+  def char_form_error(field)
+    case field
+    when :supername
+      "!! Must have a supername." if !@char.errors[:supername].empty?
+    when :secret_identity
+      "!! Must have a secret identity." if !@char.errors[:secret_identity].empty?
+    when :char_type
+      "!! Please choose a character type." if !@char.errors[:char_type].empty?
+    when :alignment
+      "!! #{@char.errors[:alignment][0]}" if !@char.errors[:alignment].empty?
+    when :hp
+      "!! #{@char.errors[:hp][0]}" if !@char.errors[:hp].empty?
+    when :bio
+
+    end
+  end
+
 end
