@@ -1,15 +1,10 @@
 <h1 class="charform_pg_name">EDIT CHARACTER</h1>
 
-<% if @char.errors.any? %>
-  <ul class='charform_errors_present'>
-    <li><%= "errors! oh no!" %></li>
-    <% @char.errors.messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="charform_directions"
+  <!-- INSTRUCTIONS WILL GO HERE -->
+</div>
 
-<div class="dynamic_angle"> </div>
+<div class="char_form_dynamic_arch"> </div>
 <div class="char_form_bg">
   <%= form_with(model: @user, url: user_character_path(id: @char.id, user_id: @user.id), method: :patch, class: 'char_form', local: true) do |f| %>
     <%= f.fields_for @char do |char_form| %>
