@@ -37,16 +37,21 @@ x character show page
 TO DO 10/15
 x delete character button
 x create some seed data
-- character forms
+x character forms
 xxx new character form functionality
 xxx edit character form functionality
 xxx new & edit form check security
---- new & edit form styling
---- new & edit form error handling
+xxx new & edit form styling
 xxx new & edit form partial
 x figure out css tree organization
 x clean up css naming conventions
-- new character link
+x new character link
+
+TO DO 10/16
+xxx new & edit form error handling
+- character form instructions
+- organize helpers
+- invalid path handling
 - create Hero decorator
 - create Villain decorator
 - create Team class

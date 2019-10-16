@@ -35,7 +35,7 @@ class Character < ApplicationRecord
   end
 
   def self.all_alignments
-    HERO_ALIGNMENT.concat(VILL_ALIGNMENT).uniq
+    [HERO_ALIGNMENT, VILL_ALIGNMENT].flatten.uniq
   end
 
 
