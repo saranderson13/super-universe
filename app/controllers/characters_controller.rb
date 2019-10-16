@@ -30,7 +30,18 @@ class CharactersController < ApplicationController
   end
 
   def update
+    @user = set_user
+    @char = set_char
 
+    # Determine if :dox_code should be updated - if field blank, do not update.
+    params[:user][:character][:dox_code] == "" ? @char.update_attributes(char_params_no_dox_set) : @char.update_attributes(char_params)
+
+    if @char.valid?
+      @char.save
+      redirect_to user_character_path(id: @char.id, user_id: @char.user_id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -69,5 +80,9 @@ class CharactersController < ApplicationController
 
   def char_params
     params.require(:user).require(:character).permit(:supername, :secret_identity, :dox_code, :char_type, :alignment, :hp, :att, :def, :bio)
+  end
+
+  def char_params_no_dox_set
+    params.require(:user).require(:character).permit(:supername, :secret_identity, :char_type, :alignment, :hp, :att, :def, :bio)
   end
 end

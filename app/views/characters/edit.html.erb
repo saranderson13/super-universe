@@ -11,7 +11,7 @@
 
 <div class="dynamic_angle"> </div>
 
-<%= form_with(model: @user, url: user_characters_path(@user), class: 'char_form', local: true) do |f| %>
+<%= form_with(model: @user, url: user_character_path(id: @char.id, user_id: @user.id), method: :patch, class: 'char_form', local: true) do |f| %>
   <%= f.fields_for @char do |char_form| %>
     <% render partial: 'form', locals: { char_form: char_form } %>
   <% end %>
