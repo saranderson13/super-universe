@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  pwr_type: MyString
+  strong_vs: MyString
+  weak_vs: MyString
+  att_mv: 1
+  def_mov: 1
+  pwr_move: 1
+
+two:
+  name: MyString
+  pwr_type: MyString
+  strong_vs: MyString
+  weak_vs: MyString
+  att_mv: 1
+  def_mov: 1
+  pwr_move: 1

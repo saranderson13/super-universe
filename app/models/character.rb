@@ -9,10 +9,10 @@ class Character < ApplicationRecord
 
   belongs_to :user
   # belongs_to :team
-  #
-  # has_many :superpowers
-  # has_many :powers, through: :superpowers
-  #
+
+  has_many :character_powers
+  has_many :powers, through: :character_powers
+
   # has_many :battles
   # has_many :opponents, through: :battles
 

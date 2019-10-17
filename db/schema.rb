@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_12_225616) do
+ActiveRecord::Schema.define(version: 2019_10_17_001301) do
+
+  create_table "character_powers", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "power_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "characters", force: :cascade do |t|
     t.integer "user_id"
@@ -24,6 +31,29 @@ ActiveRecord::Schema.define(version: 2019_10_12_225616) do
     t.integer "def"
     t.text "bio"
     t.string "dox_code", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "moves", force: :cascade do |t|
+    t.string "name"
+    t.string "move_type"
+    t.integer "base_pts"
+    t.string "success_descrip"
+    t.string "fail_descrip"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "power_moves", force: :cascade do |t|
+    t.integer "power_id"
+    t.integer "move_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "powers", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

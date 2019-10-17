@@ -50,7 +50,7 @@ x new character link
 TO DO 10/16
 xxx new & edit form error handling
 - character form instructions
-- organize helpers
+x organize helpers
 - invalid path handling
 - create Hero decorator
 - create Villain decorator

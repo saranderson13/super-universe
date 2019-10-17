@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     User.find_by(id: session[:user_id])
   end
 
-  # Method to prevent people from editing other member's content
+  # Checks if user is authorized to edit a user profile
   def authorized_to_edit?
     unless logged_in? && (current_user.id == params[:id].to_i || current_user.admin_status)
       flash[:notice] = "warning: forbidden path"
@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Checks if user is authorized to edit a character
   def authorized_to_edit_char?
     char = Character.find_by(id: params[:id])
     if !char.nil? # creating new character
@@ -44,6 +45,7 @@ class ApplicationController < ActionController::Base
   # BEFORE_ACTION HELPERS
   def alias_set?
     if logged_in? && current_user.alias.include?("fieoIDOS931lD990a03")
+      flash[:notice] = "warning: you must complete registration by choosing an alias."
       redirect_to set_alias_path(current_user)
     end
   end
