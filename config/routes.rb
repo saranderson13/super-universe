@@ -12,13 +12,8 @@ Rails.application.routes.draw do
 
   # Power Paths
   resources :powers, only: [:index, :show]
-  get '/characters/:id/powers', to: 'character_powers#show'
-  delete '/characters/:id/powers', to: 'character_powers#destroy'
   post '/characters/add_power', to: 'character_powers#add', as: 'add_power'
-  # get '/characters/:id/add_power', to: 'character_powers#new', as: 'character_add_power'
-  # post '/characters/:id/add_power', to: 'character_powers#create'
-  # get '/characters/:id/edit_powers', to: 'character_powers#edit', as: 'character_edit_powers'
-  # patch '/characters/:id/edit_powers', to: 'character_powers#update'
+  delete '/characters/:id', to: 'character_powers#destroy', as: 'delete_power'
 
 
 

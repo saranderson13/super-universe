@@ -1,0 +1,17 @@
+<% @char.powers.each do |p| %>
+  <div class="char_showpg_power_block">
+    <div class="char_showpg_power_link"><%= link_to p.name, power_path(p) %></div>
+    <table>
+      <tr>
+        <td class="char_showpg_moves_sec">
+          <div class="char_showpg_power_move">ATTACK - <%= p.fetch_move("att").name %> || <%= p.fetch_move("att").base_pts %> bp</div>
+          <div class="char_showpg_power_move">DEFEND - <%= p.fetch_move("def").name %> || <%= p.fetch_move("def").base_pts %> bp</div>
+          <div class="char_showpg_power_move">POWER - <%= p.fetch_move("pwr").name %> || <%= p.fetch_move("pwr").base_pts %> bp</div>
+        </td>
+        <td class="char_showpg_delete_pwr_sec">
+          <%= char_showpg_delpwr(p) %>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end %>

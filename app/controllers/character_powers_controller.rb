@@ -19,12 +19,14 @@ class CharacterPowersController < ApplicationController
   end
 
   # '/characters/:id/powers'
-  def show
-
-  end
-
+  # found on 'user/:id/character/id:' page if #authorized_to_edit_char?
   def destroy
-
+    authorized_to_edit_char?
+    @char = set_char_from_delpwr
+    @pwr = set_pwr_from_delpwr
+    flash[:notice] = "CONFIRMATION: #{@pwr.name.upcase} HAS BEEN DELETED FROM #{@char.supername.upcase}"
+    @char.powers.delete(@pwr)
+    redirect_to user_character_path(user_id: @char.user_id, id: @char.id)
   end
 
   private
@@ -37,8 +39,20 @@ class CharacterPowersController < ApplicationController
     Power.find_by(id: addpwr_params[:power_id])
   end
 
+  def set_char_from_delpwr
+    Character.find_by(id: delpwr_params[:id])
+  end
+
+  def set_pwr_from_delpwr
+    Power.find_by(id: delpwr_params[:power_id])
+  end
+
   def addpwr_params
     params.permit(:power_id, :character)
+  end
+
+  def delpwr_params
+    params.permit(:power_id, :id)
   end
 
   def authorized_to_add_pwr?

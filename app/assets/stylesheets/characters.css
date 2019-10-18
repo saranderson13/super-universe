@@ -2,6 +2,98 @@
 /* For styling the EDIT/DELETE buttons, see application.css (.cu_profile_links) */
 /* That class is also used to style the EDIT/DELETE buttons on char show pg. */
 
+.char_showpg_wrapper {
+  margin: auto;
+}
+
+.char_showpg_card {
+  display: inline-block;
+  margin: 20px 50px;
+  float: left;
+}
+
+#char_showpg_char_card {
+  box-sizing: border-box;
+  width: 356px; height: 446px;
+  border: 3px double #000;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  padding: 20px 20px 20px 40px;
+}
+
+#char_showpg_power_card {
+  box-sizing: border-box;
+  width: 450px;height: 446px;
+  padding: 20px 0px 20px 40px;
+  border-left: 3px double #000;
+}
+
+.char_showpg_power_block {
+  background-color: #000;
+  display: block;
+  box-sizing: border-box;
+  height: 120px;
+  margin-left: 5px; padding: 10px 20px;
+
+}
+
+.char_showpg_no_powers_msg {
+  margin-top: 40px;
+  padding: 20px;
+  font-family: "Roboto Condensed";
+  font-size: 17px;
+  text-align: center;
+}
+
+.char_showpg_button a, .char_showpg_button input[type='submit'] {
+  box-sizing: border-box;
+  display: block;
+  height: 20px;
+  margin: 20px auto;
+  line-height: 20px;
+  font-family: "Roboto Condensed";
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  cursor: crosshair;
+  -webkit-appearance: none;
+}
+
+.black a, .black input[type='submit'] {
+  width: 200px;
+  background-color: #000;
+  color: #fff;
+}
+
+.white a, .white input[type='submit'] {
+  width: 100px;
+  background-color: #fff;
+  color: #000;
+}
+
+.char_showpg_power_link a {
+  font-family: "Cantarell";
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  cursor: crosshair;
+}
+
+.char_showpg_power_move {
+  font-family: "Roboto Condensed";
+  font-size: 13px;
+  color: #fff;
+}
+
+.char_showpg_moves_sec {
+  width: 300px;
+}
+
+.char_showpg_delete_pwr_sec {
+  width: 0px;
+}
+
 .char_showpg_supername {
   font-family: "Cantarell";
   font-size: 30px;
@@ -22,7 +114,6 @@ ul.char_showpg_char_info_list {
 }
 
 .char_showpg_bio {
-  width: 400px;
   font-family: "Roboto Condensed";
   font-size: 14px;
   text-align: justify;

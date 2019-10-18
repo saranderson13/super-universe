@@ -67,7 +67,7 @@
  /* LINKS IN USER SHOW PG IF VIEWING CURRENT USER */
  /* ALSO USED ON CHAR EDIT & DELETE BUTTONS ON CHAR SHOW PG IF AUTHORIZED TO EDIT */
  .cu_profile_links {
-   width: 400px; height: 30px;
+   height: 30px;
    position: relative;
    top: 10px; left: 0px;
  }

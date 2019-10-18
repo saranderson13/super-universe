@@ -30,7 +30,23 @@ module CharactersHelper
     when :hp
       "!! #{@char.errors[:hp][0]}" if !@char.errors[:hp].empty?
     when :bio
+      "!! Bio is too long - max length: 500 characters." if !@char.errors[:bio].empty?
+    end
+  end
 
+  def char_showpg_superpowers
+    char = Character.find_by(id: params[:id])
+    if char.powers.count == 0
+      msg = "<div class='char_showpg_no_powers_msg'>This character has no powers! Why not go add some?<br><span class='char_showpg_button black'><a href='/powers'>Go Browse the Superpowers</a></span></div>"
+      msg.html_safe
+    else
+      render partial: 'char_showpg_powers'
+    end
+  end
+
+  def char_showpg_delpwr(p)
+    if logged_in? && current_user.id == params[:user_id].to_i || current_user.admin_status?
+      render partial: 'char_showpg_delete', locals: { power: p }
     end
   end
 

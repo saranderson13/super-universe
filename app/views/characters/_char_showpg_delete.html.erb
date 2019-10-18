@@ -1,0 +1,4 @@
+<%= form_with(url: delete_power_path(@char.id), method: "delete", class: "char_showpg_button white") do |f| %>
+  <%= f.hidden_field :power_id, value: power.id %>
+  <%= f.submit 'Delete Power', data: { confirm: 'Are you sure you wish to delete this power?' } %>
+<% end %>

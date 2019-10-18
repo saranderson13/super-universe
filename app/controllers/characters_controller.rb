@@ -24,6 +24,7 @@ class CharactersController < ApplicationController
     @user = set_user
     @char = set_char
     @secret_id = @char.dox("") if char_security_checks
+    
   end
 
   def edit

@@ -63,15 +63,22 @@ x create all necessary views/helpers/css files
 x format power show pg (with link to "add to char")
 x add link to nav bar to powers index
 x create character/add_power form
-- format index page for powers (with "add to char" link)
-- create character/delete_power button (on char show page)
-- route newly created characters to the power index to browse powers
+
+TO DO 10/18
+x add powers section to char showpg
+x create character/delete_power button (on char show page)
+- create seed data for powers
+- fix ability to delete dox code
+- add dox button
+- format index page for powers
+- character form instructions
+- invalid path handling
+
 
 
 RUNNING TO DO
-- character form instructions
-- invalid path handling
 - create Battle class
+
 
 POSSIBLY CUT
 - create Hero decorator
