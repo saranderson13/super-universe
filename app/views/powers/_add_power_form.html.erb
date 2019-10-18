@@ -1,0 +1,8 @@
+<h3 class="pwr_showpg_heading black">Add to Character</h3>
+
+<%= form_with(url: add_power_path, method: :post, class: "add_pwr_form") do |f| %>
+  <%= f.hidden_field :power_id, :value => @power.id %>
+  <%= f.label :character, "Select a Character" %>
+  <%= f.collection_select :character, @characters, :id, :supername, include_blank: true  %>
+  <%= f.submit "Add Power" %>
+<% end %>

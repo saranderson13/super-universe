@@ -42,6 +42,7 @@ class ApplicationController < ActionController::Base
 
 
 
+
   # BEFORE_ACTION HELPERS
   def alias_set?
     if logged_in? && current_user.alias.include?("fieoIDOS931lD990a03")

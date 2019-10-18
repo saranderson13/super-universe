@@ -1,6 +1,6 @@
-<h1 class="form_page_name">SET YOUR ALIAS</h1>
+<h1 class="user_form_pg_name">SET YOUR ALIAS</h1>
 
-<ul class='errors_present'>
+<ul class='user_form_errors'>
   <li><%= "set an alias to complete sign up" %></li>
   <% if @user.errors.any? %>
     <li><%= "errors! oh no!" %></li>
@@ -10,8 +10,8 @@
   <% end %>
 </ul>
 
-<%= form_with(model: @user, url: set_alias_path(@user), class: 'form_design signup', method: :patch, local: true) do |f| %>
+<%= form_with(model: @user, url: set_alias_path(@user), class: 'user_form_wrapper login', method: :patch, local: true) do |f| %>
   <%= f.label :alias, "Alias" %>
-  <%= f.text_field :alias, class: "field_error", value: "" %>
+  <%= f.text_field :alias, value: "" %>
   <%= f.submit "Set Alias", data: { disable_with: false } %>
 <% end %>

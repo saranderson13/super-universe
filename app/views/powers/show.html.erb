@@ -1,0 +1,23 @@
+<div class="pwr_showpg_wrapper">
+
+  <h3 class="pwr_showpg_heading white"><%= @power.name %></h3>
+  <table class="pwr_showpg_mvs">
+    <tr class="mv">
+      <td class="mv_type">ATTACK</td>
+      <td class="mv_info"><%= @att.name.upcase %><br><%= "#{@att.base_pts} base points" %></td>
+    </tr>
+    <tr class="mv">
+      <td class="mv_type">DEFEND</td>
+      <td class="mv_info"><%= @def.name.upcase %><br><%= "#{@def.base_pts} base points" %></td>
+    </tr>
+    <tr class="mv">
+      <td class="mv_type">POWER</td>
+      <td class="mv_info"><%= @pwr.name.upcase %><br><%= "#{@pwr.base_pts} base points" %></td>
+    </tr>
+  </table>
+
+</div>
+
+<div class="pwr_showpg_form_wrapper">
+  <%= add_to_char_or_login %>
+</div>

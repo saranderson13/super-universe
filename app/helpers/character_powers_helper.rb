@@ -1,0 +1,3 @@
+module CharacterPowersHelper
+
+end

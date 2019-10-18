@@ -1,7 +1,8 @@
 <nav id="navbar">
   <%= link_to "Home", root_path %>
   <%= link_to "Sign Up", signup_path %>
-  <%= link_to_unless_current "Log In", '/login' %>
+  <%= link_to "Log In", login_path %>
+  
 
   <% if !!flash[:notice] %>
     <span class="home_error_flash"><%= flash[:notice] %></span>

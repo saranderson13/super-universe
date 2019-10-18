@@ -29,7 +29,6 @@ x finalize Character class validations
 x dox methods
 x create character routes (nested)
 
-
 TO DO 10/14
 x fix dox method
 x character show page
@@ -40,26 +39,46 @@ x create some seed data
 x character forms
 xxx new character form functionality
 xxx edit character form functionality
-xxx new & edit form check security
-xxx new & edit form styling
-xxx new & edit form partial
 x figure out css tree organization
 x clean up css naming conventions
 x new character link
 
 TO DO 10/16
+xxx new & edit form check security
+xxx new & edit form styling
+xxx new & edit form partial
 xxx new & edit form error handling
-- character form instructions
 x organize helpers
+
+TO DO 10/17
+x create Power class
+xxx create CharacterPowers class
+xxx create Moves class
+xxx create PowerMoves class
+x create reader/writers for Power move types
+x create character/power routes
+x create powers_controller
+x create character_powers_controller
+x create all necessary views/helpers/css files
+x format power show pg (with link to "add to char")
+x add link to nav bar to powers index
+x create character/add_power form
+- format index page for powers (with "add to char" link)
+- create character/delete_power button (on char show page)
+- route newly created characters to the power index to browse powers
+
+
+RUNNING TO DO
+- character form instructions
 - invalid path handling
+- create Battle class
+
+POSSIBLY CUT
 - create Hero decorator
 - create Villain decorator
 - create Team class
 --- create TeamMember class
-- create Power class
---- create Plikes class
---- create CharacterPowers class
-- create Battle class
+- create Plikes class
 
 
 TO DO - MASTER LIST
@@ -74,7 +93,6 @@ x standard authentication (signup/login/logout/secure passwords)
 x nested resources
 xxx nested :new route with form - USER'S NEW CHARACTER
 xxx nested :show route - USER'S CHARACTERS
---- nested :index route - POWER MOVES
 x forms display correct validation errors
 x forms use a .fields_with_errors class
 - reasonably DRY
