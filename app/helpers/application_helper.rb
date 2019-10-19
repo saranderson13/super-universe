@@ -16,6 +16,13 @@ module ApplicationHelper
     end
   end
 
+  def admin_links
+    if logged_in? && current_user.admin_status
+      link = "<a href='/users'>Users</a>"
+      link.html_safe
+    end
+  end
+
   def add_to_char_or_login
     if !logged_in?
       msg = "<div class='pwr_form_msg'>Please <span class='pwr_form_link short'><a href='/signup'>sign up</a></span> or <span class='pwr_form_link short'><a href='/login'>log in</a></span> to add this power to a character.</div>"

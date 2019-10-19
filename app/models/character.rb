@@ -41,10 +41,6 @@ class Character < ApplicationRecord
 
   private
 
-  # def secret_identity
-  #   self[:secret_identity]
-  # end
-
   def validate_stats
     if (self.hp == nil || self.hp <= 0) || (self.att == nil || self.att <= 0) || (self.def == nil || self.def <= 0)
       if self.hp == nil || self.att == nil || self.def == nil

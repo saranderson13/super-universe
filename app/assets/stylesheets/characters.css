@@ -6,12 +6,14 @@
   margin: auto;
 }
 
+/* applies to both cards */
 .char_showpg_card {
   display: inline-block;
   margin: 20px 50px;
   float: left;
 }
 
+/* char_card specific */
 #char_showpg_char_card {
   box-sizing: border-box;
   width: 356px; height: 446px;
@@ -21,6 +23,7 @@
   padding: 20px 20px 20px 40px;
 }
 
+/* power_card specific */
 #char_showpg_power_card {
   box-sizing: border-box;
   width: 450px;height: 446px;
@@ -28,6 +31,7 @@
   border-left: 3px double #000;
 }
 
+/* individual power entry styling */
 .char_showpg_power_block {
   background-color: #000;
   display: block;
@@ -37,6 +41,7 @@
 
 }
 
+/* if char has no powers */
 .char_showpg_no_powers_msg {
   margin-top: 40px;
   padding: 20px;
@@ -45,6 +50,7 @@
   text-align: center;
 }
 
+/* buttons in the power_card */
 .char_showpg_button a, .char_showpg_button input[type='submit'] {
   box-sizing: border-box;
   display: block;
@@ -60,18 +66,21 @@
   -webkit-appearance: none;
 }
 
+/* 'Browse Powers' button when no powers */
 .black a, .black input[type='submit'] {
   width: 200px;
   background-color: #000;
   color: #fff;
 }
 
+/* 'Delete Power' button */
 .white a, .white input[type='submit'] {
   width: 100px;
   background-color: #fff;
   color: #000;
 }
 
+/* styling within power blocks */
 .char_showpg_power_link a {
   font-family: "Cantarell";
   font-size: 20px;
@@ -94,6 +103,7 @@
   width: 0px;
 }
 
+/* char_card styling */
 .char_showpg_supername {
   font-family: "Cantarell";
   font-size: 30px;
@@ -119,7 +129,7 @@ ul.char_showpg_char_info_list {
   text-align: justify;
 }
 
-/* FOR SECRET ID ON CHAR SHOWPG */
+/* for secret identity related styling */
 .redacted { color: #f00; }
 .revealed { color: #000; }
 
@@ -182,7 +192,7 @@ h3.charform_guide_header {
   margin-bottom: 5px;
 }
 
-/* validation error handling */
+/* char_form specific validation error handling */
 td.field_with_errors {
   width: 300px;
   color: #f00;

@@ -72,6 +72,7 @@ x fix ability to delete dox code
 x add dox button
 
 TO DO 10/19
+x clean up existing code
 - create Battle class
 - create Battle show pg
 - add battle stats to characters
@@ -82,6 +83,36 @@ TO DO 10/19
 - invalid path handling
 
 
+NOTES ON BATTLES
+- a character can battle any other character
+  - the user-operated character's stats will be affected
+  - the opponent's stats will not be affected
+  - the level of the opponent will determine how many points the UO character earns
+    - the closer they are to the same level, the more points earned.
+    - battling a character far below your level will not earn many points
+    - at a certain point it will earn 0 for battling someone far below you
+    - battling a character of a higher level grants a bonus
+- BATTLE CLASS Fields:
+  - uo_char_id, foreign_key: user_id (CHECK DOCUMENTATION FOR ESTABLISHING THESE)
+  - opponent_id, foreign_key: user_id (CHECK DOCUMENTATION FOR ESTABLISHING THESE)
+  - outcome ("Victory" or "Defeat" from the perspective of uo_char)
+  - points (negative if defeated, positive if victorious - determined at end of battle)
+  - turn_count (updated every turn)
+  - log (keeps a transcript of all moves + snapshot of players' health)
+- CHARACTER CLASS Additional Fields:
+  - level - starts at 1
+  - next_Level_Req - points required to level up
+  - level_progress - current points earned in progress to level
+  - victories
+  - defeats
+- CHARACTER CLASS Changes
+  - stats will not be editable
+    - remove from edit char form
+    - add warning on new char form
+  - stats on Char show page should reflect level adjustment
+
+
+(MAYBE IMPLEMENT THIS IN THE FUTURE users have the option to turn off battles (no one can battle you) - or requires a request and then your stats will be affected?)
 
 
 POSSIBLY CUT

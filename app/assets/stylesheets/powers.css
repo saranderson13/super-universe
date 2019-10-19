@@ -1,3 +1,4 @@
+/* for power info circle */
 .pwr_showpg_wrapper {
   position: absolute;
   top: 100px; left: 150px;
@@ -9,15 +10,18 @@
   text-align: center;
 }
 
+/* both section headings */
 .pwr_showpg_heading {
   font-family: "Cantarell";
   font-size: 30px;
   text-transform: uppercase;\
 }
 
+/* determine heading color */
 .pwr_showpg_heading.black { color: #000 }
 .pwr_showpg_heading.white { color: #fff }
 
+/* moves within the power circle */
 table.pwr_showpg_mvs {
   width: 250px;
   margin: auto;
@@ -43,6 +47,7 @@ td.mv_info {
   color: #000;
 }
 
+/* for add_power form */
 .pwr_showpg_form_wrapper {
   position: absolute;
   top: 175px; left: 750px;
@@ -51,6 +56,7 @@ td.mv_info {
   /* border: 1px solid #000; */
 }
 
+/* for if a message is displayed instead of the form */
 .pwr_form_msg {
   margin-top: 40px;
   padding: 20px;
@@ -59,6 +65,7 @@ td.mv_info {
   text-align: center;
 }
 
+/* for any links in the power form including redirect links if power can't be added */
 .pwr_form_link a, .add_pwr_form input[type="submit"] {
   box-sizing: border-box;
   display: inline-block;
@@ -77,8 +84,10 @@ td.mv_info {
   -webkit-appearance: none;
 }
 
-.long a { width: 130px; }
-.short a { width: 65px; }
+.long a { width: 130px; } /* for long alternate link buttons */
+.short a { width: 65px; } /* for short alternate link buttons */
+
+/* for literal "add power" button */
 .add_pwr_form input[type="submit"] {
   width: 150px;
   position: relative; top: 15px;
@@ -86,6 +95,7 @@ td.mv_info {
   margin: auto;
 }
 
+/* additional styling for add power form */
 .add_pwr_form label {
   font-family: "Roboto Condensed";
 }
