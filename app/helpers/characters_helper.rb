@@ -18,9 +18,11 @@ module CharactersHelper
 
   def dox_code_instruction(form)
     if form == "edit"
-      "When editing your Dox Code, keep the following things in mind. LEAVING THE FIELD BLANK will leave your dox code unchanged. ENTERING A HYPHEN ('-' without the quotation marks) will erase your current dox code, and upon returning to your character page, their secret identity will be revealed. ENTERING A NEW DOX CODE will change your dox code."
+      msg = "When editing your Dox Code, keep the following things in mind. LEAVING THE FIELD BLANK will leave your dox code unchanged. ENTERING A HYPHEN ('-' without the quotation marks) will erase your current dox code, and upon returning to your character page, their secret identity will be revealed. ENTERING A NEW DOX CODE will change your dox code. <span class='red'>WARNING: Do not make your dox code the same as your password, or similar to your password, or the same or similar to any password you use on any other site. The point is for other users to guess them...</span>"
+      msg.html_safe
     elsif form == "new"
-      "Dox Codes are optional. By default (if you don't set one) your character's secret identity will be revealed on the character page. If you set one, it will be REDACTED."
+      msg = "Dox Codes are optional. By default (if you don't set one) your character's secret identity will be revealed on the character page. If you set one, it will be REDACTED. <span class='red'>WARNING: Do not make your dox code the same as your password, or similar to your password, or the same or similar to any password you use on any other site. The point is for other users to guess them...</span>"
+      msg.html_safe
     end
   end
 
@@ -55,6 +57,14 @@ module CharactersHelper
   def char_showpg_delpwr(p)
     if logged_in? && current_user.id == params[:user_id].to_i || current_user.admin_status?
       render partial: 'char_showpg_delete', locals: { power: p }
+    end
+  end
+
+  def dox_button
+    char = Character.find_by(id: params[:id])
+    if logged_in? && current_user.id != char.user_id && char.dox_code != ""
+      button = "<span class='dox_button'><a href='/characters/#{params[:id]}/dox')>Try to Dox?</a></span>"
+      button.html_safe
     end
   end
 

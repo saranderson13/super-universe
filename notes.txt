@@ -67,17 +67,21 @@ x create character/add_power form
 TO DO 10/18
 x add powers section to char showpg
 x create character/delete_power button (on char show page)
-- create seed data for powers
-x fix ability to delete dox code
-- add dox button
-- format index page for powers
 x character form instructions
+x fix ability to delete dox code
+x add dox button
+
+TO DO 10/19
+- create Battle class
+- create Battle show pg
+- add battle stats to characters
+- add description and power type to powers
+- add description to moves
+- create seed data for powers
+- format index page for powers
 - invalid path handling
 
 
-
-RUNNING TO DO
-- create Battle class
 
 
 POSSIBLY CUT

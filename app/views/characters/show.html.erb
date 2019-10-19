@@ -2,7 +2,7 @@
   <div id="char_showpg_char_card" class="char_showpg_card">
 
     <h2 class="char_showpg_supername"><%= @char.supername %></h2>
-    <h4 class="char_showpg_secretid"> aka <%= secret_id_class %></h4>
+    <h4 class="char_showpg_secretid"> aka <%= secret_id_class %></h4><%= dox_button %>
     <ul class="char_showpg_char_info_list">
       <li><%= @char.alignment %> <%= @char.char_type %></li>
       <li><%= "__HP: #{@char.hp}" %></li>

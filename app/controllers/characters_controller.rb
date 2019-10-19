@@ -61,6 +61,26 @@ class CharactersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+
+
+  def dox
+    @char = set_char
+  end
+
+  def dox_char
+    @char = set_char
+    if @char.dox(dox_params[:dox_code]) != "REDACTED"
+      @char.dox_code = "-"
+      @char.save
+      flash[:notice] = "Congratulations! You have successfully doxed #{@char.supername}."
+      redirect_to user_character_path(id: @char.id, user_id: @char.user_id)
+    else # Guess was incorrect
+      flash[:notice] = "You have failed to dox #{@char.supername}. Try again."
+      redirect_to user_character_path(id: @char.id, user_id: @char.user_id)
+    end
+  end
+
+
   private
 
   def char_security_checks
@@ -92,5 +112,9 @@ class CharactersController < ApplicationController
 
   def char_params_no_dox_set
     params.require(:user).require(:character).permit(:supername, :secret_identity, :char_type, :alignment, :hp, :att, :def, :bio)
+  end
+
+  def dox_params
+    params.permit(:dox_code, :id)
   end
 end

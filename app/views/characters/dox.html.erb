@@ -1,0 +1,12 @@
+<h1 class="user_form_pg_name">DOX ATTEMPT!</h1>
+
+<ul class='user_form_errors'>
+  <li><%= "You are attempting to dox #{@char.supername}" %></li>
+  <li>Good luck.</li>
+</ul>
+
+<%= form_with(url: "/characters/#{params[:id]}/dox", method: :patch, class: 'user_form_wrapper login') do %>
+  <%= label_tag(:dox_code, "Guess Dox Code:") %>
+  <%= text_field_tag(:dox_code) %>
+  <%= submit_tag("Dox") %>
+<% end %>
