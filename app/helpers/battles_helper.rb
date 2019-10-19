@@ -1,0 +1,3 @@
+module BattlesHelper
+
+end

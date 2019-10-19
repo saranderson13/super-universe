@@ -75,6 +75,9 @@ TO DO 10/19
   ESSENTIAL
   [x] clean up existing code
   [x] create Battle class
+  [ ] create battles_controller
+  [ ] create battles helper
+     [ ] methods to show only characters that can battle
   [ ] create Battle show pg
   [x] make stats non-editable
   [x] add battle stats to characters
@@ -122,6 +125,9 @@ NOTES ON BATTLES
       [x] add warning on new char form
    [ ] stats on Char show page should reflect level adjustment
 
+Who can battle?
+  - must have some superpowers selected
+  - cannot have another battle in progress
 
 (MAYBE IMPLEMENT THIS IN THE FUTURE users have the option to turn off battles (no one can battle you) - or requires a request and then your stats will be affected?)
 

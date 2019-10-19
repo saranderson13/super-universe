@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   # General Paths
   root 'welcome#home'
 
-  # User Paths except '/signup' (instead of 'users#new')
+  # User Paths with custom 'users#new' path: '/signup'
+  get '/signup', to: 'users#new'
   resources :users, except: [:new] do
     #Character paths, except for 'character/:id/add_powers'
     resources :characters, except: [:index]
   end
-  get '/signup', to: 'users#new'
 
   # Dox Paths
   get '/characters/:id/dox', to: 'characters#dox', as: 'dox_form'
@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   post '/characters/add_power', to: 'character_powers#add', as: 'add_power'
   delete '/characters/:id', to: 'character_powers#destroy', as: 'delete_power'
 
-
+  # Battle paths
+  resources :battles, only: [:show]
 
   # Session Paths
   get '/login', to: 'sessions#new'
