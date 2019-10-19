@@ -25,7 +25,7 @@ class Character < ApplicationRecord
 
 
   def dox_code=(code)
-    hashed_code = MurmurHash3::V32.str_hash(code)
+    hashed_code = (code == "-" ? "" : MurmurHash3::V32.str_hash(code))
     super(hashed_code)
   end
 
@@ -58,9 +58,9 @@ class Character < ApplicationRecord
       end
     else
       if self.hp + self.att + self.def > 500
-        errors.add(:hp, "The sum of HP, ATT and DEF must not exceed 500.")
-        errors.add(:att, "The sum of HP, ATT and DEF must not exceed 500.")
-        errors.add(:def, "The sum of HP, ATT and DEF must not exceed 500.")
+        errors.add(:hp, "sum of HP, ATT and DEF may not exceed 500.")
+        errors.add(:att, "sum of HP, ATT and DEF may not exceed 500.")
+        errors.add(:def, "sum of HP, ATT and DEF may not exceed 500.")
       end
     end
   end

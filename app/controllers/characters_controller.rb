@@ -11,6 +11,7 @@ class CharactersController < ApplicationController
     authorized_to_edit_char?
     @user = set_user
     @char = @user.characters.build(char_params)
+    binding.pry
     if @char.valid?
       @char.save
       redirect_to user_character_path(id: @char.id, user_id: @char.user_id)
@@ -24,7 +25,7 @@ class CharactersController < ApplicationController
     @user = set_user
     @char = set_char
     @secret_id = @char.dox("") if char_security_checks
-    
+
   end
 
   def edit

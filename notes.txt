@@ -68,10 +68,10 @@ TO DO 10/18
 x add powers section to char showpg
 x create character/delete_power button (on char show page)
 - create seed data for powers
-- fix ability to delete dox code
+x fix ability to delete dox code
 - add dox button
 - format index page for powers
-- character form instructions
+x character form instructions
 - invalid path handling
 
 

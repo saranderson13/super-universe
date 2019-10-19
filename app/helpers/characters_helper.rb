@@ -16,6 +16,14 @@ module CharactersHelper
     end
   end
 
+  def dox_code_instruction(form)
+    if form == "edit"
+      "When editing your Dox Code, keep the following things in mind. LEAVING THE FIELD BLANK will leave your dox code unchanged. ENTERING A HYPHEN ('-' without the quotation marks) will erase your current dox code, and upon returning to your character page, their secret identity will be revealed. ENTERING A NEW DOX CODE will change your dox code."
+    elsif form == "new"
+      "Dox Codes are optional. By default (if you don't set one) your character's secret identity will be revealed on the character page. If you set one, it will be REDACTED."
+    end
+  end
+
   # Used to place error messages in the new/edit char forms.
   def char_form_error(field)
     case field
