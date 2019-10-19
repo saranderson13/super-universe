@@ -3,6 +3,6 @@
   <li>The fields with *'s are required.</li>
   <li><%= dox_code_instruction(form) %></li>
   <li>Your alignment must match your character type - meaning, a Hero cannot have an 'evil' alignment, and a Villain cannot have a 'good' one. However, 'neutral' alignments are open to both Heroes and Villains.</li>
-  <li>The sum of your character's stats may not exceed 500 points. For example, you cannot have a character with HP: 300, ATT: 300, and DEF: 300, because that adds up to 900 points.</li>
+  <%= stat_instructions_if_new(form) %>
   <li>A description of your character is optional. If you choose to add one, it may not exceed 500 characters.</li>
 </ol>

@@ -75,12 +75,13 @@ TO DO 10/19
 x clean up existing code
 - create Battle class
 - create Battle show pg
+- make stats non-editable
 - add battle stats to characters
-- add description and power type to powers
-- add description to moves
 - create seed data for powers
 - format index page for powers
 - invalid path handling
+- add description and power type to powers
+- add description to moves
 
 
 NOTES ON BATTLES
@@ -101,8 +102,8 @@ NOTES ON BATTLES
   - log (keeps a transcript of all moves + snapshot of players' health)
 - CHARACTER CLASS Additional Fields:
   - level - starts at 1
-  - next_Level_Req - points required to level up
-  - level_progress - current points earned in progress to level
+  - next_Level_Req - points required to level up (starts at 10)
+  - level_progress - current points earned in progress to level (starts at 0)
   - victories
   - defeats
 - CHARACTER CLASS Changes

@@ -8,7 +8,7 @@
 <div class="char_form_bg">
   <%= form_with(model: @user, url: user_characters_path(@user), method: :post, class: 'char_form', local: true) do |f| %>
     <%= f.fields_for @char do |char_form| %>
-      <% render partial: 'form', locals: { char_form: char_form } %>
+      <% render partial: 'form', locals: { char_form: char_form, form: "new" } %>
     <% end %>
     <%= f.submit "Create my Character!", data: { disable_with: false } %>
   <% end %>

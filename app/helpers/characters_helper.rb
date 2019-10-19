@@ -71,5 +71,19 @@ module CharactersHelper
       "!! Bio is too long - max length: 500 characters." if !@char.errors[:bio].empty?
     end
   end
-  
+
+  # In Char Form Partial - shows stat fields if creating new char, not on edit form.
+  def stats_if_new_char(form_prefix, form)
+    if form == "new"
+      render partial: 'form_stats_for_new', locals: { char_form: form_prefix }
+    end
+  end
+
+  def stat_instructions_if_new(form)
+    if form == "new"
+      msg = "<li>The sum of your character's stats may not exceed 500 points. For example, you cannot have a character with HP: 300, ATT: 300, and DEF: 300, because that adds up to 900 points. <span class='red'>WARNING: You will not be able to edit these stats, so divy up your 500 points wisely.</span></li>"
+      msg.html_safe
+    end
+  end
+
 end
