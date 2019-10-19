@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_001301) do
+ActiveRecord::Schema.define(version: 2019_10_19_154018) do
+
+  create_table "battles", force: :cascade do |t|
+    t.integer "protag_id"
+    t.integer "antag_id"
+    t.string "outcome"
+    t.integer "points", default: 0
+    t.integer "turn_count", default: 0
+    t.text "log"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["antag_id"], name: "index_battles_on_antag_id"
+    t.index ["protag_id"], name: "index_battles_on_protag_id"
+  end
 
   create_table "character_powers", force: :cascade do |t|
     t.integer "character_id"
@@ -33,6 +46,11 @@ ActiveRecord::Schema.define(version: 2019_10_17_001301) do
     t.string "dox_code", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "level", default: 1
+    t.integer "pts_to_next_lvl", default: 10
+    t.integer "lvl_progress", default: 0
+    t.integer "victories", default: 0
+    t.integer "defeats", default: 0
   end
 
   create_table "moves", force: :cascade do |t|

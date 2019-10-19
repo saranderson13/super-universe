@@ -13,8 +13,9 @@ class Character < ApplicationRecord
   has_many :character_powers
   has_many :powers, through: :character_powers
 
-  # has_many :battles
-  # has_many :opponents, through: :battles
+  has_many :protag_battles, class_name: 'Battle', foreign_key: :protag_id
+  has_many :antag_battles, class_name: 'Battle', foreign_key: :antag_id
+  has_many :antags, through: :protag_battles
 
   scope :teamless,  -> { where(team_id: 0) }
   scope :hero, -> { where(char_type: "Hero") }
@@ -37,6 +38,7 @@ class Character < ApplicationRecord
   def self.all_alignments
     [HERO_ALIGNMENT, VILL_ALIGNMENT].flatten.uniq
   end
+
 
 
   private

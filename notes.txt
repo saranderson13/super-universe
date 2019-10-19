@@ -1,148 +1,159 @@
 TO DO - 10/8 - 10/9
-x signup form
-x error handling for signup form
-x admin/member permissions
-x navbar link visibility (login/signup/logout only when appropriate)
+[x] signup form
+[x] error handling for signup form
+[x] admin/member permissions
+[x] navbar link visibility (login/signup/logout only when appropriate)
 
 TO DO - 10/10
-x error handling for login form
-x OAuth signup option
-x OAuth login option
+[x] error handling for login form
+[x] OAuth signup option
+[x] OAuth login option
 
 TO DO - 10/11
-x OAuth check for Alias
-x General redirect/check for Alias
-x edit user form and controller logic
-x destroy user authorization (self or admin)
-x user path authorizations
-xxx cannot edit a user other than your own (unless admin)
-xxx cannot destroy a user other than your own (unless admin)
-xxx cannot navigate to 'new user' or 'login' if logged in
-x two-part authentication for delete account button
+[x] OAuth check for Alias
+[x] General redirect/check for Alias
+[x] edit user form and controller logic
+[x] destroy user authorization (self or admin)
+[x] user path authorizations
+   [x] cannot edit a user other than your own (unless admin)
+   [x] cannot destroy a user other than your own (unless admin)
+   [x] cannot navigate to 'new user' or 'login' if logged in
+[x] two-part authentication for delete account button
 
 TO DO 10/12
-x create Character class
-x Character class validations
+[x] create Character class
+[x] Character class validations
 
 TO DO 10/13
-x finalize Character class validations
-x dox methods
-x create character routes (nested)
+[x] finalize Character class validations
+[x] dox methods
+[x] create character routes (nested)
 
 TO DO 10/14
-x fix dox method
-x character show page
+[x] fix dox method
+[x] character show page
 
 TO DO 10/15
-x delete character button
-x create some seed data
-x character forms
-xxx new character form functionality
-xxx edit character form functionality
-x figure out css tree organization
-x clean up css naming conventions
-x new character link
+[x] delete character button
+[x] create some seed data
+[x] character forms
+   [x] new character form functionality
+   [x] edit character form functionality
+[x] figure out css tree organization
+[x] clean up css naming conventions
+[x] new character link
 
 TO DO 10/16
-xxx new & edit form check security
-xxx new & edit form styling
-xxx new & edit form partial
-xxx new & edit form error handling
-x organize helpers
+   [x] new & edit form check security
+   [x] new & edit form styling
+   [x] new & edit form partial
+   [x] new & edit form error handling
+[x] organize helpers
 
 TO DO 10/17
-x create Power class
-xxx create CharacterPowers class
-xxx create Moves class
-xxx create PowerMoves class
-x create reader/writers for Power move types
-x create character/power routes
-x create powers_controller
-x create character_powers_controller
-x create all necessary views/helpers/css files
-x format power show pg (with link to "add to char")
-x add link to nav bar to powers index
-x create character/add_power form
+[x] create Power class
+   [x] create CharacterPowers class
+   [x] create Moves class
+   [x] create PowerMoves class
+[x] create reader/writers for Power move types
+[x] create character/power routes
+[x] create powers_controller
+[x] create character_powers_controller
+[x] create all necessary views/helpers/css files
+[x] format power show pg (with link to "add to char")
+[x] add link to nav bar to powers index
+[x] create character/add_power form
 
 TO DO 10/18
-x add powers section to char showpg
-x create character/delete_power button (on char show page)
-x character form instructions
-x fix ability to delete dox code
-x add dox button
+[x] add powers section to char showpg
+[x] create character/delete_power button (on char show page)
+[x] character form instructions
+[x] fix ability to delete dox code
+[x] add dox button
 
 TO DO 10/19
-x clean up existing code
-- create Battle class
-- create Battle show pg
-- make stats non-editable
-- add battle stats to characters
-- create seed data for powers
-- format index page for powers
-- invalid path handling
-- add description and power type to powers
-- add description to moves
+  ESSENTIAL
+  [x] clean up existing code
+  [x] create Battle class
+  [ ] create Battle show pg
+  [x] make stats non-editable
+  [x] add battle stats to characters
+  [ ] invalid path handling
+  [ ] create seed data for powers
+
+  IF THERE'S TIME
+  [ ] format index page for powers
+  [ ] add description and power type to powers
+  [ ] add description to moves
+
+  PROBABLY CUT
+  [ ] create Hero decorator
+  [ ] create Villain decorator
+  [ ] create Team class
+     [ ] create TeamMember class
+  [ ] create Plikes class
 
 
 NOTES ON BATTLES
-- a character can battle any other character
-  - the user-operated character's stats will be affected
-  - the opponent's stats will not be affected
-  - the level of the opponent will determine how many points the UO character earns
-    - the closer they are to the same level, the more points earned.
-    - battling a character far below your level will not earn many points
-    - at a certain point it will earn 0 for battling someone far below you
-    - battling a character of a higher level grants a bonus
-- BATTLE CLASS Fields:
-  - uo_char_id, foreign_key: user_id (CHECK DOCUMENTATION FOR ESTABLISHING THESE)
-  - opponent_id, foreign_key: user_id (CHECK DOCUMENTATION FOR ESTABLISHING THESE)
-  - outcome ("Victory" or "Defeat" from the perspective of uo_char)
-  - points (negative if defeated, positive if victorious - determined at end of battle)
-  - turn_count (updated every turn)
-  - log (keeps a transcript of all moves + snapshot of players' health)
-- CHARACTER CLASS Additional Fields:
-  - level - starts at 1
-  - next_Level_Req - points required to level up (starts at 10)
-  - level_progress - current points earned in progress to level (starts at 0)
-  - victories
-  - defeats
-- CHARACTER CLASS Changes
-  - stats will not be editable
-    - remove from edit char form
-    - add warning on new char form
-  - stats on Char show page should reflect level adjustment
+[ ] a character can battle any other character
+   [ ] the user-operated character's stats will be affected
+   [ ] the opponent's stats will not be affected
+   [ ] the level of the opponent will determine how many points the UO character earns
+      [ ] the closer they are to the same level, the more points earned.
+      [ ] battling a character far below your level will not earn many points
+      [ ] at a certain point it will earn 0 for battling someone far below you
+      [ ] battling a character of a higher level grants a bonus
+[x] BATTLE CLASS Fields:
+  [x] protag_id, foreign_key: user_id (CHECK DOCUMENTATION FOR ESTABLISHING THESE)
+  [x] antag_id, foreign_key: user_id (CHECK DOCUMENTATION FOR ESTABLISHING THESE)
+  [x] outcome ("Victory" or "Defeat" from the perspective of protagonist)
+  [x] points (negative if defeated, positive if victorious - determined at end of battle)
+  [x] turn_count (updated every turn)
+  [x] log (keeps a transcript of all moves + snapshot of players' health)
+[x] CHARACTER CLASS Additional Fields:
+  [x] level - starts at 1
+  [x] next_Level_Req - points required to level up (starts at 10)
+  [x] level_progress - current points earned in progress to level (starts at 0)
+  [x] victories - (starts at 0)
+  [x] defeats - (starts at 0)
+[ ] CHARACTER CLASS Changes
+   [x] stats will not be editable
+      [x] remove from edit char form
+      [x] add warning on new char form
+   [ ] stats on Char show page should reflect level adjustment
 
 
 (MAYBE IMPLEMENT THIS IN THE FUTURE users have the option to turn off battles (no one can battle you) - or requires a request and then your stats will be affected?)
 
 
-POSSIBLY CUT
-- create Hero decorator
-- create Villain decorator
-- create Team class
---- create TeamMember class
-- create Plikes class
-
 
 TO DO - MASTER LIST
-x scope method
-x has_many/belongs_to
-x has_many through
-- many to many with user input - BATTLES
-x OAuth signup
-x OAuth login
-x reasonable validations
-x standard authentication (signup/login/logout/secure passwords)
-x nested resources
-xxx nested :new route with form - USER'S NEW CHARACTER
-xxx nested :show route - USER'S CHARACTERS
-x forms display correct validation errors
-x forms use a .fields_with_errors class
-- reasonably DRY
-x no scaffolding
+[x] scope method
+[x] has_many/belongs_to
+[x] has_many through
+[ ] many to many with user input - BATTLES
+[x] OAuth signup
+[x] OAuth login
+[x] reasonable validations
+[x] standard authentication (signup/login/logout/secure passwords)
+[x] nested resources
+   [x] nested :new route with form - USER'S NEW CHARACTER
+   [x] nested :show route - USER'S CHARACTERS
+[x] forms display correct validation errors
+[x] forms use a .fields_with_errors class
+[ ] reasonably DRY
+[x] no scaffolding
 
 
 
 
 CREDIT FOR PICTURES:
 default profile pic - Photo by Soroush golpoor on Unsplash
+
+MY RANKING OF LANA DEL REY ALBUMS
+1. Norman F*cking Rockwell
+2. Ultraviolence
+3. Honeymoon
+4. Born to Die
+5. Born to Die Paradise Edition
+6. Lust for Life
