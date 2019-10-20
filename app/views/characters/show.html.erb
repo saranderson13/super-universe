@@ -3,12 +3,26 @@
 
     <h2 class="char_showpg_supername"><%= @char.supername %></h2>
     <h4 class="char_showpg_secretid"> aka <%= secret_id_class %></h4><%= dox_button %>
-    <ul class="char_showpg_char_info_list">
-      <li><%= @char.alignment %> <%= @char.char_type %></li>
-      <li><%= "__HP: #{@char.hp}" %></li>
-      <li><%= "_ATT: #{@char.att}" %></li>
-      <li><%= "_DEF: #{@char.def}" %></li>
-    </ul>
+    <table>
+      <tr>
+        <td>
+          <ul class="char_showpg_char_info_list">
+            <li><%= @char.alignment %> <%= @char.char_type %></li>
+            <li><%= "__HP: #{@char.hp}" %></li>
+            <li><%= "_ATT: #{@char.att}" %></li>
+            <li><%= "_DEF: #{@char.def}" %></li>
+          </ul>
+        </td>
+        <td class="pick_battle_char_form">
+          <div class="pbcform_header"><%= "Pick a character to battle #{@char.supername}" %></div>
+          <%= form_with(url: battles_path, method: :post, class: "select_char_for_battle") do |f| %>
+            <%= f.hidden_field :antag_id, :value => @char.id %>
+            <%= f.collection_select :protag_id, current_user.eligable_chars(@char), :id, :supername, include_blank: true  %>
+            <%= f.submit "Battle!" %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
     <% if !@char.bio.nil? %>
       <p class = "char_showpg_bio">
         <%= @char.bio %>

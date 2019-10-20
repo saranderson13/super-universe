@@ -1,1 +1,99 @@
 /* BATTLE SHOW PG STYLING */
+.battle_pg_wrapper {
+  width: 100%; height: 100%;
+  position: fixed;
+  top: 30px; left: 0px;
+  display: block;
+}
+
+.battle_title_bar {
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  font-family: "Cantarell";
+  background-color: #f00;
+}
+.battle_title_bar .white { color: #fff; }
+.battle_title_bar .black { color: #000; }
+.battle_title_bar .left_hp { float: left; margin-left: 20px; }
+.battle_title_bar .right_hp { float: right; margin-right: 20px; }
+
+.battle_pg_side {
+  height: 100%;
+  padding-top: 100px;
+  display: inline-block;
+  float: left;
+}
+#battle_pg_hero_side { background-color: #fff; }
+#battle_pg_villain_side { background-color: #000; }
+
+.protag_form {
+  box-sizing: border-box;
+  width: 350px; height: 350px;
+  padding: 50px 0px 0px;
+  border: 6px double #f00;
+  position: fixed;
+  top: 170px; left: 100px;
+  border-radius: 175px;
+  text-align: center;
+}
+.protag_form.white {
+  background-color: #fff;
+  color: #000;
+}
+.protag_form.black {
+  background-color: #000;
+  color: #fff;
+}
+
+.protag_form_header {
+  font-family: "Roboto Condensed";
+  font-size: 17px;
+}
+
+.battle_pg_list_mvs {
+  list-style: none;
+  margin: 0px; padding: 0px;
+  font-family: "Roboto Condensed";
+  font-size: 13px;
+}
+
+.protag_move_select {
+  margin-top: 20px;
+}
+
+.protag_move_select select {
+  width: 130px;
+}
+
+.protag_move_select input[type="submit"] {
+  box-sizing: border-box;
+  display: block;
+  width: 130px; height: 20px;
+  margin: 20px auto;
+  padding: 0px;
+  line-height: 20px;
+  font-family: "Roboto Condensed";
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  cursor: crosshair;
+  -webkit-appearance: none;
+}
+
+/* 'Browse Powers' button when no powers */
+.protag_move_select .black input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+}
+
+/* 'Delete Power' button */
+.protag_move_select .white input[type="submit"] {
+  background-color: #fff;
+  color: #000;
+}
+
+.battle_log {
+
+}

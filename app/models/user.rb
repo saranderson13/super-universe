@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+
   has_secure_password
+
   validates :alias, presence: true
   validates :alias, uniqueness: true
   validates :email, presence: true
@@ -8,8 +10,11 @@ class User < ApplicationRecord
   validates :admin_status, inclusion: { in: [true, false] }
 
   has_many :characters
+  has_many :protag_battles, through: :characters
+  has_many :antag_battles, through: :characters
+
+  # FUTURE ASSOCIATIONS
   # has_many :teams, through: :characters
-  # has_many :battles, through: :characters
   #
   # has_many :plikes
   # has_many :powers, through: :plikes
@@ -20,7 +25,6 @@ class User < ApplicationRecord
 
   scope :admin, -> { where(admin_status: true) }
 
-
   # FOR OAUTH LOGIN
   def self.from_omniauth(auth)
     # Creates a new user only if it doesn't exist
@@ -30,6 +34,12 @@ class User < ApplicationRecord
       user.password = Sysrandom.base64(32)
     end
   end
+
+  def eligable_chars(antag)
+    self.characters.select { |c| c if c.protag_battle_ready?(antag) }
+  end
+
+
 
 
 end

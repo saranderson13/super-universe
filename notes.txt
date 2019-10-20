@@ -75,12 +75,20 @@ TO DO 10/19
   ESSENTIAL
   [x] clean up existing code
   [x] create Battle class
-  [ ] create battles_controller
-  [ ] create battles helper
-     [ ] methods to show only characters that can battle
-  [ ] create Battle show pg
+  [x] create battles_controller
+  [x] create battles helper
+     [x] methods to show only characters that can battle
+  [x] create Battle show pg & attack form
+  [x] add battle button to char show pg
   [x] make stats non-editable
   [x] add battle stats to characters
+
+TO DO 10/20
+  [ ] code UPDATE action for Battles
+  [ ] add battle log to show pg
+  [ ] add battle stats to char show pg
+  [ ] add battle stats to user show pg
+  [ ] add latest battle activity to user show pg
   [ ] invalid path handling
   [ ] create seed data for powers
 
@@ -98,9 +106,9 @@ TO DO 10/19
 
 
 NOTES ON BATTLES
-[ ] a character can battle any other character
-   [ ] the user-operated character's stats will be affected
-   [ ] the opponent's stats will not be affected
+[x] a character can battle any other character
+   [x] the user-operated character's stats will be affected
+   [x] the opponent's stats will not be affected
    [ ] the level of the opponent will determine how many points the UO character earns
       [ ] the closer they are to the same level, the more points earned.
       [ ] battling a character far below your level will not earn many points
@@ -125,8 +133,10 @@ NOTES ON BATTLES
       [x] add warning on new char form
    [ ] stats on Char show page should reflect level adjustment
 
-Who can battle?
+WHO CAN BATTLE?
+  - cannot battle self
   - must have some superpowers selected
+  - cannot battle a character that doesn't have superpowers selected
   - cannot have another battle in progress
 
 (MAYBE IMPLEMENT THIS IN THE FUTURE users have the option to turn off battles (no one can battle you) - or requires a request and then your stats will be affected?)
@@ -137,7 +147,7 @@ TO DO - MASTER LIST
 [x] scope method
 [x] has_many/belongs_to
 [x] has_many through
-[ ] many to many with user input - BATTLES
+[x] many to many with user input - BATTLES
 [x] OAuth signup
 [x] OAuth login
 [x] reasonable validations
@@ -147,7 +157,7 @@ TO DO - MASTER LIST
    [x] nested :show route - USER'S CHARACTERS
 [x] forms display correct validation errors
 [x] forms use a .fields_with_errors class
-[ ] reasonably DRY
+[x] reasonably DRY
 [x] no scaffolding
 
 

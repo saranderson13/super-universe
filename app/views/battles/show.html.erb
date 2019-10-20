@@ -1,1 +1,22 @@
-battle arena!
+<div class="battle_pg_wrapper">
+  <div class="battle_title_bar"><%= battle_title %></div>
+  <%= battlepg_bg_styling(@protag, @battle.p_hp, @battle.a_hp) %>
+  </div>
+  <%= battlepg_bg_styling(@antag, @battle.a_hp, @battle.p_hp) %>
+  </div>
+
+  <%= protag_form_styling %>
+    <h3 class="protag_form_header">Available Attacks:</h3>
+    <ul class="battle_pg_list_mvs">
+      <% protag_attacks.each do |m| %>
+        <li><%= "#{m.long_type}: #{m.name} || DAMAGE: #{m.adjusted_pts(@protag, @antag)}" %></li>
+      <% end %>
+    </ul>
+    <%= form_with(url: battle_path(@battle), method: :patch, class: 'protag_move_select') do |f| %>
+      <%= f.collection_select :attack, protag_attacks, :id, :name, include_blank: true  %>
+      <%= att_button_color %><%= f.submit "Attack!" %></div>
+    <% end %>
+  </div>
+
+
+</div>

@@ -10,17 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_19_154018) do
+ActiveRecord::Schema.define(version: 2019_10_20_014112) do
 
   create_table "battles", force: :cascade do |t|
     t.integer "protag_id"
     t.integer "antag_id"
-    t.string "outcome"
+    t.string "outcome", default: "Pending"
     t.integer "points", default: 0
     t.integer "turn_count", default: 0
-    t.text "log"
+    t.text "log", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "p_hp"
+    t.integer "a_hp"
+    t.boolean "p_used_pwrmv", default: false
+    t.boolean "a_used_pwrmv", default: false
     t.index ["antag_id"], name: "index_battles_on_antag_id"
     t.index ["protag_id"], name: "index_battles_on_protag_id"
   end

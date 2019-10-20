@@ -16,7 +16,7 @@
 /* char_card specific */
 #char_showpg_char_card {
   box-sizing: border-box;
-  width: 356px; height: 446px;
+  width: 506px; height: 446px;
   border: 3px double #000;
   border-top-left-radius: 100px;
   border-bottom-left-radius: 100px;
@@ -117,6 +117,7 @@ h4.char_showpg_secretid {
 }
 
 ul.char_showpg_char_info_list {
+  width: 120px;
   list-style-type: none;
   font-family: "Roboto Condensed";
   font-size: 14px;
@@ -139,6 +140,7 @@ ul.char_showpg_char_info_list {
   background-color: #000;
   color: #fff;
   width: 80px; height: 20px;
+  margin-left: 5px;
   line-height: 20px;
   font-family: "Roboto Condensed";
   font-size: 12px;
@@ -149,6 +151,37 @@ ul.char_showpg_char_info_list {
   -webkit-appearance: none;
 }
 
+/* for pick_battle_char_form */
+td.pick_battle_char_form {
+  width: 320px;
+  text-align: center
+}
+
+.pbcform_header {
+  font-family: "Roboto Condensed";
+  font-size: 17px;
+}
+
+td.pick_battle_char_form select {
+  width: 160px;
+}
+
+td.pick_battle_char_form input[type="submit"] {
+  box-sizing: border-box;
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  width: 80px; height: 20px;
+  padding: 0px;
+  line-height: 20px;
+  font-family: "Roboto Condensed";
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  cursor: crosshair;
+  -webkit-appearance: none;
+}
 
 /* FORMS: NEW AND EDIT CHAR */
 .charform_pg_name {

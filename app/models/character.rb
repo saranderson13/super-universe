@@ -39,6 +39,38 @@ class Character < ApplicationRecord
     [HERO_ALIGNMENT, VILL_ALIGNMENT].flatten.uniq
   end
 
+  # TO DETERMINE CHARACTER BATTLE ELIGABILITY
+  def not_self?(antag)
+    self.id != antag.id
+  end
+
+  def has_superpowers?
+    self.powers.count > 0
+  end
+
+  def no_battles_in_progress?
+    !self.protag_battles.any? { |b| b.outcome == "Pending" }
+  end
+
+  def opposite_char_type?(antag)
+    if self.char_type == "Hero"
+      antag.char_type == "Villain"
+    elsif self.char_type == "Villain"
+      antag.char_type == "Hero"
+    end
+  end
+
+  def protag_battle_ready?(antag)
+    self.not_self?(antag) && self.has_superpowers? && self.no_battles_in_progress? && self.opposite_char_type?(antag)
+  end
+
+  def antag_def_adjustment
+    1 - (self.def/500.0)
+  end
+
+  def protag_att_adjustment
+    1 + (self.att/500.0)
+  end
 
 
   private

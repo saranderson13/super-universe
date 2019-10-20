@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   delete '/characters/:id', to: 'character_powers#destroy', as: 'delete_power'
 
   # Battle paths
-  resources :battles, only: [:show]
+  resources :battles, only: [:show, :create, :update]
 
   # Session Paths
   get '/login', to: 'sessions#new'
