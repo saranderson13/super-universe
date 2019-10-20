@@ -72,6 +72,23 @@ class Character < ApplicationRecord
     1 + (self.att/500.0)
   end
 
+  def dodge?
+    arr = []
+    ((self.antag_def_adjustment * 100).to_i).times { arr << true }
+    (100 - arr.count).times { arr << false }
+    arr.sample
+  end
+
+  def antag_attack(battle)
+    attacks = []
+    self.powers.each do |p|
+      p.moves.each do |m|
+        attacks << m if m.move_type == "att"
+        attacks << m if m.move_type == "pwr" unless battle.a_used_pwrmv == true
+      end
+    end
+    attacks.sample
+  end
 
   private
 

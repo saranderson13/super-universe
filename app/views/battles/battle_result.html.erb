@@ -1,0 +1,16 @@
+<div class="battle_pg_wrapper">
+  <div class="battle_title_bar"><%= battle_title %></div>
+  <%= battlepg_bg_styling(@protag, @battle.p_hp, @battle.a_hp) %>
+  </div>
+  <%= battlepg_bg_styling(@antag, @battle.a_hp, @battle.p_hp) %>
+  </div>
+
+  <div class="result"><%= @battle.outcome %></div>
+
+  <%= battle_log_styling %>
+    <h3 class="battle_log_header">Battle Log:</h3>
+    <p class="battle_log_turns">
+      <%= break_the_lines(@battle.log) %>
+    </p>
+  </div>
+</div>

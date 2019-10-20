@@ -37,16 +37,24 @@
   border-radius: 175px;
   text-align: center;
 }
-.protag_form.white {
+.battle_log {
+  box-sizing: border-box;
+  width: 600px; height: 200px;
+  padding: 0px 20px 10px;
+  position: fixed;
+  top: 250px; left: 600px;
+  border: 6px double #f00;
+}
+.protag_form.white, .battle_log.white {
   background-color: #fff;
   color: #000;
 }
-.protag_form.black {
+.protag_form.black, .battle_log.black {
   background-color: #000;
   color: #fff;
 }
 
-.protag_form_header {
+.protag_form_header, .battle_log_header {
   font-family: "Roboto Condensed";
   font-size: 17px;
 }
@@ -56,6 +64,13 @@
   margin: 0px; padding: 0px;
   font-family: "Roboto Condensed";
   font-size: 13px;
+}
+
+.battle_log_turns {
+  font-family: "Roboto Condensed";
+  font-size: 13px;
+  height: 100px;
+  overflow: auto;
 }
 
 .protag_move_select {
@@ -94,6 +109,12 @@
   color: #000;
 }
 
-.battle_log {
-
+.result {
+  width: 100%;
+  position: fixed;
+  top: 150px;
+  font-family: "Cantarell";
+  font-size: 100px;
+  text-align: center;
+  color: #f00;
 }

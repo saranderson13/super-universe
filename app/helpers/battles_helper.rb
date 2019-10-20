@@ -23,6 +23,11 @@ module BattlesHelper
     msg.html_safe
   end
 
+  def battle_log_styling
+    msg = @protag.char_type == "Hero" ? "<div class='battle_log white'>" : "<div class='battle_log black'>"
+    msg.html_safe
+  end
+
   def protag_attacks
     attacks = []
     @protag.powers.each do |p|
@@ -39,5 +44,7 @@ module BattlesHelper
     msg = '<span class="white">' if @protag.char_type == "Villain"
     msg.html_safe
   end
+
+
 
 end
