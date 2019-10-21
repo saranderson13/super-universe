@@ -1,0 +1,8 @@
+<td class="pick_battle_char_form">
+  <div class="pbcform_header"><%= "Pick a character to battle #{@char.supername}" %></div>
+  <%= form_with(url: battles_path, method: :post, class: "select_char_for_battle") do |f| %>
+    <%= f.hidden_field :antag_id, :value => @char.id %>
+    <%= f.collection_select :protag_id, current_user.eligable_chars(@char), :id, :supername, include_blank: true  %>
+    <%= f.submit "Battle!" %>
+  <% end %>
+</td>

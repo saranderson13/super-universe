@@ -20,10 +20,26 @@ module CharactersHelper
   def char_showpg_superpowers
     char = Character.find_by(id: params[:id])
     if char.powers.count == 0
-      msg = "<div class='char_showpg_no_powers_msg'>This character has no powers! Why not go add some?<br><span class='char_showpg_button black'><a href='/powers'>Go Browse the Superpowers</a></span></div>"
-      msg.html_safe
+      if char.user_id == current_user.id
+        msg = "<div class='char_showpg_no_powers_msg'>This character has no powers! Why not go add some?<br><span class='char_showpg_button black'><a href='/powers'>Go Browse the Superpowers</a></span></div>"
+        msg.html_safe
+      else
+        msg = "<div class='char_showpg_no_powers_msg'>This character has no powers & is not eligable to battle.</div>"
+        msg.html_safe
+      end
     else
       render partial: 'char_showpg_powers'
+    end
+  end
+
+  def char_showpg_battle_form
+    if @char.has_superpowers?
+      if current_user.eligable_chars(@char).count > 0
+        render partial: 'char_showpg_battle_form'
+      else
+        msg = "<div class='pbcform_header'>You currently have no characters eligable to battle this character.</div>"
+        msg.html_safe
+      end
     end
   end
 
@@ -79,7 +95,7 @@ module CharactersHelper
     end
   end
 
-  # In Char Form - shows instructions for stats if creating new char, not on edit form. 
+  # In Char Form - shows instructions for stats if creating new char, not on edit form.
   def stat_instructions_if_new(form)
     if form == "new"
       msg = "<li>The sum of your character's stats may not exceed 500 points. For example, you cannot have a character with HP: 300, ATT: 300, and DEF: 300, because that adds up to 900 points. <span class='red'>WARNING: You will not be able to edit these stats, so divy up your 500 points wisely.</span></li>"

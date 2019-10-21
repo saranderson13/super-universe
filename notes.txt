@@ -84,11 +84,10 @@ TO DO 10/19
   [x] add battle stats to characters
 
 TO DO 10/20
-  [ ] code UPDATE action for Battles
-  [ ] add battle log to show pg
+  [x] code UPDATE action for Battles
+  [x] add security to battles
+  [ ] add recent battles to char show pg
   [ ] add battle stats to char show pg
-  [ ] add battle stats to user show pg
-  [ ] add latest battle activity to user show pg
   [ ] invalid path handling
   [ ] create seed data for powers
 
