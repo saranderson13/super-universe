@@ -36,7 +36,7 @@ class BattlesController < ApplicationController
       protag = Character.find_by(id: turn_params[:protag_id])
       antag = Character.find_by(id: turn_params[:antag_id])
       move = Move.find_by(id: turn_params[:attack])
-      #PROTAG ATACK STAGE
+      #PROTAG ATTACK STAGE
         # increase turn count
         @battle.advance_turn
         # determine if the opponent dodged

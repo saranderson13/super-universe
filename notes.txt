@@ -88,8 +88,7 @@ TO DO 10/20
   [x] add security to battles
   [x] battle bug fixes
   [x] invalid path handling
-  [ ] add recent battles to char show pg
-  [ ] add battle stats to char show pg
+  [x] add battle stats to char show pg
   [ ] create seed data for powers
 
   IF THERE'S TIME

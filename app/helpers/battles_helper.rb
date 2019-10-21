@@ -11,6 +11,23 @@ module BattlesHelper
     end
   end
 
+  def resultpg_bg_styling
+    if @battle.outcome == "Victory"
+      if @protag.char_type == "Hero"
+        tag = "<div id='battle_pg_hero_side' class='battle_pg_side' style='width: 100%'>"
+      else
+        tag = "<div id='battle_pg_villain_side' class='battle_pg_side' style='width: 100%'>"
+      end
+    else
+      if @protag.char_type == "Hero"
+        tag = "<div id='battle_pg_villain_side' class='battle_pg_side' style='width: 100%'>"
+      else
+        tag = "<div id='battle_pg_hero_side' class='battle_pg_side' style='width: 100%'>"
+      end
+    end
+    tag.html_safe
+  end
+
   def battle_title
     p_color = @protag.char_type == "Hero" ? "white" : "black"
     a_color = @antag.char_type == "Hero" ? "white" : "black"
