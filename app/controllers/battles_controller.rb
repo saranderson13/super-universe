@@ -68,12 +68,12 @@ class BattlesController < ApplicationController
           # determine if protagonist dodged
           if protag.dodge?
             #add turn outcome to log
-            @battle.log = @battle.turn_dialog(antag, move, protag, "miss")
+            @battle.log = @battle.turn_dialog(antag, a_move, protag, "miss")
           else
             # adjust hp of antagonist
-            @battle.p_hp -= move.adjusted_pts(antag, protag)
+            @battle.p_hp -= a_move.adjusted_pts(antag, protag)
             # add turn outcome to log
-            @battle.log = @battle.turn_dialog(antag, move, protag, "hit")
+            @battle.log = @battle.turn_dialog(antag, a_move, protag, "hit")
           end
           # check for used_power_move?
           @battle.a_used_pwrmv = true if a_move.move_type == "pwr"

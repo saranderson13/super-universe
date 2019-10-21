@@ -24,11 +24,11 @@ class Battle < ApplicationRecord
     protag = Character.find_by(id: self.protag_id)
     antag = Character.find_by(id: self.antag_id)
     if outcome == "Victory"
-      msg = "#{protag.supername} is victorious!\nThey have earned #{protag.win_points(antag)} points towards leveling up.\n" + self.log
+      msg = "#{protag.supername} is victorious!\nThey have earned #{protag.win_points(antag)} points towards leveling up.\n"
       if protag.lvl_progress >= protag.pts_to_next_lvl
         msg += "#{protag.supername} has reached level #{protag.level + 1}!\n"
       end
-      msg = self.log + "\n"
+      msg += "\n" + self.log
       msg.html_safe
     elsif outcome == "Defeat"
       msg = "#{protag.supername} was defeated!\n\n" + self.log
