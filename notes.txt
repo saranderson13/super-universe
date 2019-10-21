@@ -86,9 +86,10 @@ TO DO 10/19
 TO DO 10/20
   [x] code UPDATE action for Battles
   [x] add security to battles
+  [x] battle bug fixes
+  [x] invalid path handling
   [ ] add recent battles to char show pg
   [ ] add battle stats to char show pg
-  [ ] invalid path handling
   [ ] create seed data for powers
 
   IF THERE'S TIME
@@ -96,7 +97,7 @@ TO DO 10/20
   [ ] add description and power type to powers
   [ ] add description to moves
 
-  PROBABLY CUT
+  CUT FOR NOW
   [ ] create Hero decorator
   [ ] create Villain decorator
   [ ] create Team class
@@ -164,6 +165,7 @@ TO DO - MASTER LIST
 
 CREDIT FOR PICTURES:
 default profile pic - Photo by Soroush golpoor on Unsplash
+pic for error pages - Photo by Doug Maloney on Unsplash
 
 MY RANKING OF LANA DEL REY ALBUMS
 1. Norman F*cking Rockwell

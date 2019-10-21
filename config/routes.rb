@@ -33,4 +33,8 @@ Rails.application.routes.draw do
   get 'users/:id/set_alias', to: 'users#set_alias', as: 'set_alias'
   patch 'users/:id/set_alias', to: 'users#oauth_login_complete'
 
+  # Error Routes
+  get '*path', :to => 'errors#routing_error'
+
+
 end
