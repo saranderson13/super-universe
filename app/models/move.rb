@@ -21,9 +21,9 @@ class Move < ApplicationRecord
 
   def adjusted_pts(protag, antag)
     if self.move_type == "att"
-      (((self.base_pts + (2 * protag.level)) * protag.protag_att_adjustment) * antag.antag_def_adjustment).round
+      (((self.base_pts + (2 * protag.level)) * protag.protag_att_adjustment) * (1 - antag.antag_def_adjustment)).round
     elsif self.move_type == "pwr"
-      (((self.base_pts + (4 * protag.level)) * protag.protag_att_adjustment) * antag.antag_def_adjustment).round
+      (((self.base_pts + (4 * protag.level)) * protag.protag_att_adjustment) * (1 - antag.antag_def_adjustment)).round
     end
   end
 

@@ -42,21 +42,22 @@ class BattlesController < ApplicationController
         # determine if the opponent dodged
         if antag.dodge?
           #add turn outcome to log
-          battle.log << "Turn #{battle.turn_count}: #{antag.supername} #{move.fail_descrip}\n"
+          battle.log = battle.turn_dialog(protag, move, antag, "miss")
         else
           # adjust hp of antagonist
           battle.a_hp -= move.adjusted_pts(protag, antag)
           # add turn outcome to log
-          battle.log << "Turn #{battle.turn_count}: #{antag.supername} #{move.success_descrip}\n"
+          battle.log = battle.turn_dialog(protag, move, antag, "hit")
         end
         # check for used_power_move?
         battle.p_used_pwrmv = true if move.move_type == "pwr"
+        battle.save
         # check for win?
         if battle.a_hp <= 0
-          battle.outcome = "Victory"
-          protag.victories += 1
+          battle.update(outcome: "Victory")
+          battle.log = battle.end_of_battle_dialog
           battle.save
-          protag.save
+          protag.victory_results(antag)
           redirect_to battle_path(battle) and return
         else
         # ANTAG ATTACK STAGE
@@ -67,21 +68,24 @@ class BattlesController < ApplicationController
           # determine if protagonist dodged
           if protag.dodge?
             #add turn outcome to log
-            battle.log << "Turn #{battle.turn_count}: #{protag.supername} #{move.fail_descrip}\n\r"
+            battle.log = battle.turn_dialog(antag, move, protag, "miss")
           else
             # adjust hp of antagonist
             battle.p_hp -= move.adjusted_pts(antag, protag)
             # add turn outcome to log
-            battle.log << "Turn #{battle.turn_count}: #{protag.supername} #{move.success_descrip}\n\r"
+            battle.log = battle.turn_dialog(antag, move, protag, "hit")
           end
           # check for used_power_move?
           battle.a_used_pwrmv = true if a_move.move_type == "pwr"
           # check for win?
-          battle.outcome == "Defeat" if battle.p_hp <=0
-          protag.defeats += 1
+          if battle.p_hp <=0
+            battle.update(outcome: "Defeat")
+            battle.log = battle.end_of_battle_dialog
+            battle.save
+            protag.defeat_results
+          end
           # redirect_to battles_path(@battle)
           battle.save
-          protag.save
           redirect_to battle_path(battle) and return
         end
     else

@@ -8,14 +8,14 @@
   <%= protag_form_styling %>
     <h3 class="protag_form_header">Available Attacks:</h3>
     <ul class="battle_pg_list_mvs">
-      <% protag_attacks.each do |m| %>
+      <% @protag.protag_attacks(@battle).each do |m| %>
         <li><%= "#{m.long_type}: #{m.name} || DAMAGE: #{m.adjusted_pts(@protag, @antag)}" %></li>
       <% end %>
     </ul>
     <%= form_with(url: battle_path(@battle), method: :patch, class: 'protag_move_select') do |f| %>
       <%= f.hidden_field :protag_id, value: @protag.id %>
       <%= f.hidden_field :antag_id, value: @antag.id %>
-      <%= f.collection_select :attack, protag_attacks, :id, :name, include_blank: true  %>
+      <%= f.collection_select :attack, @protag.protag_attacks(@battle), :id, :name, include_blank: true  %>
       <%= att_button_color %><%= f.submit "Attack!" %></div>
     <% end %>
   </div>

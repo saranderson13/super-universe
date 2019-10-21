@@ -7,10 +7,12 @@
 
   <div class="result"><%= @battle.outcome %></div>
 
-  <%= battle_log_styling %>
-    <h3 class="battle_log_header">Battle Log:</h3>
-    <p class="battle_log_turns">
-      <%= break_the_lines(@battle.log) %>
-    </p>
+  <div class="battle_log_wrapper">
+    <%= battle_log_styling %>
+      <h3 class="battle_log_header">Battle Log:</h3>
+      <p class="battle_log_turns">
+        <%= break_the_lines(@battle.log) %>
+      </p>
+    </div>
   </div>
 </div>

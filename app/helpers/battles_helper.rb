@@ -24,19 +24,12 @@ module BattlesHelper
   end
 
   def battle_log_styling
-    msg = @protag.char_type == "Hero" ? "<div class='battle_log white'>" : "<div class='battle_log black'>"
-    msg.html_safe
-  end
-
-  def protag_attacks
-    attacks = []
-    @protag.powers.each do |p|
-      p.moves.each do |m|
-        attacks << m if m.move_type == "att"
-        attacks << m if m.move_type == "pwr" unless @battle.p_used_pwrmv == true
-      end
+    if @battle.outcome == "Pending"
+      msg = @protag.char_type == "Hero" ? "<div class='battle_log white battle_in_prog'>" : "<div class='battle_log black battle_in_prog'>"
+    else
+      msg = @protag.char_type == "Hero" ? "<div class='battle_log white battle_results'>" : "<div class='battle_log black battle_results'>"
     end
-    attacks
+    msg.html_safe
   end
 
   def att_button_color
@@ -44,7 +37,6 @@ module BattlesHelper
     msg = '<span class="white">' if @protag.char_type == "Villain"
     msg.html_safe
   end
-
 
 
 end

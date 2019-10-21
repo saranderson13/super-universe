@@ -65,7 +65,7 @@ class Character < ApplicationRecord
   end
 
   def antag_def_adjustment
-    1 - (self.def/500.0)
+    (1 - (self.def/500.0))/2
   end
 
   def protag_att_adjustment
@@ -79,6 +79,17 @@ class Character < ApplicationRecord
     arr.sample
   end
 
+  def protag_attacks(battle)
+    attacks = []
+    self.powers.each do |p|
+      p.moves.each do |m|
+        attacks << m if m.move_type == "att"
+        attacks << m if m.move_type == "pwr" unless battle.p_used_pwrmv == true
+      end
+    end
+    attacks
+  end
+
   def antag_attack(battle)
     attacks = []
     self.powers.each do |p|
@@ -88,6 +99,26 @@ class Character < ApplicationRecord
       end
     end
     attacks.sample
+  end
+
+  def win_points(opponent)
+    (opponent.level - self.level) + 10
+  end
+
+  def victory_results(opponent)
+    self.victories += 1
+    self.lvl_progress += self.win_points(opponent)
+    while self.lvl_progress >= self.pts_to_next_lvl
+      self.level += 1
+      self.lvl_progress -= self.pts_to_next_lvl
+      self.pts_to_next_lvl = self.level * 10
+    end
+    self.save
+  end
+
+  def defeat_results
+    self.defeats += 1
+    self.save
   end
 
   private
