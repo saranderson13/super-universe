@@ -101,7 +101,7 @@ TO DO 10/20
   [x] format pwr_type on power show pg
   [x] format index page for powers
   [x] fix lvl up message at end of battle
-  [ ] put a little something on the welcome page
+  [x] put a little something on the welcome page
 
 
 
