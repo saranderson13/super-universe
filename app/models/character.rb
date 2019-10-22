@@ -122,6 +122,10 @@ class Character < ApplicationRecord
     self.save
   end
 
+  def hp_lvl_adjust
+    self.hp + (self.level * 10)
+  end
+
   private
 
   def validate_stats

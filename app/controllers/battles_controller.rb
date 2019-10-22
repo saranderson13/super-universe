@@ -5,7 +5,7 @@ class BattlesController < ApplicationController
     antag = Character.find_by(id: battle_params[:antag_id])
     if protag.protag_battle_ready?(antag) && antag.has_superpowers?
       b = Battle.create(battle_params)
-      b.p_hp, b.a_hp = protag.hp, antag.hp
+      b.p_hp, b.a_hp = protag.hp_lvl_adjust, antag.hp_lvl_adjust
       b.save
       redirect_to battle_path(b) and return
     else
