@@ -14,8 +14,6 @@ class Move < ApplicationRecord
       "Regular Attack"
     when "pwr"
       "Power Attack"
-    when "def"
-      "Defensive Tactic"
     end
   end
 
