@@ -102,7 +102,8 @@ class Character < ApplicationRecord
   end
 
   def win_points(opponent)
-    (opponent.level - self.level) + 10
+    points = (opponent.level - self.level) + 10
+    points < 0 ? 0 : points # Ensures that win points are never less than 0.
   end
 
   def victory_results(opponent)

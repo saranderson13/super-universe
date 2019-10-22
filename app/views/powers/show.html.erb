@@ -1,17 +1,14 @@
 <div class="pwr_showpg_wrapper">
 
   <h3 class="pwr_showpg_heading white"><%= @power.name %></h3>
+  <h4 class="pwr_showpg_type"><%= @power.pwr_type %></h4>
   <table class="pwr_showpg_mvs">
-    <tr class="mv">
-      <td class="mv_type">ATTACK</td>
+    <tr>
+      <td class="mv_type">COMMON ATTACK</td>
       <td class="mv_info"><%= @att.name.upcase %><br><%= "#{@att.base_pts} base points" %></td>
     </tr>
-    <tr class="mv">
-      <td class="mv_type">DEFEND</td>
-      <td class="mv_info"><%= @def.name.upcase %><br><%= "#{@def.base_pts} base points" %></td>
-    </tr>
-    <tr class="mv">
-      <td class="mv_type">POWER</td>
+    <tr>
+      <td class="mv_type">POWER ATTACK</td>
       <td class="mv_info"><%= @pwr.name.upcase %><br><%= "#{@pwr.base_pts} base points" %></td>
     </tr>
   </table>

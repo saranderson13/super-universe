@@ -4,14 +4,22 @@ class PowersController < ApplicationController
 
   def index
     @powers = Power.all
+    @pe_pwrs = @powers.physical_enhancements
+    @me_pwrs = @powers.mental_enhancements
+    @em_pwrs = @powers.elemental_masteries
+    @ma_pwrs = @powers.magical_abilities
   end
 
   def show
     @power = Power.find_by(id: params[:id])
-    @att = @power.fetch_move("att")
-    @def = @power.fetch_move("def")
-    @pwr = @power.fetch_move("pwr")
-    @characters = characters_for_add_power if (logged_in? && !current_user.nil?)
+    if !@power.nil?
+      @att = @power.fetch_move("att")
+      @pwr = @power.fetch_move("pwr")
+      @characters = characters_for_add_power if (logged_in? && !current_user.nil?)
+    else
+      flash[:notice] = "Warning: That power does not exist."
+      redirect_to powers_path
+    end
   end
 
   private

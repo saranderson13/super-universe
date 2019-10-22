@@ -1,3 +1,39 @@
-<% @powers.each do |p| %>
-  <%= link_to p.name, power_path(p) %>
-<% end %>
+<div class="pwr_pg_wrapper">
+  <div class="pwr_column_block">
+    <div class="pwr_column">
+      <div class="pwr_column_title">Physical Enhancement</div>
+      <ul class="pwr_list">
+        <% @pe_pwrs.each do |p| %>
+          <li class="pwr_link"><%= link_to p.name, power_path(p) %></li>
+        <% end  %>
+      </ul>
+    </div>
+
+    <div class="pwr_column">
+      <div class="pwr_column_title">Mental Enhancement</div>
+      <ul class="pwr_list">
+        <% @me_pwrs.each do |p| %>
+          <li class="pwr_link"><%= link_to p.name, power_path(p) %></li>
+        <% end  %>
+      </ul>
+    </div>
+
+    <div class="pwr_column">
+      <div class="pwr_column_title">Elemental<br>Mastery</div>
+      <ul class="pwr_list">
+        <% @em_pwrs.each do |p| %>
+          <li class="pwr_link"><%= link_to p.name, power_path(p) %></li>
+        <% end  %>
+      </ul>
+    </div>
+
+    <div class="pwr_column">
+      <div class="pwr_column_title">Magical<br>Ability</div>
+      <ul class="pwr_list">
+        <% @ma_pwrs.each do |p| %>
+          <li class="pwr_link"><%= link_to p.name, power_path(p) %></li>
+        <% end  %>
+      </ul>
+    </div>
+  </div>
+</div>

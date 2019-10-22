@@ -89,30 +89,40 @@ TO DO 10/20
   [x] battle bug fixes
   [x] invalid path handling
   [x] add battle stats to char show pg
-  [ ] create seed data for powers
 
-  IF THERE'S TIME
-  [ ] format index page for powers
-  [ ] add description and power type to powers
-  [ ] add description to moves
+  TO DO 10/21
+  [x] create seed data for powers
+  [x] delete defensive move type
+     [x] remove from Power class
+     [x] remove from MOVE_TYPES
+     [x] remove from power view pages
+     [x] remove from character power view box
+  [x] power type to powers
+  [x] format pwr_type on power show pg
+  [x] format index page for powers
+  [x] fix lvl up message at end of battle
+  [ ] put a little something on the welcome page
+
+
 
   CUT FOR NOW
-  [ ] create Hero decorator
-  [ ] create Villain decorator
-  [ ] create Team class
-     [ ] create TeamMember class
-  [ ] create Plikes class
+  [-] create Hero decorator
+  [-] create Villain decorator
+  [-] create Team class
+     [-] create TeamMember class
+  [-] create Plikes class
 
 
 NOTES ON BATTLES
 [x] a character can battle any other character
    [x] the user-operated character's stats will be affected
    [x] the opponent's stats will not be affected
-   [ ] the level of the opponent will determine how many points the UO character earns
-      [ ] the closer they are to the same level, the more points earned.
-      [ ] battling a character far below your level will not earn many points
-      [ ] at a certain point it will earn 0 for battling someone far below you
-      [ ] battling a character of a higher level grants a bonus
+   [x] the level of the opponent will determine how many points the UO character earns
+      [x] the closer they are to the same level, the more points earned.
+      [x] battling a character far below your level will not earn many points
+      [x] at a certain point it will earn 0 for battling someone far below you
+      [x] battling a character of a higher level grants a bonus
+      [x] cannot earn negative points
 [x] BATTLE CLASS Fields:
   [x] protag_id, foreign_key: user_id (CHECK DOCUMENTATION FOR ESTABLISHING THESE)
   [x] antag_id, foreign_key: user_id (CHECK DOCUMENTATION FOR ESTABLISHING THESE)
@@ -126,11 +136,10 @@ NOTES ON BATTLES
   [x] level_progress - current points earned in progress to level (starts at 0)
   [x] victories - (starts at 0)
   [x] defeats - (starts at 0)
-[ ] CHARACTER CLASS Changes
+[x] CHARACTER CLASS Changes
    [x] stats will not be editable
       [x] remove from edit char form
       [x] add warning on new char form
-   [ ] stats on Char show page should reflect level adjustment
 
 WHO CAN BATTLE?
   - cannot battle self
@@ -165,11 +174,3 @@ TO DO - MASTER LIST
 CREDIT FOR PICTURES:
 default profile pic - Photo by Soroush golpoor on Unsplash
 pic for error pages - Photo by Doug Maloney on Unsplash
-
-MY RANKING OF LANA DEL REY ALBUMS
-1. Norman F*cking Rockwell
-2. Ultraviolence
-3. Honeymoon
-4. Born to Die
-5. Born to Die Paradise Edition
-6. Lust for Life

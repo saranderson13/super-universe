@@ -1,0 +1,32 @@
+h1.welcome_title {
+  width: 100%; height: 100px;
+  text-align: center;
+  font-family: "Cantarell";
+  font-size: 80px;
+}
+
+.recent_battles_box {
+  width: 100%;
+  /* text-align: center; */
+}
+
+h3.welcome_subheading {
+  font-family: "Roboto Condensed";
+  font-size: 28px;
+  text-align: center;
+}
+
+h3.welcome_subheading a, h3.welcome_subheading a.visited, h3.welcome_subheading a.active  {
+  color: #000;
+  cursor: crosshair;
+}
+
+ul.recent_battles {
+  width: 600px;
+  margin: auto;
+  list-style: none;
+  padding: 0px;
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  text-align: center;
+}

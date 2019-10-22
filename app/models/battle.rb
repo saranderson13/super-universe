@@ -6,6 +6,11 @@ class Battle < ApplicationRecord
   belongs_to :protag, class_name: 'Character'
   belongs_to :antag, class_name: 'Character'
 
+
+  def self.recent_battles
+    self.where('outcome != "Pending"').order("updated_at desc").limit(5)
+  end
+
   def advance_turn
     self.turn_count += 1
   end
@@ -25,7 +30,7 @@ class Battle < ApplicationRecord
     antag = Character.find_by(id: self.antag_id)
     if outcome == "Victory"
       msg = "#{protag.supername} is victorious!\nThey have earned #{protag.win_points(antag)} points towards leveling up.\n"
-      if protag.lvl_progress >= protag.pts_to_next_lvl
+      if (protag.lvl_progress + protag.win_points(antag)) >= protag.pts_to_next_lvl
         msg += "#{protag.supername} has reached level #{protag.level + 1}!\n"
       end
       msg += "\n" + self.log

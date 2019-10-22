@@ -1,3 +1,60 @@
+/* POWER INDEX PAGE */
+.pwr_pg_wrapper {
+  box-sizing: border-box;
+  width: 100%; height: 100%;
+  position: fixed;
+  top: 45px; left: 0px;
+  background-color: #000;
+}
+
+.pwr_column_block {
+  width: 760px; /* ADD 190px FOR EACH COLUMN */
+  margin: auto;
+}
+
+.pwr_column {
+  box-sizing: border-box;
+  width: 150px; height: 100%;
+  background-color: #fff;
+  margin: 0px 20px;
+  display: inline-block;
+  float: left;
+}
+
+.pwr_column_title {
+  font-family: "Roboto Condensed";
+  font-size: 20px;
+  text-align: center;
+  height: 70px;
+  padding-top: 10px;
+}
+
+.pwr_list {
+  list-style: none;
+  padding: 0px 5px;
+  font-family: "Roboto Condensed";
+  font-size: 14px;
+}
+
+li.pwr_link a {
+  color: #000;
+  text-decoration: none;
+  cursor: crosshair;
+  line-height: 20px;
+  transition: color ease-in-out .3s;
+}
+
+li.pwr_link a:visited, li.pwr_link a:active {
+  color: #000;
+  text-decoration: none;
+}
+
+li.pwr_link a:hover {
+  color: #f00;
+}
+
+
+/* POWER SHOW PAGE */
 /* for power info circle */
 .pwr_showpg_wrapper {
   position: absolute;
@@ -14,28 +71,35 @@
 .pwr_showpg_heading {
   font-family: "Cantarell";
   font-size: 30px;
-  text-transform: uppercase;\
+  text-transform: uppercase;
+  margin-top: 15px;
 }
 
 /* determine heading color */
-.pwr_showpg_heading.black { color: #000 }
-.pwr_showpg_heading.white { color: #fff }
+.pwr_showpg_heading.black { color: #000; margin-bottom: 10px; }
+.pwr_showpg_heading.white { color: #fff; margin-bottom: 0px; padding: 0px 10px; }
+
+.pwr_showpg_type {
+  font-family: "Cantarell";
+  font-size: 13px;
+  text-transform: uppercase;
+  margin: 0px 0px 15px;
+  color: #fff;
+}
 
 /* moves within the power circle */
 table.pwr_showpg_mvs {
   width: 250px;
   margin: auto;
-}
-
-tr.mv {
-  margin-bottom: 5px;
+  border-collapse:separate;
+  border-spacing:0 10px;
 }
 
 td.mv_type {
   width: 90px;
   padding-right: 10px;
   font-family: "Roboto Condensed";
-  font-size: 30px;
+  font-size: 25px;
   color: #fff;
   text-align: right;
 }
@@ -45,6 +109,7 @@ td.mv_info {
   font-family: "Cantarell";
   font-size: 12px;
   color: #000;
+  padding: 0px 3px;
 }
 
 /* for add_power form */

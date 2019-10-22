@@ -8,6 +8,11 @@ class Power < ApplicationRecord
   has_many :power_moves
   has_many :moves, through: :power_moves
 
+  scope :physical_enhancements,  -> { where(pwr_type: "Physical Enhancement") }
+  scope :mental_enhancements,  -> { where(pwr_type: "Mental Enhancement") }
+  scope :elemental_masteries,  -> { where(pwr_type: "Elemental Mastery") }
+  scope :magical_abilities,  -> { where(pwr_type: "Magical Ability") }
+
 
   # MOVE SETTER AND READER METHODS
   def add_move(move)
