@@ -104,6 +104,12 @@ TO DO 10/20
   [x] put a little something on the welcome page
 
 
+STILL TO DO
+  [ ] List of ongoing battles on user page
+  [ ] Character index page used for finding opponents
+     [ ] Lists heroes and villains separately
+  [ ] Fix Character form so that it isn't nested
+
 
   CUT FOR NOW
   [-] create Hero decorator
