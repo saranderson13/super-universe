@@ -1,9 +1,10 @@
 class Move < ApplicationRecord
 
-  MOVE_TYPES = ["att", "def", "pwr"]
+  MOVE_TYPES = ["att", "pwr"]
 
   validates_presence_of :name, :move_type, :base_pts, :success_descrip, :fail_descrip
   validates :move_type, inclusion: { in: MOVE_TYPES }
+  validate :validate_base_points
 
   has_many :power_moves
   has_many :powers, through: :power_moves
@@ -35,6 +36,14 @@ class Move < ApplicationRecord
       # The formulas are otherwise the same.
     elsif self.move_type == "pwr"
       (((self.base_pts + (3 * protag.level)) * protag.protag_att_adjustment) * (1 - antag.antag_def_adjustment)).round
+    end
+  end
+
+  def validate_base_points
+    if self.move_type == "att"
+      errors.add(:base_pts, "Base points outide of Common Attack range.") if ![15, 20, 25].include?(self.base_pts)
+    elsif self.move_type == "pwr"
+      errors.add(:base_pts, "Base points outide of Power Attack range.") if ![45, 50, 55, 60, 65].include?(self.base_pts)
     end
   end
 

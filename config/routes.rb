@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   patch '/characters/:id/dox', to: 'characters#dox_char'
 
   # Power Paths
-  resources :powers, only: [:index, :show]
+  resources :powers, only: [:index, :show, :new, :create, :edit, :update]
   post '/characters/add_power', to: 'character_powers#add', as: 'add_power'
   delete '/characters/:id', to: 'character_powers#destroy', as: 'delete_power'
 

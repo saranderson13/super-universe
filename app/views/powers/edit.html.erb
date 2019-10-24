@@ -1,0 +1,12 @@
+<%= render partial: 'form', locals: { form: "edit" } %>
+
+<br><br>
+
+<% if @power.errors.any? %>
+  <ul class='power_form_errors'>
+    <li><%= "errors! oh no!" %></li>
+    <% @power.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

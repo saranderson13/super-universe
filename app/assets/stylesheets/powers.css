@@ -131,7 +131,7 @@ td.mv_info {
 }
 
 /* for any links in the power form including redirect links if power can't be added */
-.pwr_form_link a, .add_pwr_form input[type="submit"] {
+.pwr_form_link a, .add_pwr_form input[type="submit"], .pwr_edit_link a {
   box-sizing: border-box;
   display: inline-block;
   height: 20px;
@@ -152,6 +152,12 @@ td.mv_info {
 .long a { width: 130px; } /* for long alternate link buttons */
 .short a { width: 65px; } /* for short alternate link buttons */
 
+.pwr_edit_link a {
+  color: #000;
+  background-color: #fff;
+  margin-top: 10px;
+}
+
 /* for literal "add power" button */
 .add_pwr_form input[type="submit"] {
   width: 150px;
@@ -167,4 +173,23 @@ td.mv_info {
 
 .add_pwr_form select {
   width: 200px;
+}
+
+
+
+/* NEW/EDIT POWERS FORM */
+
+.power_form_errors {
+  color: #f00;
+  position: fixed;
+  top: 100px; left: 700px;
+}
+
+.power_form .field_with_errors {
+  display: inline-block;
+  line-height: 100%;
+}
+
+.move_descrip_field {
+  width: 500px;
 }

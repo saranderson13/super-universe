@@ -1,0 +1,27 @@
+<%= form_with model: @power, class: 'power_form', local: true do |f| %>
+  <%= f.label :name, "Power Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :pwr_type, "Power Type" %>
+  <%= f.collection_select :pwr_type, @types, :to_s, :to_s, include_blank: true %>
+  <br><br><br>
+  <%= f.fields_for :moves do |mv| %>
+    <%= mv.hidden_field :move_type, value: set_move_type(mv) %>
+
+    <%= mv.label :name, move_name_label(mv) %>
+    <%= mv.text_field :name %>
+
+    <%= mv.label :base_pts, "Base Points" %>
+    <%= mv.collection_select :base_pts, base_pts_options(mv), :to_i, :to_s, include_blank: true %>
+    <br><br>
+    <%= mv.label :success_descrip, "Description for a Successful Attack" %><br>
+    Example: was launched through the air from the force of the punch!<br>
+    <%= mv.text_field :success_descrip, class: "move_descrip_field" %>
+    <br><br>
+    <%= mv.label :fail_descrip, "Description for a Failed Attack:" %><br>
+    Example: jumped back to avoid the fist as it passed within inches of their nose!<br>
+    <%= mv.text_field :fail_descrip, class: "move_descrip_field" %>
+    <br><br><br>
+  <% end %>
+  <%= f.submit %>
+<% end %>

@@ -18,4 +18,20 @@ module PowersHelper
   # end
   # end
 
+  def set_move_type(move)
+    move.object.move_type == "att" ? "att" : "pwr"
+  end
+
+  def move_name_label(move)
+    move.object.move_type == "att" ? "Common Attack Name" : "Power Attack Name"
+  end
+
+  def base_pts_options(move)
+    move.object.move_type == "att" ? [15, 20, 25] : [45, 50, 55, 60]
+  end
+
+  def s_value_if_edit(form)
+    "value='ex: was launched through the air from the force of the punch!'" if form == "new"
+  end
+
 end
