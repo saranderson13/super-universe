@@ -8,7 +8,7 @@
 
 /* applies to both cards */
 .char_showpg_card {
-  display: inline-block;
+  /* display: inline-block; */
   margin: 20px 50px;
   float: left;
 }
@@ -78,6 +78,7 @@
   width: 100px;
   background-color: #fff;
   color: #000;
+  border: none;
 }
 
 /* styling within power blocks */
@@ -181,6 +182,7 @@ td.pick_battle_char_form input[type="submit"] {
   text-align: center;
   cursor: crosshair;
   -webkit-appearance: none;
+  border: none;
 }
 
 /* FORMS: NEW AND EDIT CHAR */

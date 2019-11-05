@@ -21,7 +21,7 @@
 .battle_pg_side {
   height: 100%;
   padding-top: 100px;
-  display: inline-block;
+  /* display: inline-block; */
   float: left;
 }
 #battle_pg_hero_side { background-color: #fff; }

@@ -36,7 +36,7 @@
 
  #navbar a, #navbar input[type="submit"] {
    box-sizing: border-box;
-   display: inline-block;
+   /* display: inline-block; */
    width: 70px; height: 20px;
    margin: 5px; padding: 0px;
    line-height: 20px;
@@ -74,7 +74,7 @@
 
  .cu_profile_links a, .cu_profile_links input[type="submit"] {
    box-sizing: border-box;
-   display: inline-block;
+   /* display: inline-block; */
    width: 110px; height: 20px;
    margin: 5px; padding: 0px;
    line-height: 20px;
@@ -159,6 +159,7 @@
   color: #000;
   cursor: crosshair;
   -webkit-appearance: none;
+  border: none;
 }
 
 .user_form_text_break {
