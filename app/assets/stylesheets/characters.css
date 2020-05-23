@@ -189,14 +189,14 @@ td.pick_battle_char_form input[type="submit"] {
 .charform_pg_name {
   font-family: "Cantarell";
   font-size: 40px;
-  position: absolute;
-  top: 35px; left: 780px;
+  /* position: absolute;
+  top: 35px; left: 780px; */
 
 }
 
 .charform_guide {
-  position: absolute;
-  top: 130px; left: 785px;
+  /* position: absolute;
+  top: 130px; left: 785px; */
   font-family: "Roboto Condensed";
 }
 
@@ -245,20 +245,26 @@ td.radio_buttons .field_with_errors {
 }
 
 /* page setup */
+.char_form_instructions {
+
+}
+
 .char_form_bg {
-  width: 500px; height: 100%;
+  width: 880px; height: 100%;
+  border-top-right-radius: 400px;
   position: fixed;
   top: 33px; left: 0px;
   background-color: #000;
 }
 
-.char_form_dynamic_arch {
+/* NOW COMBINED WITH char_form_bg */
+/* .char_form_dynamic_arch {
   background-color: #000;
   position: fixed;
   top: 33px; left: 499px;
   width: 330px; height: 100%;
   border-top-right-radius: 400px;
-}
+} */
 
 /* basic label styling */
 .char_form label {
@@ -318,7 +324,7 @@ td.cft_input select {
 
 /* :alignment radio bubbles */
 td.radio_buttons {
-  width: 320px;
+  width: 350px;
 }
 
 td.radio_buttons label {

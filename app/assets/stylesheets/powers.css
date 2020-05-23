@@ -57,12 +57,13 @@ li.pwr_link a:hover {
 /* POWER SHOW PAGE */
 /* for power info circle */
 .pwr_showpg_wrapper {
-  position: absolute;
-  top: 100px; left: 150px;
-  box-sizing: border-box;
-  width: 400px; height: 400px;
-  border-radius: 200px;
-  padding-top: 50px;
+  /* position: absolute;
+  top: 100px; left: 150px; */
+  box-sizing: border-box; 
+  width: 500px; height: 500px;
+  border-radius: 250px;
+  padding-top: 120px;
+  margin: 0px 50px;
   background-color: #000;
   text-align: center;
 }
@@ -114,10 +115,11 @@ td.mv_info {
 
 /* for add_power form */
 .pwr_showpg_form_wrapper {
-  position: absolute;
-  top: 175px; left: 750px;
+  /* position: absolute;
+  top: 175px; left: 750px; */
   box-sizing: border-box;
   width: 350px; height: 250px;
+  margin: 0px 50px;
   /* border: 1px solid #000; */
 }
 
