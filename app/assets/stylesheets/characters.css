@@ -245,15 +245,26 @@ td.radio_buttons .field_with_errors {
 }
 
 /* page setup */
-.char_form_instructions {
 
+#main_content_body .char_form_wrapper {
+  /* flex-direction:  */
+  width: 100%; height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.char_form_instructions {
+  box-sizing: border-box;
+  width: calc(100% - 880px);
+  padding: 70px 0px 0px 50px;
 }
 
 .char_form_bg {
-  width: 880px; height: 100%;
+  height: 100%;
+  width: 880px;
   border-top-right-radius: 400px;
-  position: fixed;
-  top: 33px; left: 0px;
+  /* position: fixed;
+  top: 33px; left: 0px; */
   background-color: #000;
 }
 
@@ -288,13 +299,21 @@ td.radio_buttons .field_with_errors {
   color: #000;
   cursor: crosshair;
   -webkit-appearance: none;
+  border: none;
+  box-shadow: 1px 1px 4px #FFF;
+  transition: ease-in-out all .2s;
+}
+
+.char_form input[type="submit"]:hover {
+  box-shadow: none;
 }
 
 .char_form {
-  width: 800px; height: 100%;
-  padding-top: 20px;
-  position: fixed;
-  top: 33px; left: 0px;
+  box-sizing: border-box;
+  width: 800px; height: calc(100% - 20px);
+  padding-top: 70px;
+  /* position: fixed;
+  top: 33px; left: 0px; */
 }
 
 tr.cft_set_row {

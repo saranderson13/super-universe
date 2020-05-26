@@ -1,16 +1,17 @@
-<div class="char_form_instructions">
-  <h1 class="charform_pg_name">EDIT CHARACTER</h1>
-
-  <div class="charform_guide">
-    <%= render partial: 'form_instructions', locals: { form: "edit" } %>
-  </div>
-</div>
-
-<div class="char_form_bg">
-  <%= form_with(model: @user, url: user_character_path(id: @char.id, user_id: @user.id), method: :patch, class: 'char_form', local: true) do |f| %>
-    <%= f.fields_for @char do |char_form| %>
-      <% render partial: 'form', locals: { char_form: char_form, form: "edit" } %>
+<div class="char_form_wrapper">
+  <div class="char_form_bg">
+    <%= form_with(model: @user, url: user_character_path(id: @char.id, user_id: @user.id), method: :patch, class: 'char_form', local: true) do |f| %>
+      <%= f.fields_for @char do |char_form| %>
+        <% render partial: 'form', locals: { char_form: char_form, form: "edit" } %>
+        <% end %>
+        <%= f.submit "Edit Character", data: { disable_with: false } %>
     <% end %>
-    <%= f.submit "Edit Character", data: { disable_with: false } %>
-  <% end %>
+  </div>
+  <div class="char_form_instructions">
+    <h1 class="charform_pg_name">EDIT CHARACTER</h1>
+  
+    <div class="charform_guide">
+      <%= render partial: 'form_instructions', locals: { form: "edit" } %>
+    </div>
+  </div>
 </div>
