@@ -39,6 +39,10 @@ class Character < ApplicationRecord
     [HERO_ALIGNMENT, VILL_ALIGNMENT].flatten.uniq
   end
 
+  def find_opponents
+    Character.all.select { |c| c.protag_battle_ready?(self) }
+  end
+
   # TO DETERMINE CHARACTER BATTLE ELIGABILITY
   def not_self?(antag)
     self.id != antag.id

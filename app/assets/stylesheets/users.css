@@ -5,10 +5,30 @@
 /* For styling the EDIT/DELETE buttons, see application.css (.cu_profile_links) */
 /* That class is also used to style the EDIT/DELETE buttons on char show pg. */
 
+#user_showpg_wrapper {
+  box-sizing: border-box;
+  height: 100%; width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000;
+}
+
+#user_showpg_profile_bg {
+  --height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%; width: calc(var(--height)/2);
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
+  background-color: #FFF;
+}
+
 .user_showpg_profile_container {
   box-sizing: border-box;
-  width: 50%;
-  padding-left: 50px;
+  width: 100%;
+  padding-left: 50px; margin-bottom: 100px;
 }
 
 .user_showpg_welcome_block {
