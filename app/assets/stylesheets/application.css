@@ -21,9 +21,9 @@
   }
 
  #main_content_body {
-   
-   width: 100%; height: calc(100% - 30px);
-   padding-top: 30px;
+   box-sizing: border-box;
+   width: 100%; height: calc(100% - 20px);
+   /* padding-top: 30px; */
    display: flex;
    align-items: center;
    justify-content: center;
@@ -177,6 +177,7 @@
   font-family: 'Cantarell';
   color: #fff;
   font-size: 20px;
+  margin: 0px 0px 10px 0px;
 }
 
 .google_login_link_wrapper a {

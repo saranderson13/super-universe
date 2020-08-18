@@ -1,8 +1,10 @@
-<!-- AUTHORIZED ONLY TO ADMINS -->
-
-<h2>All Users</h2>
-<ul>
-  <% @users.each do |u| %>
-    <li><%= link_to u.alias, user_path(u) %></li>
-  <% end %>
-</ul>
+<div class = "all_users">
+  <div class = "all_users_title">
+    All Users
+  </div>
+  <ul class = "all_users_list">
+    <% @users.each do |u| %>
+      <li><%= link_to u.alias, user_path(u) %></li>
+    <% end %>
+  </ul>
+</div>

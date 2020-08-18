@@ -52,10 +52,10 @@
 }
 
 #user_showpg_char_section {
-width: 400px; 
-position: relative;
-top: 0px; left: 0px;
-padding-left: 20px;
+  width: 400px; 
+  position: relative;
+  top: 0px; left: 0px;
+  padding-left: 20px;
 }
 
 .user_showpg_section_title {
@@ -86,4 +86,31 @@ ul.user_showpg_chars_list a:hover {
 
 .user_showpg_right_container {
   width: 50%;
+}
+
+/* USER INDEX */
+
+.all_users {
+  width: calc(100% - 100px); height: calc(100% - 100px);
+  display: block;
+  position: relative;
+}
+
+.all_users_title {
+  font-family: 'Cantarell';
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.all_users_list {
+  font-family: 'Roboto Condensed';
+  font-size: 20px;
+}
+
+.all_users_list a, .all_users_list a:active, .all_users_list a:visited {
+  color: #f00;
+}
+
+.all_users_list a:hover {
+  text-decoration: line-through;
 }

@@ -3,12 +3,14 @@
   <%= link_to "Profile", user_path(current_user) %>
   <%= link_to "New Char", new_user_character_path(current_user) %>
   <%= link_to "Powers", powers_path %>
-  <%= admin_links %>
+  <%= link_to "Users", users_path %>
   <%= form_with(url: "/logout", method: "delete") do %>
     <%= submit_tag 'Log Out' %>
   <% end %>
-
+    
   <% if !!flash[:notice] %>
     <span class="home_error_flash"><%= flash[:notice] %></span>
   <% end %>
 </nav>
+    
+    # <%= admin_links %>
