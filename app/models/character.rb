@@ -130,6 +130,35 @@ class Character < ApplicationRecord
     self.hp + (self.level * 10)
   end
 
+  def win_loss_ratio(numerator, denominator)
+    # To rank by win, call with ("victories", "defeats")
+    # To rank by losses, call with ("defeats", "victories")
+
+    if self.send(denominator) != 0 
+      return self.send(numerator).to_f / self.send(denominator)
+    else
+      return self.send(numerator).to_f + 1
+    end
+  end
+
+  def self.leader_board_general
+    sorted = self.all.sort_by { |c| [c.level, c.lvl_progress, c.win_loss_ratio("victories", "defeats"), c.victories] }.reverse()
+    top_ranking = []
+    sorted.each do |c|
+      top_ranking.push(c) if c.win_loss_ratio("victories", "defeats") > 1
+      break if top_ranking.length == 5
+    end
+    return top_ranking
+  end
+
+  def self.leader_board_wins
+    return self.all.sort_by { |c| [c.victories, c.win_loss_ratio("victories", "defeats")] }.reverse[0..4]
+  end
+
+  def self.wall_of_shame
+    return self.all.sort_by { |c| [c.defeats, c.win_loss_ratio("defeats", "victories")]}.reverse[0..4]
+  end
+
   private
 
   def validate_stats
