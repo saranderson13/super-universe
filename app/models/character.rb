@@ -130,6 +130,9 @@ class Character < ApplicationRecord
     self.hp + (self.level * 10)
   end
 
+
+  # CHARACTER RANKING FUNCTIONS
+
   def win_loss_ratio(numerator, denominator)
     # To rank by win, call with ("victories", "defeats")
     # To rank by losses, call with ("defeats", "victories")

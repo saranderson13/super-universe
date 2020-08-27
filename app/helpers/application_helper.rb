@@ -52,6 +52,10 @@ module ApplicationHelper
     end
   end
 
+  def leader_board_char(c, i)
+    ("<div class='leader_entry'>#{i + 1}. #{c.supername}</div>").html_safe
+  end
+
   def welcome_pg_if_not_logged_in
     if !logged_in?
       content = '<h3 class="welcome_subheading"><a href = "/login">Log in</a> or <a href="/signup">Sign up</a> to join the battle!</h3>'

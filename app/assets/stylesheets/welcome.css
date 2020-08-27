@@ -31,3 +31,28 @@ ul.recent_battles {
   font-size: 18px;
   text-align: center;
 }
+
+div.leader_board {
+  box-sizing: border-box;
+  width: 300px;
+  height: calc(100% - 30px);
+  padding: 40px 0px 0px 40px;
+  position: absolute;
+  top: 30px; left: 0px;
+  background-color: #000;
+}
+
+div.leader_board_title {
+  font-family: 'Cantarell';
+  font-size: 25px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+div.leader_entry {
+  margin-left: 20px;
+  color: #fff;
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  line-height: 150%;
+}

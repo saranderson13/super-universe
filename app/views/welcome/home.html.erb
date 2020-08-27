@@ -1,3 +1,9 @@
+<div class='leader_board'>
+  <div class='leader_board_title'>Top Supers:</div>
+  <% @leaders_general.each_with_index do |c, i| %>
+    <%= leader_board_char(c, i) %>
+  <% end %>
+</div>
 <div>
   <h1 class="welcome_title">Super Universe</h1>
   <div class="recent_battles_box">
