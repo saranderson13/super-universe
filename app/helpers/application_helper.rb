@@ -53,7 +53,7 @@ module ApplicationHelper
   end
 
   def leader_board_char(c, i)
-    ("<div class='leader_entry'>#{i + 1}. #{c.supername}</div>").html_safe
+    ("<div class='leader_entry'>#{i + 1}. <a href='/users/#{c.user_id}/characters/#{c.id}'>#{c.supername}</a></div>").html_safe
   end
 
   def welcome_pg_if_not_logged_in

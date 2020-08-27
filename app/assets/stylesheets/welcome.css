@@ -66,3 +66,12 @@ div.leader_entry {
   font-size: 18px;
   line-height: 150%;
 }
+
+div.leader_entry a, div.leader_entry a:active, div.leader_entry a:visited {
+  color: #f00;
+}
+
+div.leader_entry a:hover {
+  color: #f00;
+  text-decoration: none;
+}
