@@ -154,8 +154,8 @@ class Character < ApplicationRecord
     return top_ranking
   end
 
-  def self.leader_board_wins
-    return self.all.sort_by { |c| [c.victories, c.win_loss_ratio("victories", "defeats")] }.reverse[0..4]
+  def self.leader_board_records
+    self.all.sort_by { |c| [c.win_loss_ratio("victories", "defeats"), c.victories] }.reverse[0..4]
   end
 
   def self.wall_of_shame
