@@ -1,5 +1,6 @@
 class PowersController < ApplicationController
 
+  before_action :must_be_logged_in
   helper_method :characters_for_add_power
 
   def index

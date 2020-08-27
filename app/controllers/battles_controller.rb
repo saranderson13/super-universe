@@ -1,5 +1,7 @@
 class BattlesController < ApplicationController
 
+  before_action :must_be_logged_in
+
   def create
     protag = Character.find_by(id: battle_params[:protag_id])
     antag = Character.find_by(id: battle_params[:antag_id])

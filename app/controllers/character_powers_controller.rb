@@ -1,5 +1,7 @@
 class CharacterPowersController < ApplicationController
 
+  before_action :must_be_logged_in
+
   # '/characters/add_power'
   # form found on 'power/:id' page
   def add

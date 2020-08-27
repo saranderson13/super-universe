@@ -29,3 +29,12 @@ p.error_msg {
   font-family: "Roboto Condensed";
   font-size: 15px;
 }
+
+p.error_msg a, p.error_msg a:active, p.error_msg a:visited {
+  color: #f00;
+}
+
+p.error_msg a:hover {
+  color: #f00;
+  text-decoration: none;
+}

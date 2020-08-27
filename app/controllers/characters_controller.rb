@@ -1,5 +1,7 @@
 class CharactersController < ApplicationController
 
+  before_action :must_be_logged_in
+
   def new
     authorized_to_edit_char?
     @user = set_user

@@ -58,4 +58,11 @@ class ApplicationController < ActionController::Base
     end
     # return head(:forbidden) unless !!current_user && current_user.admin_status
   end
+
+  def must_be_logged_in
+    unless logged_in?
+      flash[:notice] = "warning: you must be logged in. please sign up or log in."
+      redirect_to root_path
+    end
+  end
 end

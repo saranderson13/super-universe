@@ -33,20 +33,24 @@ module CharactersHelper
   end
 
   def char_showpg_battle_form
-    if @char.has_superpowers?
-      if current_user.eligable_chars(@char).count > 0
-        render partial: 'char_showpg_battle_form'
-      else
-        msg = "<div class='pbcform_header'>You currently have no characters eligable to battle this character.</div>"
-        msg.html_safe
+    if logged_in?
+      if @char.has_superpowers?
+        if current_user.eligable_chars(@char).count > 0
+          render partial: 'char_showpg_battle_form'
+        else
+          msg = "<div class='pbcform_header'>You currently have no characters eligable to battle this character.</div>"
+          msg.html_safe
+        end
       end
     end
   end
 
   # On Char Show Pg - shows 'Delete Power' button if authorized to delete power from character.
   def char_showpg_delpwr(p)
-    if logged_in? && current_user.id == params[:user_id].to_i || current_user.admin_status?
-      render partial: 'char_showpg_delete', locals: { power: p }
+    if logged_in?
+      if current_user.id == params[:user_id].to_i || current_user.admin_status?
+        render partial: 'char_showpg_delete', locals: { power: p }
+      end
     end
   end
 
