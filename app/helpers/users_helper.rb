@@ -36,9 +36,12 @@ module UsersHelper
     for b in viewing.protag_battles.in_progress do
       protag = Character.find(b.protag_id)
       antag = Character.find(b.antag_id)
-      battle_list += "<a href='/battles/#{b.id}' class='bip_link'>#{protag.supername} vs. #{antag.supername}</a>"
+      if viewing == current_user
+        battle_list += "<a href='/battles/#{b.id}' class='bip_link'>#{protag.supername} vs. #{antag.supername}</a>"
+      else
+        battle_list += "<div>#{protag.supername} vs. #{antag.supername}</div>"
+      end
     end
-
     return battle_list
   end
 
