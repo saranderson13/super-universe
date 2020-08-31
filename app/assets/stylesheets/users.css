@@ -86,6 +86,39 @@ ul.user_showpg_chars_list a:hover {
 
 .user_showpg_right_container {
   width: 50%;
+  color: #000;
+  align-self: start;
+}
+
+.user_bip_container {
+  box-sizing: border-box;
+  width: calc(100% - 160px);
+  margin: 100px auto 0px;
+  padding: 50px 20px;
+  background-color: #fff;
+}
+
+.user_bip_title {
+  font-family: 'Cantarell';
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.bip_links {
+  font-family: 'Roboto Condensed';
+}
+
+a.bip_link, a.bip_link:active, a.bip_link:visited {
+  font-size: 20px;
+  color: #f00;
+  text-decoration: none;
+  display: block;
+}
+
+a.bip_link:hover {
+  text-decoration: underline;
 }
 
 /* USER INDEX */
