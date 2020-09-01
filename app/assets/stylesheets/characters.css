@@ -374,3 +374,30 @@ td.cft_input textarea {
   width: 290px; height: 150px;
   margin-right: 10px;
 }
+
+
+.char_pg_bip_alert {
+  display: grid;
+  grid-auto-flow: column;
+  margin-bottom: 5px;
+  color: #F00;
+}
+
+.char_pg_bip_alert a, .char_pg_bip_alert a:active, .char_pg_bip_alert a:visited {
+  color: #F00;
+  text-decoration: none;
+}
+
+.char_pg_bip_alert a:hover {
+  text-decoration: line-through;
+}
+
+.bip_icon_container {
+  width: 16px; height: 16px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.bip_icon_container img {
+  margin: -92px 0px 0px -92px;
+}

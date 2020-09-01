@@ -107,4 +107,21 @@ module CharactersHelper
     end
   end
 
+
+  def bip_icon_char_page
+    battle = @char.battle_in_progress
+    if !!battle
+      link_no_link = @char.user == current_user ? "<a href='/battles/#{battle.id}'>BATTLE IN PROGRESS</a>" : "BATTLE IN PROGRESS"
+      bip_line = <<~HERADOC
+      <div class="char_pg_bip_alert">
+        <div class="bip_icon_container">
+          <img src='/assets/bip_icon.gif'>
+        </div>
+        #{link_no_link}
+      </div>
+      HERADOC
+      return bip_line.html_safe
+    end
+  end
+
 end

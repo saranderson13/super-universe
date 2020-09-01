@@ -56,6 +56,10 @@ class Character < ApplicationRecord
     !self.protag_battles.any? { |b| b.outcome == "Pending" }
   end
 
+  def battle_in_progress
+    self.protag_battles.in_progress[0]
+  end
+
   def opposite_char_type?(antag)
     if self.char_type == "Hero"
       antag.char_type == "Villain"
