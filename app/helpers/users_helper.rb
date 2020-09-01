@@ -18,10 +18,10 @@ module UsersHelper
 
 
   def user_battles_in_progress
-    viewing = User.find(params["id"])
-    if viewing.protag_battles.in_progress.length > 0
+    @user = User.find(params["id"])
+    if @user.protag_battles.in_progress.length > 0
       in_progress = <<~HEREDOC
-      <div class='user_bip_title'>#{viewing.protag_battles.in_progress.count} battles in progress</div>
+      <div class='user_bip_title'>#{@user.protag_battles.in_progress.count} battles in progress</div>
       <div class='bip_links'>#{user_battles_in_progress_list}</div>
       HEREDOC
       return in_progress.html_safe
@@ -31,12 +31,11 @@ module UsersHelper
   end
 
   def user_battles_in_progress_list
-    viewing = User.find(params["id"])
     battle_list = ""
-    for b in viewing.protag_battles.in_progress do
+    for b in @user.protag_battles.in_progress do
       protag = Character.find(b.protag_id)
       antag = Character.find(b.antag_id)
-      if viewing == current_user
+      if @user == current_user
         battle_list += "<a href='/battles/#{b.id}' class='bip_link'>#{protag.supername} vs. #{antag.supername}</a>"
       else
         battle_list += "<div>#{protag.supername} vs. #{antag.supername}</div>"
