@@ -32,7 +32,7 @@
   box-sizing: border-box;
   width: 350px; height: 350px;
   padding: 50px 0px 0px;
-  border: 6px double #f00;
+  border: 5px solid #f00;
   position: fixed;
   top: 170px; 
   margin-right: 100px;
@@ -53,7 +53,7 @@
   width: 600px; height: 250px;
   padding: 0px 20px 10px;
   position: fixed;
-  border: 6px double #f00;
+  border: 5px solid #f00;
 }
 .protag_form.white, .battle_log.white {
   background-color: #fff;

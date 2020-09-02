@@ -8,32 +8,38 @@
 }
 
 .pwr_column_block {
-  width: 760px; /* ADD 190px FOR EACH COLUMN */
-  margin: auto;
+  display: flex;
+  grid-auto-flow: column;
+  justify-content: space-evenly;
 }
 
 .pwr_column {
   box-sizing: border-box;
-  width: 150px; height: 100%;
+  width: 250px; height: 100%;
+  min-width: 150px;
   background-color: #fff;
   margin: 0px 20px;
-  /* display: inline-block; */
   float: left;
 }
 
 .pwr_column_title {
-  font-family: "Roboto Condensed";
-  font-size: 20px;
+  font-family: "Cantarell";
+  font-size: 25px;
   text-align: center;
   height: 70px;
-  padding-top: 10px;
+  padding: 20px 30px 0px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 25px;
 }
 
 .pwr_list {
   list-style: none;
   padding: 0px 5px;
   font-family: "Roboto Condensed";
-  font-size: 14px;
+  font-size: 18px;
+  line-height: 180%;
+  margin-block-start: 5px;
 }
 
 li.pwr_link a {
@@ -41,7 +47,7 @@ li.pwr_link a {
   text-decoration: none;
   cursor: crosshair;
   line-height: 20px;
-  transition: color ease-in-out .3s;
+  transition: color ease-in-out .15s;
 }
 
 li.pwr_link a:visited, li.pwr_link a:active {
@@ -51,6 +57,10 @@ li.pwr_link a:visited, li.pwr_link a:active {
 
 li.pwr_link a:hover {
   color: #f00;
+}
+
+li.pwr_link a::before {
+  content: "⯈ "
 }
 
 
