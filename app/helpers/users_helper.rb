@@ -21,7 +21,7 @@ module UsersHelper
     @user = User.find(params["id"])
     if @user.protag_battles.in_progress.length > 0
       in_progress = <<~HEREDOC
-      <div class='user_bip_title'>#{@user.protag_battles.in_progress.count} battles in progress</div>
+      <div class='user_bip_title'>#{pluralize(@user.protag_battles.in_progress.count, 'battle')} in progress</div>
       <div class='bip_links'>#{user_battles_in_progress_list}</div>
       HEREDOC
       return in_progress.html_safe
