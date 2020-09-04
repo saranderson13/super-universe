@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  # before_action :admin_only, only: [:index]
-  before_action :must_be_logged_in
+  before_action :admin_only, only: [:index]
+  # before_action :must_be_logged_in
 
   def index
     @users = User.all
