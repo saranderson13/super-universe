@@ -90,13 +90,15 @@ ul.user_showpg_chars_list a:hover {
   align-self: start;
 }
 
-.user_bip_container {
+.user_bip_container, .user_find_opponents_container {
   box-sizing: border-box;
   width: calc(100% - 160px);
-  margin: 100px auto 0px;
   padding: 50px 20px;
   background-color: #fff;
 }
+
+.user_bip_container { margin: 100px auto 0px; }
+.user_find_opponents_container { margin: 60px auto 0px; }
 
 .user_bip_title {
   font-family: 'Cantarell';
@@ -121,6 +123,8 @@ a.bip_link, a.bip_link:active, a.bip_link:visited {
 a.bip_link:hover {
   text-decoration: underline;
 }
+
+
 
 /* USER INDEX */
 

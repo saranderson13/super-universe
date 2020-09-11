@@ -44,5 +44,9 @@ module UsersHelper
     return battle_list
   end
 
+  def user_find_opponent_form
+    render partial: 'user_showpg_find_opponent_form'
+  end
+
 end
 
