@@ -45,7 +45,7 @@ module UsersHelper
   end
 
   def user_find_opponent_form
-    render partial: 'user_showpg_find_opponent_form'
+    render partial: @user == current_user ? 'user_showpg_find_opponent_form' : 'user_showpg_social_and_comparison'
   end
 
 end
