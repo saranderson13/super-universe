@@ -1,1 +1,18 @@
-"Find Opponents Form will go here."
+<div id="find_opponents_wrapper">
+    <div class="opponent_cat_wrapper">
+        <div class="opponent_column_title">Fight a Hero!</div>
+        <ul class="opponent_list">
+            <% @hero_opp.each do |h| %>
+                <li><%= link_to h.supername, user_character_path(id: h.id, user_id: h.user_id) %></li>
+            <% end %>
+        </ul>
+    </div>
+    <div class="opponent_cat_wrapper">
+        <div class="opponent_column_title">Fight a Villain!</div>
+        <ul class="opponent_list">
+            <% @villain_opp.each do |h| %>
+                <li><%= link_to h.supername, user_character_path(id: h.id, user_id: h.user_id) %></li>
+            <% end %>
+        </ul>
+    </div>
+</div>

@@ -27,6 +27,8 @@ class UsersController < ApplicationController
 
   def show
     @user = set_user
+    @hero_opp = Character.random_heroes()
+    @villain_opp = Character.random_villains()
     if @user.nil?
       flash[:notice] = "warning: that user does not exist."
       redirect_to root_path

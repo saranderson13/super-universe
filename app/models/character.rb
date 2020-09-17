@@ -43,6 +43,14 @@ class Character < ApplicationRecord
     Character.all.select { |c| c.protag_battle_ready?(self) }
   end
 
+  def self.random_heroes
+    Character.hero.sample(5)
+  end
+
+  def self.random_villains
+    Character.villain.sample(5)
+  end
+
   # TO DETERMINE CHARACTER BATTLE ELIGABILITY
   def not_self?(antag)
     self.id != antag.id

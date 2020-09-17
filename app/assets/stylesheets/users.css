@@ -19,7 +19,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 100%; width: calc(var(--height)/2);
+  height: 100%; width: calc((var(--height) / 10) * 4);
   border-top-right-radius: 100%;
   border-bottom-right-radius: 100%;
   background-color: #FFF;
@@ -85,7 +85,7 @@ ul.user_showpg_chars_list a:hover {
 /* PROFILE RIGHT PANEL */
 
 .user_showpg_right_container {
-  width: 50%;
+  width: 60%;
   color: #000;
   align-self: start;
 }
@@ -124,6 +124,39 @@ a.bip_link:hover {
   text-decoration: underline;
 }
 
+#find_opponents_wrapper {
+  display: flex;
+  grid-auto-flow: column;
+  justify-content: space-around;
+  font-family: "Roboto Condensed";
+  font-size: 15px;
+}
+
+ul.opponent_list {
+  list-style: none;
+  padding-left: 0px;
+}
+
+ul.opponent_list li a, ul.opponent_list li a:active, ul.opponent_list li a:visited {
+  color: #f00;
+  text-decoration: none;
+}
+
+ul.opponent_list a:hover {
+  text-decoration: line-through;
+}
+
+ul.opponent_list li a::before {
+  color: #000;
+  content: "⯈ "
+}
+
+.opponent_column_title {
+  font-family: "Cantarell";
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
 
 
 /* USER INDEX */
