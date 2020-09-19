@@ -97,8 +97,8 @@ ul.user_showpg_chars_list a:hover {
   background-color: #fff;
 }
 
-.user_bip_container { margin: 100px auto 0px; }
-.user_find_opponents_container { margin: 60px auto 0px; }
+.user_bip_container { margin-top: 30px; }
+.user_find_opponents_container { margin: 100px auto 0px }
 
 .user_bip_title {
   font-family: 'Cantarell';
