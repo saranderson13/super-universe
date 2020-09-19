@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   def opponents(type)
     pool = []
-    Character.send(type).each { |c| pool.push(c) if c.user_id != self.id }
+    Character.send(type).each { |c| pool.push(c) if c.user_id != self.id && c.has_superpowers? }
     pool.sample(5)
   end
 
