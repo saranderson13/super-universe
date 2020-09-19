@@ -25,6 +25,12 @@ class User < ApplicationRecord
 
   scope :admin, -> { where(admin_status: true) }
 
+  def opponents(type)
+    pool = []
+    Character.send(type).each { |c| pool.push(c) if c.user_id != self.id }
+    pool.sample(5)
+  end
+
   # FOR OAUTH LOGIN
   def self.from_omniauth(auth)
     # Creates a new user only if it doesn't exist
