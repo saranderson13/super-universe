@@ -26,6 +26,7 @@ class CharactersController < ApplicationController
     @user = set_user
     @char = set_char
     @secret_id = @char.dox("") if char_security_checks
+    @battles = @char.protag_battles
   end
 
   def edit
@@ -78,6 +79,12 @@ class CharactersController < ApplicationController
       flash[:notice] = "You have failed to dox #{@char.supername}. Try again."
       redirect_to user_character_path(id: @char.id, user_id: @char.user_id)
     end
+  end
+
+
+  def battles 
+    @char = set_char
+    @battles = @char.protag_battles
   end
 
 

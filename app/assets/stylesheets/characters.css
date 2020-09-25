@@ -3,6 +3,7 @@
 /* That class is also used to style the EDIT/DELETE buttons on char show pg. */
 
 .char_showpg_wrapper {
+  display: flex;
   margin: auto;
 }
 
@@ -184,6 +185,50 @@ td.pick_battle_char_form input[type="submit"] {
   -webkit-appearance: none;
   border: none;
 }
+
+#char_showpg_other_info {
+  align-self: flex-start;
+  box-sizing: border-box;
+  width: 20%;
+  padding-left: 30px;
+  background-color: #000;
+  color: #fff;
+  height: 100%;
+}
+
+.char_showpg_username {
+  margin-top: 30px;
+  font-family: "Roboto Condensed";
+}
+
+div.char_showpg_username a, div.char_showpg_username a:visited, div.char_showpg_username a:active {
+  font-size: 25px;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Cantarell';
+  margin: 20px 0px 10px;
+}
+
+div.char_showpg_username a:hover {
+  color: #f00;
+  text-decoration: line-through;
+}
+
+div.char_showpg_username a::before {
+  content: "⯈ ";
+  color: #f00;
+}
+
+div.char_showpg_user_subtitle {
+  font-family: 'Roboto Condensed';
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-left: 32px;
+}
+
+
+
+
 
 /* FORMS: NEW AND EDIT CHAR */
 .charform_pg_name {

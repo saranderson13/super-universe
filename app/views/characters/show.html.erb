@@ -1,4 +1,12 @@
+<div id="char_showpg_other_info">
+    <div class="char_showpg_username">
+      <%= link_to @user.alias, user_path(@user.id) %>
+    </div>
+    <div class="char_showpg_user_subtitle">THE CREATOR</div>
+</div>
+
 <div class="char_showpg_wrapper">
+  
   <div id="char_showpg_char_card" class="char_showpg_card">
 
     <h2 class="char_showpg_supername"><%= @char.supername %></h2>
