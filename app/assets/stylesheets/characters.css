@@ -91,6 +91,11 @@
   cursor: crosshair;
 }
 
+.char_showpg_power_link a:hover {
+  color: #f00;
+  text-decoration: line-through;
+}
+
 .char_showpg_power_move {
   font-family: "Roboto Condensed";
   font-size: 13px;
@@ -218,6 +223,7 @@ div.char_showpg_sidebar_title a, div.char_showpg_sidebar_title a:visited, div.ch
 div.char_showpg_sidebar_title a:hover {
   color: #f00;
   text-decoration: line-through;
+  cursor: crosshair;
 }
 
 div.char_showpg_sidebar_title a::before {
