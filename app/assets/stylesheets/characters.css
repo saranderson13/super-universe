@@ -196,8 +196,15 @@ td.pick_battle_char_form input[type="submit"] {
   height: 100%;
 }
 
-.char_showpg_username {
+.char_showpg_other_info_header {
   margin-top: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #fff;
+}
+
+.char_showpg_username {
+  margin-bottom: 5px;
   font-family: "Roboto Condensed";
 }
 
@@ -206,7 +213,6 @@ div.char_showpg_username a, div.char_showpg_username a:visited, div.char_showpg_
   color: #fff;
   text-decoration: none;
   font-family: 'Cantarell';
-  margin: 20px 0px 10px;
 }
 
 div.char_showpg_username a:hover {
