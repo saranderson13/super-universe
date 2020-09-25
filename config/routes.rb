@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   patch '/characters/:id/dox', to: 'characters#dox_char'
 
   # Battle History
-  get '/characters/:id/battles', to: 'characters#battles'
+  get '/characters/:id/battles', to: 'characters#battles', as: 'battle_history'
 
   # Power Paths
   resources :powers, only: [:index, :show]

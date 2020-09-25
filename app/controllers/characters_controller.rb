@@ -26,7 +26,7 @@ class CharactersController < ApplicationController
     @user = set_user
     @char = set_char
     @secret_id = @char.dox("") if char_security_checks
-    @battles = @char.protag_battles
+    @recent_battles = @char.recent_battles
   end
 
   def edit

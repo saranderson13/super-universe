@@ -1,9 +1,23 @@
 <div id="char_showpg_other_info">
   <section class="char_showpg_other_info_header">
-    <div class="char_showpg_username">
+    <div class="char_showpg_sidebar_title">
       <%= link_to @user.alias, user_path(@user.id) %>
     </div>
     <div class="char_showpg_user_subtitle">THE CREATOR</div>
+  </section>
+
+  <section>
+    <div class="char_showpg_sidebar_title">
+      Recent Battles
+      <div class="char_showpg_user_subtitle">
+        <%= link_to "see all battles", battle_history_path(id: @char.id) %>
+      </div>
+    </div>
+    <ul class="char_showpg_recent_battles">
+      <% @recent_battles.each do |b| %>
+        <li><%= b.outcome == "Victory" ? "VICTORY over #{b.antag.supername}" : "DEFEATED by #{b.antag.supername}" %></li>
+      <% end %>
+    </ul>  
   </section>
 </div>
 

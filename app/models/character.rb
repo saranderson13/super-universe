@@ -43,6 +43,10 @@ class Character < ApplicationRecord
     Character.all.select { |c| c.protag_battle_ready?(self) }
   end
 
+  def recent_battles
+    self.protag_battles.order(:updated_at).last(5).reverse()
+  end
+
   # TO DETERMINE CHARACTER BATTLE ELIGABILITY
   def not_self?(antag)
     self.id != antag.id

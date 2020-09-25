@@ -203,24 +203,24 @@ td.pick_battle_char_form input[type="submit"] {
   border-bottom: 1px solid #fff;
 }
 
-.char_showpg_username {
+.char_showpg_sidebar_title {
   margin-bottom: 5px;
-  font-family: "Roboto Condensed";
-}
-
-div.char_showpg_username a, div.char_showpg_username a:visited, div.char_showpg_username a:active {
+  font-family: 'Cantarell';
   font-size: 25px;
   color: #fff;
-  text-decoration: none;
-  font-family: 'Cantarell';
 }
 
-div.char_showpg_username a:hover {
+div.char_showpg_sidebar_title a, div.char_showpg_sidebar_title a:visited, div.char_showpg_sidebar_title a:active {
+  text-decoration: none;
+  color: #fff;
+}
+
+div.char_showpg_sidebar_title a:hover {
   color: #f00;
   text-decoration: line-through;
 }
 
-div.char_showpg_username a::before {
+div.char_showpg_sidebar_title a::before {
   content: "⯈ ";
   color: #f00;
 }
@@ -230,6 +230,16 @@ div.char_showpg_user_subtitle {
   font-size: 11px;
   text-transform: uppercase;
   margin-left: 32px;
+}
+
+ul.char_showpg_recent_battles {
+  list-style: none;
+  font-family: 'Roboto Condensed';
+  padding-left: 15px;
+}
+
+ul.char_showpg_recent_battles li {
+  padding-bottom: 10px;
 }
 
 
