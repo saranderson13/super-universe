@@ -101,6 +101,18 @@
    float: left;
  }
 
+ /* MONDIFIERS FOR BUTTONS */
+ .dark a {
+   background-color: #000;
+   color: #fff;
+ }
+
+ .light a {
+   background-color: #fff;
+   color: #000;
+ }
+ 
+ .extra_padding { padding: 20px 0px 7px; }
 
 
 /* USER AND SESSION FORM PAGE STYLING */
