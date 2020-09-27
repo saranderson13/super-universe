@@ -15,7 +15,7 @@
     </div>
     <ul class="char_showpg_recent_battles">
       <% @recent_battles.each do |b| %>
-        <li><%= b.outcome == "Victory" ? "VICTORY over #{b.antag.supername}" : "DEFEATED by #{b.antag.supername}" %></li>
+        <li><%= b.outcome == "Victory" ? "▲ VICTORY over #{b.antag.supername}" : "▼ DEFEATED by #{b.antag.supername}" %></li>
       <% end %>
     </ul>  
   </section>

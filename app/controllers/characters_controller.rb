@@ -84,6 +84,7 @@ class CharactersController < ApplicationController
 
   def battles 
     @char = set_char
+    @user = @char.user
     @battles = @char.protag_battles
   end
 
