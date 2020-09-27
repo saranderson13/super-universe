@@ -9,7 +9,7 @@
     <%= char_edit_links %>
   </section>
 
-  <section class="char_showpg_other_info_header">
+  <section class="char_showpg_other_info_header spacing_fix">
     <% if @recent_battles.length > 0 %>
       <div class="char_showpg_sidebar_title">
         Recent Battles
@@ -31,7 +31,7 @@
   </section>
 
   <% if !@char.bio.nil? && ( @char.bio.nil? || !@char.bio.empty? ) %>
-    <section class="char_showpg_other_info_header">
+    <section class="char_showpg_other_info_header spacing_fix">
       <div class="char_showpg_sidebar_title">
         Character Bio 
       </div>

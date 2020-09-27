@@ -202,14 +202,17 @@ td.pick_battle_char_form input[type="submit"] {
   background-color: #000;
   color: #fff;
   height: 100%;
+  overflow: hidden;
 }
 
 .char_showpg_other_info_header {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 30px 0px 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid #fff;
 }
+
+.char_showpg_other_info_header.spacing_fix { margin: 15px 0px; }
+.char_showpg_other_info_header:last-child { border: none; }
 
 .char_showpg_sidebar_title {
   margin-bottom: 5px;
@@ -250,6 +253,7 @@ ul.char_showpg_recent_battles {
   list-style: none;
   font-family: 'Roboto Condensed';
   padding-left: 15px;
+  margin-bottom: 0px;
 }
 
 ul.char_showpg_recent_battles li {

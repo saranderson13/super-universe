@@ -88,7 +88,7 @@ module CharactersHelper
     when :hp
       "!! #{@char.errors[:hp][0]}" if !@char.errors[:hp].empty?
     when :bio
-      "!! Bio is too long - max length: 500 characters." if !@char.errors[:bio].empty?
+      "!! Bio is too long - max length: 400 characters. You have used #{@char.bio.length}/400 characters." if !@char.errors[:bio].empty?
     end
   end
 
