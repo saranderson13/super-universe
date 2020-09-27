@@ -15,7 +15,10 @@
     </div>
     <ul class="char_showpg_recent_battles">
       <% @recent_battles.each do |b| %>
-        <li><%= b.outcome == "Victory" ? "▲ VICTORY over #{b.antag.supername}" : "▼ DEFEATED by #{b.antag.supername}" %></li>
+        <li>
+          <%= b.outcome == "Victory" ? "▲ Victory over " : "▼ Defeated by " %>
+          <%= link_to b.antag.supername, user_character_path(id: b.antag.id, user_id: b.antag.user_id) %>
+        </li>
       <% end %>
     </ul>  
   </section>

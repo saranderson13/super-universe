@@ -247,6 +247,19 @@ ul.char_showpg_recent_battles {
 
 ul.char_showpg_recent_battles li {
   padding-bottom: 10px;
+  font-size: 14px;
+}
+
+ul.char_showpg_recent_battles li a, ul.char_showpg_recent_battles li a:visited, ul.char_showpg_recent_battles li a:active {
+  color: #fff;
+  text-decoration: none;
+  cursor: crosshair;
+  text-transform: uppercase;
+}
+
+ul.char_showpg_recent_battles li a:hover {
+  color: #f00;
+  text-decoration: line-through;
 }
 
 
