@@ -50,6 +50,17 @@
 
     <h2 class="char_showpg_supername"><%= @char.supername %></h2>
     <h4 class="char_showpg_secretid"> aka <%= secret_id_class %></h4><%= dox_button %>
+    
+    <div class="char_showpg_details_wrapper">
+      <div class="char_showpg_details_box">
+        <%= "LEVEL: #{@char.level}" %><br>
+        <%= "NEXT LVL: #{@char.lvl_progress} / #{@char.pts_to_next_lvl}" %>
+      </div>
+      <div class="char_showpg_details_box">
+        <%= "#{@char.alignment}" %><br>
+        <%= "#{@char.victories} Victories || #{@char.defeats} Defeats" %>
+      </div>
+    </div>
 
     <div class="char_showpg_attributes">
       <div class="char_showpg_att_bookend"></div>

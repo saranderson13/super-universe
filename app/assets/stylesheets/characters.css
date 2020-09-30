@@ -124,24 +124,6 @@ h4.char_showpg_secretid {
   margin: 5px 5px;
 }
 
-/* char_card attributes */
-.char_showpg_attributes {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin: 30px 0px;
-  font-family: "Roboto Condensed";
-  font-size: 13px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.char_showpg_attribute_square { width: 85px; text-align: center; }
-.char_showpg_att_point_total { font-size: 25px; }
-.char_showpg_att_bookend { width: 70px; background-color: #000;}
-.char_showpg_att_breaker { border-left: 1px solid #000; }
-
-
 /* for secret identity related styling */
 .redacted { color: #f00; }
 .revealed { color: #000; }
@@ -163,11 +145,51 @@ h4.char_showpg_secretid {
   -webkit-appearance: none;
 }
 
+/* char_card character details */
+.char_showpg_details_wrapper {
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.char_showpg_details_wrapper div:first-child {
+  padding-left: 10px;
+  border-left: 1px solid #000;
+  margin-left: 6px;
+}
+
+.char_showpg_details_wrapper div:last-child { 
+  text-align: right; 
+  padding-right: 10px;
+  border-right: 1px solid #000;
+  margin-right: 6px;
+}
+
+/* char_card attributes */
+.char_showpg_attributes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 25px 0px;
+  font-family: "Roboto Condensed";
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.char_showpg_attribute_square { width: 85px; text-align: center; }
+.char_showpg_att_point_total { font-size: 25px; }
+.char_showpg_att_bookend { width: 70px; background-color: #000;}
+.char_showpg_att_breaker { border-left: 1px solid #000; }
+
 /* for pick_battle_char_form */
 .pick_battle_char_form {
   width: 320px;
   margin: 0px auto 20px;
-  padding-top: 20px;
+  padding-top: 15px;
   border-top: 1px solid #000;
   text-align: center
 }
@@ -175,11 +197,10 @@ h4.char_showpg_secretid {
 .pbcform_header {
   font-family: "Roboto Condensed";
   font-size: 17px;
+  padding-bottom: 10px;
 }
 
-.pick_battle_char_form select {
-  width: 180px;
-}
+.pick_battle_char_form select { width: 180px; margin-right: 5px; }
 
 .pick_battle_char_form input[type="submit"] {
   box-sizing: border-box;
@@ -187,6 +208,7 @@ h4.char_showpg_secretid {
   background-color: #000;
   color: #fff;
   width: 90px; height: 20px;
+  margin-left: 5px;
   padding: 0px;
   line-height: 20px;
   font-family: "Roboto Condensed";
