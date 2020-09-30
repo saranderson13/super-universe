@@ -11,7 +11,7 @@
 
 /* applies to both cards */
 .char_showpg_card {
-  margin: 20px 50px;
+  margin: 20px 0px;
   float: left;
 }
 
@@ -19,18 +19,21 @@
 #char_showpg_char_card {
   box-sizing: border-box;
   width: 506px; height: 446px;
-  border: 3px double #000;
-  border-top-left-radius: 100px;
-  border-bottom-left-radius: 100px;
-  padding: 20px 20px 20px 40px;
+  border: 1px solid #000;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: none;
+  padding: 21px 41px;
 }
 
 /* power_card specific */
 #char_showpg_power_card {
   box-sizing: border-box;
-  width: 450px;height: 446px;
-  padding: 20px 0px 20px 40px;
+  width: 500px;height: 446px;
+  padding: 20px 40px;
+  border: 1px solid #000;
   border-left: 3px double #000;
+  /* border-left: 3px double #000; */
 }
 
 /* individual power entry styling */
@@ -105,6 +108,7 @@
 
 .char_showpg_moves_sec {
   width: 300px;
+  padding: 15px 0px;
 }
 
 .char_showpg_delete_pwr_sec {
@@ -116,6 +120,15 @@
   font-family: "Cantarell";
   font-size: 30px;
   margin: 5px 0px;
+}
+
+
+.char_showpg_redacted_dox_wrapper {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 h4.char_showpg_secretid {
@@ -134,10 +147,11 @@ h4.char_showpg_secretid {
   background-color: #000;
   color: #fff;
   width: 80px; height: 20px;
-  margin-left: 5px;
-  line-height: 20px;
+  margin-left: 15px;
+  line-height: 22px;
   font-family: "Roboto Condensed";
   font-size: 12px;
+  font-weight: normal;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
@@ -158,14 +172,14 @@ h4.char_showpg_secretid {
 .char_showpg_details_wrapper div:first-child {
   padding-left: 10px;
   border-left: 1px solid #000;
-  margin-left: 6px;
+  margin-left: 4px;
 }
 
 .char_showpg_details_wrapper div:last-child { 
   text-align: right; 
   padding-right: 10px;
   border-right: 1px solid #000;
-  margin-right: 6px;
+  margin-right: 4px;
 }
 
 /* char_card attributes */
@@ -509,25 +523,34 @@ td.cft_input textarea {
 
 
 .char_pg_bip_alert {
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   margin-bottom: 5px;
   color: #F00;
+  font-family: "Roboto Condensed";
+  font-size: 13px;
 }
 
-.char_pg_bip_alert a, .char_pg_bip_alert a:active, .char_pg_bip_alert a:visited {
+.char_showpg_sidebar_title .char_pg_bip_alert a, .char_showpg_sidebar_title .char_pg_bip_alert a:active, .char_showpg_sidebar_title .char_pg_bip_alert a:visited {
   color: #F00;
   text-decoration: none;
 }
 
-.char_pg_bip_alert a:hover {
+.char_showpg_sidebar_title .char_pg_bip_alert a:hover {
   text-decoration: line-through;
+  color: #FFF;
+}
+
+.char_showpg_sidebar_title .char_pg_bip_alert a::before {
+  content: "";
 }
 
 .bip_icon_container {
-  width: 16px; height: 16px;
+  width: 17px; height: 17px;
   overflow: hidden;
-  display: inline-block;
+  margin-right: 5px;
 }
 
 .bip_icon_container img {

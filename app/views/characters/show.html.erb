@@ -24,6 +24,7 @@
     <% if @recent_battles.length > 0 %>
       <div class="char_showpg_sidebar_title">
         Recent Battles
+        <%= bip_icon_char_page %>
         <div class="char_showpg_user_subtitle">
           <%= link_to "see all battles", battle_history_path(id: @char.id) %>
         </div>
@@ -49,8 +50,10 @@
   <div id="char_showpg_char_card" class="char_showpg_card">
 
     <h2 class="char_showpg_supername"><%= @char.supername %></h2>
-    <h4 class="char_showpg_secretid"> aka <%= secret_id_class %></h4><%= dox_button %>
-    
+    <div class="char_showpg_redacted_dox_wrapper">
+      <h4 class="char_showpg_secretid"> aka <%= secret_id_class %></h4><%= dox_button %>
+    </div>
+
     <div class="char_showpg_details_wrapper">
       <div class="char_showpg_details_box">
         <%= "LEVEL: #{@char.level}" %><br>
@@ -65,15 +68,15 @@
     <div class="char_showpg_attributes">
       <div class="char_showpg_att_bookend"></div>
       <div class="char_showpg_attribute_square">
-        HIT POINTS <div class="char_showpg_att_point_total"><%= "#{@char.hp}" %></div>
+        HIT POINTS<div class="char_showpg_att_point_total"><%= "#{@char.hp}" %></div>
       </div>
       <div class="char_showpg_att_breaker"></div>
       <div class="char_showpg_attribute_square">
-        ATTACK <div class="char_showpg_att_point_total"><%= "#{@char.att}" %></div>
+        ATTACK<div class="char_showpg_att_point_total"><%= "#{@char.att}" %></div>
       </div>
       <div class="char_showpg_att_breaker"></div>
       <div class="char_showpg_attribute_square">
-        DEFENSE <div class="char_showpg_att_point_total"><%= "#{@char.def}" %></div>
+        DEFENSE<div class="char_showpg_att_point_total"><%= "#{@char.def}" %></div>
       </div>
       <div class="char_showpg_att_bookend"></div>
     </div>
