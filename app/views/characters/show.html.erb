@@ -42,31 +42,34 @@
   </section>
 </div>
 
+
+
 <div class="char_showpg_wrapper">
   
   <div id="char_showpg_char_card" class="char_showpg_card">
 
     <h2 class="char_showpg_supername"><%= @char.supername %></h2>
     <h4 class="char_showpg_secretid"> aka <%= secret_id_class %></h4><%= dox_button %>
-    <table>
-      <tr>
-        <td>
-          <ul class="char_showpg_char_info_list">
-            <%= bip_icon_char_page %>
-            <li><%= @char.alignment %> <%= @char.char_type %></li>
-            <li><%= "#{@char.victories} Victories || #{@char.defeats} Defeats" %></li>
-            <li><%= "LEVEL: #{@char.level}" %></li>
-            <li><%= "NEXT LVL: #{@char.lvl_progress} / #{@char.pts_to_next_lvl}" %></li>
-            <li><%= "___HP: #{@char.hp}" %></li>
-            <li><%= "__ATT: #{@char.att}" %></li>
-            <li><%= "__DEF: #{@char.def}" %></li>
-          </ul>
-        </td>
-        <td class="pick_battle_char_form">
-          <%= char_showpg_battle_form %>
-        </td>
-      </tr>
-    </table>
+
+    
+
+    <div class="char_showpg_attributes">
+      <div class="char_showpg_att_bookend"></div>
+      <div class="char_showpg_attribute_square">
+        HIT POINTS <div class="char_showpg_att_point_total"><%= "#{@char.hp}" %></div>
+      </div>
+      <div class="char_showpg_att_breaker"></div>
+      <div class="char_showpg_attribute_square">
+        ATTACK <div class="char_showpg_att_point_total"><%= "#{@char.att}" %></div>
+      </div>
+      <div class="char_showpg_att_breaker"></div>
+      <div class="char_showpg_attribute_square">
+        DEFENSE <div class="char_showpg_att_point_total"><%= "#{@char.def}" %></div>
+      </div>
+      <div class="char_showpg_att_bookend"></div>
+    </div>
+
+
   </div>
 
   <div id="char_showpg_power_card" class="char_showpg_card">

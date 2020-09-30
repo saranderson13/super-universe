@@ -124,21 +124,23 @@ h4.char_showpg_secretid {
   margin: 5px 5px;
 }
 
-ul.char_showpg_char_info_list {
-  width: 150px;
-  list-style-type: none;
+/* char_card attributes */
+.char_showpg_attributes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 30px 0px;
   font-family: "Roboto Condensed";
-  font-size: 14px;
-  padding: 5px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.char_showpg_bio {
-  font-family: "Roboto Condensed";
-  font-size: 14px;
-  line-height: 150%;
-  text-align: justify;
-  padding: 0px 30px 0px 15px;
-}
+.char_showpg_attribute_square { width: 85px; text-align: center; }
+.char_showpg_att_point_total { font-size: 25px; }
+.char_showpg_att_bookend { width: 70px; background-color: #000;}
+.char_showpg_att_breaker { border-left: 1px solid #000; }
+
 
 /* for secret identity related styling */
 .redacted { color: #f00; }
@@ -194,6 +196,9 @@ td.pick_battle_char_form input[type="submit"] {
   border: none;
 }
 
+
+
+/* CHAR SHOWPG SIDEBAR */
 #char_showpg_other_info {
   align-self: flex-start;
   box-sizing: border-box;
@@ -207,12 +212,12 @@ td.pick_battle_char_form input[type="submit"] {
 
 .char_showpg_other_info_header {
   margin: 30px 0px 15px;
-  padding-bottom: 30px;
+  padding-bottom: 15px;
 }
 
 .char_showpg_other_info_section {
   margin: 15px 0px;
-  padding: 15px 0px 15px;
+  padding: 15px 0px;
   border-top: 1px solid #fff;
 }
 
@@ -249,6 +254,14 @@ div.char_showpg_user_subtitle {
   font-size: 11px;
   text-transform: uppercase;
   margin-left: 32px;
+}
+
+.char_showpg_bio {
+  font-family: "Roboto Condensed";
+  font-size: 14px;
+  line-height: 150%;
+  text-align: justify;
+  padding: 0px 30px 0px 15px;
 }
 
 ul.char_showpg_recent_battles {
