@@ -164,8 +164,11 @@ h4.char_showpg_secretid {
 }
 
 /* for pick_battle_char_form */
-td.pick_battle_char_form {
+.pick_battle_char_form {
   width: 320px;
+  margin: 0px auto 20px;
+  padding-top: 20px;
+  border-top: 1px solid #000;
   text-align: center
 }
 
@@ -174,16 +177,16 @@ td.pick_battle_char_form {
   font-size: 17px;
 }
 
-td.pick_battle_char_form select {
-  width: 160px;
+.pick_battle_char_form select {
+  width: 180px;
 }
 
-td.pick_battle_char_form input[type="submit"] {
+.pick_battle_char_form input[type="submit"] {
   box-sizing: border-box;
   display: inline-block;
   background-color: #000;
   color: #fff;
-  width: 80px; height: 20px;
+  width: 90px; height: 20px;
   padding: 0px;
   line-height: 20px;
   font-family: "Roboto Condensed";
