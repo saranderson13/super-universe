@@ -43,9 +43,50 @@ class Character < ApplicationRecord
     Character.all.select { |c| c.protag_battle_ready?(self) }
   end
 
-  def recent_battles
-    self.protag_battles.order(:updated_at).last(5).reverse()
+  def non_pending_battles
+    self.protag_battles.select { |b| b if b.outcome != "Pending" }
   end
+
+  def recent_battles
+    battles = self.protag_battles.order(:updated_at).last(6).reverse()
+    battles[0].outcome == "Pending" ? battles.shift() : battles.pop()
+    return battles
+  end
+
+
+
+
+  # METHODS TO DETERMINE BATTLE STATISTICS
+  def past_opponents
+    self.protag_battles.map { |b| b.antag }.uniq()
+  end
+
+  def spar_record(antag)
+    battles = self.protag_battles.select { |b| b.antag == antag }
+    record = {
+      victories: 0,
+      defeats: 0
+    }
+
+    battles.each do |b|
+      b.outcome == "Victory" ? record[:victories] += 1 : record[:defeats] += 1
+    end
+
+    return "#{record[:victories]} victories | #{record[:defeats]} defeats"
+  end
+
+  def win_percentage 
+    if self.victories == 0
+      return 0
+    elsif self.defeats == 0
+      return 100
+    else
+      return ((self.victories.to_f() / self.non_pending_battles.length) * 100).to_i()
+    end
+  end
+
+
+
 
   # TO DETERMINE CHARACTER BATTLE ELIGABILITY
   def not_self?(antag)
@@ -76,6 +117,12 @@ class Character < ApplicationRecord
     self.not_self?(antag) && self.has_superpowers? && self.no_battles_in_progress? && self.opposite_char_type?(antag)
   end
 
+
+
+
+
+
+  # BATTLE METHODS
   def antag_def_adjustment
     (1 - (self.def/500.0))/2
   end
@@ -139,6 +186,9 @@ class Character < ApplicationRecord
   end
 
 
+
+
+
   # CHARACTER RANKING FUNCTIONS
 
   def win_loss_ratio(numerator, denominator)
@@ -169,6 +219,11 @@ class Character < ApplicationRecord
   def self.wall_of_shame
     return self.all.sort_by { |c| [c.defeats, c.win_loss_ratio("defeats", "victories")]}.reverse[0..4]
   end
+
+
+
+
+
 
   private
 
