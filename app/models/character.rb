@@ -127,16 +127,26 @@ class Character < ApplicationRecord
     return [type, streak]
   end
 
-  def longest_win_streak
+  def longest_streak(type)
+    # call with "Victory" for win streak;
+    # call with "Defeat" for losing streak
     outcomes = self.chronological_battles.map { |b| b.outcome }
     longest_streak, streak = 0, 0
 
     outcomes.each do |o|
-      o == "Victory" ? streak += 1 : streak = 0
+      o == type ? streak += 1 : streak = 0
       longest_streak = streak if streak >= longest_streak
     end
 
     return longest_streak
+  end
+
+  def record_rank
+    Character.records_rank.find_index(self) + 1
+  end
+
+  def top_supers_rank
+    Character.top_supers_rank.find_index(self) + 1
   end
 
 
@@ -257,24 +267,37 @@ class Character < ApplicationRecord
       return self.send(numerator).to_f + 1
     end
   end
+  
+  def self.top_supers_rank
+    groups = {
+      winning_record: [],
+      losing_record: []
+    }
 
-  def self.leader_board_general
-    sorted = self.all.sort_by { |c| [c.level, c.lvl_progress, c.win_loss_ratio("victories", "defeats"), c.victories] }.reverse()
-    top_ranking = []
-    sorted.each do |c|
-      top_ranking.push(c) if c.win_loss_ratio("victories", "defeats") > 1
-      break if top_ranking.length == 5
-    end
-    return top_ranking
+    self.all.each { |c| c.win_loss_ratio("victories", "defeats") > 1 ? groups[:winning_record].push(c) : groups[:losing_record].push(c) }
+
+    w_sorted = groups[:winning_record].sort_by { |c| [c.level, c.lvl_progress, c.win_loss_ratio("victories", "defeats"), c.victories] }.reverse()
+    l_sorted = groups[:losing_record].sort_by { |c| [c.level, c.lvl_progress, c.win_loss_ratio("victories", "defeats"), c.victories] }.reverse()
+
+    return w_sorted.concat(l_sorted)
   end
 
-  def self.leader_board_records
-    self.all.sort_by { |c| [c.win_loss_ratio("victories", "defeats"), c.victories] }.reverse[0..4]
+  def self.top_supers_leader_board
+    self.top_supers_rank[0..4]
+  end
+
+  def self.records_rank
+    self.all.sort_by { |c| [c.win_loss_ratio("victories", "defeats"), c.victories] }.reverse
+  end
+
+  def self.records_leader_board
+    self.records_rank[0..4]
   end
 
   def self.wall_of_shame
     return self.all.sort_by { |c| [c.defeats, c.win_loss_ratio("defeats", "victories")]}.reverse[0..4]
   end
+
 
 
 
