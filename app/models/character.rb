@@ -43,8 +43,8 @@ class Character < ApplicationRecord
     Character.all.select { |c| c.protag_battle_ready?(self) }
   end
 
-  def non_pending_battles
-    self.protag_battles.select { |b| b if b.outcome != "Pending" }
+  def non_pending_battles(role)
+    self.send(role).select { |b| b if b.outcome != "Pending" }
   end
 
   def recent_battles
@@ -58,12 +58,13 @@ class Character < ApplicationRecord
 
   # METHODS TO DETERMINE BATTLE STATISTICS
   def past_opponents
-    self.protag_battles.map { |b| b.antag }.uniq()
+    self.non_pending_battles("protag_battles").map { |b| b.antag }.uniq()
   end
 
   def spar_record(antag)
-    battles = self.protag_battles.select { |b| b.antag == antag }
+    battles = self.non_pending_battles("protag_battles").select { |b| b.antag == antag }
     record = {
+      opponent: antag.supername,
       victories: 0,
       defeats: 0
     }
@@ -72,17 +73,57 @@ class Character < ApplicationRecord
       b.outcome == "Victory" ? record[:victories] += 1 : record[:defeats] += 1
     end
 
-    return "#{record[:victories]} victories | #{record[:defeats]} defeats"
+    return record
   end
 
-  def win_percentage 
+  def win_percentage
     if self.victories == 0
       return 0
     elsif self.defeats == 0
       return 100
     else
-      return ((self.victories.to_f() / self.non_pending_battles.length) * 100).to_i()
+      return ((self.victories.to_f() / self.non_pending_battles("protag_battles").length) * 100).to_i()
     end
+  end
+
+  def chronological_battles 
+    self.non_pending_battles("protag_battles").sort_by { |b| b.updated_at }.reverse()
+  end
+
+  def antag_battle_record 
+    record = {
+      victories: 0,
+      defeats: 0
+    }
+    self.non_pending_battles("antag_battles").each do |b|
+      b.outcome == "Victory" ? record[:defeats] += 1 : record[:victories] += 1
+    end
+
+    return [record[:victories], record[:defeats]]
+  end
+
+  def antag_battle_win_percentage
+    abr = self.antag_battle_record()
+    if abr[0] == 0
+      return 0
+    elsif abr[1] == 0
+      return 100
+    else
+      return ((abr[0].to_f() / (abr[0] + abr[1])) * 100).to_i()
+    end
+  end
+
+  def detect_current_streak
+    outcomes = self.chronological_battles.map { |b| b.outcome }
+    type, breaker = outcomes[0], outcomes[0] == "Victory" ? "Defeat" : "Victory"
+    streak = 0
+
+    outcomes.each do |o| 
+      streak += 1 if o == type 
+      break if o == breaker
+    end
+
+    return [type, streak]
   end
 
 

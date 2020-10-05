@@ -7,6 +7,7 @@ class Battle < ApplicationRecord
   belongs_to :antag, class_name: 'Character'
 
   scope :in_progress, -> { where(outcome: "Pending") }
+  scope :not_in_progress, -> { where('outcome != "Pending"') }
   scope :recent_battles, -> { where('outcome != "Pending"').order("updated_at desc").limit(5) }
 
   # def self.recent_battles
