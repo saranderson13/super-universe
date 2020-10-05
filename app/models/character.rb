@@ -49,7 +49,8 @@ class Character < ApplicationRecord
 
   def recent_battles
     battles = self.protag_battles.order(:updated_at).last(6).reverse()
-    battles.length > 0 && battles[0].outcome == "Pending" ? battles.shift() : battles.pop()
+    battles.shift() if battles.length > 0 && battles[0].outcome == "Pending"
+    battles.pop() if battles.length > 5
     return battles
   end
 
@@ -125,6 +126,20 @@ class Character < ApplicationRecord
 
     return [type, streak]
   end
+
+  def longest_win_streak
+    outcomes = self.chronological_battles.map { |b| b.outcome }
+    longest_streak, streak = 0, 0
+
+    outcomes.each do |o|
+      o == "Victory" ? streak += 1 : streak = 0
+      longest_streak = streak if streak >= longest_streak
+    end
+
+    return longest_streak
+  end
+
+
 
 
 
