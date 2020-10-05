@@ -49,7 +49,7 @@ class Character < ApplicationRecord
 
   def recent_battles
     battles = self.protag_battles.order(:updated_at).last(6).reverse()
-    battles[0].outcome == "Pending" ? battles.shift() : battles.pop()
+    battles.length > 0 && battles[0].outcome == "Pending" ? battles.shift() : battles.pop()
     return battles
   end
 
