@@ -86,7 +86,26 @@ class CharactersController < ApplicationController
   def battles 
     @char = set_char
     @user = @char.user
-    @battles = @char.protag_battles
+    @battles = @char.chronological_battles
+
+    # Specific Character Stats
+    @win_percentage = @char.win_percentage # Integer
+    @antag_win_percentage = @char.antag_battle_win_percentage # Integer
+    @ts_rank = @char.top_supers_rank # Integer
+    @record_rank = @char.record_rank # Integer
+    @hot_streak = @char.detect_hot_streak # Boolean
+    @longest_win_streak = @char.longest_streak("Victory") # Integer
+    @longest_cold_streak = @char.longest_streak("Defeat") # Integer
+    @bip = @char.battle_in_progress # Battle Object
+
+    # [streak_type, count]
+    @current_streak = @char.detect_current_streak 
+
+    # [Integer: victories as antag, Integer: Defeats as antag]
+    @antag_record = @char.antag_battle_record 
+
+    # Array of objects: { opponent: Character Object, victories: Integer, defeats: Integer }
+    @spar_record = @char.past_opponents.map { |a| @char.spar_record(a) } 
   end
 
 
