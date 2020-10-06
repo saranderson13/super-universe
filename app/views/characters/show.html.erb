@@ -27,16 +27,17 @@
         <% if !!@hot_streak %>
           <div class="char_showpg_hot_streak"><img src='/assets/flame_icon.png'> HOT STREAK!</div>
         <% end %>
-        <%= bip_icon_char_page %>
+
         <div class="char_showpg_user_subtitle">
           <%= link_to "see all battles", battle_history_path(id: @char.id) %>
         </div>
+        <%= bip_icon_char_page %>
       </div>
       <ul class="char_showpg_recent_battles">
         <% @recent_battles.each do |b| %>
           <li>
-            <%= b.outcome == "Victory" ? "▲ Victory over " : "▼ Defeated by " %>
-            <%= link_to b.antag.supername, user_character_path(id: b.antag.id, user_id: b.antag.user_id) %>
+            <%= link_to b.outcome == "Victory" ? "▲ Victory over " : "▼ Defeated by ", battle_path(b.id) %>
+            <%= link_to b.antag.supername, user_character_path(id: b.antag.id, user_id: b.antag.user_id), class: 'capitalize_link'  %>
           </li>
         <% end %>
       </ul>  

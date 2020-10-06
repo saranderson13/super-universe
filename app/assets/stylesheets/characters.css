@@ -285,7 +285,7 @@ div.char_showpg_sidebar_title a:hover {
 
 div.char_showpg_sidebar_title a::before {
   content: "⯈";
-  padding: 0px 7px 0px 2px;
+  padding: 0px 8px 0px 3px;
   color: #f00;
   margin-left: 0px;
 }
@@ -302,9 +302,9 @@ div.char_showpg_user_subtitle {
   font-size: 11px;
   text-transform: uppercase;
 }
-
-.char_showpg_hot_streak img {
-  width: 15px;
+.char_showpg_hot_streak img { 
+  width: 15px; 
+  padding: 0px 1px;
 }
 
 .char_showpg_bio {
@@ -331,12 +331,51 @@ ul.char_showpg_recent_battles li a, ul.char_showpg_recent_battles li a:visited, 
   color: #fff;
   text-decoration: none;
   cursor: crosshair;
+}
+
+ul.char_showpg_recent_battles li a.capitalize_link {
   text-transform: uppercase;
 }
 
 ul.char_showpg_recent_battles li a:hover {
   color: #f00;
   text-decoration: line-through;
+}
+
+.char_pg_bip_alert {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1px;
+  color: #F00;
+  font-family: "Roboto Condensed";
+  font-size: 12px;
+}
+
+.char_showpg_sidebar_title .char_pg_bip_alert a, .char_showpg_sidebar_title .char_pg_bip_alert a:active, .char_showpg_sidebar_title .char_pg_bip_alert a:visited {
+  color: #F00;
+  text-decoration: none;
+}
+
+.char_showpg_sidebar_title .char_pg_bip_alert a:hover {
+  text-decoration: line-through;
+  color: #FFF;
+}
+
+.char_showpg_sidebar_title .char_pg_bip_alert a::before {
+  content: "";
+  padding: 0px;
+}
+
+.bip_icon_container {
+  width: 17px; height: 17px;
+  overflow: hidden;
+  margin-right: 5px;
+}
+
+.bip_icon_container img {
+  margin: -92px 0px 0px -92px;
 }
 
 
@@ -531,42 +570,6 @@ td.sm_rt_margin input {
 td.cft_input textarea {
   width: 290px; height: 150px;
   margin-right: 10px;
-}
-
-
-.char_pg_bip_alert {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 5px;
-  color: #F00;
-  font-family: "Roboto Condensed";
-  font-size: 13px;
-}
-
-.char_showpg_sidebar_title .char_pg_bip_alert a, .char_showpg_sidebar_title .char_pg_bip_alert a:active, .char_showpg_sidebar_title .char_pg_bip_alert a:visited {
-  color: #F00;
-  text-decoration: none;
-}
-
-.char_showpg_sidebar_title .char_pg_bip_alert a:hover {
-  text-decoration: line-through;
-  color: #FFF;
-}
-
-.char_showpg_sidebar_title .char_pg_bip_alert a::before {
-  content: "";
-}
-
-.bip_icon_container {
-  width: 17px; height: 17px;
-  overflow: hidden;
-  margin-right: 5px;
-}
-
-.bip_icon_container img {
-  margin: -92px 0px 0px -92px;
 }
 
 
