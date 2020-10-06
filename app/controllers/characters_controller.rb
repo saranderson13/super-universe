@@ -27,6 +27,7 @@ class CharactersController < ApplicationController
     @char = set_char
     @secret_id = @char.dox("") if char_security_checks
     @recent_battles = @char.recent_battles
+    @hot_streak = @char.detect_hot_streak
   end
 
   def edit

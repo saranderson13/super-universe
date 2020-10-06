@@ -127,6 +127,11 @@ class Character < ApplicationRecord
     return [type, streak]
   end
 
+  def detect_hot_streak 
+    streak = self.detect_current_streak
+    return streak[0] == "Victory" && streak[1] >= 5
+  end
+
   def longest_streak(type)
     # call with "Victory" for win streak;
     # call with "Defeat" for losing streak

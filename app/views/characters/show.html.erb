@@ -3,7 +3,7 @@
     <div class="char_showpg_sidebar_title">
       <%= link_to @user.alias, user_path(@user.id) %>
     </div>
-    <div class="char_showpg_user_subtitle">THE CREATOR</div>
+    <div class="char_showpg_user_subtitle indented_subtitle">THE CREATOR</div>
 
     
     <%= char_edit_links %>
@@ -24,6 +24,9 @@
     <% if @recent_battles.length > 0 %>
       <div class="char_showpg_sidebar_title">
         Recent Battles
+        <% if !!@hot_streak %>
+          <div class="char_showpg_hot_streak"><img src='/assets/flame_icon.png'> HOT STREAK!</div>
+        <% end %>
         <%= bip_icon_char_page %>
         <div class="char_showpg_user_subtitle">
           <%= link_to "see all battles", battle_history_path(id: @char.id) %>
