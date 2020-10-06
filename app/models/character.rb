@@ -65,7 +65,7 @@ class Character < ApplicationRecord
   def spar_record(antag)
     battles = self.non_pending_battles("protag_battles").select { |b| b.antag == antag }
     record = {
-      opponent: antag.supername,
+      opponent: antag,
       victories: 0,
       defeats: 0
     }
