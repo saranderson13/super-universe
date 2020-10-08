@@ -7,7 +7,6 @@
         <div class="char_showpg_user_subtitle small_link_indentation">
             <%= link_to "Created by #{@user.alias}", user_path(id: @user.id) %>
         </div>
-
     </section>
 
     <section class="char_showpg_other_info_section battlespg_info_section">
@@ -30,15 +29,23 @@
 </div>
 
 <div class="char_battlespg_wrapper">
-
     <div class="char_battlespg_statbox">
         
     </div>
     <div class="char_battlespg_statbox statbox_border statbox_padding">
         <div class="char_battlespg_scrollbox">
-            
+        <ul class="battles_showpg_battle_outcomes">
+            <% @battles.each do |b| %>
+            <li>
+                <% if @user == current_user %>
+                    <%= link_to b.outcome == "Victory" ? "▲ #{b.generate_outcome_severity}" : "▼ #{b.generate_outcome_severity}", battle_path(b.id) %>
+                <% else %>
+                <%= b.outcome == "Victory" ? "▲ #{b.generate_outcome_severity}" : "▼ #{b.generate_outcome_severity}" %>
+                <% end %>
+                <%= link_to b.antag.supername, user_character_path(id: b.antag.id, user_id: b.antag.user_id), class: 'capitalize_link'  %>
+            </li>
+            <% end %>
+        </ul> 
         </div>
     </div>
-
-    
 </div>

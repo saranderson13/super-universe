@@ -44,4 +44,32 @@ class Battle < ApplicationRecord
     end
   end
 
+
+  # USED ON BATTLE STATS PAGE
+  def generate_outcome_severity
+    # For use only on completed battles.
+    result_intro = ""
+
+    case self.outcome == "Victory" ? self.p_hp : self.a_hp
+    when 1..10
+      result_intro = self.outcome == "Victory" ? "Narrowly squeeked by against " : "Almost held on against "
+    when 11..30
+      result_intro = self.outcome == "Victory" ? "Cut it pretty close against " : "Couldn't quite close the deal against "
+    when 31..70
+      result_intro = self.outcome == "Victory" ? "Handily defeated " : "Could have done better against "
+    when 71..100
+      result_intro = self.outcome == "Victory" ? "Held their ground against " : "Wasn't a match for "
+    when 101..150
+      result_intro = self.outcome == "Victory" ? "Pulled off a solid win against " : "Suffered a sound defeat at the hands of "
+    when 151..200
+      result_intro = self.outcome == "Victory" ? "Opened a can of whoop-ass on " : "Got thrashed by "
+    when 201..250
+      result_intro = self.outcome == "Victory" ? "Demolished " : "Had no chance against "
+    else
+      result_intro = self.outcome == "Victory" ? "Went nuclear on " : "Was totally annihilated by "
+    end
+
+    return result_intro
+  end
+
 end

@@ -714,3 +714,30 @@ td.cft_input textarea {
 .char_battlespg_spar_record::-webkit-scrollbar-thumb {
   background-color: #fff;
 }
+
+ul.battles_showpg_battle_outcomes {
+  list-style: none;
+  font-family: 'Roboto Condensed';
+  padding-left: 15px;
+  margin-bottom: 0px;
+}
+
+ul.battles_showpg_battle_outcomes li {
+  padding-bottom: 15px;
+  font-size: 14px;
+}
+
+ul.battles_showpg_battle_outcomes li a, ul.battles_showpg_battle_outcomes li a:visited, ul.battles_showpg_battle_outcomes li a:active {
+  color: #000;
+  text-decoration: none;
+  cursor: crosshair;
+}
+
+ul.battles_showpg_battle_outcomes li a.capitalize_link {
+  text-transform: uppercase;
+}
+
+ul.battles_showpg_battle_outcomes li a:hover {
+  color: #f00;
+  text-decoration: line-through;
+}
