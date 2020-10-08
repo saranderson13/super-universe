@@ -4,6 +4,9 @@
         <div class="char_showpg_user_subtitle large_link_text">
             <%= link_to @char.supername, user_character_path(id: @char.id, user_id: @char.user_id) %>
         </div>
+        <div class="char_showpg_user_subtitle small_link_indentation">
+            <%= link_to "Created by #{@user.alias}", user_path(id: @user.id) %>
+        </div>
 
     </section>
 

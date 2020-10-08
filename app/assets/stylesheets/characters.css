@@ -314,6 +314,7 @@ div.char_showpg_user_subtitle a::before {
   padding: 0px 8px 0px 3px;
   color: #f00;
   margin-left: 0px;
+  font-size: 15px;
 }
 
 .large_link_text a {
@@ -663,7 +664,7 @@ td.cft_input textarea {
 .char_battlespg_spar_record {
   box-sizing: border-box;
   width: calc(100% - 1px);
-  height: calc(100% - 200px);
+  height: calc(100% - 250px);
   overflow: auto;
   font-family: 'Roboto Condensed';
   font-size: 17px;
