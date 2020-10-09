@@ -11,7 +11,7 @@
 
     <section class="char_showpg_other_info_section battlespg_info_section">
     <% if @battles.length > 0 %>
-            <div class="char_showpg_sidebar_title">Spar Records</div>
+            <div class="char_showpg_sidebar_title">SPAR RECORDS</div>
             <div class="char_battlespg_spar_record">
                 <% @spar_record.each do |o| %>
                     <div class="spar_record_opponent_entry">
@@ -30,7 +30,47 @@
 
 <div class="char_battlespg_wrapper">
     <div class="char_battlespg_statbox">
-        
+        <div class="battles_showpg_header_wrapper">
+            <div class="battles_showpg_percentage_wrapper">
+                <div class="win_rate_percentage"><%= "#{@win_percentage}%" %></div>
+                <%= "Victory Rate" %>
+            </div>
+            <div class="outcome_counts">
+                <%= "#{@char.char_type}" %><br>
+                <%= "#{pluralize(@char.victories, 'Victory')}" %><br>
+                <%= "#{pluralize(@char.defeats, 'Defeat')}" %>
+            </div>
+        </div>
+
+        <div class="char_battlespg_statistics">
+            <div class="battle_history_statistics">
+                <ul>
+                    <li><u>Longest Hot Streak:</u></li>
+                    <li><u>Longest Cold Streak:</u></li>
+                    <li><u>Top Supers Rank:</u></li>
+                    <li><u>Record Rank:</u></li>
+                </ul>
+                <ul>
+                    <li><%= "#{@longest_win_streak}" %></li>
+                    <li><%= "#{@longest_cold_streak}" %></li>
+                    <li><%= "#{@ts_rank}" %></li>
+                    <li><%= "#{@record_rank}" %></li>
+                </ul>
+            </div>
+            
+            <div class="antag_battle_statistics">
+                <div class="title_text small_title black_title">ANTAGONIST STATS</div>
+                <div class="battles_showpg_antag_percentage_wrapper">
+                    <div class="antag_win_rate_percentage"><%= "#{@antag_win_percentage}%" %></div>
+                    <%= "Victory Rate" %>
+                </div>    
+                <%= "#{pluralize(@antag_record[0], 'Victory')} || #{pluralize(@antag_record[1], 'Defeat')}" %>
+            </div>
+        </div>
+
+        <div class="char_battlespg_badge_wrapper">
+            <div class="title_text large_title white_title">BADGES</div>
+        </div>
     </div>
     <div class="char_battlespg_statbox statbox_border statbox_padding">
         <div class="char_battlespg_scrollbox">

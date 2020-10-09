@@ -182,6 +182,8 @@ h4.char_showpg_secretid {
   margin-right: 4px;
 }
 
+.enlarge_font { font-size: 21px;}
+
 /* char_card attributes */
 .char_showpg_attributes {
   display: flex;
@@ -610,6 +612,16 @@ td.cft_input textarea {
   justify-content: space-between;
 }
 
+.char_battlespg_wrapper .title_text {
+  font-family: "Cantarell";
+  margin-bottom: 5px;
+}
+
+.char_battlespg_wrapper .large_title { font-size: 25px; }
+.char_battlespg_wrapper .small_title { font-size: 16px; font-weight: bold; }
+.char_battlespg_wrapper .black_title { color: #000; }
+.char_battlespg_wrapper .white_title { color: #fff; }
+
 .char_battlespg_statbox {
   box-sizing: border-box;
   width: 45%;
@@ -622,43 +634,6 @@ td.cft_input textarea {
   box-sizing: border-box;
   width: 100%; height: 100%;
   overflow: auto;
-}
-
-
-.char_battlespg_page_title {
-  font-family: "Cantarell";
-  font-size: 30px;
-  text-transform: uppercase;
-  margin-bottom: 20px
-}
-
-.char_battlespg_large_title {
-  font-family: "Cantarell";
-  font-size: 25px;
-  color: #000;
-}
-
-.char_battlespg_large_title a, .char_battlespg_large_title a:visited, .char_battlespg_large_title a:active {
-  cursor: crosshair;
-  color: #000;
-  text-decoration: none;
-
-}
-
-.char_battlespg_large_title a:hover {
-  color: #f00;
-  text-decoration: line-through;
-}
-
-.char_battlespg_large_title a::before {
-  content: "⯈ ";
-  color: #f00;
-}
-
-.char_battlespg_subtitle {
-  font-family: 'Roboto Condensed';
-  font-size: 13px;
-  margin-left: 35px;
 }
 
 .char_battlespg_spar_record {
@@ -685,19 +660,14 @@ td.cft_input textarea {
   text-decoration: line-through;
 }
 
-.char_battlespg_spar_record a::before {
-  content: "";
-}
-
-.spar_record_opponent_entry { 
-  padding: 15px 0px; 
-}
+.char_battlespg_spar_record a::before { content: ""; }
+.spar_record_opponent_entry { padding: 15px 0px; }
 
 .char_battlespg_spar_record .spar_record_opponent_entry:last-child {
   border-bottom: none;
 }
 
-  .spar_record_count { 
+.spar_record_count { 
   font-size: 14px;
   letter-spacing: 2px; 
   text-transform: uppercase;
@@ -740,4 +710,111 @@ ul.battles_showpg_battle_outcomes li a.capitalize_link {
 ul.battles_showpg_battle_outcomes li a:hover {
   color: #f00;
   text-decoration: line-through;
+}
+
+.battles_showpg_header_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Roboto Condensed";
+  font-size: 27px;
+  color: #000;
+}
+
+.battles_showpg_percentage_wrapper {
+  box-sizing: border-box;
+  width: 170px;
+  height: 170px;
+  padding-top: 25px;
+  border-radius: 85px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  font-family: 'Roboto Condensed';
+  font-size: 22px;
+}
+
+.win_rate_percentage {
+  font-family: "Cantarell";
+  font-size: 47px;
+}
+
+.outcome_counts {
+  text-align: right;
+  border-right: 30px solid #000;
+  padding: 20px 15px 20px 0px;
+
+}
+
+.char_battlespg_statistics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.battle_history_statistics {
+  display: flex;
+  flex-direction: row;
+}
+
+.char_battlespg_statistics ul {
+  list-style: none;
+  padding-left: 0px;
+  /* margin: 30px 10px 20px; */
+  font-family: 'Roboto Condensed';
+  font-size: 18px;
+  padding: 15px 0px;
+}
+
+.char_battlespg_statistics ul:first-child { 
+  border-left: 30px solid #000;
+  padding-left: 15px;
+}
+
+.char_battlespg_statistics ul:last-child { 
+  margin-left: 15px;
+}
+
+.char_battlespg_statistics ul li {
+  margin-bottom: 10px;
+}
+
+.antag_battle_statistics {
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid #000;
+  padding: 15px;
+  font-family: 'Roboto Condensed';
+  font-size: 18px;
+}
+
+div.battles_showpg_antag_percentage_wrapper {
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+  padding-top: 12px;
+  margin: 10px auto;
+  border-radius: 40px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  font-family: 'Roboto Condensed';
+  font-size: 12px;
+}
+
+div.antag_win_rate_percentage {
+  font-family: "Cantarell";
+  font-size: 20px;
+  margin: 0px;
+}
+
+.char_battlespg_badge_wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100% - 385px);
+  padding: 10px;
+  background-color: #000;
 }

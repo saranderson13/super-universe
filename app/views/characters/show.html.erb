@@ -29,7 +29,7 @@
         <% end %>
 
         <div class="char_showpg_user_subtitle">
-          <%= link_to "see all battles", battle_history_path(id: @char.id) %>
+          <%= link_to "see all battles & statistics", battle_history_path(id: @char.id) %>
         </div>
         <%= bip_icon_char_page %>
       </div>
@@ -63,11 +63,11 @@
     </div>
 
     <div class="char_showpg_details_wrapper">
-      <div class="char_showpg_details_box">
+      <div>
         <%= "LEVEL: #{@char.level}" %><br>
         <%= "NEXT LVL: #{@char.lvl_progress} / #{@char.pts_to_next_lvl}" %>
       </div>
-      <div class="char_showpg_details_box">
+      <div>
         <%= "#{@char.alignment}" %><br>
         <%= "#{@char.victories} Victories || #{@char.defeats} Defeats" %>
       </div>
@@ -76,7 +76,7 @@
     <div class="char_showpg_attributes">
       <div class="char_showpg_att_bookend"></div>
       <div class="char_showpg_attribute_square">
-        HIT POINTS<div class="char_showpg_att_point_total"><%= "#{@char.hp}" %></div>
+        HIT POINTS<div class="char_showpg_att_point_total"><%= "#{@char.hp_lvl_adjust}" %></div>
       </div>
       <div class="char_showpg_att_breaker"></div>
       <div class="char_showpg_attribute_square">
