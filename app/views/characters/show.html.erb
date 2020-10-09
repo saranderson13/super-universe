@@ -69,7 +69,7 @@
       </div>
       <div>
         <%= "#{@char.alignment}" %><br>
-        <%= "#{@char.victories} Victories || #{@char.defeats} Defeats" %>
+        <%= "#{pluralize(@char.victories, 'Victory')} || #{pluralize(@char.defeats, 'Defeat')}" %>
       </div>
     </div>
 
