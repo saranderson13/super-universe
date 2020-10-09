@@ -605,8 +605,8 @@ td.cft_input textarea {
 
 .char_battlespg_wrapper {
   box-sizing: border-box;
-  width: 100%; height: 100%;
-  padding: 100px;
+  width: 75%; height: 100%;
+  padding: 80px 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -634,6 +634,18 @@ td.cft_input textarea {
   box-sizing: border-box;
   width: 100%; height: 100%;
   overflow: auto;
+}
+
+.char_battlespg_scrollbox::-webkit-scrollbar {
+  background-color: #000;
+}
+
+.char_battlespg_scrollbox::-webkit-scrollbar-button {
+  color: #000;
+}
+
+.char_battlespg_scrollbox::-webkit-scrollbar-thumb {
+  background-color: #f00;
 }
 
 .char_battlespg_spar_record {
@@ -688,8 +700,18 @@ td.cft_input textarea {
 ul.battles_showpg_battle_outcomes {
   list-style: none;
   font-family: 'Roboto Condensed';
-  padding-left: 15px;
+  padding: 0px 15px 0px 0px;
   margin-bottom: 0px;
+}
+
+li.victory_arrow:before {
+  content: "▲"; 
+  padding-right: 10px;
+}
+
+li.defeat_arrow:before {
+  content: "▼"; 
+  padding-right: 10px;
 }
 
 ul.battles_showpg_battle_outcomes li {
@@ -742,8 +764,7 @@ ul.battles_showpg_battle_outcomes li a:hover {
 
 .outcome_counts {
   text-align: right;
-  border-right: 30px solid #000;
-  padding: 20px 15px 20px 0px;
+  padding: 20px 0px;
 
 }
 
@@ -763,15 +784,9 @@ ul.battles_showpg_battle_outcomes li a:hover {
 .char_battlespg_statistics ul {
   list-style: none;
   padding-left: 0px;
-  /* margin: 30px 10px 20px; */
   font-family: 'Roboto Condensed';
   font-size: 18px;
   padding: 15px 0px;
-}
-
-.char_battlespg_statistics ul:first-child { 
-  border-left: 30px solid #000;
-  padding-left: 15px;
 }
 
 .char_battlespg_statistics ul:last-child { 

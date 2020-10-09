@@ -1,17 +1,14 @@
 <div id="char_showpg_other_info">
     <section class="char_showpg_other_info_header">
-        <div class="char_showpg_sidebar_title">BATTLE STATS</div>
-        <div class="char_showpg_user_subtitle large_link_text">
-            <%= link_to @char.supername, user_character_path(id: @char.id, user_id: @char.user_id) %>
-        </div>
-        <div class="char_showpg_user_subtitle small_link_indentation">
+        <div class="char_showpg_sidebar_title"><%= link_to @char.supername, user_character_path(id: @char.id, user_id: @char.user_id) %></div>
+        <div class="char_showpg_user_subtitle indented_subtitle">
             <%= link_to "Created by #{@user.alias}", user_path(id: @user.id) %>
         </div>
     </section>
 
     <section class="char_showpg_other_info_section battlespg_info_section">
     <% if @battles.length > 0 %>
-            <div class="char_showpg_sidebar_title">SPAR RECORDS</div>
+            <div class="char_showpg_sidebar_title">Spar Records</div>
             <div class="char_battlespg_spar_record">
                 <% @spar_record.each do |o| %>
                     <div class="spar_record_opponent_entry">
@@ -72,15 +69,19 @@
             <div class="title_text large_title white_title">BADGES</div>
         </div>
     </div>
-    <div class="char_battlespg_statbox statbox_border statbox_padding">
+    <div class="char_battlespg_statbox">
         <div class="char_battlespg_scrollbox">
         <ul class="battles_showpg_battle_outcomes">
             <% @battles.each do |b| %>
-            <li>
+            <% if b.outcome == "Victory" %>
+                <li class"victory_arrow">
+            <% else %>
+                <li class="defeat_arrow">
+            <% end %>
                 <% if @user == current_user %>
-                    <%= link_to b.outcome == "Victory" ? "▲ #{b.generate_outcome_severity}" : "▼ #{b.generate_outcome_severity}", battle_path(b.id) %>
+                    <%= link_to b.outcome == "Victory" ? "#{b.generate_outcome_severity}" : "#{b.generate_outcome_severity}", battle_path(b.id) %>
                 <% else %>
-                <%= b.outcome == "Victory" ? "▲ #{b.generate_outcome_severity}" : "▼ #{b.generate_outcome_severity}" %>
+                <%= b.outcome == "Victory" ? "#{b.generate_outcome_severity}" : "#{b.generate_outcome_severity}" %>
                 <% end %>
                 <%= link_to b.antag.supername, user_character_path(id: b.antag.id, user_id: b.antag.user_id), class: 'capitalize_link'  %>
             </li>
