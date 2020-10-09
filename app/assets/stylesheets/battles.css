@@ -13,8 +13,20 @@
   font-family: "Cantarell";
   background-color: #f00;
 }
-.battle_title_bar .white { color: #fff; }
-.battle_title_bar .black { color: #000; }
+.battle_title_bar .white, .battle_title_bar .white a { color: #fff; }
+.battle_title_bar .black, .battle_title_bar .black a { color: #000; }
+
+.battle_title_bar .black a, .battle_title_bar .white a {
+  text-decoration: none;
+  background-color: #f00;
+}
+
+.battle_title_bar a:hover { 
+  cursor: crosshair; 
+  text-decoration: line-through; 
+}
+
+
 .battle_title_bar .left_hp { float: left; margin-left: 20px; }
 .battle_title_bar .right_hp { float: right; margin-right: 20px; }
 

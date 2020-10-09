@@ -31,7 +31,13 @@ module BattlesHelper
   def battle_title
     p_color = @protag.char_type == "Hero" ? "white" : "black"
     a_color = @antag.char_type == "Hero" ? "white" : "black"
-    msg = "<span class='#{p_color} left_hp'>HP: #{@battle.p_hp}</span><span class='#{p_color}'>#{@protag.supername}</span> vs. <span class='#{a_color}'>#{@antag.supername}</span><span class='#{a_color} right_hp'>HP: #{@battle.a_hp}</span>"
+    msg = <<~HEREDOC
+      <span class='#{p_color} left_hp'>HP: #{@battle.p_hp}</span>
+      <span class='#{p_color}'><a href="/users/#{@protag.user_id}/characters/#{@protag.id}">#{@protag.supername}</a></span>
+       vs. 
+      <span class='#{a_color}'><a href="/users/#{@antag.user_id}/characters/#{@antag.id}">#{@antag.supername}</a></span>
+      <span class='#{a_color} right_hp'>HP: #{@battle.a_hp}</span>
+    HEREDOC
     msg.html_safe
   end
 
