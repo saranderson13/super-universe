@@ -124,4 +124,16 @@ module CharactersHelper
     end
   end
 
+  def current_streak_char_page
+    arrow_class = @current_streak[0] == "Victory" ? "victory_streak_arrow" : "defeat_streak_arrow"
+
+    current_streak_line = <<~HEREDOC
+    <div class="char_showpg_user_subtitle general_sidebar_bullet">
+      Current Streak: 
+      <span class="#{arrow_class}">#{@current_streak[1]}</span>
+    </div>
+    HEREDOC
+    return current_streak_line.html_safe
+  end
+
 end

@@ -28,6 +28,7 @@ class CharactersController < ApplicationController
     @secret_id = @char.dox("") if char_security_checks
     @recent_battles = @char.recent_battles
     @hot_streak = @char.detect_hot_streak
+    @current_streak = @char.detect_current_streak
   end
 
   def edit
@@ -99,7 +100,7 @@ class CharactersController < ApplicationController
     @bip = @char.battle_in_progress # Battle Object
 
     # [streak_type, count]
-    @current_streak = @char.detect_current_streak 
+    # @current_streak = @char.detect_current_streak 
 
     # [Integer: victories as antag, Integer: Defeats as antag]
     @antag_record = @char.antag_battle_record 

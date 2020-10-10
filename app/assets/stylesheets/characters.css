@@ -275,6 +275,12 @@ h4.char_showpg_secretid {
   font-size: 18px;
 }
 
+.general_sidebar_bullet::before {
+  content: "⯈"; 
+  font-size: 15px;
+  padding: 0px 5px 0px 3px;
+}
+
 div.char_showpg_sidebar_title a, div.char_showpg_sidebar_title a:visited, div.char_showpg_sidebar_title a:active {
   text-decoration: none;
   color: #fff;
@@ -397,16 +403,23 @@ ul.char_showpg_recent_battles li a:hover {
 .bip_icon_container {
   width: 17px; height: 17px;
   overflow: hidden;
-  margin-right: 5px;
+  margin: 0px 6px 0px 2px;
 }
 
 .bip_icon_container img {
   margin: -92px 0px 0px -92px;
 }
 
+.victory_streak_arrow::before {
+  content: "▲";
+  padding-right: 3px; 
+} 
 
-
-
+.defeat_streak_arrow:before {
+  content: "▼";
+  color: #f00;
+  padding-right: 3px;
+}
 
 /* FORMS: NEW AND EDIT CHAR */
 .charform_pg_name {
@@ -704,14 +717,15 @@ ul.battles_showpg_battle_outcomes {
   margin-bottom: 0px;
 }
 
-li.victory_arrow:before {
+li.victory_arrow:before, span.victory_arrow:before {
   content: "▲"; 
   padding-right: 10px;
 }
 
-li.defeat_arrow:before {
+li.defeat_arrow:before, span.defeat_arrow:before {
   content: "▼"; 
   padding-right: 10px;
+  color: #f00;
 }
 
 ul.battles_showpg_battle_outcomes li {

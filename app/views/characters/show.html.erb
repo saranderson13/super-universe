@@ -24,15 +24,20 @@
     <% if @recent_battles.length > 0 %>
       <div class="char_showpg_sidebar_title">
         Recent Battles
+
         <% if !!@hot_streak %>
           <div class="char_showpg_hot_streak"><img src='/assets/flame_icon.png'> HOT STREAK!</div>
         <% end %>
 
+        <%= current_streak_char_page %>
+
         <div class="char_showpg_user_subtitle">
           <%= link_to "see all battles & statistics", battle_history_path(id: @char.id) %>
         </div>
+
         <%= bip_icon_char_page %>
       </div>
+      
       <ul class="char_showpg_recent_battles">
         <% @recent_battles.each do |b| %>
           <li>

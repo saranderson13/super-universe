@@ -72,9 +72,10 @@
     <div class="char_battlespg_statbox">
         <div class="char_battlespg_scrollbox">
         <ul class="battles_showpg_battle_outcomes">
+            
             <% @battles.each do |b| %>
             <% if b.outcome == "Victory" %>
-                <li class"victory_arrow">
+                <li class="victory_arrow">
             <% else %>
                 <li class="defeat_arrow">
             <% end %>
