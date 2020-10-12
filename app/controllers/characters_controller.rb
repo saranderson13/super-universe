@@ -28,6 +28,7 @@ class CharactersController < ApplicationController
     @secret_id = @char.dox("") if char_security_checks
     @recent_battles = @char.recent_battles
     @hot_streak = @char.detect_hot_streak
+    @cold_streak = @char.detect_cold_streak
     @current_streak = @char.detect_current_streak
   end
 

@@ -126,13 +126,29 @@ module CharactersHelper
 
   def current_streak_char_page
     arrow_class = @current_streak[0] == "Victory" ? "victory_streak_arrow" : "defeat_streak_arrow"
-
-    current_streak_line = <<~HEREDOC
-    <div class="char_showpg_user_subtitle general_sidebar_bullet">
-      Current Streak: 
-      <span class="#{arrow_class}">#{@current_streak[1]}</span>
-    </div>
-    HEREDOC
+    
+    if !@hot_streak && !@cold_streak
+      current_streak_line = <<~HEREDOC
+      <div class="char_showpg_user_subtitle general_sidebar_bullet">
+        Current Streak: 
+        <span class="#{arrow_class}">#{@current_streak[1]}</span>
+      </div>
+      HEREDOC
+    elsif @hot_streak
+      current_streak_line = <<~HERADOC
+      <div class="char_showpg_hot_streak">
+        <img src='/assets/flame_icon.png'> HOT STREAK! 
+        <span class="#{arrow_class}">#{@current_streak[1]}</span>
+      </div>
+      HERADOC
+    elsif @cold_streak
+      current_streak_line = <<~HERADOC
+      <div class="char_showpg_hot_streak">
+        <img src='/assets/snowflake_icon.png'> COLD STREAK! 
+        <span class="#{arrow_class}">#{@current_streak[1]}</span>
+      </div>
+      HERADOC
+    end
     return current_streak_line.html_safe
   end
 

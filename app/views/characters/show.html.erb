@@ -25,10 +25,6 @@
       <div class="char_showpg_sidebar_title">
         Recent Battles
 
-        <% if !!@hot_streak %>
-          <div class="char_showpg_hot_streak"><img src='/assets/flame_icon.png'> HOT STREAK!</div>
-        <% end %>
-
         <%= current_streak_char_page %>
 
         <div class="char_showpg_user_subtitle">
@@ -73,7 +69,7 @@
         <%= "NEXT LVL: #{@char.lvl_progress} / #{@char.pts_to_next_lvl}" %>
       </div>
       <div>
-        <%= "#{@char.alignment}" %><br>
+        <%= "#{@char.alignment} #{@char.char_type}" %><br>
         <%= "#{pluralize(@char.victories, 'Victory')} || #{pluralize(@char.defeats, 'Defeat')}" %>
       </div>
     </div>

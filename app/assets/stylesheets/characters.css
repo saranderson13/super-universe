@@ -329,16 +329,6 @@ div.char_showpg_user_subtitle a::before {
   font-size: 15px;
 }
 
-.char_showpg_hot_streak {
-  font-family: 'Cantarell';
-  font-size: 11px;
-  text-transform: uppercase;
-}
-.char_showpg_hot_streak img { 
-  width: 15px; 
-  padding: 0px 1px;
-}
-
 .char_showpg_bio {
   font-family: "Roboto Condensed";
   font-size: 14px;
@@ -410,16 +400,30 @@ ul.char_showpg_recent_battles li a:hover {
   margin: -92px 0px 0px -92px;
 }
 
+.char_showpg_hot_streak {
+  font-family: 'Cantarell';
+  font-size: 11px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.char_showpg_hot_streak img { 
+  width: 15px; height: 15px;
+  padding: 0px 6px 0px 2px;
+}
+
 .victory_streak_arrow::before {
   content: "▲";
-  padding-right: 3px; 
+  padding: 0px 3px 0px 5px; 
 } 
 
+.defeat_streak_arrow { color: #f00; }
 .defeat_streak_arrow:before {
   content: "▼";
-  color: #f00;
-  padding-right: 3px;
+  padding: 0px 2px 0px 8px;
 }
+
 
 /* FORMS: NEW AND EDIT CHAR */
 .charform_pg_name {
