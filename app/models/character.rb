@@ -39,31 +39,34 @@ class Character < ApplicationRecord
     [HERO_ALIGNMENT, VILL_ALIGNMENT].flatten.uniq
   end
 
+  # NOT CURRENTLY IN USE
   def find_opponents
     Character.all.select { |c| c.protag_battle_ready?(self) }
   end
 
   def non_pending_battles(role)
-    self.send(role).select { |b| b if b.outcome != "Pending" }
+    # Call with "protag" or "antag" as role.
+    self.send("#{role}_battles").select { |b| b if b.outcome != "Pending" }
   end
 
+  def chronological_battles 
+    self.non_pending_battles("protag").sort_by { |b| b.updated_at }.reverse()
+  end
+  
   def recent_battles
-    battles = self.protag_battles.order(:updated_at).last(6).reverse()
-    battles.shift() if battles.length > 0 && battles[0].outcome == "Pending"
-    battles.pop() if battles.length > 5
-    return battles
+    self.chronological_battles[0..4]
   end
-
-
-
+  
+  
+  
 
   # METHODS TO DETERMINE BATTLE STATISTICS
   def past_opponents
-    self.non_pending_battles("protag_battles").map { |b| b.antag }.uniq()
+    self.non_pending_battles("protag").map { |b| b.antag }.uniq()
   end
 
   def spar_record(antag)
-    battles = self.non_pending_battles("protag_battles").select { |b| b.antag == antag }
+    battles = self.non_pending_battles("protag").select { |b| b.antag == antag }
     record = {
       opponent: antag,
       victories: 0,
@@ -83,12 +86,8 @@ class Character < ApplicationRecord
     elsif self.defeats == 0
       return 100
     else
-      return ((self.victories.to_f() / self.non_pending_battles("protag_battles").length) * 100).to_i()
+      return ((self.victories.to_f() / self.non_pending_battles("protag").length) * 100).to_i()
     end
-  end
-
-  def chronological_battles 
-    self.non_pending_battles("protag_battles").sort_by { |b| b.updated_at }.reverse()
   end
 
   def antag_battle_record 
@@ -96,7 +95,7 @@ class Character < ApplicationRecord
       victories: 0,
       defeats: 0
     }
-    self.non_pending_battles("antag_battles").each do |b|
+    self.non_pending_battles("antag").each do |b|
       b.outcome == "Victory" ? record[:defeats] += 1 : record[:victories] += 1
     end
 
