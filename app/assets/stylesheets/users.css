@@ -60,7 +60,7 @@
   width: 400px; 
   position: relative;
   top: 0px; left: 0px;
-  padding-left: 20px;
+  padding: 20px 0px 0px 20px;
 }
 
 .user_showpg_section_title {
@@ -100,11 +100,11 @@ ul.user_showpg_chars_list a:hover {
 .user_bip_container, .user_find_opponents_container {
   box-sizing: border-box;
   width: calc(100% - 160px);
-  padding: 50px 20px;
+  padding: 20px 20px;
   background-color: #fff;
 }
 
-.user_bip_container { margin-top: 30px; }
+.user_bip_container { margin-bottom: 30px; }
 .user_find_opponents_container { margin: 100px auto 0px }
 
 .user_bip_title {
