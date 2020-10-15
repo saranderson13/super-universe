@@ -19,7 +19,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 100%; width: calc((var(--height) / 10) * 4);
+  height: 100%; width: calc((var(--height) / 10) * 3.5);
   border-top-right-radius: 100%;
   border-bottom-right-radius: 100%;
   background-color: #FFF;
@@ -35,13 +35,18 @@
   height: 100px;
   position: relative;
   top: 0px; left: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .user_showpg_profile_pic img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
+  width: 102px;
+  height: 102px;
+  border-radius: 52px;
   float: left;
+  border: 2px solid #000;
+  box-shadow: 5px 5px 15px #000;
 }
 
 .user_showpg_greeting {
@@ -69,7 +74,9 @@ ul.user_showpg_chars_list {
   list-style: none;
   padding-left: 5px;
   margin-top: 10px;
+  margin-left: 5px;
   font-family: "Roboto Condensed";
+  border-left: 5px solid #000;
 }
 
 ul.user_showpg_chars_list a, ul.user_showpg_chars_list a:visited, ul.user_showpg_chars_list a:active {
@@ -112,6 +119,9 @@ ul.user_showpg_chars_list a:hover {
   font-family: 'Roboto Condensed';
   font-size: 20px;
   color: #f00;
+  border-left: 5px solid #000;
+  padding-left: 5px;
+  margin-left: 5px;
 }
 
 a.bip_link, a.bip_link:active, a.bip_link:visited {

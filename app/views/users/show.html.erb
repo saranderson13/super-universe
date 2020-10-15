@@ -5,21 +5,25 @@
         <span class="user_showpg_profile_pic"><%= image_tag @user.profile_pic %></span>
         <h2 class="user_showpg_greeting"><%= user_show_page_greeting %></h2>
       </div>
-      <%= current_user_profile_links %>
 
       <div id="user_showpg_char_section">
         <h3 class="user_showpg_section_title">Characters</h3>
         <ul class="user_showpg_chars_list">
           <% @chars.each do |c| %>
-            <li><%= link_to c.supername, user_character_path(id: c.id, user_id: c.user_id) %></li>
+            <li>
+              <%= link_to c.supername, user_character_path(id: c.id, user_id: c.user_id) %> - 
+              <%= "#{c.alignment} #{c.char_type}" %>
+            </li>
           <% end %>
         </ul>
       </div>
       <div class="user_bip_container">
         <%= user_battles_in_progress %>
       </div>
+      <%= current_user_profile_links %>
     </div>
   </div>
+
   <div class="user_showpg_right_container">
     <div class="user_find_opponents_container">
       <%= user_find_opponent_form %>

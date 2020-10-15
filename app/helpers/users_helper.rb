@@ -4,7 +4,11 @@ module UsersHelper
   # Otherwise just shows :alias.
   def user_show_page_greeting
     if logged_in? && current_user.id == params[:id].to_i
-      "Welcome, #{@user.alias}"
+      greeting = <<~HEREDOC
+      Welcome,<br>
+      #{@user.alias}
+      HEREDOC
+      greeting.html_safe
     else
       "#{@user.alias}"
     end
