@@ -1,31 +1,45 @@
 div.welcome_page_container {
-  width: calc(100% - 300px);
-  position: absolute;
-  top: 150px; right: 0px;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 h1.welcome_title {
   width: 100%; height: 100px;
-  text-align: center;
   font-family: "Cantarell";
   font-size: 80px;
-  margin: 0px 0px 70px 0px;
+  line-height: 80px;
+  margin: 40px 0px 0px;
 }
+
+h1.welcome_title::before { content: "⯈⯈"; }
 
 .recent_battles_box {
   width: 100%;
-  /* text-align: center; */
+  margin: 30px 0px 0px 155px;
+
 }
 
-h3.welcome_subheading {
+h3.welcome_subtitle {
   font-family: "Roboto Condensed";
   font-size: 28px;
-  text-align: center;
+  margin: 10px 0px 0px 155px;
 }
 
-h3.welcome_subheading a, h3.welcome_subheading a.visited, h3.welcome_subheading a.active  {
-  color: #000;
+h3.welcome_subtitle a, h3.welcome_subtitle a:visited, h3.welcome_subtitle a:active  {
+  color: #f00;
+  text-decoration: none;
   cursor: crosshair;
+}
+h3.welcome_subtitle a:hover { text-decoration: line-through; }
+
+h3.recent_battles_heading {
+  margin: 0px;
+  font-family: "Cantarell";
+  font-size: 25px;
+  padding-bottom: 15px;
 }
 
 ul.recent_battles {
@@ -33,19 +47,32 @@ ul.recent_battles {
   margin: auto;
   list-style: none;
   padding: 0px;
+  margin: 0px;
   font-family: "Roboto Condensed";
-  font-size: 18px;
-  text-align: center;
+  font-size: 16px;
+}
+
+ul.recent_battles li { padding-bottom: 10px;}
+
+ul.recent_battles a, ul.recent_battles a:visited, ul.recent_battles a:active {
+  color: #f00;
+  text-decoration: none;
+  cursor: crosshair
+}
+
+ul.recent_battles a:hover {
+  text-decoration: line-through;
 }
 
 div.leader_board_container {
   box-sizing: border-box;
-  width: 300px;
-  height: calc(100% - 30px);
-  padding: 50px 0px 0px 40px;
-  position: absolute;
-  top: 30px; left: 0px;
+  width: 25%; max-width: 350px;
+  height: 100%;
+  padding: 50px 40px 0px 0px;
   background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 div.leader_board {

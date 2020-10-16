@@ -45,11 +45,15 @@ module ApplicationHelper
   def battle_result_for_welcome(battle)
     protag = Character.find_by(id: battle.protag_id)
     antag = Character.find_by(id: battle.antag_id)
-    if battle.outcome == "Victory"
-      "#{battle.protag.supername} was victorious against #{battle.antag.supername}!"
-    else
-      "#{battle.protag.supername} was defeated by #{battle.antag.supername}!"
-    end
+    severity = battle.generate_outcome_severity[0].downcase + battle.generate_outcome_severity[1..-1]
+
+    outcome = <<~HEREDOC
+    <a href="/users/#{protag.user_id}/characters/#{protag.id}">#{protag.supername.upcase()}</a>
+    #{severity}
+    <a href="/users/#{antag.user_id}/characters/#{antag.id}">#{antag.supername.upcase()}</a>
+    HEREDOC
+
+    return outcome.html_safe
   end
 
   def leader_board_char(c, i)
@@ -58,7 +62,7 @@ module ApplicationHelper
 
   def welcome_pg_if_not_logged_in
     if !logged_in?
-      content = '<h3 class="welcome_subheading"><a href = "/login">Log in</a> or <a href="/signup">Sign up</a> to join the battle!</h3>'
+      content = '<h3 class="welcome_subtitle"><a href = "/login">Log in</a> or <a href="/signup">Sign up</a> to join the battle!</h3>'
       content.html_safe
     end
   end
