@@ -270,10 +270,23 @@ h4.char_showpg_secretid {
   color: #fff;
 }
 
+.flex_sidebar_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 /* TITLE MODIFIER */
 .char_showpg_sidebar_title.shrink {
   font-size: 18px;
 }
+
+.char_showpg_user_pic {
+  width: 50px; height: 50px;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.char_showpg_user_pic img { width: 50px; }
 
 .general_sidebar_bullet::before {
   content: "⯈"; 
@@ -294,7 +307,7 @@ div.char_showpg_sidebar_title a:hover {
 
 div.char_showpg_sidebar_title a::before {
   content: "⯈";
-  padding: 0px 8px 0px 3px;
+  padding: 0px 1px 0px 7px;
   color: #f00;
   margin-left: 0px;
 }

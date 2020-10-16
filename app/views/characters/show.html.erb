@@ -1,9 +1,12 @@
 <div id="char_showpg_other_info">
   <section class="char_showpg_other_info_header">
-    <div class="char_showpg_sidebar_title">
-      <%= link_to @user.alias, user_path(@user.id) %>
+    <div class="char_showpg_sidebar_title flex_sidebar_title">
+      <div class="char_showpg_user_pic"><%= image_tag @user.profile_pic %></div>
+      <div>
+        <%= link_to @user.alias, user_path(@user.id) %>
+        <div class="char_showpg_user_subtitle indented_subtitle">THE CREATOR</div>
+      </div>
     </div>
-    <div class="char_showpg_user_subtitle indented_subtitle">THE CREATOR</div>
 
     
     <%= char_edit_links %>
