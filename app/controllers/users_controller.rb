@@ -27,13 +27,13 @@ class UsersController < ApplicationController
 
   def show
     @user = set_user
-    @hero_opp = @user.opponents("hero")
-    @villain_opp = @user.opponents("villain")
     if @user.nil?
       flash[:notice] = "warning: that user does not exist."
       redirect_to root_path
     else
       @chars = @user.characters
+      @hero_opp = @user.opponents("hero")
+      @villain_opp = @user.opponents("villain")
     end
   end
 
