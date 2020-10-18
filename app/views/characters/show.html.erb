@@ -51,6 +51,9 @@
       </ul>  
     <% else %>
       <div class="char_showpg_sidebar_title shrink">No battles to speak of...</div>
+      <div class="char_showpg_user_subtitle">
+        <%= link_to "see all battles & statistics", battle_history_path(id: @char.id) %>
+      </div>
     <% end %>
   </section>
 </div>
