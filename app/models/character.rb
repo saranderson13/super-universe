@@ -273,7 +273,7 @@ class Character < ApplicationRecord
     if self.send(denominator) != 0 
       return self.send(numerator).to_f / self.send(denominator)
     else
-      return self.send(numerator).to_f + 1
+      return self.non_pending_battles("protag").length == 0 ? 0 : self.send(numerator).to_f + 1
     end
   end
   
@@ -296,7 +296,17 @@ class Character < ApplicationRecord
   end
 
   def self.records_rank
-    self.all.sort_by { |c| [c.win_loss_ratio("victories", "defeats"), c.victories] }.reverse
+    groups = {
+      winning_record: [],
+      losing_record: []
+    }
+
+    self.all.each { |c| c.win_loss_ratio("victories", "defeats") > 1 ? groups[:winning_record].push(c) : groups[:losing_record].push(c) }
+
+    w_sorted = groups[:winning_record].sort_by { |c| [c.victories, c.win_percentage, c.win_loss_ratio("victories", "defeats"), c.non_pending_battles("protag").length, c.level, c.lvl_progress] }.reverse
+    l_sorted = groups[:losing_record].sort_by { |c| [c.victories, c.win_percentage, c.win_loss_ratio("victories", "defeats"), c.non_pending_battles("protag").length, c.level, c.lvl_progress] }.reverse
+  
+    return w_sorted.concat(l_sorted)
   end
 
   def self.records_leader_board
@@ -307,6 +317,20 @@ class Character < ApplicationRecord
     return self.all.sort_by { |c| [c.defeats, c.win_loss_ratio("defeats", "victories")]}.reverse[0..4]
   end
 
+  def self.records_rank_print
+    self.records_rank.each do |c|
+      puts <<~HEREDOC
+      Name: #{c.supername}
+      Victories: #{c.victories}
+      Win %: #{c.win_percentage}
+      Win Ratio: #{c.win_loss_ratio("victories", "defeats")}
+      Total Battles: #{c.non_pending_battles("protag").length}
+      Level: #{c.level}
+      Lvl Progress: #{c.lvl_progress}
+
+      HEREDOC
+    end
+  end
 
 
 
