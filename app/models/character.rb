@@ -151,11 +151,11 @@ class Character < ApplicationRecord
   end
 
   def record_rank
-    Character.records_rank.find_index(self) + 1
+    self.non_pending_battles("protag").length == 0 ? 0 : Character.records_rank.find_index(self) + 1
   end
 
   def top_supers_rank
-    Character.top_supers_rank.find_index(self) + 1
+    self.non_pending_battles("protag").length == 0 ? 0 : Character.top_supers_rank.find_index(self) + 1
   end
 
 
@@ -285,10 +285,10 @@ class Character < ApplicationRecord
 
     self.all.each { |c| c.win_loss_ratio("victories", "defeats") > 1 ? groups[:winning_record].push(c) : groups[:losing_record].push(c) }
 
-    w_sorted = groups[:winning_record].sort_by { |c| [c.level, c.lvl_progress, c.win_loss_ratio("victories", "defeats"), c.victories] }.reverse()
-    l_sorted = groups[:losing_record].sort_by { |c| [c.level, c.lvl_progress, c.win_loss_ratio("victories", "defeats"), c.victories] }.reverse()
+    w_sorted = groups[:winning_record].sort_by { |c| [c.level, c.lvl_progress, c.win_loss_ratio("victories", "defeats"), c.victories, c.non_pending_battles("protag").length] }.reverse()
+    l_sorted = groups[:losing_record].sort_by { |c| [c.level, c.lvl_progress, c.win_loss_ratio("victories", "defeats"), c.victories, -c.non_pending_battles("protag").length] }.reverse()
 
-    return w_sorted.concat(l_sorted)
+    return w_sorted.concat(l_sorted).delete_if { |c| c.non_pending_battles("protag").length == 0 }
   end
 
   def self.top_supers_leader_board
@@ -304,9 +304,9 @@ class Character < ApplicationRecord
     self.all.each { |c| c.win_loss_ratio("victories", "defeats") > 1 ? groups[:winning_record].push(c) : groups[:losing_record].push(c) }
 
     w_sorted = groups[:winning_record].sort_by { |c| [c.victories, c.win_percentage, c.win_loss_ratio("victories", "defeats"), c.non_pending_battles("protag").length, c.level, c.lvl_progress] }.reverse
-    l_sorted = groups[:losing_record].sort_by { |c| [c.victories, c.win_percentage, c.win_loss_ratio("victories", "defeats"), c.non_pending_battles("protag").length, c.level, c.lvl_progress] }.reverse
+    l_sorted = groups[:losing_record].sort_by { |c| [c.victories, c.win_percentage, c.win_loss_ratio("victories", "defeats"), -c.non_pending_battles("protag").length, c.level, c.lvl_progress] }.reverse
   
-    return w_sorted.concat(l_sorted)
+    return w_sorted.concat(l_sorted).delete_if { |c| c.non_pending_battles("protag").length == 0 }
   end
 
   def self.records_leader_board
@@ -327,6 +327,20 @@ class Character < ApplicationRecord
       Total Battles: #{c.non_pending_battles("protag").length}
       Level: #{c.level}
       Lvl Progress: #{c.lvl_progress}
+
+      HEREDOC
+    end
+  end
+
+  def self.top_supers_print
+    self.top_supers_rank.each do |c|
+      puts <<~HEREDOC
+      Name: #{c.supername}
+      Level: #{c.level}
+      Lvl Progress: #{c.lvl_progress}
+      Win Ratio: #{c.win_loss_ratio("victories", "defeats")}
+      Victories: #{c.victories}
+      Total Battles: #{c.non_pending_battles("protag").length}
 
       HEREDOC
     end
