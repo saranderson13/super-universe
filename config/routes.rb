@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :news_items
+  
   # General Paths
   root 'welcome#home'
+  
+  # News Item Paths
+  resources :news_items, except: [:show]
 
   # User Paths with custom 'users#new' path: '/signup'
   get '/signup', to: 'users#new'
@@ -10,19 +13,19 @@ Rails.application.routes.draw do
     #Character paths, except for 'character/:id/add_powers'
     resources :characters, except: [:index]
   end
-
+  
   # Dox Paths
   get '/characters/:id/dox', to: 'characters#dox', as: 'dox_form'
   patch '/characters/:id/dox', to: 'characters#dox_char'
-
+  
   # Battle History
   get '/characters/:id/battles', to: 'characters#battles', as: 'battle_history'
-
+  
   # Power Paths
   resources :powers, only: [:index, :show]
   post '/characters/add_power', to: 'character_powers#add', as: 'add_power'
   delete '/characters/:id', to: 'character_powers#destroy', as: 'delete_power'
-
+  
   # Battle paths
   resources :battles, only: [:show, :create, :update]
 

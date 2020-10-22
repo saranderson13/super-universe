@@ -45,7 +45,9 @@ class User < ApplicationRecord
     self.characters.select { |c| c if c.protag_battle_ready?(antag) }
   end
 
-
+  def is_admin?
+    !!u.admin_status
+  end
 
 
 end
