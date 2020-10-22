@@ -668,6 +668,7 @@ td.cft_input textarea {
 
 .char_battlespg_scrollbox::-webkit-scrollbar {
   background-color: #000;
+  width: 13px;
 }
 
 .char_battlespg_scrollbox::-webkit-scrollbar-button {
@@ -717,6 +718,7 @@ td.cft_input textarea {
 
 .char_battlespg_spar_record::-webkit-scrollbar {
   background-color: #f00;
+  width: 13px;
 }
 
 .char_battlespg_spar_record::-webkit-scrollbar-button {

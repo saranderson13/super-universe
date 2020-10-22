@@ -8,7 +8,7 @@ class Battle < ApplicationRecord
 
   scope :in_progress, -> { where(outcome: "Pending") }
   scope :not_in_progress, -> { where('outcome != "Pending"') }
-  scope :recent_battles, -> { where('outcome != "Pending"').order("updated_at desc").limit(10) }
+  scope :recent_battles, -> { where('outcome != "Pending"').order("updated_at desc").limit(50) }
 
   # def self.recent_battles
   #   self.where('outcome != "Pending"').order("updated_at desc").limit(5)

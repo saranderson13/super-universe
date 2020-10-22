@@ -2,21 +2,25 @@
   <div>
     <h1 class="welcome_title">Super Universe</h1>
     <%= welcome_pg_if_not_logged_in %>
+
   </div>
-  <div>
-    <div class="recent_battles_box">
-      <h3 class="recent_battles_heading">Recent Battles:</h3>
-      <ul class="recent_battles">
-        <% @recent.each do |b| %>
+</div>
+
+<div class="recent_battles_container">
+  <h3 class="recent_battles_heading">Recent Battles:</h3>
+  <div class="recent_battles_box">
+    <div class="recent_battles">
+      <% @recent.each do |b| %>
+        <div class="recent_battle_line">
           <% if b.outcome == "Victory" %>
-            <li class="victory_arrow">
+            <div class="rb_victory_arrow">▲
           <% else %>
-            <li class="defeat_arrow">
+            <div class="rb_defeat_arrow">▼
           <% end %>
-            <%= battle_result_for_welcome(b) %>
-          </li>
-        <% end %>
-      </ul>
+          </div>
+          <div><%= battle_result_for_welcome(b) %></div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
