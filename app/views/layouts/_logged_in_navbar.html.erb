@@ -3,6 +3,7 @@
   <%= link_to "Profile", user_path(current_user) %>
   <%= link_to "New Char", new_user_character_path(current_user) %>
   <%= link_to "Powers", powers_path %>
+  <%= link_to "News", news_items_path %>
   <%= admin_links %>
   <%= form_with(url: "/logout", method: "delete") do %>
     <%= submit_tag 'Log Out' %>
