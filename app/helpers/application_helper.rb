@@ -17,9 +17,15 @@ module ApplicationHelper
   end
 
   def admin_links
-    if logged_in? && current_user.admin_status
+    if logged_in? && current_user.is_admin?
       link = "<a href='/users'>Users</a>"
       link.html_safe
+    end
+  end
+
+  def admin_news_options
+    if logged_in? && current_user.is_admin?
+      "admin links"
     end
   end
 
@@ -65,6 +71,15 @@ module ApplicationHelper
       content = '<h3 class="welcome_subtitle"><a href = "/login">Log in</a> or <a href="/signup">Sign up</a> to join the battle!</h3>'
       content.html_safe
     end
+  end
+
+  def welcome_newsfeed_sizing
+    if logged_in?
+      containerClass = "<div id='welcome_news_feed' class='welcome_nf_logged_in'>"
+    else
+      containerClass = "<div id='welcome_news_feed' class='welcome_nf_logged_out'>"
+    end
+    containerClass.html_safe
   end
 
 end

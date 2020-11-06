@@ -46,7 +46,7 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    !!u.admin_status
+    !!self.admin_status
   end
 
 

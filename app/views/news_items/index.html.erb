@@ -1,1 +1,11 @@
-all news!
+<div class="news_feed_container">
+
+    <div>
+        <% @all_news.each do |n| %>
+            <div> <%= n.title %></div>
+            <div> <%= n.description %></div>
+            <%= admin_news_options %>
+        <% end %>
+    </div>
+
+</div>

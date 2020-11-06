@@ -1,8 +1,14 @@
 <div class="welcome_page_container">
-  <div>
-    <h1 class="welcome_title">Super Universe</h1>
-    <%= welcome_pg_if_not_logged_in %>
-
+  <h1 class="welcome_title">Super Universe</h1>
+  <%= welcome_pg_if_not_logged_in %>
+  <div class="welcome_news_feed_title">NEWS</div>
+  <%= welcome_newsfeed_sizing %>
+    <% @news.each do |n| %>
+      <div class="welcome_news_item">
+        <div class="welcome_news_item_title"><%= n.title %></div>
+        <div class="welcome_news_item_description"><%= n.description %></div>
+      </div>
+    <% end %>
   </div>
 </div>
 
