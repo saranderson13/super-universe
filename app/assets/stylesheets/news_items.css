@@ -1,9 +1,13 @@
+/* STYLES FOR NEWS FEED ON WELCOME PAGE */
+/* EXCEPT WHERE NOTED, WHICH ARE ALSO USED ON NEWS INDEX PAGE */
+
 #welcome_news_feed {
     margin: 20px 70px 0px 155px;
     padding-right: 40px;
 }
 
-.welcome_nf_logged_in { 
+/* BOTH NEWS FEEDS */
+.welcome_nf_logged_in, #news_feed { 
     height: calc(100% - 293px);
     overflow: auto;
 }
@@ -12,16 +16,19 @@
     overflow: auto;
 }
 
-#welcome_news_feed::-webkit-scrollbar {
+/* BOTH NEWS FEEDS */
+#welcome_news_feed::-webkit-scrollbar, #news_feed::-webkit-scrollbar {
     background-color: #000;
     width: 13px;
 }
 
-#welcome_news_feed::-webkit-scrollbar-button {
+/* BOTH NEWS FEEDS */
+#welcome_news_feed::-webkit-scrollbar-button, #news_feed::-webkit-scrollbar-button {
     color: #000;
 }
 
-#welcome_news_feed::-webkit-scrollbar-thumb {
+/* BOTH NEWS FEEDS */
+#welcome_news_feed::-webkit-scrollbar-thumb, #news_feed::-webkit-scrollbar-thumb {
     background-color: #f00;
 }
 
@@ -39,13 +46,30 @@
     margin: 0px 0px 30px 25px;
 }
 
-.welcome_news_item_title {
+/* BOTH NEWS FEEDS */
+.welcome_news_item_title, .news_item_title {
     font-size: 23px;
     font-family: "Cantarell";
 }
 
-.welcome_news_item_description {
+/* BOTH NEWS FEEDS */
+.welcome_news_item_description, .news_item_description {
     font-family: "Roboto Condensed";
     font-size: 17px;
     text-align: justify;
+}
+
+
+
+/* STYLES FOR NEWS INDEX PAGE */
+#news_feed_container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.news_item {
+    margin: 10px 105px 20px 145px;
+    padding-right: 40px;
 }

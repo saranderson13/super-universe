@@ -1,10 +1,13 @@
-<div class="news_feed_container">
+<div id="news_feed_container">
+    <h1 class="welcome_title">News Updates</h1>
 
-    <div>
+    <div id="news_feed">
         <% @all_news.each do |n| %>
-            <div> <%= n.title %></div>
-            <div> <%= n.description %></div>
-            <%= admin_news_options %>
+            <div class="news_item">
+                <div class="news_item_title"> <%= n.title %></div>
+                <div class="news_item_description"> <%= n.description %></div>
+                <%= admin_news_options %>
+            </div>
         <% end %>
     </div>
 
