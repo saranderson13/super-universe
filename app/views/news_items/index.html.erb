@@ -6,7 +6,16 @@
             <div class="news_item">
                 <div class="news_item_title"> <%= n.title %></div>
                 <div class="news_item_description"> <%= n.description %></div>
-                <%= admin_news_options %>
+                
+                <% if logged_in? && current_user.is_admin? %>
+                    <div class="admin_news_links_container">
+                        <%= form_with(url: "/update_homepage", method: "patch") do %>
+                            <%= submit_tag n.homepage ? "Show on Welcome" : "Remove from Welcome" %>
+                        <% end %>
+                    </div>
+                    <%= link_to "Update News Entry", edit_news_item_path(n.id) %>
+                <% end %>
+
             </div>
         <% end %>
     </div>

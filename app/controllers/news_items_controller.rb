@@ -42,6 +42,11 @@ class NewsItemsController < ApplicationController
 
     end
 
+    
+    def update_homepage
+        
+    end
+
 
     def destroy
         @news_item = set_item

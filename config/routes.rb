@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   # News Item Paths
   resources :news_items, except: [:show]
+  patch '/update_homepage', to: 'news_items#update_homepage'
 
   # User Paths with custom 'users#new' path: '/signup'
   get '/signup', to: 'users#new'
