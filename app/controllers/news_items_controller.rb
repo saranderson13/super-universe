@@ -44,7 +44,16 @@ class NewsItemsController < ApplicationController
 
     
     def update_homepage
-        
+        @news_item = NewsItem.find(toggle_params[:id])
+        @news_item.homepage = !@news_item.homepage
+        if @news_item.valid?
+            @news_item.save
+            flash[:notice] = "CONFIRMATION: News Item #{@news_item.id} has been updated."
+            redirect_to news_items_path
+        else
+            flash[:notice] = "Error: News Item #{@news_item.id} failed to update."
+            redirect_to news_items_path
+        end
     end
 
 
@@ -58,7 +67,11 @@ class NewsItemsController < ApplicationController
     private 
 
     def item_params
-        params.require(:news_item).permit(:title, :description, :homepage)
+        params.require(:news_item).permit(:id, :title, :description, :homepage)
+    end
+
+    def toggle_params
+        params.permit(:id)
     end
 
     def set_item
