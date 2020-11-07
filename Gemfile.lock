@@ -210,6 +210,8 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    time_difference (0.4.2)
+      activesupport
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -258,6 +260,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
   sysrandom (~> 1.0, >= 1.0.5)
+  time_difference
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

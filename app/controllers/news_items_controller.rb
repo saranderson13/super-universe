@@ -3,7 +3,7 @@ class NewsItemsController < ApplicationController
     before_action :admin_only, except: [:index]
 
     def index
-        @all_news = NewsItem.all
+        @all_news = NewsItem.all.reverse()
     end
 
 
