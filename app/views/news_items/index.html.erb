@@ -10,10 +10,10 @@
                 <% if logged_in? && current_user.is_admin? %>
                     <div class="admin_news_links_container">
                         <%= form_with(url: "/update_homepage", method: "patch") do %>
-                            <%= submit_tag n.homepage ? "Show on Welcome" : "Remove from Welcome" %>
+                            <%= submit_tag n.homepage ? "Remove from Welcome" : "Show on Welcome" %>
                         <% end %>
+                        <%= link_to "Update News Entry", edit_news_item_path(n.id) %>
                     </div>
-                    <%= link_to "Update News Entry", edit_news_item_path(n.id) %>
                 <% end %>
 
             </div>
