@@ -7,4 +7,9 @@ class NewsItem < ApplicationRecord
 
     scope :newsfeed, -> { where(homepage: true).reverse() }
 
+
+    def pretty_date
+        Date.parse(self.created_at.to_s).strftime("%A, %B %-d, %Y")
+    end
+
 end
