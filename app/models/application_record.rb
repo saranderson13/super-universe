@@ -1,10 +1,9 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
+  include ActionView::Helpers::TextHelper
 
   def ago(createdAtOrUpdatedAt)
     # call with "created_at" OR "updated_at"
-    # to test in terminal, run "include ActionView::Helpers::TextHelper"
-    # (needed because #pluralize is not known without being included)
 
     diff = TimeDifference.between(Time.now.utc, Time.parse(self.send(createdAtOrUpdatedAt).to_s))
 

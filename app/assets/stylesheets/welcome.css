@@ -45,7 +45,16 @@ h3.welcome_subtitle a:hover { text-decoration: line-through; }
   flex-direction: row;
   justify-items: flex-start;
   align-items: flex-start;
-  padding: 0px 0px 15px;
+  line-height: 16px;
+  padding: 0px 0px 20px;
+}
+
+.battle_result_ago {
+  text-transform: uppercase;
+  color: #878787;
+  font-size: 13px;
+  font-style: italic;
+  padding-top: 4px;
 }
 
 h3.recent_battles_heading {

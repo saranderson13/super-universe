@@ -51,6 +51,7 @@ module ApplicationHelper
     <a href="/users/#{protag.user_id}/characters/#{protag.id}">#{protag.supername.upcase()}</a>
     #{severity}
     <a href="/users/#{antag.user_id}/characters/#{antag.id}">#{antag.supername.upcase()}</a>
+    <div class="battle_result_ago">#{battle.ago("updated_at")}</div>
     HEREDOC
 
     return outcome.html_safe
