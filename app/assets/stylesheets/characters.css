@@ -729,14 +729,14 @@ td.cft_input textarea {
   background-color: #fff;
 }
 
-ul.battles_showpg_battle_outcomes {
+div.battles_showpg_battle_outcomes {
   list-style: none;
   font-family: 'Roboto Condensed';
   padding: 0px 15px 0px 0px;
   margin-bottom: 0px;
 }
 
-li.victory_arrow:before, span.victory_arrow:before {
+/* li.victory_arrow:before, span.victory_arrow:before {
   content: "▲"; 
   padding-right: 10px;
 }
@@ -745,26 +745,36 @@ li.defeat_arrow:before, span.defeat_arrow:before {
   content: "▼"; 
   padding-right: 10px;
   color: #f00;
-}
+} */
 
-ul.battles_showpg_battle_outcomes li {
+div.char_battlespg_battle_line {
   padding-bottom: 15px;
   font-size: 14px;
+  display: flex;
+  flex-direction: row;
 }
 
-ul.battles_showpg_battle_outcomes li a, ul.battles_showpg_battle_outcomes li a:visited, ul.battles_showpg_battle_outcomes li a:active {
+div.char_battlespg_battle_line a, div.char_battlespg_battle_line a:visited, div.char_battlespg_battle_line a:active {
   color: #000;
   text-decoration: none;
   cursor: crosshair;
 }
 
-ul.battles_showpg_battle_outcomes li a.capitalize_link {
+div.char_battlespg_battle_line a.capitalize_link {
   text-transform: uppercase;
 }
 
-ul.battles_showpg_battle_outcomes li a:hover {
+div.char_battlespg_battle_line a:hover {
   color: #f00;
   text-decoration: line-through;
+}
+
+.char_battlespg_battle_ago {
+  text-transform: uppercase;
+  color: #878787;
+  font-size: 12px;
+  font-style: italic;
+  padding-top: 3px;
 }
 
 .battles_showpg_header_wrapper {

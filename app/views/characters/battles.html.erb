@@ -71,23 +71,29 @@
     </div>
     <div class="char_battlespg_statbox">
         <div class="char_battlespg_scrollbox">
-        <ul class="battles_showpg_battle_outcomes">
+        <div class="battles_showpg_battle_outcomes">
             
             <% @battles.each do |b| %>
-            <% if b.outcome == "Victory" %>
-                <li class="victory_arrow">
-            <% else %>
-                <li class="defeat_arrow">
+                <div class="char_battlespg_battle_line">
+                    <% if b.outcome == "Victory" %>
+                        <div class="rb_victory_arrow">▲
+                    <% else %>
+                        <div class="rb_defeat_arrow">▼
+                    <% end %>
+                    </div>
+                    <div>
+                        <% if @user == current_user %>
+                            <%= link_to b.generate_outcome_severity, battle_path(b.id) %>
+                        <% else %>
+                        <%= b.generate_outcome_severity %>
+                        <% end %>
+                        <%= link_to b.antag.supername, user_character_path(id: b.antag.id, user_id: b.antag.user_id), class: 'capitalize_link'  %>
+                        <div class="char_battlespg_battle_ago"><%= b.ago("updated_at") %></div>
+                    </div>
+                </div>
             <% end %>
-                <% if @user == current_user %>
-                    <%= link_to b.generate_outcome_severity, battle_path(b.id) %>
-                <% else %>
-                <%= b.generate_outcome_severity %>
-                <% end %>
-                <%= link_to b.antag.supername, user_character_path(id: b.antag.id, user_id: b.antag.user_id), class: 'capitalize_link'  %>
-            </li>
-            <% end %>
-        </ul> 
+
+        </div> 
         </div>
     </div>
 </div>
