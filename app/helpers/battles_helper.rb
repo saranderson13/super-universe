@@ -1,28 +1,37 @@
 module BattlesHelper
 
+  def battle_pg_wrapper_set_bg(char)
+    if char.char_type == "Hero"
+      tag = "<div id='battle_pg_wrapper' class='black'>"
+    else
+      tag = "<div id='battle_pg_wrapper' class='white'>"
+    end
+    tag.html_safe
+  end
+
+
   def battlepg_bg_styling(char, char_hp, opp_hp)
     w = (char_hp.to_f/(char_hp + opp_hp))*100
     if char.char_type == "Hero"
       tag = "<div id='battle_pg_hero_side' class='battle_pg_side' style='width: #{w}%'>"
-      tag.html_safe
     elsif char.char_type == "Villain"
       tag = "<div id='battle_pg_villain_side' class='battle_pg_side' style='width: #{w}%'>"
-      tag.html_safe
     end
+    tag.html_safe
   end
 
   def resultpg_bg_styling
     if @battle.outcome == "Victory"
       if @protag.char_type == "Hero"
-        tag = "<div id='battle_pg_hero_side' class='battle_pg_side' style='width: 100%'>"
+        tag = "<div id='battle_pg_hero_side' class='battle_pg_side' style='width: 100%'></div>"
       else
-        tag = "<div id='battle_pg_villain_side' class='battle_pg_side' style='width: 100%'>"
+        tag = "<div id='battle_pg_villain_side' class='battle_pg_side' style='width: 100%'></div>"
       end
     else
       if @protag.char_type == "Hero"
-        tag = "<div id='battle_pg_villain_side' class='battle_pg_side' style='width: 100%'>"
+        tag = "<div id='battle_pg_villain_side' class='battle_pg_side' style='width: 100%'></div>"
       else
-        tag = "<div id='battle_pg_hero_side' class='battle_pg_side' style='width: 100%'>"
+        tag = "<div id='battle_pg_hero_side' class='battle_pg_side' style='width: 100%'></div>"
       end
     end
     tag.html_safe
