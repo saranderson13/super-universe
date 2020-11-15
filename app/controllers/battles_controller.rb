@@ -35,6 +35,7 @@ class BattlesController < ApplicationController
     # binding.pry
     @battle = Battle.find_by(id: params[:id])
     if !@battle.nil? && authorized_to_battle?
+      # binding.pry
       protag = Character.find_by(id: turn_params[:protag_id])
       antag = Character.find_by(id: turn_params[:antag_id])
       move = Move.find_by(id: turn_params[:attack])

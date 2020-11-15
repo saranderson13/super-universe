@@ -20,9 +20,9 @@ class Battle < ApplicationRecord
 
   def turn_dialog(attacking, move, defending, outcome)
     if outcome == "miss"
-      msg = "[T#{self.turn_count}]: #{attacking.supername} uses #{move.name}!\n#{defending.supername} #{move.fail_descrip}\nNo damage taken.\n\n" + self.log
+      msg = "M#{self.turn_count}*#{attacking.supername} uses #{move.name}, but misses!*#{defending.supername} #{move.fail_descrip}*No damage taken.*" + self.log
     elsif outcome == "hit"
-      msg = "[T#{self.turn_count}]: #{attacking.supername} uses #{move.name}!\n#{defending.supername} #{move.success_descrip}\n#{defending.supername} takes #{move.adjusted_pts(attacking, defending)} points of damage.\n\n" + self.log
+      msg = "H#{self.turn_count}*#{attacking.supername} uses #{move.name}, and it lands!*#{defending.supername} #{move.success_descrip}*#{defending.supername} takes #{move.adjusted_pts(attacking, defending)} points of damage.*" + self.log
     end
 
     msg.html_safe

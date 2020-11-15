@@ -90,7 +90,7 @@
 
 .protag_form_header, .battle_log_header {
   font-family: "Cantarell";
-  font-size: 23px;
+  font-size: 33px;
 }
 
 .battle_pg_list_mvs {
@@ -103,7 +103,7 @@
 .battle_log_turns {
   font-family: "Roboto Condensed";
   font-size: 18px;
-  height: calc(100% - 110px);
+  height: calc(100% - 145px);
   overflow: auto;
   padding-right: 50px;
 }
@@ -115,6 +115,22 @@
 .battle_log.black .battle_log_turns::-webkit-scrollbar-button { color: #fff; }
 
 .battle_log_turns::-webkit-scrollbar-thumb { background-color: #f00; }
+
+.player_turn { 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.turn_icon {
+  min-width: 100px;
+  font-size: 40px;
+}
+.turn_icon img { width: 30px; }
+.antag_turn { color: #f00; }
+.turn_action { font-family: "Cantarell"; font-size: 22px; color: #f00; line-height: 23px; padding-bottom: 5px; }
+.turn_description { padding-left: 4px; font-style: italic; }
+.turn_outcome { font-weight: bold; padding-left: 4px; }
 
 .protag_move_select {
   margin-top: 20px;
