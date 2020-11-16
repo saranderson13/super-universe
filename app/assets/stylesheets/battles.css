@@ -68,6 +68,13 @@
   color: #fff;
 }
 
+.battle_in_prog_interface .protag_form.white, .battle_in_prog_interface .battle_log.white  { 
+  box-shadow: 0px 0px 5px #bebebe; 
+}
+.battle_in_prog_interface .protag_form.black, .battle_in_prog_interface .battle_log.black  { 
+  box-shadow: 0px 0px 5px #525252; 
+}
+
 .protag_form_header, .battle_log_header {
   font-family: "Cantarell";
   font-size: 33px;
