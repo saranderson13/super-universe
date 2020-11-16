@@ -213,6 +213,15 @@ class Character < ApplicationRecord
     arr.sample
   end
 
+  def protag_attacks_for_printout(battle)
+    attacks = {}
+    self.powers.each do |p|
+      attacks[p] = []
+      p.moves.each { |m| attacks[p] << m }
+    end
+    attacks
+  end
+
   def protag_attacks(battle)
     attacks = []
     self.powers.each do |p|

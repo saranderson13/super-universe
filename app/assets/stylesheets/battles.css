@@ -53,20 +53,12 @@
   width: 550px; 
   margin-left: 100px;
   height: calc(100% - 100px);
-  padding: 50px 0px 0px;
-  border: 5px solid #f00;
+  padding-left: 50px;
   top: 170px; 
   margin-right: 100px;
+  border-left: 13px solid #f00;
 }
 
-.battle_log {
-  box-sizing: border-box;
-  width: calc(100% - 650px); 
-  height: calc(100% - 100px);
-  margin: 0px 100px;
-  padding: 0px 40px 10px;
-  border: 5px solid #f00;
-}
 .protag_form.white, .battle_log.white {
   color: #000;
   background-color: #fff;
@@ -75,35 +67,61 @@
   background-color: #000;
   color: #fff;
 }
-.battle_log.battle_in_prog {
-  top: 225px; 
-  right: calc((100% - 1050px)/2);
-}
-.battle_log.battle_results {
-  box-sizing: border-box;
-  width: inherit;
-  display: block;
-  width: 600px;
-  top: 300px;
-  left: calc(50% - 300px);
-}
 
 .protag_form_header, .battle_log_header {
   font-family: "Cantarell";
   font-size: 33px;
+  font-weight: bold;
+  padding: 20px 0px;
 }
 
-.battle_pg_list_mvs {
-  list-style: none;
-  margin: 0px; padding: 0px;
-  font-family: "Roboto Condensed";
-  font-size: 13px;
+#battle_pg_move_list {
+  margin-right: 50px;
+}
+
+.battle_pg_pwrmv_set {
+  margin-bottom: 15px;
+}
+
+.battle_pg_mvlst_power {
+  font-family: 'Roboto Condensed';
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.battle_pg_move {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pwrmv_used_hero { color: #c4c4c4; font-style: italic; }
+.pwrmv_used_villain { color: #696969; font-style: italic; }
+
+.battle_pg_move_name {
+  font-family: 'Roboto Condensed';
+  font-size: 19px;
+  padding-left: 15px;
+}
+
+.battle_pg_move_damage {
+  font-family: "Cantarell";
+  font-size: 18px;
+}
+
+
+.battle_log {
+  box-sizing: border-box;
+  width: calc(100% - 650px); 
+  height: calc(100% - 100px);
+  margin: 0px 100px;
+  padding: 0px 40px 10px;
 }
 
 .battle_log_turns {
   font-family: "Roboto Condensed";
   font-size: 18px;
-  height: calc(100% - 145px);
+  height: calc(100% - 125px);
   overflow: auto;
   padding-right: 50px;
 }
@@ -133,22 +151,27 @@
 .turn_outcome { font-weight: bold; padding-left: 4px; }
 
 .protag_move_select {
-  margin-top: 20px;
+  margin: 30px 20px 20px 0px;
+  text-align: center;
 }
 
 .protag_move_select select {
-  width: 130px;
+  width: 200px; height: 30px;
+  font-family: 'Roboto Condensed';
+  font-size: 18px;
 }
 
 .protag_move_select input[type="submit"] {
   box-sizing: border-box;
   display: block;
-  width: 130px; height: 20px;
-  margin: 20px auto;
+  height: 40px;
+  margin: 10px auto;
   padding: 0px;
   line-height: 20px;
-  font-family: "Roboto Condensed";
-  font-size: 12px;
+  font-family: "Cantarell";
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
@@ -158,12 +181,14 @@
 
 /* 'Browse Powers' button when no powers */
 .protag_move_select .black input[type="submit"] {
+  width: 200px;
   background-color: #000;
   color: #fff;
 }
 
 /* 'Delete Power' button */
 .protag_move_select .white input[type="submit"] {
+  width: 200px;
   background-color: #fff;
   color: #000;
 }
@@ -171,6 +196,15 @@
 /* ON RESULTS PAGE */
 .battle_log_wrapper {
   width: 100%; height: 100%;
+}
+
+.battle_log.battle_results {
+  box-sizing: border-box;
+  width: inherit;
+  display: block;
+  width: 600px;
+  top: 300px;
+  left: calc(50% - 300px);
 }
 
 .result {

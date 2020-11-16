@@ -57,7 +57,7 @@ module BattlesHelper
 
   def battle_log_styling
     if @battle.outcome == "Pending"
-      msg = @protag.char_type == "Hero" ? "<div class='battle_log white battle_in_prog'>" : "<div class='battle_log black battle_in_prog'>"
+      msg = @protag.char_type == "Hero" ? "<div class='battle_log white'>" : "<div class='battle_log black'>"
     else
       msg = @protag.char_type == "Hero" ? "<div class='battle_log white battle_results'>" : "<div class='battle_log black battle_results'>"
     end
@@ -78,7 +78,7 @@ module BattlesHelper
 
     lines.each_with_index do |l, i|
       if counter == 0
-        turn_icon = l[1..-1].to_i.odd? ? "<div class='turn_icon'>◀ " : "<div class='turn_icon antag_turn'>▶ "
+        turn_icon = l[1..-1].to_i.odd? ? "<div class='turn_icon'>▶ " : "<div class='turn_icon antag_turn'>◀ "
         turn_icon += l[0] == "H" ? "<img src='/assets/attack_hit.png'></div>" : "<img src='/assets/attack_miss.png'></div>"
 
         turn = "<div class='player_turn'>#{turn_icon}"
@@ -100,6 +100,15 @@ module BattlesHelper
     log.html_safe
   end
 
+  
+  def move_line_styling(move, battle)
+    if move.move_type == "pwr" && !!battle.p_used_pwrmv
+      tag = battle.protag.char_type == "Hero" ? "<div class='battle_pg_move pwrmv_used_hero'>" : "<div class='battle_pg_move pwrmv_used_villain'>"
+    else
+      tag = "<div class='battle_pg_move'>"
+    end
+    tag.html_safe
+  end
 
 
 

@@ -5,21 +5,30 @@
 
   <div class = "battle_in_prog_interface">
     <%= protag_form_styling %>
-      <h3 class="protag_form_header">Available Attacks:</h3>
-      <ul class="battle_pg_list_mvs">
-        <% @protag.protag_attacks(@battle).each do |m| %>
-          <li><%= "#{m.long_type}: #{m.name} || DAMAGE: #{m.adjusted_pts(@protag, @antag)}" %></li>
+      <div class="protag_form_header">Available Attacks:</div>
+      <div id="battle_pg_move_list">
+        <% @protag.protag_attacks_for_printout(@battle).each do |p, ms| %>
+          <div class="battle_pg_pwrmv_set">
+            <div class="battle_pg_mvlst_power"><%= p.name %></div>
+            <% ms.each do |m| %>
+              <%= move_line_styling(m, @battle) %>
+                <div class="battle_pg_move_name"><%= "#{m.name}" %></div>
+                <div class="battle_pg_move_damage"><%= "#{m.adjusted_pts(@protag, @antag)} DMG" %></div>
+              </div>
+            <% end %>
+          </div>
         <% end %>
-      </ul>
+
+      </div>
       
       <%= form_with(url: battle_path(@battle), method: :patch, class: 'protag_move_select') do |f| %>
         <%= f.hidden_field :protag_id, value: @protag.id %>
         <%= f.hidden_field :antag_id, value: @antag.id %>
-        <%= f.collection_select :attack, @protag.protag_attacks(@battle), :id, :name, include_blank: true  %>
+        <%= f.collection_select :attack, @protag.protag_attacks(@battle), :id, :name, prompt: "Select Your Attack" %>
         <%= att_button_color %><%= f.submit "Attack!" %></div>
       <% end %>
       <%= battle_log_styling %>
-        <h3 class="battle_log_header">Battle Log:</h3>
+        <div class="battle_log_header">Battle Log:</div>
         <div class="battle_log_turns">
           <%= style_log_text_in_prog(@battle.log, @protag) %>
         </div>
