@@ -283,11 +283,9 @@ class Character < ApplicationRecord
       stats[:new_lvl] += 1
       stats[:lvl_progress] -= stats[:pts_to_next]
       stats[:pts_to_next] = stats[:new_lvl] * 10
-      binding.pry
     end
 
     stats[:new_nxt_lvl] = stats[:new_lvl] + 1
-    binding.pry
     stats
   end
 

@@ -35,7 +35,7 @@ class Battle < ApplicationRecord
   def end_of_battle_dialog
     protag = Character.find_by(id: self.protag_id)
     antag = Character.find_by(id: self.antag_id)
-    # binding.pry
+
     if outcome == "Victory"
       msg = "V*+#{protag.win_points(antag)} points towards leveling up!*"
       new_stats = protag.stats_after_lvlup(antag)
