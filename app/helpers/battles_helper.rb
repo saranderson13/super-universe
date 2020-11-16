@@ -109,7 +109,7 @@ module BattlesHelper
         log += "<div class='player_lvlup'>#{lines[3]}</div><div class='player_next_lvl'>#{lines[4]}</div></div></div>"
         lines.shift(5)
       else
-        log += "<div class='player_lvlup'>#{lines[2]}</<div></div></div>"
+        log += "<div class='player_next_lvl'>#{lines[2]}</div></div></div>"
         lines.shift(3)
       end
     end

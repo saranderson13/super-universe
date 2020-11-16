@@ -38,11 +38,11 @@ class Battle < ApplicationRecord
     # binding.pry
     if outcome == "Victory"
       msg = "V*+#{protag.win_points(antag)} points towards leveling up!*"
+      new_stats = protag.stats_after_lvlup(antag)
       if (protag.lvl_progress + protag.win_points(antag)) >= protag.pts_to_next_lvl
-        new_stats = protag.stats_after_lvlup(antag)
-        msg += "LU*#{protag.supername} has reached Level #{new_stats[:new_lvl]}!*#{protag.supername} now needs #{new_stats[:pts_to_next]} points to reach level #{new_stats[:new_nxt_lvl]}!*"
+        msg += "LU*#{protag.supername} has reached Level #{new_stats[:new_lvl]}!*#{protag.supername} now needs #{new_stats[:pts_to_next] - new_stats[:lvl_progress]} points to reach level #{new_stats[:new_nxt_lvl]}!*"
       else
-        msg += "#{protag.supername} now needs #{protag.pts_to_next_lvl} to reach level #{protag.level + 1}*"
+        msg += "#{protag.supername} now needs #{new_stats[:pts_to_next] - new_stats[:lvl_progress]} points to reach level #{new_stats[:new_nxt_lvl]}*"
       end
       msg += self.log
       msg.html_safe
