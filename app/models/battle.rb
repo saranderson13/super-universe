@@ -18,9 +18,13 @@ class Battle < ApplicationRecord
     self.turn_count += 1
   end
 
-  def turn_dialog(attacking, move, defending, outcome)
+  def turn_dialog(attacking, move, defending, outcome, user)
     if outcome == "miss"
-      msg = "M#{self.turn_count}*#{attacking.supername} uses #{move.name}, but misses!*#{defending.supername} #{move.fail_descrip}*No damage taken.*" + self.log
+      if attacking.user == user
+        msg = "M#{self.turn_count}*#{attacking.supername} uses #{move.name}, but misses!*#{defending.supername} #{move.fail_descrip}*No damage dealt.*" + self.log
+      else
+        msg = "M#{self.turn_count}*#{attacking.supername} uses #{move.name}, but misses!*#{defending.supername} #{move.fail_descrip}*No damage taken.*" + self.log
+      end
     elsif outcome == "hit"
       msg = "H#{self.turn_count}*#{attacking.supername} uses #{move.name}, and it lands!*#{defending.supername} #{move.success_descrip}*#{defending.supername} takes #{move.adjusted_pts(attacking, defending)} points of damage.*" + self.log
     end

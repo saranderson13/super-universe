@@ -79,7 +79,7 @@ module BattlesHelper
     lines.each_with_index do |l, i|
       if counter == 0
         turn_icon = l[1..-1].to_i.odd? ? "<div class='turn_icon'>▶ " : "<div class='turn_icon antag_turn'>◀ "
-        turn_icon += l[0] == "H" ? "<img src='/assets/attack_hit.png'></div>" : "<img src='/assets/attack_miss.png'></div>"
+        turn_icon += l[0] == "H" ? "<img src='/assets/attack_hit.png' class='hit'></div>" : "<img src='/assets/attack_miss.png' class='miss'></div>"
 
         turn = "<div class='player_turn'>#{turn_icon}"
         counter += 1

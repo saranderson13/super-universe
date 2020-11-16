@@ -151,7 +151,8 @@
   min-width: 100px;
   font-size: 40px;
 }
-.turn_icon img { width: 30px; }
+.turn_icon img.hit { width: 30px; }
+.turn_icon img.miss { width: 25px; padding: 0px 0px 3px 4px; }
 .antag_turn { color: #f00; }
 .turn_action { font-family: "Cantarell"; font-size: 22px; color: #f00; line-height: 23px; padding-bottom: 5px; }
 .turn_description { padding-left: 4px; font-style: italic; }
