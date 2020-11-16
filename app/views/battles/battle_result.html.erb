@@ -1,16 +1,14 @@
-<div class="battle_pg_wrapper">
+<%= resultpg_bg_styling %>
   <div class="battle_title_bar"><%= battle_title %></div>
-  <%= resultpg_bg_styling %> 
-  </div>
 
-  <div class="result"><%= @battle.outcome %></div>
+  <div class="result"><%= outcome_declaration %></div>
 
   <div class="battle_log_wrapper">
     <%= battle_log_styling %>
-      <h3 class="battle_log_header">Battle Log:</h3>
-      <p class="battle_log_turns">
-        <%= break_the_lines(@battle.log) %>
-      </p>
+      <div class="battle_log_header">Battle Log:</div>
+      <div class="battle_log_turns">
+        <%= style_log_text_battle_complete(@battle.log) %>
+      </div>
     </div>
   </div>
 </div>

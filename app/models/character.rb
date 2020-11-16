@@ -269,6 +269,27 @@ class Character < ApplicationRecord
     self.hp + (self.level * 10)
   end
 
+  def stats_after_lvlup(opponent)
+    stats = {
+      new_lvl: self.level,
+      lvl_progress: self.lvl_progress,
+      pts_to_next: self.pts_to_next_lvl,
+      new_nxt_lvl: self.level + 1
+    }
+    
+    stats[:lvl_progress] = self.lvl_progress + self.win_points(opponent)
+    
+    while stats[:lvl_progress] >= stats[:pts_to_next]
+      stats[:new_lvl] += 1
+      stats[:lvl_progress] -= stats[:pts_to_next]
+      stats[:pts_to_next] = stats[:new_lvl] * 10
+      binding.pry
+    end
+
+    stats[:new_nxt_lvl] = stats[:new_lvl] + 1
+    binding.pry
+    stats
+  end
 
 
 

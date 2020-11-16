@@ -35,15 +35,19 @@ class Battle < ApplicationRecord
   def end_of_battle_dialog
     protag = Character.find_by(id: self.protag_id)
     antag = Character.find_by(id: self.antag_id)
+    # binding.pry
     if outcome == "Victory"
-      msg = "#{protag.supername} is victorious!\nThey have earned #{protag.win_points(antag)} points towards leveling up.\n"
+      msg = "V*+#{protag.win_points(antag)} points towards leveling up!*"
       if (protag.lvl_progress + protag.win_points(antag)) >= protag.pts_to_next_lvl
-        msg += "#{protag.supername} has reached level #{protag.level + 1}!\n"
+        new_stats = protag.stats_after_lvlup(antag)
+        msg += "LU*#{protag.supername} has reached Level #{new_stats[:new_lvl]}!*#{protag.supername} now needs #{new_stats[:pts_to_next]} points to reach level #{new_stats[:new_nxt_lvl]}!*"
+      else
+        msg += "#{protag.supername} now needs #{protag.pts_to_next_lvl} to reach level #{protag.level + 1}*"
       end
-      msg += "\n" + self.log
+      msg += self.log
       msg.html_safe
     elsif outcome == "Defeat"
-      msg = "#{protag.supername} was defeated!\n\n" + self.log
+      msg = self.log
       msg.html_safe
     end
   end

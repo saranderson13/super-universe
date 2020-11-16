@@ -21,18 +21,10 @@ module BattlesHelper
   end
 
   def resultpg_bg_styling
-    if @battle.outcome == "Victory"
-      if @protag.char_type == "Hero"
-        tag = "<div id='battle_pg_hero_side' class='battle_pg_side' style='width: 100%'></div>"
-      else
-        tag = "<div id='battle_pg_villain_side' class='battle_pg_side' style='width: 100%'></div>"
-      end
+    if @battle.outcome == "Victory" && @protag.char_type == "Hero" || @battle.outcome == "Defeat" && @antag.char_type == "Hero"
+      tag = "<div id='results_pg_wrapper' class='white'>"
     else
-      if @protag.char_type == "Hero"
-        tag = "<div id='battle_pg_villain_side' class='battle_pg_side' style='width: 100%'></div>"
-      else
-        tag = "<div id='battle_pg_hero_side' class='battle_pg_side' style='width: 100%'></div>"
-      end
+      tag = "<div id='results_pg_wrapper' class='black'>"
     end
     tag.html_safe
   end
@@ -59,7 +51,7 @@ module BattlesHelper
     if @battle.outcome == "Pending"
       msg = @protag.char_type == "Hero" ? "<div class='battle_log white'>" : "<div class='battle_log black'>"
     else
-      msg = @protag.char_type == "Hero" ? "<div class='battle_log white battle_results'>" : "<div class='battle_log black battle_results'>"
+      msg = @protag.char_type == "Hero" ? "<div class='battle_results white'>" : "<div class='battle_results black'>"
     end
     msg.html_safe
   end
@@ -71,7 +63,7 @@ module BattlesHelper
   end
 
 
-  def style_log_text_in_prog(text, protag)
+  def style_log_text_in_prog(text)
     counter = 0
     turn, log = "", ""
     lines = text.split('*')
@@ -98,6 +90,39 @@ module BattlesHelper
     end
 
     log.html_safe
+  end
+
+
+  def style_log_text_battle_complete(text)
+
+    counter = 0
+    turn, log = "", ""
+    lines = text.split('*')
+
+    if lines[0] == "V"
+      log = <<~HEREDOC
+      <div class="results_summary">
+        <div>
+          <div class="player_points">#{lines[1]}</div>
+      HEREDOC
+      if lines[2] == "LU"
+        log += "<div class='player_lvlup'>#{lines[3]}</div><div class='player_next_lvl'>#{lines[4]}</div></div></div>"
+        lines.shift(5)
+      else
+        log += "<div class='player_lvlup'>#{lines[2]}</<div></div></div>"
+        lines.shift(3)
+      end
+    end
+
+    log += style_log_text_in_prog(lines.join("*"))
+
+
+    log.html_safe
+  end
+
+
+  def outcome_declaration 
+    @battle.outcome == "Victory" ? "#{@protag.supername} was victorious!" : "#{@protag.supername} was defeated"
   end
 
   
