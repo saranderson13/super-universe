@@ -18,9 +18,9 @@ class Battle < ApplicationRecord
     self.turn_count += 1
   end
 
-  def turn_dialog(attacking, move, defending, outcome, user)
+  def turn_dialog(attacking, move, defending, outcome, battle)
     if outcome == "miss"
-      if attacking.user == user
+      if attacking == battle.protag
         msg = "M#{self.turn_count}*#{attacking.supername} uses #{move.name}, but misses!*#{defending.supername} #{move.fail_descrip}*No damage dealt.*" + self.log
       else
         msg = "M#{self.turn_count}*#{attacking.supername} uses #{move.name}, but misses!*#{defending.supername} #{move.fail_descrip}*No damage taken.*" + self.log
