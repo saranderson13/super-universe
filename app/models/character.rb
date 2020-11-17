@@ -306,29 +306,12 @@ class Character < ApplicationRecord
   end
 
   def self.split_to_wl_arrays
-
     groups = {
       winning_record: [],
       losing_record: []
     }
-
     self.all.each { |c| c.win_loss_ratio("victories", "defeats") > 1 ? groups[:winning_record].push(c) : groups[:losing_record].push(c) }
-
     return groups
-
-  end
-  
-  def self.top_supers_rank
-    groups = Character.split_to_wl_arrays
-
-    w_sorted = groups[:winning_record].sort_by { |c| [c.level, c.lvl_progress, c.win_percentage, c.victories, c.non_pending_battles("protag").length] }.reverse()
-    l_sorted = groups[:losing_record].sort_by { |c| [c.level, c.lvl_progress, c.win_percentage, c.victories, -c.non_pending_battles("protag").length] }.reverse()
-
-    return w_sorted.concat(l_sorted).delete_if { |c| c.non_pending_battles("protag").length == 0 }
-  end
-
-  def self.top_supers_leader_board
-    self.top_supers_rank[0..4]
   end
 
   def self.records_rank
@@ -342,10 +325,6 @@ class Character < ApplicationRecord
 
   def self.records_leader_board
     self.records_rank[0..4]
-  end
-
-  def self.wall_of_shame
-    return self.all.sort_by { |c| [c.defeats, c.win_loss_ratio("defeats", "victories")]}.reverse[0..4]
   end
 
   def self.records_rank_print
@@ -374,19 +353,51 @@ class Character < ApplicationRecord
     }
   end
 
-  def self.top_supers_print
-    self.top_supers_rank.each do |c|
-      puts <<~HEREDOC
-      Name: #{c.supername}
-      Level: #{c.level}
-      Lvl Progress: #{c.lvl_progress}
-      Win %: #{c.win_percentage}
-      Victories: #{c.victories}
-      Total Battles: #{c.non_pending_battles("protag").length}
 
-      HEREDOC
+  # TO BE DEPRECATED (START)
+    def self.top_supers_rank
+      groups = Character.split_to_wl_arrays
+
+      w_sorted = groups[:winning_record].sort_by { |c| [c.level, c.lvl_progress, c.win_percentage, c.victories, c.non_pending_battles("protag").length] }.reverse()
+      l_sorted = groups[:losing_record].sort_by { |c| [c.level, c.lvl_progress, c.win_percentage, c.victories, -c.non_pending_battles("protag").length] }.reverse()
+
+      return w_sorted.concat(l_sorted).delete_if { |c| c.non_pending_battles("protag").length == 0 }
     end
-  end
+
+    def self.top_supers_leader_board
+      self.top_supers_rank[0..4]
+    end
+
+    def self.top_supers_print
+      self.top_supers_rank.each do |c|
+        puts <<~HEREDOC
+        Name: #{c.supername}
+        Level: #{c.level}
+        Lvl Progress: #{c.lvl_progress}
+        Win %: #{c.win_percentage}
+        Victories: #{c.victories}
+        Total Battles: #{c.non_pending_battles("protag").length}
+
+        HEREDOC
+      end
+    end
+
+    def top_supers_rank_stats
+      return {
+        level: self.level,
+        lvl_progress: self.lvl_progress,
+        win_percent: self.win_percentage,
+        victories: self.victories,
+        total_battles: self.non_pending_battles("protag").length
+      }
+    end
+
+    def self.wall_of_shame
+      return self.all.sort_by { |c| [c.defeats, c.win_loss_ratio("defeats", "victories")]}.reverse[0..4]
+    end
+  # TO BE DEPRECATED (END)
+
+  
 
 
 
