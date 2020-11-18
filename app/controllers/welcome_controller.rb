@@ -2,8 +2,8 @@ class WelcomeController < ApplicationController
 
   def home
     @recent = Battle.recent_battles
-    @leaders_general = Character.top_supers_leader_board
-    @leaders_records = Character.records_leader_board
+    @leaders_records = Character.leader_board("records_rank")
+    @antag_records = Character.leader_board("antag_rank")
     @news = NewsItem.newsfeed
     
   end

@@ -36,13 +36,13 @@
   <div class="leader_board_header">⯈⯈ Leader Board</div>
   <div class="leader_board">
     <div class='leader_board_title'>Top Supers:</div>
-    <% @leaders_general.each_with_index do |c, i| %>
+    <% @leaders_records.each_with_index do |c, i| %>
       <%= leader_board_char(c, i) %>
     <% end %>
   </div>
   <div class="leader_board">
-    <div class='leader_board_title'>Best Records:</div>
-    <% @leaders_records.each_with_index do |c, i| %>
+    <div class='leader_board_title'>Toughest Antagonists:</div>
+    <% @antag_records.each_with_index do |c, i| %>
       <%= leader_board_char(c, i) %>
     <% end %>
   </div>
