@@ -107,7 +107,7 @@ class CharactersController < ApplicationController
     @antag_record = @char.antag_battle_record 
 
     # Array of objects: { opponent: Character Object, victories: Integer, defeats: Integer }
-    @spar_record = @char.past_opponents.map { |a| @char.spar_record(a) } 
+    @spar_record = @char.past_opponents("protag").map { |a| @char.spar_record(a) } 
   end
 
 
