@@ -294,28 +294,33 @@ class Character < ApplicationRecord
 
   # CHARACTER RANKING FUNCTIONS
 
-  def win_loss_ratio(numerator, denominator)
+  def win_loss_ratio(numerator, denominator, protag_antag)
     # To rank by win, call with ("victories", "defeats")
     # To rank by losses, call with ("defeats", "victories")
+    # Call with "protag" for protag ranking, "antag" for antag ranking
+    # Reverse "victories" and "defeats" for antag ranking
 
     if self.send(denominator) != 0 
       return self.send(numerator).to_f / self.send(denominator)
     else
-      return self.non_pending_battles("protag").length == 0 ? 0 : self.send(numerator).to_f + 1
+      return self.non_pending_battles(protag_antag).length == 0 ? 0 : self.send(numerator).to_f + 1
     end
   end
 
-  def self.split_to_wl_arrays
+  def self.split_to_wl_arrays(numerator, denominator, protag_antag)
     groups = {
       winning_record: [],
       losing_record: []
     }
-    self.all.each { |c| c.win_loss_ratio("victories", "defeats") > 1 ? groups[:winning_record].push(c) : groups[:losing_record].push(c) }
+    self.all.each { |c| c.win_loss_ratio(numerator, denominator, protag_antag) > 1 ? groups[:winning_record].push(c) : groups[:losing_record].push(c) }
     return groups
   end
 
+
+
+  # Best Protag Records Ranking
   def self.records_rank
-    groups = Character.split_to_wl_arrays
+    groups = Character.split_to_wl_arrays("victories", "defeats", "protag")
 
     w_sorted = groups[:winning_record].sort_by { |c| [c.victories, c.past_opponents.length, c.win_percentage, c.non_pending_battles("protag").length, c.level, c.lvl_progress] }.reverse
     l_sorted = groups[:losing_record].sort_by { |c| [c.victories, c.past_opponents.length, c.win_percentage, -c.non_pending_battles("protag").length, c.level, c.lvl_progress] }.reverse
@@ -354,9 +359,10 @@ class Character < ApplicationRecord
   end
 
 
+
   # TO BE DEPRECATED (START)
     def self.top_supers_rank
-      groups = Character.split_to_wl_arrays
+      groups = Character.split_to_wl_arrays("victories", "defeats", "protag")
 
       w_sorted = groups[:winning_record].sort_by { |c| [c.level, c.lvl_progress, c.win_percentage, c.victories, c.non_pending_battles("protag").length] }.reverse()
       l_sorted = groups[:losing_record].sort_by { |c| [c.level, c.lvl_progress, c.win_percentage, c.victories, -c.non_pending_battles("protag").length] }.reverse()
