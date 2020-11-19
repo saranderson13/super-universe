@@ -329,6 +329,28 @@ class Character < ApplicationRecord
     self.send(board_name)[0..4]
   end
 
+  def character_rankables 
+    # returns a hash with all rankable statistics for a character.
+    return {
+      level: self.level,
+      lvl_progress: self.lvl_progress,
+      protag_victories: self.victories,
+      protag_defeats: self.defeats,
+      protag_win_percentage: self.win_percentage,
+      protag_battle_count: self.non_pending_battles("protag").length,
+      protag_opponent_count: self.past_opponents("protag").length,
+      antag_victories: self.antag_battle_record[0],
+      antag_defeats: self.antag_battle_record[1],
+      antag_win_percentage: self.antag_battle_win_percentage,
+      antag_battle_count: self.non_pending_battles("antag").length,
+      antag_opponent_count: self.past_opponents("antag").length
+    }
+  end
+
+  def weighted_stat_calc(stat, weight)
+    # use a number to generate the value of a statistic based on its importance in a ranking algorithm
+  end
+
 
 
   # Best Protag Records Ranking
