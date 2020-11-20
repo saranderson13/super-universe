@@ -463,22 +463,22 @@ class Character < ApplicationRecord
 
 
   # Best Protag Records Ranking
-  PROTAG_WINNING_GROUP_CRITERIA = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: 4, level: 2 }
-  PROTAG_LOSING_GROUP_CRITERIA = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: -2, level: 2 }
-  PROTAG_RANK_WL_ARGS = ["Victory", "Defeat", "protag"]
-
+  
   def self.protag_rank
-    self.rank_category_calculator(PROTAG_RANK_WL_ARGS, PROTAG_WINNING_GROUP_CRITERIA, PROTAG_LOSING_GROUP_CRITERIA)
+    wg_criteria = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: 4, level: 2 }
+    lg_criteria = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: -2, level: 2 }
+
+    self.rank_category_calculator(["Victory", "Defeat", "protag"], wg_criteria, lg_criteria)
   end
 
 
   # Toughest Antag Ranking 
-  ANTAG_WINNING_GROUP_CRITERIA = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: 4, level: 2 }
-  ANTAG_LOSING_GROUP_CRITERIA = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: -2, level: 2 }
-  ANTAG_RANK_WL_ARGS = ["Defeat", "Victory", "antag"]
   
   def self.antag_rank
-    self.rank_category_calculator(ANTAG_RANK_WL_ARGS, ANTAG_WINNING_GROUP_CRITERIA, ANTAG_LOSING_GROUP_CRITERIA)
+    wg_criteria = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: 4, level: 2 }
+    lg_criteria = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: -2, level: 2 }
+
+    self.rank_category_calculator(["Defeat", "Victory", "antag"], wg_criteria, lg_criteria)
   end
 
 
