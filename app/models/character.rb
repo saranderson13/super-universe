@@ -316,12 +316,16 @@ class Character < ApplicationRecord
     end
   end
 
+  def wl_ratio_group(numerator, denominator, protag_antag)
+    self.win_loss_ratio(numerator, denominator, protag_antag) > 1 ? :winning_record : :losing_record
+  end
+
   def self.split_to_wl_arrays(numerator, denominator, protag_antag)
     groups = {
       winning_record: [],
       losing_record: []
     }
-    self.all.each { |c| c.win_loss_ratio(numerator, denominator, protag_antag) > 1 ? groups[:winning_record].push(c) : groups[:losing_record].push(c) }
+    self.all.each { |c| groups[c.wl_ratio_group(numerator, denominator, protag_antag)].push(c) }
     return groups
   end
 
@@ -365,6 +369,8 @@ class Character < ApplicationRecord
     variables.each do |v|
       if v == :level
         score += (self.base_lvl_pts_for_weighted_stat) * self.weight_as_modifier(weights[v], sum_of_weights)
+      elsif v == :protag_win_percentage
+        score += (adjusted_win_percentage_for_weighted_stat(stats[v]) * self.weight_as_modifier(weights[v], sum_of_weights))
       else 
         score += stats[v] * self.weight_as_modifier(weights[v], sum_of_weights)
       end
@@ -378,46 +384,84 @@ class Character < ApplicationRecord
   end
 
   def weight_as_modifier(weight, sum_of_weights)
-    return (weight / sum_of_weights.to_f) * 100
+    return (weight / sum_of_weights.to_f) * 10
+  end
+
+  def adjusted_win_percentage_for_weighted_stat (percentage)
+    return percentage / 10.0
   end
 
 
 
   # Best Protag Records Ranking
-  def self.records_rank
-    groups = Character.split_to_wl_arrays("Victory","Defeat", "protag")
+  PROTAG_WINNING_GROUP_CRITERIA = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: 4, level: 2 }
+  PROTAG_LOSING_GROUP_CRITERIA = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: -2, level: 2 }
+  RECORDS_RANK_WL_ARGS = ["Victory", "Defeat", "protag"]
 
-    w_sorted = groups[:winning_record].sort_by { |c| [c.victories, c.past_opponents("protag").length, c.win_percentage, c.non_pending_battles("protag").length, c.level, c.lvl_progress] }.reverse
-    l_sorted = groups[:losing_record].sort_by { |c| [c.victories, c.past_opponents("protag").length, c.win_percentage, -c.non_pending_battles("protag").length, c.level, c.lvl_progress] }.reverse
-  
-    return w_sorted.concat(l_sorted).delete_if { |c| c.non_pending_battles("protag").length == 0 }
+
+
+  def self.records_rank
+    groups = Character.split_to_wl_arrays(*RECORDS_RANK_WL_ARGS)
+
+    w_records = groups[:winning_record].map { |c| [c, c.weighted_stat_calc(PROTAG_WINNING_GROUP_CRITERIA)] }
+    l_records = groups[:losing_record].map { |c| [c, c.weighted_stat_calc(PROTAG_LOSING_GROUP_CRITERIA)] }
+
+    sorted_records = w_records.concat(l_records).sort_by { |c| c[1] }
+    rankings = sorted_records.map { |c| c[0] }.reverse
+    
+    # UNCOMMENT TO PRINT IN TERMINAL
+    # rankings.each { |c| c.records_rank_print }
+
+    return rankings
   end
 
   def records_rank_stats
+    weights = self.wl_ratio_group(*RECORDS_RANK_WL_ARGS) == :winning_record ? PROTAG_WINNING_GROUP_CRITERIA : PROTAG_LOSING_GROUP_CRITERIA
+
     return {
       victories: self.victories,
-      opponent_count: self.past_opponents("protag").length,
+      opponent_count: self.past_opponents(RECORDS_RANK_WL_ARGS[2]).length,
       win_percent: self.win_percentage,
-      total_battles: self.non_pending_battles("protag").length,
+      total_battles: self.non_pending_battles(RECORDS_RANK_WL_ARGS[2]).length,
       level: self.level,
-      lvl_progress: self.lvl_progress
+      lvl_progress: self.lvl_progress,
+      weighted_score: self.weighted_stat_calc(weights)
     }
   end
 
-  def self.records_rank_print_all
-    self.records_rank.each do |c|
-      puts <<~HEREDOC
-      Name: #{c.supername}
-      Victories: #{c.victories}
-      Opponent Count: #{c.past_opponents("protag").length}
-      Win %: #{c.win_percentage}
-      Total Battles: #{c.non_pending_battles("protag").length}
-      Level: #{c.level}
-      Lvl Progress: #{c.lvl_progress}
+  def records_rank_print
+    weights = self.wl_ratio_group(*RECORDS_RANK_WL_ARGS) == :winning_record ? PROTAG_WINNING_GROUP_CRITERIA : PROTAG_LOSING_GROUP_CRITERIA
 
-      HEREDOC
-    end
+    puts <<~HEREDOC
+      Name: #{self.supername}
+      Victories: #{self.victories}
+      Opponent Count: #{self.past_opponents("protag").length}
+      Win %: #{self.win_percentage}
+      Total Battles: #{self.non_pending_battles("protag").length}
+      Level: #{self.level}
+      Lvl Progress: #{self.lvl_progress}
+      Weighted Score: #{self.weighted_stat_calc(weights)}
+
+    HEREDOC
   end
+
+  
+  # DEPRECATED
+  # To print all, uncomment relevent code in Character#records_rank and call
+  # def self.records_rank_print_all
+  #   self.records_rank.each do |c|
+  #     puts <<~HEREDOC
+  #     Name: #{c.supername}
+  #     Victories: #{c.victories}
+  #     Opponent Count: #{c.past_opponents("protag").length}
+  #     Win %: #{c.win_percentage}
+  #     Total Battles: #{c.non_pending_battles("protag").length}
+  #     Level: #{c.level}
+  #     Lvl Progress: #{c.lvl_progress}
+
+  #     HEREDOC
+  #   end
+  # end
 
   
 
