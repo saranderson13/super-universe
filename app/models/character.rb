@@ -466,15 +466,23 @@ class Character < ApplicationRecord
 
 
   # Toughest Antag Ranking 
+  ANTAG_WINNING_GROUP_CRITERIA = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: 4, level: 2 }
+  ANTAG_LOSING_GROUP_CRITERIA = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: -2, level: 2 }
+  ANTAG_RANK_WL_ARGS = ["Defeat", "Victory", "antag"]
   
   def self.antag_rank
-    groups = Character.split_to_wl_arrays("Defeat", "Victory", "antag")
-    
+    groups = Character.split_to_wl_arrays(*ANTAG_RANK_WL_ARGS)
 
-    w_sorted = groups[:winning_record].sort_by { |c| [c.antag_battle_record[0], c.past_opponents("antag").length, c.antag_battle_win_percentage, c.non_pending_battles("antag").length, c.level, c.lvl_progress] }.reverse
-    l_sorted = groups[:losing_record].sort_by { |c| [c.antag_battle_record[0], c.past_opponents("antag").length, c.antag_battle_win_percentage, -c.non_pending_battles("antag").length, c.level, c.lvl_progress] }.reverse
-  
-    return w_sorted.concat(l_sorted).delete_if { |c| c.non_pending_battles("protag").length == 0 }
+    w_records = groups[:winning_record].map { |c| [c, c.weighted_stat_calc(ANTAG_WINNING_GROUP_CRITERIA)] }
+    l_records = groups[:losing_record].map { |c| [c, c.weighted_stat_calc(ANTAG_LOSING_GROUP_CRITERIA)] }
+
+    sorted_records = w_records.concat(l_records).sort_by { |c| c[1] }
+    rankings = sorted_records.map { |c| c[0] }.reverse
+    
+    # UNCOMMENT TO PRINT IN TERMINAL
+    # rankings.each { |c| c.char_rank_print(ANTAG_RANK_WL_ARGS, ANTAG_WINNING_GROUP_CRITERIA, ANTAG_LOSING_GROUP_CRITERIA) }
+
+    return rankings
   end
 
 
