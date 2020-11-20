@@ -347,8 +347,38 @@ class Character < ApplicationRecord
     }
   end
 
-  def weighted_stat_calc(stat, weight)
-    # use a number to generate the value of a statistic based on its importance in a ranking algorithm
+  def weighted_stat_calc(weights)
+    # receives hash of statistical weights, e.g.:
+      # { level: 3, protag_victories: 5, protag_opponent_count: 4 }
+      # WEIGHTS SHOULD BE INTEGERS 1 - 5.
+      # You CAN have two variables with the same weight.
+      # Weight hash is NOT required to have all keys from the #character_rankables,
+      # but any desired stat must have the same key name.
+    # NOTE THAT IF INCLUDING LEVEL, LEVEL PROGRESS WILL BE INHERENTLY FACTORED IN
+    # returns a character score as an integer
+
+    stats = self.character_rankables
+    variables = weights.keys
+    sum_of_weights = weights.values.sum
+    score = 0
+
+    variables.each do |v|
+      if v == :level
+        score += (self.base_lvl_pts_for_weighted_stat) * self.weight_as_modifier(weights[v], sum_of_weights)
+      else 
+        score += stats[v] * self.weight_as_modifier(weights[v], sum_of_weights)
+      end
+    end
+    return score
+
+  end
+
+  def base_lvl_pts_for_weighted_stat
+    return self.level + (self.lvl_progress / 10.0)
+  end
+
+  def weight_as_modifier(weight, sum_of_weights)
+    return (weight / sum_of_weights.to_f) * 100
   end
 
 
