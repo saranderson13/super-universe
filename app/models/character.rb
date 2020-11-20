@@ -368,8 +368,26 @@ class Character < ApplicationRecord
     }
   end
 
-  def char_rank_print(ranking_args, win_group_criteria, loss_group_criteria)
+  def char_rank_stats(ranking_args, win_group_criteria, loss_group_criteria)
+    # Returns hash including only the rankables that are being considered in the ranking agorithm for a given character.
+    # (To be used to package stat variables for hover in leader board.)
+    weights = self.wl_ratio_group(*ranking_args) == :winning_record ? win_group_criteria : loss_group_criteria
+    categories = self.wl_ratio_group(*ranking_args) == :winning_record ? win_group_criteria.keys : loss_group_criteria.keys
+    all_char_stats = self.character_rankables
 
+    rank_char_stats = {}
+    all_char_stats.keys.select { |cat| categories.include?(cat) }.each do |cat|
+      rank_char_stats[cat] = all_char_stats[cat]
+      rank_char_stats[:lvl_progress] = all_char_stats[:lvl_progress] if cat == :level
+    end
+
+    rank_char_stats[:weighted_score] = self.weighted_stat_calc(weights)
+
+    return rank_char_stats
+  end
+
+  def char_rank_print(ranking_args, win_group_criteria, loss_group_criteria)
+    # Prints rankables that are being considered in the ranking algorithm for a given character.
     weights = self.wl_ratio_group(*ranking_args) == :winning_record ? win_group_criteria : loss_group_criteria
     categories = self.wl_ratio_group(*ranking_args) == :winning_record ? win_group_criteria.keys : loss_group_criteria.keys
     char_stats = self.character_rankables
@@ -377,6 +395,7 @@ class Character < ApplicationRecord
     puts "Name: #{self.supername}"
     categories.each do |cat|
       puts "#{translate_rankables_for_print[cat]}#{char_stats[cat]}"
+      puts "Level Progress: #{char_stats[:lvl_progress]}" if cat == :level
     end
     puts "Weighted Score: #{self.weighted_stat_calc(weights)}"
     puts "- - - - - - - -"
@@ -430,8 +449,6 @@ class Character < ApplicationRecord
   PROTAG_LOSING_GROUP_CRITERIA = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: -2, level: 2 }
   RECORDS_RANK_WL_ARGS = ["Victory", "Defeat", "protag"]
 
-
-
   def self.records_rank
     groups = Character.split_to_wl_arrays(*RECORDS_RANK_WL_ARGS)
 
@@ -442,37 +459,10 @@ class Character < ApplicationRecord
     rankings = sorted_records.map { |c| c[0] }.reverse
     
     # UNCOMMENT TO PRINT IN TERMINAL
-    rankings.each { |c| c.char_rank_print(RECORDS_RANK_WL_ARGS, PROTAG_WINNING_GROUP_CRITERIA, PROTAG_LOSING_GROUP_CRITERIA) }
+    # rankings.each { |c| c.char_rank_print(RECORDS_RANK_WL_ARGS, PROTAG_WINNING_GROUP_CRITERIA, PROTAG_LOSING_GROUP_CRITERIA) }
 
     return rankings
   end
-
-
-
-  # NEED TO ABSTRACT - WILL BE USED FOR STATS ON HOVER
-  # def records_rank_stats
-  #   weights = self.wl_ratio_group(*RECORDS_RANK_WL_ARGS) == :winning_record ? PROTAG_WINNING_GROUP_CRITERIA : PROTAG_LOSING_GROUP_CRITERIA
-  #   categories = self.wl_ratio_group(*RECORDS_RANK_WL_ARGS) == :winning_record ? PROTAG_WINNING_GROUP_CRITERIA.keys : PROTAG_LOSING_GROUP_CRITERIA.keys
-
-  #   stats = {}
-  #   categories.each do |cat|
-  #     stats[]
-  #   end
-
-  #   stats[:weighted_score] = self.weighted_stat_calc(weights)
-
-  #   return {
-  #     victories: self.victories,
-  #     opponent_count: self.past_opponents(RECORDS_RANK_WL_ARGS[2]).length,
-  #     win_percent: self.win_percentage,
-  #     total_battles: self.non_pending_battles(RECORDS_RANK_WL_ARGS[2]).length,
-  #     level: self.level,
-  #     lvl_progress: self.lvl_progress,
-  #     weighted_score: self.weighted_stat_calc(weights)
-  #   }
-  # end
-
-  
 
 
   # Toughest Antag Ranking 
@@ -487,31 +477,6 @@ class Character < ApplicationRecord
     return w_sorted.concat(l_sorted).delete_if { |c| c.non_pending_battles("protag").length == 0 }
   end
 
-  def antag_rank_stats
-    return {
-      victories: c.antag_battle_record[0],
-      opponent_count: self.past_opponents("antag").length,
-      win_percent: self.antag_battle_win_percentage,
-      total_battles: self.non_pending_battles("antag").length,
-      level: self.level,
-      lvl_progress: self.lvl_progress
-    }
-  end
-
-  def self.antag_rank_print_all
-    self.antag_rank.each do |c|
-      puts <<~HEREDOC
-      Name: #{c.supername}
-      Victories: #{c.antag_battle_record[0]}
-      Opponent Count: #{c.past_opponents("antag").length}
-      Win %: #{c.antag_battle_win_percentage}
-      Total Battles: #{c.non_pending_battles("antag").length}
-      Level: #{c.level}
-      Lvl Progress: #{c.lvl_progress}
-
-      HEREDOC
-    end
-  end
 
   
 
