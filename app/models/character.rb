@@ -332,14 +332,23 @@ class Character < ApplicationRecord
     # Call with "protag" for protag ranking, "antag" for antag ranking
     # Reverse "victories" and "defeats" for antag ranking
     # E.G. to find antag win ratio, use #win_loss_ratio("Defeat", "Victory", "antag")
+    # Call with NO arguments for overall win_loss_ratio
 
-    n = self.non_pending_battles(protag_antag).select { |b| b.outcome == numerator }.length
-    d = self.non_pending_battles(protag_antag).select { |b| b.outcome == denominator }.length
+    if protag_antag != "overall"
+      n = self.non_pending_battles(protag_antag).select { |b| b.outcome == numerator }.length
+      d = self.non_pending_battles(protag_antag).select { |b| b.outcome == denominator }.length
+    else
+      n, d = self.all_victories.length, self.all_defeats.length
+    end
 
     if d != 0 && n != 0
       return n.to_f / d
     else
-      return self.non_pending_battles(protag_antag).length == 0 || n == 0 ? 0 : n + 1
+      if protag_antag != "overall"
+        return self.non_pending_battles(protag_antag).length == 0 || n == 0 ? 0 : n + 1
+      else
+        return self.all_complete_battles.length == 0 || n == 0 ? 0 : n + 1
+      end
     end
   end
 
@@ -347,7 +356,7 @@ class Character < ApplicationRecord
     self.win_loss_ratio(numerator, denominator, protag_antag) > 1 ? :winning_record : :losing_record
   end
 
-  def self.split_to_wl_arrays(numerator, denominator, protag_antag)
+  def self.split_to_wl_arrays(numerator = "", denominator = "", protag_antag = "overall")
     groups = {
       winning_record: [],
       losing_record: []
@@ -492,7 +501,7 @@ class Character < ApplicationRecord
     rankings = sorted_records.map { |c| c[0] }.reverse
     
     # UNCOMMENT TO PRINT IN TERMINAL
-    # rankings.each { |c| c.char_rank_print(wl_args, wg_criteria, lg_criteria) }
+    rankings.each { |c| c.char_rank_print(wl_args, wg_criteria, lg_criteria) }
 
     return rankings
 
@@ -521,48 +530,8 @@ class Character < ApplicationRecord
   def self.top_supers_rank
     wg_criteria = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: 4, level: 2 }
     lg_criteria = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: -2, level: 2 }
-    groups = {
-      winning_record: [],
-      losing_record: []
-    }
 
-    self.all.each do |c|
-      n = c.all_victories.length
-      d = c.all_defeats.length
-      wlr = 0
-
-      if d != 0 && n != 0
-        wlr = n.to_f / d
-      else
-        wlr = c.all_complete_battles.length == 0 || n == 0 ? 0 : n + 1
-      end
-
-      wlr > 1 ? groups[:winning_record].push(c) : groups[:losing_record].push(c)
-    end
-
-    w_records = groups[:winning_record].map { |c| [c, c.weighted_stat_calc(wg_criteria)] }
-    l_records = groups[:losing_record].map { |c| [c, c.weighted_stat_calc(lg_criteria)] }
-
-    sorted_records = w_records.concat(l_records).sort_by { |c| c[1] }
-    rankings = sorted_records.map { |c| c[0] }.reverse
-    
-    # UNCOMMENT TO PRINT IN TERMINAL
-    rankings.each do |c| 
-      weights = groups[:winning_record].include?(c) ? wg_criteria : lg_criteria
-      categories = groups[:winning_record].include?(c) ? wg_criteria.keys : lg_criteria.keys
-      stats = c.character_rankables 
-
-      puts "Name: #{c.supername}"
-      categories.each do |cat|
-        puts "#{c.translate_rankables_for_print[cat]}#{stats[cat]}"
-        puts "Level Progress: #{stats[:lvl_progress]}" if cat == :level
-      end
-      puts "Weighted Score: #{c.weighted_stat_calc(weights)}"
-      puts "- - - - - - - -"
-    end
-
-    return rankings
-
+    self.rank_category_calculator(["", "", "overall"], wg_criteria, lg_criteria)
   end
   
 
