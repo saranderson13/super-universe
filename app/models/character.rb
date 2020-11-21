@@ -180,9 +180,10 @@ class Character < ApplicationRecord
   end
 
   def character_rank(rank_type)
-    # call with "protag_rank" for Top Supers (best protags)
+    # call with "protag_rank" for Fiercest Protagonists (best protags)
     # call with "antag_rank" for Toughest Antagonists (best antags)
-    self.non_pending_battles("protag").length == 0 ? 0 : Character.send(rank_type).find_index(self) + 1
+    # call with "top_supers_rank" for Top Supers
+    self.all_complete_battles.length == 0 ? 0 : Character.send(rank_type).find_index(self) + 1
   end
 
   # DEPRECATED

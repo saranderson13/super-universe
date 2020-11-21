@@ -93,6 +93,7 @@ class CharactersController < ApplicationController
     # Specific Character Stats
     @win_percentage = @char.win_percentage # Integer
     @antag_win_percentage = @char.antag_battle_win_percentage # Integer
+    @top_supers_rank = @char.character_rank("top_supers_rank") # Integer
     @protag_rank = @char.character_rank("protag_rank") # Integer
     @antag_rank = @char.character_rank("antag_rank") # Integer
     @hot_streak = @char.detect_hot_streak # Boolean

@@ -816,7 +816,7 @@ div.char_battlespg_battle_line a:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .battle_history_statistics {
@@ -829,7 +829,7 @@ div.char_battlespg_battle_line a:hover {
   padding-left: 0px;
   font-family: 'Roboto Condensed';
   font-size: 18px;
-  padding: 15px 0px;
+  padding: 15px 0px 5px;
 }
 
 .char_battlespg_statistics ul:last-child { 
