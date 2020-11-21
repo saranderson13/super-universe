@@ -56,6 +56,33 @@ class Character < ApplicationRecord
   def recent_battles
     self.chronological_battles[0..4]
   end
+
+  def all_complete_battles
+    # Not Chronological
+    self.non_pending_battles("protag").concat(self.non_pending_battles("antag"))
+  end
+
+  def all_victories
+    self.all_complete_battles.select { |b| self == b.protag && b.outcome == "Victory" || self == b.antag && b.outcome == "Defeat" }
+  end
+
+  def all_defeats
+    self.all_complete_battles.select { |b| self == b.protag && b.outcome == "Defeat" || self == b.antag && b.outcome == "Victory" }
+  end
+
+  def all_opponents
+    self.all_complete_battles.map { |b| b.protag == self ? b.antag : b.protag }.uniq
+  end
+
+  def overall_win_percentage
+    if self.all_victories.length == 0
+      return 0
+    elsif self.all_defeats.length == 0
+      return 100
+    else
+      return ((self.all_victories.length.to_f / self.all_complete_battles.length) * 100).to_i()
+    end
+  end
   
   
   
@@ -347,7 +374,12 @@ class Character < ApplicationRecord
       antag_defeats: self.antag_battle_record[1],
       antag_win_percentage: self.antag_battle_win_percentage,
       antag_battle_count: self.non_pending_battles("antag").length,
-      antag_opponent_count: self.past_opponents("antag").length
+      antag_opponent_count: self.past_opponents("antag").length,
+      all_victories: self.all_victories.length,
+      all_defeats: self.all_defeats.length,
+      overall_win_percentage: self.overall_win_percentage,
+      total_battle_count: self.all_complete_battles.length,
+      total_opponent_count: self.all_opponents.length
     }
   end
 
@@ -364,7 +396,12 @@ class Character < ApplicationRecord
       antag_defeats: "Defeats: ",
       antag_win_percentage: "Win %: ",
       antag_battle_count: "Total Battles: ",
-      antag_opponent_count: "Total Opponents: "
+      antag_opponent_count: "Total Opponents: ",
+      all_victories: "Total Victories: ",
+      all_defeats: "Total Defeats: ",
+      overall_win_percentage: "Overall Win Percentage: ",
+      total_battle_count: "Total Battles:",
+      total_opponent_count: "Total Opponents: "
     }
   end
 
@@ -463,7 +500,6 @@ class Character < ApplicationRecord
 
 
   # Best Protag Records Ranking
-  
   def self.protag_rank
     wg_criteria = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: 4, level: 2 }
     lg_criteria = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: -2, level: 2 }
@@ -473,7 +509,6 @@ class Character < ApplicationRecord
 
 
   # Toughest Antag Ranking 
-  
   def self.antag_rank
     wg_criteria = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: 4, level: 2 }
     lg_criteria = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: -2, level: 2 }
@@ -482,6 +517,53 @@ class Character < ApplicationRecord
   end
 
 
+  # Overall Best Ranking
+  def self.top_supers_rank
+    wg_criteria = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: 4, level: 2 }
+    lg_criteria = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: -2, level: 2 }
+    groups = {
+      winning_record: [],
+      losing_record: []
+    }
+
+    self.all.each do |c|
+      n = c.all_victories.length
+      d = c.all_defeats.length
+      wlr = 0
+
+      if d != 0 && n != 0
+        wlr = n.to_f / d
+      else
+        wlr = c.all_complete_battles.length == 0 || n == 0 ? 0 : n + 1
+      end
+
+      wlr > 1 ? groups[:winning_record].push(c) : groups[:losing_record].push(c)
+    end
+
+    w_records = groups[:winning_record].map { |c| [c, c.weighted_stat_calc(wg_criteria)] }
+    l_records = groups[:losing_record].map { |c| [c, c.weighted_stat_calc(lg_criteria)] }
+
+    sorted_records = w_records.concat(l_records).sort_by { |c| c[1] }
+    rankings = sorted_records.map { |c| c[0] }.reverse
+    
+    # UNCOMMENT TO PRINT IN TERMINAL
+    rankings.each do |c| 
+      weights = groups[:winning_record].include?(c) ? wg_criteria : lg_criteria
+      categories = groups[:winning_record].include?(c) ? wg_criteria.keys : lg_criteria.keys
+      stats = c.character_rankables 
+
+      puts "Name: #{c.supername}"
+      categories.each do |cat|
+        puts "#{c.translate_rankables_for_print[cat]}#{stats[cat]}"
+        puts "Level Progress: #{stats[:lvl_progress]}" if cat == :level
+      end
+      puts "Weighted Score: #{c.weighted_stat_calc(weights)}"
+      puts "- - - - - - - -"
+    end
+
+    return rankings
+
+  end
   
 
   
