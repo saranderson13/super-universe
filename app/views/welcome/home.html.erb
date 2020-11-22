@@ -37,19 +37,19 @@
   <div class="leader_board">
     <div class='leader_board_title'>Top Supers:</div>
     <% @top_supers.each_with_index do |c, i| %>
-      <%= leader_board_char(c, i) %>
+      <%= leader_board_char(c, i, "TOP_SUPERS") %>
     <% end %>
   </div>
   <div class="leader_board">
     <div class='leader_board_title'>Fiercest Protagonists:</div>
     <% @protag_records.each_with_index do |c, i| %>
-      <%= leader_board_char(c, i) %>
+      <%= leader_board_char(c, i, "PROTAG") %>
     <% end %>
   </div>
   <div class="leader_board">
     <div class='leader_board_title'>Toughest Antagonists:</div>
     <% @antag_records.each_with_index do |c, i| %>
-      <%= leader_board_char(c, i) %>
+      <%= leader_board_char(c, i, "ANTAG") %>
     <% end %>
   </div>
 </div>

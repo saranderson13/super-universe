@@ -424,11 +424,11 @@ class Character < ApplicationRecord
 
     rank_char_stats = {}
     all_char_stats.keys.select { |cat| categories.include?(cat) }.each do |cat|
-      rank_char_stats[cat] = all_char_stats[cat]
-      rank_char_stats[:lvl_progress] = all_char_stats[:lvl_progress] if cat == :level
+      rank_char_stats[self.translate_rankables_for_print[cat]] = all_char_stats[cat]
+      rank_char_stats[self.translate_rankables_for_print[:lvl_progress]] = all_char_stats[:lvl_progress] if cat == :level
     end
 
-    rank_char_stats[:weighted_score] = self.weighted_stat_calc(weights)
+    rank_char_stats["Weighted Rank Score: "] = self.weighted_stat_calc(weights)
 
     return rank_char_stats
   end
@@ -502,7 +502,7 @@ class Character < ApplicationRecord
     rankings = sorted_records.map { |c| c[0] }.reverse
     
     # UNCOMMENT TO PRINT IN TERMINAL
-    rankings.each { |c| c.char_rank_print(wl_args, wg_criteria, lg_criteria) }
+    # rankings.each { |c| c.char_rank_print(wl_args, wg_criteria, lg_criteria) }
 
     return rankings
 
@@ -510,29 +510,32 @@ class Character < ApplicationRecord
 
 
   # Best Protag Records Ranking
+  PROTAG_RANK_WGCRIT = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: 4, level: 2 }
+  PROTAG_RANK_LGCRIT = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: -2, level: 2 }
+  PROTAG_RANK_WLARGS = ["Victory", "Defeat", "protag"]
+  
   def self.protag_rank
-    wg_criteria = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: 4, level: 2 }
-    lg_criteria = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: -2, level: 2 }
-
-    self.rank_category_calculator(["Victory", "Defeat", "protag"], wg_criteria, lg_criteria)
+    self.rank_category_calculator(PROTAG_RANK_WLARGS, PROTAG_RANK_WGCRIT, PROTAG_RANK_WGCRIT)
   end
 
 
   # Toughest Antag Ranking 
-  def self.antag_rank
-    wg_criteria = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: 4, level: 2 }
-    lg_criteria = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: -2, level: 2 }
+  ANTAG_RANK_WGCRIT = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: 4, level: 2 }
+  ANTAG_RANK_LGCRIT = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: -2, level: 2 }
+  ANTAG_RANK_WLARGS = ["Defeat", "Victory", "antag"]
 
-    self.rank_category_calculator(["Defeat", "Victory", "antag"], wg_criteria, lg_criteria)
+  def self.antag_rank
+    self.rank_category_calculator(ANTAG_RANK_WLARGS, ANTAG_RANK_WGCRIT, ANTAG_RANK_LGCRIT)
   end
 
 
   # Overall Best Ranking
-  def self.top_supers_rank
-    wg_criteria = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: 4, level: 2 }
-    lg_criteria = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: -2, level: 2 }
+  TOP_SUPERS_RANK_WGCRIT = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: 4, level: 2 }
+  TOP_SUPERS_RANK_LGCRIT = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: -2, level: 2 }
+  TOP_SUPERS_RANK_WLARGS = ["", "", "overall"]
 
-    self.rank_category_calculator(["", "", "overall"], wg_criteria, lg_criteria)
+  def self.top_supers_rank
+    self.rank_category_calculator(TOP_SUPERS_RANK_WLARGS, TOP_SUPERS_RANK_WGCRIT, TOP_SUPERS_RANK_LGCRIT)
   end
   
 

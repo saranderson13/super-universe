@@ -57,9 +57,24 @@ module ApplicationHelper
     return outcome.html_safe
   end
 
-  def leader_board_char(c, i)
+  def leader_board_char(c, i, rank_type)
+    x = self.char_rank_stats_for_hover(c, rank_type)
+    # need to include html for hover stats
+
     ("<div class='leader_entry'>#{i + 1}. <a href='/users/#{c.user_id}/characters/#{c.id}'>#{c.supername}</a></div>").html_safe
   end
+
+  def char_rank_stats_for_hover(c, rank_type)
+    args = Object.const_get("Character::#{rank_type}_RANK_WLARGS")
+    wg_crit = Object.const_get("Character::#{rank_type}_RANK_WGCRIT")
+    lg_crit = Object.const_get("Character::#{rank_type}_RANK_LGCRIT")
+
+    # need to return html for hover stats
+    rank_stats = c.char_rank_stats(args, wg_crit, lg_crit)
+
+
+  end
+
 
   def welcome_pg_if_not_logged_in
     if !logged_in?
