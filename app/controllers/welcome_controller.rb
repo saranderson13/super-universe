@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
     @protag_records = Character.leader_board("protag_rank")
     @antag_records = Character.leader_board("antag_rank")
     @news = NewsItem.newsfeed
-    
+        
   end
 
 end

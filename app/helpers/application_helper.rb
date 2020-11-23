@@ -61,7 +61,7 @@ module ApplicationHelper
     x = self.char_rank_stats_for_hover(c, rank_type)
     # need to include html for hover stats
 
-    ("<div class='leader_entry'>#{i + 1}. <a href='/users/#{c.user_id}/characters/#{c.id}'>#{c.supername}</a></div>").html_safe
+    ("<div class='leader_entry'>#{i + 1}. <a href='/users/#{c.user_id}/characters/#{c.id}'>#{c.supername}</a>#{char_rank_stats_for_hover(c, rank_type)}</div>").html_safe
   end
 
   def char_rank_stats_for_hover(c, rank_type)
@@ -72,6 +72,19 @@ module ApplicationHelper
     # need to return html for hover stats
     rank_stats = c.char_rank_stats(args, wg_crit, lg_crit)
 
+    formatted_rank_stats = "<ul class='char_hover_stats'>"
+
+    rank_stats.each do |k, v|
+      if k.include?("Percentage")
+        formatted_rank_stats += "<li><b>#{k}</b><span class='rank_stats_value'>#{v}%</span></li>"
+      else
+        formatted_rank_stats += "<li><b>#{k}</b><span class='rank_stats_value'>#{v}</span></li>"
+      end
+    end
+
+    formatted_rank_stats += "</ul>"
+
+    return formatted_rank_stats.html_safe
 
   end
 

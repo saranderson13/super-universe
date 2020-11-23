@@ -148,3 +148,25 @@ div.leader_entry a, div.leader_entry a:active, div.leader_entry a:visited {
 div.leader_entry a:hover {
   text-decoration: line-through;
 }
+
+div.leader_entry .char_hover_stats {
+  box-sizing: border-box;
+  visibility: hidden;
+  width: 210px;
+  background-color: #000;
+  text-align: left;
+  padding: 10px;
+  position: absolute;
+  right: 20%;
+  margin-top: -105px;
+  color: #fff;
+  font-size: 14px;
+  border-left: 13px solid #f00;
+}
+
+.rank_stats_value { color: #f00; padding-left: 5px;}
+
+div.leader_entry:hover .char_hover_stats {
+  visibility: visible;
+}
+

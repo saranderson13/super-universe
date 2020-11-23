@@ -363,10 +363,12 @@ class Character < ApplicationRecord
       losing_record: []
     }
     self.all.each { |c| groups[c.wl_ratio_group(numerator, denominator, protag_antag)].push(c) }
+
     return groups
   end
 
   def self.leader_board(board_name)
+
     self.send(board_name)[0..4]
   end
 
@@ -399,18 +401,18 @@ class Character < ApplicationRecord
       lvl_progress: "Level Progress: ",
       protag_victories: "Victories: ",
       protag_defeats: "Defeats: ",
-      protag_win_percentage: "Win %: ",
+      protag_win_percentage: "Win Percentage: ",
       protag_battle_count: "Total Battles: ",
       protag_opponent_count: "Total Opponents: ",
       antag_victories: "Victories: ",
       antag_defeats: "Defeats: ",
-      antag_win_percentage: "Win %: ",
+      antag_win_percentage: "Win Percentage: ",
       antag_battle_count: "Total Battles: ",
       antag_opponent_count: "Total Opponents: ",
       all_victories: "Total Victories: ",
       all_defeats: "Total Defeats: ",
       overall_win_percentage: "Overall Win Percentage: ",
-      total_battle_count: "Total Battles:",
+      total_battle_count: "Total Battles: ",
       total_opponent_count: "Total Opponents: "
     }
   end
@@ -473,7 +475,8 @@ class Character < ApplicationRecord
         score += stats[v] * self.weight_as_modifier(weights[v], sum_of_weights)
       end
     end
-    return score
+ 
+    return score.ceil(2)
 
   end
 
@@ -502,7 +505,7 @@ class Character < ApplicationRecord
     rankings = sorted_records.map { |c| c[0] }.reverse
     
     # UNCOMMENT TO PRINT IN TERMINAL
-    # rankings.each { |c| c.char_rank_print(wl_args, wg_criteria, lg_criteria) }
+    rankings.each { |c| c.char_rank_print(wl_args, wg_criteria, lg_criteria) }
 
     return rankings
 
@@ -515,7 +518,7 @@ class Character < ApplicationRecord
   PROTAG_RANK_WLARGS = ["Victory", "Defeat", "protag"]
   
   def self.protag_rank
-    self.rank_category_calculator(PROTAG_RANK_WLARGS, PROTAG_RANK_WGCRIT, PROTAG_RANK_WGCRIT)
+    self.rank_category_calculator(PROTAG_RANK_WLARGS, PROTAG_RANK_WGCRIT, PROTAG_RANK_LGCRIT)
   end
 
 
