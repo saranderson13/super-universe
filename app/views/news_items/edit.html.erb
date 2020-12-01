@@ -2,13 +2,9 @@
 
     <%= form_with(model: @news_item, url: news_item_path(id: @news_item.id), method: :patch, local: true) do |f| %>
 
-        <%= f.label :title, "Title" %>
-        <%= f.text_field :title %>
-
-        <%= f.label :description, "Description" %>
-        <%= f.text_field :description %>
-
+        <%= render partial: 'form', locals: { f: f } %>
         <%= f.submit "Update News", data: { disabled_with: false } %>
+        
     <% end %>
 
 
