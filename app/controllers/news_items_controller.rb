@@ -14,7 +14,6 @@ class NewsItemsController < ApplicationController
     
     def create
         @news_item = NewsItem.new(item_params)
-        binding.pry
 
         if @news_item.valid?
             @news_item.save
