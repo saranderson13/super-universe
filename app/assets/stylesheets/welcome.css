@@ -149,24 +149,33 @@ div.leader_entry a:hover {
   text-decoration: line-through;
 }
 
-div.leader_entry .char_hover_stats {
+div.leader_entry .char_hover_stats, div.battle_history_statistics ul li ul.char_hover_stats {
   box-sizing: border-box;
   visibility: hidden;
   width: 210px;
   background-color: #000;
   text-align: left;
   padding: 10px;
-  position: absolute;
-  right: 20%;
-  margin-top: -105px;
   color: #fff;
   font-size: 14px;
   border-left: 13px solid #f00;
 }
 
+div.leader_entry .char_hover_stats {
+  position: absolute;
+  right: 21%;
+  margin-top: -105px;
+}
+
+div.battle_history_statistics ul li ul.char_hover_stats {
+  position: absolute;
+  left: 15%;
+  margin-top: -105px;
+}
+
 .rank_stats_value { color: #f00; padding-left: 5px;}
 
-div.leader_entry:hover .char_hover_stats {
+div.leader_entry:hover .char_hover_stats, div.battle_history_statistics ul li:hover ul.char_hover_stats {
   visibility: visible;
 }
 

@@ -44,9 +44,9 @@
                 <ul>
                     <li><u>Longest Hot Streak:</u></li>
                     <li><u>Longest Cold Streak:</u></li>
-                    <li><u>Top Supers Rank:</u></li>
-                    <li><u>Fiercest Protags Rank:</u></li>
-                    <li><u>Toughest Antags Rank:</u></li>
+                    <li><u>Top Supers Rank:</u><%= char_rank_stats_for_hover(@char, 'TOP_SUPERS') %></li>
+                    <li><u>Fiercest Protags Rank:</u><%= char_rank_stats_for_hover(@char, 'PROTAG') %></li>
+                    <li><u>Toughest Antags Rank:</u><%= char_rank_stats_for_hover(@char, 'ANTAG') %></li>
                 </ul>
                 <ul>
                     <li><%= "#{@longest_win_streak}" %></li>

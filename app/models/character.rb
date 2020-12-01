@@ -427,7 +427,7 @@ class Character < ApplicationRecord
     rank_char_stats = {}
     all_char_stats.keys.select { |cat| categories.include?(cat) }.each do |cat|
       rank_char_stats[self.translate_rankables_for_print[cat]] = all_char_stats[cat]
-      rank_char_stats[self.translate_rankables_for_print[:lvl_progress]] = all_char_stats[:lvl_progress] if cat == :level
+      rank_char_stats[self.translate_rankables_for_print[:lvl_progress]] = "#{all_char_stats[:lvl_progress]} / #{self.level * 10}" if cat == :level
     end
 
     rank_char_stats["Weighted Rank Score: "] = self.weighted_stat_calc(weights)
@@ -505,7 +505,7 @@ class Character < ApplicationRecord
     rankings = sorted_records.map { |c| c[0] }.reverse
     
     # UNCOMMENT TO PRINT IN TERMINAL
-    rankings.each { |c| c.char_rank_print(wl_args, wg_criteria, lg_criteria) }
+    # rankings.each { |c| c.char_rank_print(wl_args, wg_criteria, lg_criteria) }
 
     return rankings
 
