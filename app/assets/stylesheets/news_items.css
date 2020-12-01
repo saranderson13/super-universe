@@ -172,5 +172,15 @@ a.new_news_button {
 }
 .news_form_wrapper .field_with_errors label { color: #fff; }
 
+.news_form_title { 
+    align-self: flex-start; 
+    margin: 150px 100px 0px 0px;
+    font-family: "Cantarell";
+    font-size: 60px;
+    letter-spacing: -5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 
 

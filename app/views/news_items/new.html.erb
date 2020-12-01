@@ -1,3 +1,5 @@
+<div class="news_form_title">Add New News</div>
+
 <div class="news_form_wrapper">
     <%= form_with(model: @news_item, url: news_items_path, method: :post, local: true) do |f| %>
         <%= render partial: 'form', locals: { f: f, submit_text: "Add News" } %>
