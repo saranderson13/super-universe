@@ -13,11 +13,12 @@ class NewsItemsController < ApplicationController
 
     
     def create
-        @news_item = NewsItem.new(signup_params)
+        @news_item = NewsItem.new(item_params)
+        binding.pry
 
         if @news_item.valid?
             @news_item.save
-            redirect_to root_path
+            redirect_to news_items_path
         else
             render :new
         end
@@ -35,7 +36,7 @@ class NewsItemsController < ApplicationController
 
         if @news_item.valid?
             @news_item.save
-            redirect_to root_path
+            redirect_to news_items_path
         else
             render :edit
         end
