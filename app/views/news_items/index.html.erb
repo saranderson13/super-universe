@@ -1,6 +1,9 @@
 <div id="news_feed_container">
     <h1 class="welcome_title">News Updates</h1>
 
+    <% if logged_in? && current_user.is_admin? %>
+        <%= link_to "Add New Entry", new_news_item_path, class: "new_news_button" %>
+    <% end %>
     <div id="news_feed">
         <% @all_news.each do |n| %>
             <div class="news_item">
