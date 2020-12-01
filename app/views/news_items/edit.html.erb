@@ -1,11 +1,5 @@
-<div class="new_news_form_wrapper">
-
+<div class="news_form_wrapper">
     <%= form_with(model: @news_item, url: news_item_path(id: @news_item.id), method: :patch, local: true) do |f| %>
-
-        <%= render partial: 'form', locals: { f: f } %>
-        <%= f.submit "Update News", data: { disabled_with: false } %>
-        
+        <%= render partial: 'form', locals: { f: f, submit_text: "Update News" } %>
     <% end %>
-
-
 </div>

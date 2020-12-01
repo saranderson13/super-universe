@@ -1,7 +1,10 @@
 <%= f.label :title, "Title" %>
+<div class="news_form_error"><%= news_form_error(:title) %></div>
 <%= f.text_field :title %>
-<%= news_form_error(:title) %>
 
 <%= f.label :description, "Description" %>
-<%= f.text_field :description %>
-<%= news_form_error(:description) %>    
+<div class="news_form_error"><%= news_form_error(:description) %></div>   
+<%= f.text_area :description %>
+
+<%= f.submit submit_text, data: { disabled_with: false } %>
+

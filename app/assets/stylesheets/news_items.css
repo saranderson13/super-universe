@@ -128,5 +128,49 @@ a.new_news_button {
 
 
 
+.news_form_wrapper {
+    box-sizing: border-box;
+    width: 600px; height: 600px;
+    border-radius: 300px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.news_form_wrapper input, .news_form_wrapper textarea, .news_form_wrapper .news_form_error {
+    display: block;
+    width: 350px;
+    font-family: "Roboto Condensed";
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.news_form_wrapper textarea#news_item_description { height: 100px; }
+
+.news_form_wrapper label {
+    font-family: "Cantarell";
+    font-size: 23px;
+}
+
+.news_form_wrapper input[type="submit"] {
+    width: 150px;
+    font-family: "Cantarell";
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: crosshair;
+    font-size: 14px;
+}
+
+/* News Form Error Styling */
+.news_form_wrapper .news_form_error { 
+    margin-bottom: 10px; 
+    color: #f00;
+    font-size: 15px;
+    line-height: 15px;
+}
+.news_form_wrapper .field_with_errors label { color: #fff; }
+
 
 
