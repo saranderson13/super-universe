@@ -18,6 +18,10 @@
                             <%= submit_tag n.homepage ? "Remove from Welcome" : "Show on Welcome" %>
                         <% end %>
                         <%= link_to "Update News Entry", edit_news_item_path(n.id) %>
+                        <%= form_with(url: news_item_path(n.id), method: "delete") do |f| %>
+                            <%= f.hidden_field :id, value: n.id %>
+                            <%= f.submit "Delete News Entry", data: { confirm: 'Are you sure you wish to delete this news entry?' } %>
+                        <% end %>
                     </div>
                 <% end %>
 
