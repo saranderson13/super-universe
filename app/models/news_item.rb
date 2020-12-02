@@ -6,8 +6,8 @@ class NewsItem < ApplicationRecord
     validates :homepage, inclusion: { in: [true, false] }
 
     scope :newsfeed, -> { where(homepage: true).reverse() }
-
-
+    scope :index_for_non_admin, -> { where(indexpage: true).reverse() }
+    
     def pretty_date
         Date.parse(self.created_at.to_s).strftime("%A, %B %-d, %Y")
     end

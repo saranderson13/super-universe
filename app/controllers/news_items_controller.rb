@@ -3,7 +3,7 @@ class NewsItemsController < ApplicationController
     before_action :admin_only, except: [:index]
 
     def index
-        @all_news = NewsItem.all.reverse()
+        @all_news = current_user.is_admin? ? NewsItem.all.reverse() : NewsItem.index_for_non_admin()
     end
 
 

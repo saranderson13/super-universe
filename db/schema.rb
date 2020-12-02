@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_185436) do
+ActiveRecord::Schema.define(version: 2020_12_02_054916) do
 
   create_table "battles", force: :cascade do |t|
     t.integer "protag_id"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_185436) do
     t.boolean "homepage", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "indexpage", default: true
   end
 
   create_table "power_moves", force: :cascade do |t|
