@@ -13,9 +13,15 @@
                 
                 <% if logged_in? && current_user.is_admin? %>
                     <div class="admin_news_links_container">
-                        <%= form_with(url: "/update_homepage", method: "patch") do |f| %>
+                        <%= form_with(url: "/update_view", method: "patch") do |f| %>
                             <%= f.hidden_field :id, value: n.id %>
+                            <%= f.hidden_field :toggle, value: "homepage" %>
                             <%= submit_tag n.homepage ? "Remove from Welcome" : "Show on Welcome" %>
+                        <% end %>
+                        <%= form_with(url: "/update_view", method: "patch") do |f| %>
+                            <%= f.hidden_field :id, value: n.id %>
+                            <%= f.hidden_field :toggle, value: "indexpage" %>
+                            <%= submit_tag n.indexpage ? "Hide from Non-Admins" : "Show to Non-Admins" %>
                         <% end %>
                         <%= link_to "Update News Entry", edit_news_item_path(n.id) %>
                         <%= form_with(url: news_item_path(n.id), method: "delete") do |f| %>
