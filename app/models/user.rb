@@ -13,15 +13,17 @@ class User < ApplicationRecord
   has_many :protag_battles, through: :characters
   has_many :antag_battles, through: :characters
 
+  # To create a follower:
+    # Follower.new(user: self, following: [user_id of the user that is now following them.])
+    # self.followers.new(following: [user_id of the user that is now following them.])
+  has_many :followers
+
+
   # FUTURE ASSOCIATIONS
   # has_many :teams, through: :characters
   #
   # has_many :plikes
   # has_many :powers, through: :plikes
-  #
-  # has_many :friends
-  # has_many :users, through: :friends, as: :follows
-  # has_many :users, through: :friends, as: :followers
 
   scope :admin, -> { where(admin_status: true) }
 
@@ -47,6 +49,11 @@ class User < ApplicationRecord
 
   def is_admin?
     !!self.admin_status
+  end
+
+
+  def is_following
+    Follower.all.select { |f| f.following == self.id }
   end
 
 

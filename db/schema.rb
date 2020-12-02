@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_054916) do
+ActiveRecord::Schema.define(version: 2020_12_02_165008) do
 
   create_table "battles", force: :cascade do |t|
     t.integer "protag_id"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 2020_12_02_054916) do
     t.integer "lvl_progress", default: 0
     t.integer "victories", default: 0
     t.integer "defeats", default: 0
+  end
+
+  create_table "followers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "following"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_followers_on_user_id"
   end
 
   create_table "moves", force: :cascade do |t|
