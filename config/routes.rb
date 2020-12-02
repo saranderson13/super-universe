@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   # Battle paths
   resources :battles, only: [:show, :create, :update]
 
+  # Follower paths
+  resources :followers, only: [:create, :destroy]
+
   # Session Paths
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
