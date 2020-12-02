@@ -62,6 +62,49 @@
   font-size: 30px;
 }
 
+
+#followers_section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 40px 20px 0px;
+}
+
+.follow_count_container {
+  text-align: center;
+  font-family: "Roboto Condensed";
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 0px 20px;
+}
+.follow_count_num { font-size: 25px; }
+
+#followers_section input[type="submit"] {
+  box-sizing: border-box;
+  width: 105px;
+  margin: 0px 5px;
+  padding: 5px 0px 5px 30px;
+  text-align: left;
+  font-family: 'Roboto Condensed';
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position-y: 5px;
+  background-position-x: 7px;
+  border: none;
+}
+
+#followers_section input[type="submit"].follow_submit_button {
+  background-image: url(heart_icon.png);
+  background-size: 15px;
+}
+
+#followers_section input[type="submit"].unfollow_submit_button {
+  background-image: url(broken_heart_icon.png);
+  background-size: 17px;
+}
+
 #user_showpg_char_section {
   width: 400px; 
   position: relative;

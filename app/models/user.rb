@@ -14,8 +14,7 @@ class User < ApplicationRecord
   has_many :antag_battles, through: :characters
 
   # To create a follower:
-    # Follower.new(user: self, following: [user_id of the user that is now following them.])
-    # self.followers.new(following: [user_id of the user that is now following them.])
+    # self.followers.new(following: [user_id of the user that is requesting to follow them.])
   has_many :followers
 
 
@@ -59,5 +58,12 @@ class User < ApplicationRecord
     !!self.is_following.include?(Follower.find_by(user_id: user_to_follow_id, following: self.id))
   end
 
+  def follower_count
+    self.followers.length
+  end
+
+  def following_count
+    self.is_following.length
+  end
 
 end

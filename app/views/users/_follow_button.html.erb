@@ -2,12 +2,12 @@
     <%= form_with(url: followers_path, method: "post") do |f| %>
         <%= f.hidden_field :user_id, value: @user.id %>
         <%= f.hidden_field :following, value: current_user.id %>
-        <%= submit_tag "Follow" %>
+        <%= submit_tag "Follow", class: "follow_submit_button" %>
     <% end %>
 <% elsif current_user.id != @user.id %>
     <%= form_with(url: follower_path, method: "delete") do |f| %>
         <%= f.hidden_field :user_id, value: @user.id %>
         <%= f.hidden_field :following, value: current_user.id %>
-        <%= submit_tag "Unfollow" %>
+        <%= submit_tag "Unfollow", class: "unfollow_submit_button" %>
     <% end %>
 <% end %>
