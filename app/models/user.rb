@@ -51,9 +51,12 @@ class User < ApplicationRecord
     !!self.admin_status
   end
 
-
   def is_following
     Follower.all.select { |f| f.following == self.id }
+  end
+
+  def is_following?(user_to_follow_id) 
+    !!self.is_following.include?(Follower.find_by(user_id: user_to_follow_id, following: self.id))
   end
 
 
