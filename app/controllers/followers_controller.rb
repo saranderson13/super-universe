@@ -1,10 +1,9 @@
-class WelcomeController < ApplicationController
+class FollowersController < ApplicationController
 
     def create
         user = User.find(follow_params[:user_id])
-
         @new_follow = user.followers.new(following: follow_params[:following])
-        
+
         if @new_follow.valid?
             @new_follow.save
             flash[:notice] = "You are now following #{user.alias}."
@@ -20,8 +19,9 @@ class WelcomeController < ApplicationController
     
     def destroy
 
-        @follow = Follower.find(follow_params[:id]
+        @follow = Follower.find_by(user_id: follow_params[:user_id], following: follow_params[:following])
         user = User.find(@follow.user_id)
+        
         @follow.destroy
         flash[:notice] = "You have unfollowed #{user.alias}."
         redirect_to user_path(user)
@@ -29,12 +29,10 @@ class WelcomeController < ApplicationController
     end
 
 
-
-
     private
 
     def follow_params
-        params.permit(:id, :user_id, :following)
+        params.permit(:user_id, :following)
     end
   
   end
