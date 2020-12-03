@@ -101,7 +101,11 @@
    float: left;
  }
 
- .cu_profile_links_plus_left_margin { margin-left: 20px; }
+ .cu_profile_links_for_user_pg { 
+   align-self: flex-end;
+   display: inherit;
+   margin-right: 95px;
+  }
 
 
  /* MONDIFIERS FOR BUTTONS */
@@ -110,7 +114,7 @@
    color: #fff;
  }
 
- .light a {
+ .light a, .light input[type="submit"] {
    background-color: #fff;
    color: #000;
  }

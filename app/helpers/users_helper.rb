@@ -48,9 +48,10 @@ module UsersHelper
     return battle_list
   end
 
-  def user_find_opponent_form
-    render partial: @user == current_user ? 'user_showpg_find_opponent_form' : 'user_showpg_social_and_comparison'
-  end
+  # DEPRECATED
+  # def user_find_opponent_form
+  #   render partial: @user == current_user ? 'user_showpg_find_opponent_form' : 'user_showpg_social_and_comparison'
+  # end
 
 end
 

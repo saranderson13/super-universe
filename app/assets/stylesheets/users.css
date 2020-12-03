@@ -163,22 +163,24 @@ ul.user_showpg_chars_list a:hover {
 /* PROFILE RIGHT PANEL */
 
 .user_showpg_right_container {
-  width: 60%;
+  width: 60%; height: calc(100% - 80px);
   color: #000;
   align-self: start;
+  display: flex;
+  flex-direction: column;
 }
 
 .user_bip_container {
   padding: 20px;
-  /* margin-bottom: 30px; */
 } 
 
 .user_find_opponents_container {
   box-sizing: border-box;
-  width: calc(100% - 160px);
+  width: calc(100% - 200px);
+  height: 100%;
   padding: 20px;
   background-color: #fff;
-  margin: 100px auto 0px
+  margin: 50px auto 0px
 }
 
 .user_bip_title {

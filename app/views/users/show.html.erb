@@ -38,13 +38,14 @@
       <div class="user_bip_container">
         <%= user_battles_in_progress %>
       </div>
-      <%= current_user_profile_links %>
+      
     </div>
   </div>
 
   <div class="user_showpg_right_container">
     <div class="user_find_opponents_container">
-      <%= user_find_opponent_form %>
+      <%= render partial: 'userpg_tab_panel' %>
     </div>
+    <%= current_user_profile_links %>
   </div>
 </div>
