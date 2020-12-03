@@ -29,7 +29,7 @@
 .user_showpg_profile_container {
   box-sizing: border-box;
   width: 100%;
-  padding-left: 80px; margin-bottom: 100px;
+  padding-left: 80px; margin-bottom: 20px;
 }
 
 .user_showpg_welcome_block {
@@ -60,29 +60,13 @@
   float: left;
   font-family: "Roboto Condensed";
   font-size: 30px;
+  margin: 0px 0px 10px 20px;
 }
 
-
-#followers_section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 40px 20px 0px;
-}
-
-.follow_count_container {
-  text-align: center;
-  font-family: "Roboto Condensed";
-  font-size: 14px;
-  text-transform: uppercase;
-  padding: 0px 20px;
-}
-.follow_count_num { font-size: 25px; }
-
-#followers_section input[type="submit"] {
+.user_showpg_welcome_block input[type="submit"] {
   box-sizing: border-box;
   width: 105px;
-  margin: 0px 5px;
+  margin: 0px 5px 0px 40px;
   padding: 5px 0px 5px 30px;
   text-align: left;
   font-family: 'Roboto Condensed';
@@ -90,20 +74,43 @@
   color: #fff;
   background-color: #000;
   background-repeat: no-repeat;
-  background-position-y: 5px;
-  background-position-x: 7px;
+  background-position-y: 6px;
+  background-position-x: 8px;
   border: none;
+  border-radius: 22px;
+  display: block;
+  cursor: crosshair;
 }
 
-#followers_section input[type="submit"].follow_submit_button {
+.user_showpg_welcome_block input[type="submit"].follow_submit_button {
   background-image: url(heart_icon.png);
   background-size: 15px;
 }
 
-#followers_section input[type="submit"].unfollow_submit_button {
+.user_showpg_welcome_block input[type="submit"].unfollow_submit_button {
   background-image: url(broken_heart_icon.png);
   background-size: 17px;
 }
+
+#followers_section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 40px 0px 0px 23px;
+  padding: 5px 0px;
+  border-left: 5px solid #000;
+}
+
+.follow_count_container {
+  text-align: center;
+  font-family: "Roboto Condensed";
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 0px 25px;
+}
+.follow_count_num { font-size: 25px; }
+
+#followers_section .follow_count_container:first-child { border-right: 1px solid #000; }
 
 #user_showpg_char_section {
   width: 400px; 
@@ -122,7 +129,9 @@
 .user_showpg_chars_table {
   display: flex;
   flex-direction: row;
+  padding: 5px 0px;
 }
+.user_showpg_chars_table ul:first-child { padding: 5px 25px; }
 
 .user_showpg_chars_table ul:last-child { 
   border:none; 
@@ -132,7 +141,7 @@
 ul.user_showpg_chars_list {
   list-style: none;
   padding-left: 5px;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-left: 5px;
   font-family: "Roboto Condensed";
   border-left: 5px solid #000;
@@ -161,7 +170,7 @@ ul.user_showpg_chars_list a:hover {
 
 .user_bip_container {
   padding: 20px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 } 
 
 .user_find_opponents_container {
@@ -185,8 +194,8 @@ ul.user_showpg_chars_list a:hover {
   font-size: 20px;
   color: #f00;
   border-left: 5px solid #000;
-  padding-left: 5px;
-  margin-left: 5px;
+  padding-left: 25px;
+  margin: 5px;
 }
 
 a.bip_link, a.bip_link:active, a.bip_link:visited {

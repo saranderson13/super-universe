@@ -5,13 +5,15 @@
         <div class="user_showpg_profile_pic">
           <%= image_tag @user.profile_pic %>
         </div>
-        <h2 class="user_showpg_greeting"><%= user_show_page_greeting %></h2>
+        <div>
+          <h2 class="user_showpg_greeting"><%= user_show_page_greeting %></h2>
+          <%= render partial: "follow_button" %>
+        </div>
       </div>
 
       <div id="followers_section">
         <div class="follow_count_container"><div class="follow_count_num"><%= @user.follower_count %></div>Followers</div>
         <div class="follow_count_container"><div class="follow_count_num"><%= @user.following_count %></div>Following</div>
-        <%= render partial: "follow_button" %>
       </div>
 
       <div id="user_showpg_char_section">
