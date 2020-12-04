@@ -84,7 +84,6 @@
 
  .cu_profile_links a, .cu_profile_links input[type="submit"] {
    box-sizing: border-box;
-   /* display: inline-block; */
    width: 110px; height: 20px;
    margin: 5px; padding: 0px;
    line-height: 20px;
@@ -104,7 +103,11 @@
  .cu_profile_links_for_user_pg { 
    align-self: flex-end;
    display: inherit;
-   margin-right: 95px;
+   margin: 5px 0px 5px 10px;  
+  }
+
+  .cu_profile_links.light.cu_profile_links_for_user_pg form input[type="submit"] {
+    margin-right: 0px;
   }
 
 

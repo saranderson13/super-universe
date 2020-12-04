@@ -32,6 +32,8 @@
   padding-left: 80px; margin-bottom: 20px;
 }
 
+
+/* LEFT PANEL - WELCOME SECTION (INCLUDES FOLLOW/UNFOLLOW BUTTON */
 .user_showpg_welcome_block {
   height: 100px;
   position: relative;
@@ -63,6 +65,7 @@
   margin: 0px 0px 10px 20px;
 }
 
+/* LEFT PANEL - FOLLOW/UNFOLLOW BUTTON */
 .user_showpg_welcome_block input[type="submit"] {
   box-sizing: border-box;
   width: 105px;
@@ -112,6 +115,8 @@
 
 #followers_section .follow_count_container:first-child { border-right: 1px solid #000; }
 
+
+/* LEFT PANEL - CHARACTER SECTION */
 #user_showpg_char_section {
   width: 400px; 
   position: relative;
@@ -160,28 +165,10 @@ ul.user_showpg_chars_list a:hover {
 }
 
 
-/* PROFILE RIGHT PANEL */
-
-.user_showpg_right_container {
-  width: 60%; height: calc(100% - 80px);
-  color: #000;
-  align-self: start;
-  display: flex;
-  flex-direction: column;
-}
-
+/* LEFT PANEL - BATTLE(S) IN PROGRESS SECTION */
 .user_bip_container {
   padding: 20px;
 } 
-
-.user_find_opponents_container {
-  box-sizing: border-box;
-  width: calc(100% - 200px);
-  height: 100%;
-  padding: 20px;
-  background-color: #fff;
-  margin: 50px auto 0px
-}
 
 .user_bip_title {
   font-family: 'Cantarell';
@@ -210,7 +197,38 @@ a.bip_link:hover {
   text-decoration: underline;
 }
 
-#find_opponents_wrapper {
+
+
+/* PROFILE RIGHT PANEL */
+
+.user_showpg_right_container {
+  box-sizing: border-box;
+  width: 50%;
+  height: calc(100% - 120px);
+  margin: 50px 100px 0px;
+  color: #000;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+}
+
+.user_showpg_tab_container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #fff;
+}
+
+
+
+
+
+
+
+
+/* IN DEPRECATED _USER_SHOWPG_FIND_OPPONENT_FORM PARTIAL */
+/* #find_opponents_wrapper {
   display: flex;
   grid-auto-flow: column;
   justify-content: space-around;
@@ -242,10 +260,12 @@ ul.opponent_list li a::before {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: bold;
-}
+} */
 
 
-/* USER INDEX */
+
+
+/* USER INDEX PAGE */
 
 .all_users {
   width: calc(100% - 100px); height: calc(100% - 100px);

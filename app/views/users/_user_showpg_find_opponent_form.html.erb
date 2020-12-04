@@ -2,7 +2,7 @@
 
 <div id="find_opponents_wrapper">
     <% if @user.characters.villain.length > 0 %>
-        <div class="opponent_cat_wrapper">
+        <div>
             <div class="opponent_column_title">Fight a Hero!</div>
             <ul class="opponent_list">
                 <% @hero_opp.each do |h| %>
@@ -12,7 +12,7 @@
         </div>
     <% end %>
     <% if @user.characters.hero.length > 0 %>
-        <div class="opponent_cat_wrapper">
+        <div>
             <div class="opponent_column_title">Fight a Villain!</div>
             <ul class="opponent_list">
                 <% @villain_opp.each do |h| %>
