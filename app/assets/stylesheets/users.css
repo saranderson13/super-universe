@@ -218,8 +218,56 @@ a.bip_link:hover {
   height: 100%;
   padding: 20px;
   background-color: #fff;
+  display: flex;
+  flex-direction: row;
 }
 
+.rpanel_tabs {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 150px;
+}
+
+.rpanel_tab {
+  box-sizing: border-box;
+  flex-grow: 1;
+  background-color: #000;
+  color: #fff;
+  border: 5px solid #fff;
+  border-right: none;
+}
+
+.rpanel_tab:hover {
+  background-color: #f00;
+}
+
+.rpanel_content {
+  box-sizing: border-box;
+  width: calc(50% - 260px);
+  height: calc(100% - 240px);
+  border: 1px solid #000;
+  color: #000;
+  background-color: #fff;
+  border-left: none;
+  margin: 5px 0px;
+  visibility: hidden;
+}
+
+.rpanel_tab:hover .rpanel_content, .rpanel_tab .rpanel_content:hover {
+  visibility: visible;
+}
+
+.rcontent {
+  position: absolute;
+  right: 125px;
+  top: 100px;
+  z-index: 2;
+}
+
+.rcontent_default_visible {
+  visibility: visible;
+}
 
 
 
