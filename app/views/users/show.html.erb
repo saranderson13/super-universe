@@ -6,7 +6,7 @@
           <%= image_tag @user.profile_pic %>
         </div>
         <div>
-          <h2 class="user_showpg_greeting"><%= user_show_page_greeting %></h2>
+          <h2 class="user_showpg_greeting" onclick="change_tab_view();"><%= user_show_page_greeting %></h2>
           <%= render partial: "follow_button" %>
         </div>
       </div>
@@ -44,7 +44,7 @@
 
   <div class="user_showpg_right_container">
     <div class="user_showpg_tab_container">
-    <%= render partial: 'userpg_tab_panel' %>
+      <%= render partial: 'userpg_tab_panel' %>
     </div>
     <%= current_user_profile_links %>
   </div>
