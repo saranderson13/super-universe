@@ -245,7 +245,7 @@ a.bip_link:hover {
   cursor: crosshair;
 }
 
-.rpanel_tab:hover {
+.tab_selected {
   background-color: #f00;
 }
 
@@ -260,7 +260,8 @@ a.bip_link:hover {
   margin-left: 3px;
 }
 
-
+.content_active { display: block; }
+.content_deselected { display: none; }
 
 
 

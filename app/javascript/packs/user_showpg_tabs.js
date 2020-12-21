@@ -4,6 +4,23 @@ window.addEventListener('DOMContentLoaded', (e) => {
 })
 
 function change_tab_view() {
-    debugger;
-    console.log("hello")
+    const tabs = document.getElementsByClassName('rpanel_tab')
+    const contentOptions = document.querySelectorAll('[data-marker="selectable"]')
+
+    Array.from(tabs).forEach ( t => {
+        if(this.id.split("_")[1] === t.id.split("_")[1]) {
+            t.className = "rpanel_tab tab_selected";
+        } else {
+            t.className = "rpanel_tab";
+        }
+    })
+
+    Array.from(contentOptions).forEach ( n => {
+        if (this.id.split("_")[1] === n.id.split("_")[1]) {
+            n.className = "content_active"
+        } else {
+            n.className = "content_deselected"
+        }
+    })
+
 }
