@@ -1,23 +1,23 @@
 <%= javascript_pack_tag 'user_showpg_tabs' %>
 <div class="rpanel_tabs">
-    <div id="tab_randOpp" class="rpanel_tab tab_selected">Random Opponents</div>
-    <div id="tab_followers" class="rpanel_tab">Followers</div>
-    <div id="tab_following" class="rpanel_tab">Following</div>
-    <div id="tab_faveOpp" class="rpanel_tab">Fave Opponents</div>
+<div id="tab_friends" class="rpanel_tab tab_selected">Friends</div>
+<div id="tab_faveOpp" class="rpanel_tab">Fave Opponents</div>
+<% if logged_in? && current_user.id == params[:id].to_i %>
+    <div id="tab_randOpp" class="rpanel_tab">Random Opponents</div>
+<% end %>
 </div>
 <div id="tab_content" class="rpanel_content">
-    <div id="content_randOpp" class="content_active" data-marker="selectable">
-        <%= render partial: 'randOpp_content' %>
-    </div>
-    <div id="content_followers" class="content_deselected" data-marker="selectable">
-        <%= render partial: 'followers_content' %>
-    </div>
-    <div id="content_following" class="content_deselected" data-marker="selectable">
-        <%= render partial: 'following_content' %>
+    <div id="content_friends" class="content_active" data-marker="selectable">
+        <%= render partial: 'friends_content' %>
     </div>
     <div id="content_faveOpp" class="content_deselected" data-marker="selectable">
         <%= render partial: 'faveOpp_content' %>
     </div>
+    <% if logged_in? && current_user.id == params[:id].to_i %>
+        <div id="content_randOpp" class="content_deselected" data-marker="selectable">
+            <%= render partial: 'randOpp_content' %>
+        </div>
+    <% end %>
 </div>
 
 
