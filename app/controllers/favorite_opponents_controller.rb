@@ -1,7 +1,8 @@
 class FavoriteOpponentsController < ApplicationController
 
     def create
-        char = Character.find(fave_params.character_id)
+        binding.pry
+        char = Character.find(fave_params["character_id"])
         @new_fave = current_user.favorite_opponents.new(character_id: char.id)
 
         if @new_fave.valid?
@@ -17,10 +18,12 @@ class FavoriteOpponentsController < ApplicationController
 
     def destroy
 
-        char = Character.find(fave_params.character_id)
-        @fave_entry = FavoriteOpponent.find_by(user_id: fave_params.user_id, character_id: char.id)
+        char = Character.find(fave_params["character_id"])
+        @fave_entry = FavoriteOpponent.find_by(user_id: fave_params["user_id"], character_id: char.id)
 
-        if fave_params.user_id == current_user.id
+        binding.pry
+
+        if fave_params["user_id"].to_i == current_user.id
             @fave_entry.destroy
             flash[:notice] = "You have unfavorited #{char.supername}."
         else
