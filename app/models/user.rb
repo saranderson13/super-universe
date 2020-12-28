@@ -71,4 +71,8 @@ class User < ApplicationRecord
     self.is_following.length
   end
 
+  def has_faved?(character_id)
+    !!self.favorites.include?(Character.find(character_id))
+  end
+
 end

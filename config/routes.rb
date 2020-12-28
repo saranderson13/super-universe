@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   # Follower paths
   resources :followers, only: [:create, :destroy]
 
+  # Fave Opponents paths
+  resources :favorite_opponents, only: [:create, :destroy]
+
   # Session Paths
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

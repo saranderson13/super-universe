@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', (e) => {
-    debugger;
     const tabs = document.getElementsByClassName('rpanel_tab')
     Array.from(tabs).forEach( el => el.addEventListener("click", change_tab_view));
 })

@@ -215,3 +215,41 @@
   font-size: 12px;
   cursor: crosshair;
 }
+
+
+/* FOLLOW & FAVE BUTTONS */
+.user_showpg_welcome_block input[type="submit"], .char_showpg_fave_button input[type="submit"] {
+  box-sizing: border-box;
+  padding: 5px 0px 5px 30px;
+  text-align: left;
+  font-family: 'Roboto Condensed';
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-position-y: 6px;
+  background-position-x: 8px;
+  border: none;
+  border-radius: 22px;
+  display: block;
+  cursor: crosshair;
+}
+
+.user_showpg_welcome_block input[type="submit"] {
+  width: 105px;
+  margin: 0px 5px 0px 40px;
+}
+
+.char_showpg_fave_button input[type="submit"] {
+  width: 85px;
+}
+
+.user_showpg_welcome_block input[type="submit"].follow_submit_button, .char_showpg_fave_button input[type="submit"].fave_submit_button {
+  background-image: url(heart_icon.png);
+  background-size: 15px;
+}
+
+.user_showpg_welcome_block input[type="submit"].unfollow_submit_button, .char_showpg_fave_button input[type="submit"].unfave_submit_button {
+  background-image: url(broken_heart_icon.png);
+  background-size: 17px;
+}

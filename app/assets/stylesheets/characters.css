@@ -202,11 +202,18 @@ h4.char_showpg_secretid {
 .char_showpg_att_breaker { border-left: 1px solid #000; }
 
 /* for pick_battle_char_form */
+
+.char_showpg_interact_forms {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: 1px solid #000;
+  padding-top: 30px;
+}
+
 .pick_battle_char_form {
   width: 320px;
   margin: 0px auto 20px;
-  padding-top: 30px;
-  border-top: 1px solid #000;
   text-align: center
 }
 
