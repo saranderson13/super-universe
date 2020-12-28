@@ -13,6 +13,9 @@ class Character < ApplicationRecord
   has_many :character_powers
   has_many :powers, through: :character_powers
 
+  has_many :favorite_opponents
+  has_many :faved_bys, through: :favorite_opponents, source: :user
+
   has_many :protag_battles, class_name: 'Battle', foreign_key: :protag_id
   has_many :antag_battles, class_name: 'Battle', foreign_key: :antag_id
   has_many :antags, through: :protag_battles

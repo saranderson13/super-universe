@@ -13,6 +13,11 @@ class User < ApplicationRecord
   has_many :protag_battles, through: :characters
   has_many :antag_battles, through: :characters
 
+  # To create a fave:
+    # self.favorite_opponents.new(character_id: [id of char to fave])
+  has_many :favorite_opponents
+  has_many :favorites, through: :favorite_opponents, source: :character
+
   # To create a follower:
     # self.followers.new(following: [user_id of the user that is requesting to follow them.])
   has_many :followers
