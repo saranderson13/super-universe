@@ -1,13 +1,12 @@
 class FavoriteOpponentsController < ApplicationController
 
     def create
-        binding.pry
         char = Character.find(fave_params["character_id"])
         @new_fave = current_user.favorite_opponents.new(character_id: char.id)
 
         if @new_fave.valid?
             @new_fave.save
-            flash[:notice] = "You have favorited #{char.supername}."
+            flash[:notice] = "You have added #{char.supername} to your favorite opponents."
         else
             flash[:notice] = "There has been an error."
         end
@@ -21,11 +20,9 @@ class FavoriteOpponentsController < ApplicationController
         char = Character.find(fave_params["character_id"])
         @fave_entry = FavoriteOpponent.find_by(user_id: fave_params["user_id"], character_id: char.id)
 
-        binding.pry
-
         if fave_params["user_id"].to_i == current_user.id
             @fave_entry.destroy
-            flash[:notice] = "You have unfavorited #{char.supername}."
+            flash[:notice] = "You have removed #{char.supername} from your favorite opponents."
         else
             flash[:notice] = "There has been an error."
         end

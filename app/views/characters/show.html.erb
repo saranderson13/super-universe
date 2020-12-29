@@ -64,7 +64,10 @@
   
   <div id="char_showpg_char_card" class="char_showpg_card">
 
-    <h2 class="char_showpg_supername"><%= @char.supername %></h2>
+    <div class="char_showpg_name_block">
+      <h2 class="char_showpg_supername"><%= @char.supername %></h2>
+      <div class="char_showpg_fave_button"><%= render partial: "fave_button" %></div>
+    </div>
     <div class="char_showpg_redacted_dox_wrapper">
       <h4 class="char_showpg_secretid"> aka <%= secret_id_class %></h4><%= dox_button %>
     </div>
@@ -96,10 +99,7 @@
       <div class="char_showpg_att_bookend"></div>
     </div>
 
-    <div class="char_showpg_interact_forms">
-      <div class="char_showpg_fave_button"><%= render partial: "fave_button" %></div>
-      <div class="pick_battle_char_form"><%= char_showpg_battle_form %></div>
-    </div>
+    <div class="pick_battle_char_form"><%= char_showpg_battle_form %></div>
 
   </div>
 

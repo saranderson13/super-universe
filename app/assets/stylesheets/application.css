@@ -241,7 +241,7 @@
 }
 
 .char_showpg_fave_button input[type="submit"] {
-  width: 85px;
+  padding-right: 15px;
 }
 
 .user_showpg_welcome_block input[type="submit"].follow_submit_button, .char_showpg_fave_button input[type="submit"].fave_submit_button {

@@ -2,7 +2,9 @@ class Character < ApplicationRecord
 
   validates :char_type, inclusion: { in: ["Hero", "Villain"] }
   validates :supername, presence: true
+  validates :supername, length: { in: 3..25 }
   validates :secret_identity, presence: true
+  validates :secret_identity, length: { in: 3..50 }
   validates :bio, length: { maximum: 400 }
   validate :validate_stats
   validate :validate_alignment

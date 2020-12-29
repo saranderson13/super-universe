@@ -78,9 +78,9 @@ module CharactersHelper
   def char_form_error(field)
     case field
     when :supername
-      "!! Must have a supername." if !@char.errors[:supername].empty?
+      "!! Must be between 3-25 characters." if !@char.errors[:supername].empty?
     when :secret_identity
-      "!! Must have a secret identity." if !@char.errors[:secret_identity].empty?
+      "!! Must be between 3-50 characters." if !@char.errors[:secret_identity].empty?
     when :char_type
       "!! Please choose a character type." if !@char.errors[:char_type].empty?
     when :alignment

@@ -33,7 +33,8 @@
 }
 
 
-/* LEFT PANEL - WELCOME SECTION (INCLUDES FOLLOW/UNFOLLOW BUTTON */
+/* LEFT PANEL - WELCOME SECTION */
+/* NOTE: Styling for follow/unfollow buttons is in application.css */
 .user_showpg_welcome_block {
   height: 100px;
   position: relative;
@@ -64,36 +65,6 @@
   font-size: 30px;
   margin: 0px 0px 10px 20px;
 }
-
-/* LEFT PANEL - FOLLOW/UNFOLLOW BUTTON */
-/* .user_showpg_welcome_block input[type="submit"] {
-  box-sizing: border-box;
-  width: 105px;
-  margin: 0px 5px 0px 40px;
-  padding: 5px 0px 5px 30px;
-  text-align: left;
-  font-family: 'Roboto Condensed';
-  text-transform: uppercase;
-  color: #fff;
-  background-color: #000;
-  background-repeat: no-repeat;
-  background-position-y: 6px;
-  background-position-x: 8px;
-  border: none;
-  border-radius: 22px;
-  display: block;
-  cursor: crosshair;
-}
-
-.user_showpg_welcome_block input[type="submit"].follow_submit_button {
-  background-image: url(heart_icon.png);
-  background-size: 15px;
-}
-
-.user_showpg_welcome_block input[type="submit"].unfollow_submit_button {
-  background-image: url(broken_heart_icon.png);
-  background-size: 17px;
-} */
 
 #followers_section {
   display: flex;
