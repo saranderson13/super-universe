@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', (e) => {
+document.addEventListener("turbolinks:load", (e) => {
     const tabs = document.getElementsByClassName('rpanel_tab')
     Array.from(tabs).forEach( el => el.addEventListener("click", change_tab_view));
 })
