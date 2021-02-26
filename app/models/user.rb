@@ -55,6 +55,11 @@ class User < ApplicationRecord
     !!self.admin_status
   end
 
+  def extract_follow_users(followerOrFollowing)
+    id_code = followerOrFollowing == "followers" ? "following" : "user_id"
+    self.send(followerOrFollowing).map { |f| User.find(f.send(id_code)) }
+  end
+
   def is_following
     Follower.all.select { |f| f.following == self.id }
   end

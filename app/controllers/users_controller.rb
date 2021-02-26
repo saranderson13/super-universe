@@ -32,8 +32,10 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       @chars = @user.characters
-      @hero_opp = @user.opponents("hero")
-      @villain_opp = @user.opponents("villain")
+      # @hero_opp = @user.opponents("hero")
+      # @villain_opp = @user.opponents("villain")
+      @followers = @user.extract_follow_users("followers")
+      @following = @user.extract_follow_users("is_following")
     end
   end
 

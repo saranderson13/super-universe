@@ -1,1 +1,24 @@
-Followers & Following Content
+<div class="tab_split_table">
+    <div class="tab_st_column">
+        <div class="tab_st_column_header">Followers</div>
+        <div class="tab_st_column_box">
+            <% @followers.each do |f| %>
+                <div class="user_friend">
+                    <%= image_tag f.profile_pic %>
+                    <%= link_to f.alias, user_path(f.id) %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="tab_st_column">
+        <div class="tab_st_column_header">Following</div>
+        <div class="tab_st_column_box">
+            <% @following.each do |f| %>
+                <div class="user_friend">
+                    <%= image_tag f.profile_pic %>
+                    <%= link_to f.alias, user_path(f.id) %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
