@@ -80,4 +80,21 @@ class User < ApplicationRecord
     !!self.favorites.include?(Character.find(character_id))
   end
 
+  def random_opponents
+    possible_opponents = []
+    Character.all.each do |c|
+      possible_opponents.push(c) if self.suggested_opponent_levels.include?(c.level) && c.user != self
+    end
+    return possible_opponents.sample(9)
+  end
+
+  def suggested_opponent_levels
+    opp_levels = []
+    self.characters.map { |c| c.level }.uniq.each do |l|
+      opp_levels.push(l, l + 1)
+      opp_levels.push(l - 1) if l - 1 > 0
+    end
+    return opp_levels.uniq
+  end
+
 end
