@@ -4,7 +4,7 @@
         <div class="tab_st_column_box">
             <% @followers.each do |f| %>
                 <div class="user_friend">
-                    <%= image_tag f.profile_pic %>
+                <div class="user_friend_pp"><%= image_tag f.profile_pic %></div>
                     <%= link_to f.alias, user_path(f.id) %>
                 </div>
             <% end %>
@@ -15,7 +15,7 @@
         <div class="tab_st_column_box">
             <% @following.each do |f| %>
                 <div class="user_friend">
-                    <%= image_tag f.profile_pic %>
+                    <div class="user_friend_pp"><%= image_tag f.profile_pic %></div>
                     <%= link_to f.alias, user_path(f.id) %>
                 </div>
             <% end %>
