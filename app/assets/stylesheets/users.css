@@ -185,13 +185,11 @@ a.bip_link:hover {
 
 .user_showpg_tab_container {
   --rpanel_width: calc(55% - 350px);
-  box-sizing: border-box;
+  box-sizing: border-box; 
   width: 100%;
   height: 100%;
   padding: 20px;
   background-color: #fff;
-  /* display: flex;
-  flex-direction: row; */
 }
 
 .rpanel_tabs {
@@ -281,17 +279,59 @@ a.bip_link:hover {
 }
 .user_friend_pp img { width: 32px; }
 
-.user_friend a, .user_friend a:active, .user_friend a:visited {
+.user_friend a, .user_friend a:active, .user_friend a:visited, .opp_supername a, .opp_supername a:active, .opp_supername a:visited {
   color: #fff;
   text-decoration: none;
 }
 
-.user_friend a:hover {
+.user_friend a:hover, .opp_supername a:hover {
   color: #f00;
   cursor: crosshair;
   text-decoration: line-through;
 }
 
+.single_content_container {
+  width: 100%; height: 100%;
+  margin-top: 20px;
+  overflow: auto;
+}
+
+.single_content_container::-webkit-scrollbar {
+  background-color: #000;
+  width: 13px;
+}
+
+.single_content_container::-webkit-scrollbar-button {
+  color: #000;
+}
+
+.single_content_container::-webkit-scrollbar-thumb {
+  background-color: #f00;
+}
+
+.fav_opp_box {
+  box-sizing: border-box;
+  background-color: #000;
+  color: #fff;
+  width: 32%; height: 120px;
+  margin-bottom: 20px;
+  margin-right: 2%;
+  padding: 10px 0px 10px 12px;
+  float: left;
+  font-family: "Roboto Condensed";
+  font-size: 14px;
+  line-height: 19px;
+}
+.single_content_container .fav_opp_box:nth-child(3n+3) { margin-right: 0px;}
+
+.opp_supername {
+  font-family: 'Cantarell';
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 2px;
+  margin-left: -1px;
+}
 
 
 /* IN DEPRECATED _USER_SHOWPG_FIND_OPPONENT_FORM PARTIAL */

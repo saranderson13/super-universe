@@ -36,6 +36,7 @@ class UsersController < ApplicationController
       # @villain_opp = @user.opponents("villain")
       @followers = @user.extract_follow_users("followers")
       @following = @user.extract_follow_users("is_following")
+      @fav_opps = @user.favorites
     end
   end
 

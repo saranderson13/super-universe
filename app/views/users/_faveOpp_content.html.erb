@@ -1,1 +1,11 @@
-Fave Opponents Content
+<div class="single_content_container">
+    <% @fav_opps.each do |o| %>
+        <div class="fav_opp_box">
+            <div class="opp_supername"><%= link_to o.supername, user_character_path(user_id: o.user_id, id: o.id) %></div>
+            <%= "#{o.alignment} #{o.char_type}" %><br>
+            <%= "Level: #{o.level}" %><br>
+            <%= "#{o.antag_battle_win_percentage}% victorious in #{pluralize(o.antag_battles.count, 'battle')}." %><br>
+            <%= "Antagonist Rank: #{o.character_rank('antag_rank')}" %>
+        </div>
+    <% end %>
+</div>
