@@ -237,14 +237,19 @@ a.bip_link:hover {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .tab_st_column {
   box-sizing: border-box;
-  width: calc(50% - 10px);
+  /* width: calc(50% - 10px); */
   height: 100%;
+  margin-right: 20px;
+  flex-grow: 1;
+  flex-basis: 33%;
 }
+
+.tab_split_table .tab_st_column:last-child { margin-right: 0px; }
 
 .tab_st_column_header {
   font-family: "Cantarell";

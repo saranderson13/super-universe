@@ -21,4 +21,15 @@
             <% end %>
         </div>
     </div>
+    <div class="tab_st_column">
+        <div class="tab_st_column_header">Suggested</div>
+        <div class="tab_st_column_box">
+            <% @suggested_users.each do |f| %>
+                <div class="user_friend">
+                    <div class="user_friend_pp"><%= image_tag f.profile_pic %></div>
+                    <%= link_to f.alias, user_path(f.id) %>
+                </div>
+            <% end %>
+        </div>
+    </div>
 </div>

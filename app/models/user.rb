@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   scope :admin, -> { where(admin_status: true) }
 
+  # THESE CONSTANTS ARE IDENTICAL IN character MODEL - REMEMBER TO SYNC CHANGES
   ANTAG_RANK_WGCRIT = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: 4, level: 2 }
   ANTAG_RANK_LGCRIT = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: -2, level: 2 }
   ANTAG_RANK_WLARGS = ["Defeat", "Victory", "antag"]
@@ -67,6 +68,9 @@ class User < ApplicationRecord
     !!self.admin_status
   end
 
+
+
+  # FOR MANAGING FOLLOWS/FOLLOWING 
   def extract_follow_users(followerOrFollowing)
     id_code = followerOrFollowing == "followers" ? "following" : "user_id"
     self.send(followerOrFollowing).map { |f| User.find(f.send(id_code)) }
@@ -88,6 +92,61 @@ class User < ApplicationRecord
     self.is_following.length
   end
 
+  def suggest_users
+    # suggest users based on who the people you are following are following
+    # collect ids for all of the people you are following.
+    # iterate over all Follows
+    # create hash to count how many times the users you're following are following other users IF you are not also following them
+    # create array in order of most commonly followed users.
+    # return first 10 objects in array, or all if under 10.
+
+    # Get ids for all followed users.
+    following_ids = self.is_following.map { |u| u.user_id }
+    
+    # If there are no followed users, return 10 random users
+    if following_ids.empty?
+      return User.all.sample(10).reject { |u| u.id == self.id }
+    
+    # If there are followed users...
+    else
+      # Set up commonly_followed hash by creating creating a key for every unfollowed user (that isn't self)
+      # and set value of that key to 0.
+      # Also set up array of unfollowed users to use if algorithm suggests fewer than 10 users.
+      unfollowed = []
+      commonly_followed = {}
+      User.all.each do |u| 
+        if u.id != self.id && !following_ids.include?(u.id)
+          unfollowed.push(u)
+          commonly_followed[u.id] = 0 
+        end
+      end
+      
+      # Iterate over all Follows.
+      # If there is a key for the user that is being followed
+      # And the user id of the follower is in your following_ids hash
+      # add 1 to the value of that key.
+      Follower.all.each do |f|
+        if !!commonly_followed[f.user_id] && following_ids.include?(f.following)
+          unfollowed.delete(User.find(f.user_id))
+          commonly_followed[f.user_id] += 1
+        end
+      end
+  
+      # Sort the hash by common followers, higest to lowest.
+      sorted_suggestions = commonly_followed.sort_by { |user_id, common_count| -common_count }
+
+      top_suggested_users = sorted_suggestions[0..9].map { |u| User.find(u[0]) if u[1] > 0 }.reject { |u| u == nil }
+      if top_suggested_users.length < 10
+        return top_suggested_users.concat(unfollowed.sample(10 - top_suggested_users.length))
+      else
+        return top_suggested_users
+      end
+    end
+  end
+
+
+
+  # FOR MANAGING FAVE CHARACTERS
   def has_faved?(character_id)
     !!self.favorites.include?(Character.find(character_id))
   end

@@ -34,6 +34,7 @@ class UsersController < ApplicationController
       @chars = @user.characters
       @followers = @user.extract_follow_users("followers")
       @following = @user.extract_follow_users("is_following")
+      @suggested_users = @user.suggest_users
       @fav_opps = @user.favorites
       @fav_opps_ranks = @user.get_fave_opps_ranks
       @rand_opps = @user.random_opponents
