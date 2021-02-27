@@ -516,8 +516,23 @@ class Character < ApplicationRecord
 
   end
 
+  # QUICK RANKING ALGORITHM (get ranks for entire group of characters)
+  # Prevents running #master_ranking_algorithm for every character in an array.
+  # Only runs #master_ranking_algorithm once.
+  def self.quick_ranks(wl_args, wg_criteria, lg_criteria, char_array)
+    # Returns hash with ranks for all selected characters,
+    # i.e. { charX => 1, charY => 3 }
+    ranks = self.rank_category_calculator(wl_args, wg_criteria, lg_criteria)
+    selected_character_ranks = {}
+    ranks.each_with_index do |c, i|
+      selected_character_ranks[c] = i + 1 if char_array.include?(c)
+    end
+    return selected_character_ranks
+  end
+
 
   # Best Protag Records Ranking
+  # REMEMBER TO ALSO CHANGE THESE VARIABLES IN THE user MODEL.
   PROTAG_RANK_WGCRIT = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: 4, level: 2 }
   PROTAG_RANK_LGCRIT = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: -2, level: 2 }
   PROTAG_RANK_WLARGS = ["Victory", "Defeat", "protag"]
@@ -528,6 +543,7 @@ class Character < ApplicationRecord
 
 
   # Toughest Antag Ranking 
+  # REMEMBER TO ALSO CHANGE THESE VARIABLES IN THE user MODEL.
   ANTAG_RANK_WGCRIT = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: 4, level: 2 }
   ANTAG_RANK_LGCRIT = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: -2, level: 2 }
   ANTAG_RANK_WLARGS = ["Defeat", "Victory", "antag"]
@@ -538,6 +554,7 @@ class Character < ApplicationRecord
 
 
   # Overall Best Ranking
+  # REMEMBER TO ALSO CHANGE THESE VARIABLES IN THE user MODEL.
   TOP_SUPERS_RANK_WGCRIT = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: 4, level: 2 }
   TOP_SUPERS_RANK_LGCRIT = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: -2, level: 2 }
   TOP_SUPERS_RANK_WLARGS = ["", "", "overall"]

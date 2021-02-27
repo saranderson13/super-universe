@@ -31,6 +31,18 @@ class User < ApplicationRecord
 
   scope :admin, -> { where(admin_status: true) }
 
+  ANTAG_RANK_WGCRIT = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: 4, level: 2 }
+  ANTAG_RANK_LGCRIT = { antag_victories: 5, antag_opponent_count: 4, antag_win_percentage: 3, antag_battle_count: -2, level: 2 }
+  ANTAG_RANK_WLARGS = ["Defeat", "Victory", "antag"]
+
+  PROTAG_RANK_WGCRIT = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: 4, level: 2 }
+  PROTAG_RANK_LGCRIT = { protag_victories: 5, protag_opponent_count: 4, protag_win_percentage: 3, protag_battle_count: -2, level: 2 }
+  PROTAG_RANK_WLARGS = ["Victory", "Defeat", "protag"]
+
+  TOP_SUPERS_RANK_WGCRIT = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: 4, level: 2 }
+  TOP_SUPERS_RANK_LGCRIT = { all_victories: 5, total_opponent_count: 4, overall_win_percentage: 3, total_battle_count: -2, level: 2 }
+  TOP_SUPERS_RANK_WLARGS = ["", "", "overall"]
+
   def opponents(type)
     pool = []
     Character.send(type).each { |c| pool.push(c) if c.user_id != self.id && c.has_superpowers? }
@@ -83,7 +95,7 @@ class User < ApplicationRecord
   def random_opponents
     possible_opponents = []
     Character.all.each do |c|
-      possible_opponents.push(c) if self.suggested_opponent_levels.include?(c.level) && c.user != self
+      possible_opponents.push(c) if self.suggested_opponent_levels.include?(c.level) && c.user != self && !self.favorites.include?(c)
     end
     return possible_opponents.sample(9)
   end
@@ -95,6 +107,14 @@ class User < ApplicationRecord
       opp_levels.push(l - 1) if l - 1 > 0
     end
     return opp_levels.uniq
+  end
+
+  def get_fave_opps_ranks
+    Character.quick_ranks(ANTAG_RANK_WLARGS, ANTAG_RANK_WGCRIT, ANTAG_RANK_LGCRIT, self.favorites)
+  end
+
+  def get_rand_opps_ranks
+    Character.quick_ranks(ANTAG_RANK_WLARGS, ANTAG_RANK_WGCRIT, ANTAG_RANK_LGCRIT, self.random_opponents)
   end
 
 end

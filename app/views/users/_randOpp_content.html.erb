@@ -9,7 +9,7 @@
             <%= "#{o.alignment} #{o.char_type}" %><br>
             <%= "Level: #{o.level}" %><br>
             <%= "#{o.antag_battle_win_percentage}% victorious in #{pluralize(o.antag_battles.count, 'battle')}." %><br>
-            <%= "Antagonist Rank: #{o.character_rank('antag_rank')}" %>
+            <%= "Antagonist Rank: #{@rand_opps_ranks[o]}" %>
         </div>
     <% end %>
 </div>
