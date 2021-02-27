@@ -1,6 +1,10 @@
 <div class="single_content_container">
     <% @rand_opps.each do |o| %>
-        <div class="fav_opp_box">
+        <% if o.char_type == "Hero" %>
+            <div class="fav_opp_box opp_hero">
+        <% else %>
+            <div class="fav_opp_box opp_villain">
+        <% end %>
             <div class="opp_supername"><%= link_to o.supername, user_character_path(user_id: o.user_id, id: o.id) %></div>
             <%= "#{o.alignment} #{o.char_type}" %><br>
             <%= "Level: #{o.level}" %><br>

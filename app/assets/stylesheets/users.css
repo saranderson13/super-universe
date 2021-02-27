@@ -312,7 +312,6 @@ a.bip_link:hover {
 .fav_opp_box {
   box-sizing: border-box;
   background-color: #000;
-  color: #fff;
   width: 32%; height: 120px;
   margin-bottom: 20px;
   margin-right: 2%;
@@ -323,6 +322,16 @@ a.bip_link:hover {
   line-height: 19px;
 }
 .single_content_container .fav_opp_box:nth-child(3n+3) { margin-right: 0px;}
+.opp_hero { color: #fff }
+.opp_villain { color: #f00; }
+.opp_villain a, .opp_villain a:active, .opp_villain a:visited { 
+  color: #f00;
+  text-decoration: none;
+}
+.opp_villain a:hover {
+  color: #fff;
+  text-decoration: line-through;
+}
 
 .opp_supername {
   font-family: 'Cantarell';
