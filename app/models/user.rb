@@ -93,14 +93,9 @@ class User < ApplicationRecord
   end
 
   def suggest_users
-    # suggest users based on who the people you are following are following
-    # collect ids for all of the people you are following.
-    # iterate over all Follows
-    # create hash to count how many times the users you're following are following other users IF you are not also following them
-    # create array in order of most commonly followed users.
-    # return first 10 objects in array, or all if under 10.
+    # Suggest users based on who the people you are following are following
 
-    # Get ids for all followed users.
+    # Get ids for all currently followed users.
     following_ids = self.is_following.map { |u| u.user_id }
     
     # If there are no followed users, return 10 random users
@@ -111,7 +106,7 @@ class User < ApplicationRecord
     else
       # Set up commonly_followed hash by creating creating a key for every unfollowed user (that isn't self)
       # and set value of that key to 0.
-      # Also set up array of unfollowed users to use if algorithm suggests fewer than 10 users.
+      # Also set up array of unfollowed users to pull from if algorithm suggests fewer than 10 users.
       unfollowed = []
       commonly_followed = {}
       User.all.each do |u| 
@@ -125,19 +120,35 @@ class User < ApplicationRecord
       # If there is a key for the user that is being followed
       # And the user id of the follower is in your following_ids hash
       # add 1 to the value of that key.
+      # also remove that user from the unfollowed array.
       Follower.all.each do |f|
         if !!commonly_followed[f.user_id] && following_ids.include?(f.following)
           unfollowed.delete(User.find(f.user_id))
           commonly_followed[f.user_id] += 1
         end
       end
-  
-      # Sort the hash by common followers, higest to lowest.
-      sorted_suggestions = commonly_followed.sort_by { |user_id, common_count| -common_count }
 
-      top_suggested_users = sorted_suggestions[0..9].map { |u| User.find(u[0]) if u[1] > 0 }.reject { |u| u == nil }
+
+      # Iterate through the commonly_followed hash
+      # push a user into the suggested_users array common_count times
+      # (so if a user is followed by 3 of the users you are following, push them into the suggested users array 3 times)
+      # then shuffle the array so that users are in a random order instead of clumped together.
+      suggested_users = []
+      commonly_followed.each do |user_id, common_count|
+        common_count.times do
+          suggested_users.push(User.find(user_id))
+        end
+      end
+      suggested_users.shuffle!
+
+
+      # randomly sample 10 users from the suggested users array, and make the array unique
+      # (because since users are sometimes present in the suggested_users array multiple times,)
+      # (they may come up in the sampled names more than once.)
+      # If the resulting array is less than 10 users, randomly choose the remaining number of users from the unfollowed array.
+      top_suggested_users = suggested_users.sample(10).uniq
       if top_suggested_users.length < 10
-        return top_suggested_users.concat(unfollowed.sample(10 - top_suggested_users.length))
+        return top_suggested_users.concat(unfollowed.sample(10 - top_suggested_users.length)).shuffle
       else
         return top_suggested_users
       end
