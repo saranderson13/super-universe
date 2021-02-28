@@ -129,29 +129,24 @@ class User < ApplicationRecord
       end
 
 
-      # Iterate through the commonly_followed hash
-      # push a user into the suggested_users array common_count times
-      # (so if a user is followed by 3 of the users you are following, push them into the suggested users array 3 times)
-      # then shuffle the array so that users are in a random order instead of clumped together.
+      # Iterate through the commonly_followed hash.
+      # Push a user into the #suggested_users array #common_count times.
+      # (so if a user is followed by 3 of the users you are following, push them into the #suggested_users array 3 times)
+      # Then shuffle the array so that users are in a random order instead of clumped together.
       suggested_users = []
       commonly_followed.each do |user_id, common_count|
         common_count.times do
           suggested_users.push(User.find(user_id))
         end
       end
+
+      # Add unfollowed users into the #suggested_users array.
+      # They will be present 1 time each.
+      # Shuffle the resulting array and return an array of 10 random users, made to be unique.
+      suggested_users.concat(unfollowed)
       suggested_users.shuffle!
+      return suggested_users.sample(10).uniq
 
-
-      # randomly sample 10 users from the suggested users array, and make the array unique
-      # (because since users are sometimes present in the suggested_users array multiple times,)
-      # (they may come up in the sampled names more than once.)
-      # If the resulting array is less than 10 users, randomly choose the remaining number of users from the unfollowed array.
-      top_suggested_users = suggested_users.sample(10).uniq
-      if top_suggested_users.length < 10
-        return top_suggested_users.concat(unfollowed.sample(10 - top_suggested_users.length)).shuffle
-      else
-        return top_suggested_users
-      end
     end
   end
 
