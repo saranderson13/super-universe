@@ -130,7 +130,8 @@
   font-family: "Cantarell";
   font-size: 40px;
   position: absolute;
-  top: 75px; left: 125px;
+  left: 125px;
+  top: 75px; 
 }
 
 .user_form_errors {
@@ -155,11 +156,15 @@
 }
 
 .user_form_wrapper.signup {
-  padding-top: 45px;
+  /* SWITCH WHICH ONE IS COMMENTED OUT IF ADDING OAUTH SIGNUP BACK IN */
+  /* padding-top: 45px; */
+  padding-top: 70px;
 }
 
 .user_form_wrapper.login {
-  padding-top: 95px;
+  /* SWITCH WHICH ONE IS COMMENTED OUT IF ADDING OAUTH SIGNUP BACK IN */
+  /* padding-top: 95px; */
+  padding-top: 120px;
 }
 
 .user_form_wrapper label {

@@ -20,6 +20,7 @@
   <%= f.password_field :password_confirmation %>
   <%= f.submit "Sign Up", data: { disable_with: false } %>
 
-  <p class="user_form_text_break">- OR -</p>
-  <div class="google_login_link_wrapper"><%= link_to "Log in with your Google account.", '/auth/google_oauth2', method: :post %></div>
+  <!-- COMMENTED OUT GOOGLE OAUTH SIGN IN -->
+  <!-- <p class="user_form_text_break">- OR -</p> -->
+  <!-- <div class="google_login_link_wrapper"><%#= link_to "Log in with your Google account.", '/auth/google_oauth2', method: :post %></div> -->
 <% end %>
